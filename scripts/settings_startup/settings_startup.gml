@@ -29,7 +29,7 @@ setting_backup = true
 setting_backup_time = 2
 setting_backup_amount = 3
 setting_slow_generation = false
-setting_refresh_textures = false
+setting_refresh_textures = true
 setting_adjust_pivot_resize = true
 
 action_controls_reset()
@@ -40,7 +40,7 @@ setting_slow_modifier = 0.25
 setting_smooth_camera = false
 setting_viewport_controls_middle = false
 
-setting_theme = theme_light
+setting_theme = theme_darker
 setting_accent = 6
 setting_accent_custom = hex_to_color("03A9F4")
 setting_language_filename = "english.mblanguage"
@@ -51,7 +51,7 @@ setting_show_startup_tips = true
 
 setting_reduced_motion = false
 
-setting_blocky_bending = false
+setting_blocky_bending = true
 
 setting_render_shadows = true
 setting_render_shadows_blur_quality = 64

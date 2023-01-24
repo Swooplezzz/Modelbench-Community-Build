@@ -7,7 +7,7 @@
 #macro debug_export_normals			false
 
 // Versions
-#macro modelbench_version			"1.1.3"
+#macro modelbench_version			"1.1.4 Swooplezz Build"
 #macro modelbench_version_full		modelbench_version + ""
 #macro modelbench_version_extra		""
 #macro modelbench_version_date		"01.16.2021"

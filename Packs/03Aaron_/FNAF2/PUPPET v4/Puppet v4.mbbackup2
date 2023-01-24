@@ -1,0 +1,989 @@
+{
+	"name": "Puppet v4",
+	"texture": "PPTextures.png",
+	"texture_size": [ 76, 76 ],
+	"parts": [
+		{
+			"name": "base",
+			"position": [ 0, 21, 0 ],
+			"scale": [ 0.9, 0.9, 0.9 ],
+			"parts": [
+				{
+					"name": "body bend",
+					"position": [ 0, -1.875, 0 ],
+					"bend": {
+						"offset": 0.5,
+						"size": 0.1,
+						"part": "upper",
+						"axis": [ "x", "y", "z" ]
+					},
+					"shapes": [
+						{
+							"type": "block",
+							"from": [ -1, 0, -1 ],
+							"to": [ 1, 1, 1 ],
+							"uv": [ 6, 44 ]
+						}
+					],
+					"parts": [
+						{
+							"name": "body bend (2)",
+							"position": [ 0, 1, 0 ],
+							"bend": {
+								"offset": 0.5,
+								"size": 0.1,
+								"inherit_bend": 1,
+								"part": "upper",
+								"axis": [ "x", "y", "z" ]
+							},
+							"shapes": [
+								{
+									"type": "block",
+									"from": [ -1, 0, -1 ],
+									"to": [ 1, 1, 1 ],
+									"uv": [ 6, 43 ]
+								}
+							],
+							"parts": [
+								{
+									"name": "body bend (3)",
+									"position": [ 0, 1, 0 ],
+									"bend": {
+										"offset": 0.5,
+										"size": 0.1,
+										"inherit_bend": 1,
+										"part": "upper",
+										"axis": [ "x", "y", "z" ]
+									},
+									"shapes": [
+										{
+											"type": "block",
+											"from": [ -1, 0, -1 ],
+											"to": [ 1, 1, 1 ],
+											"uv": [ 6, 42 ]
+										}
+									],
+									"parts": [
+										{
+											"name": "Top Body",
+											"position": [ 0, 1, 0 ],
+											"shapes": [
+												{
+													"type": "block",
+													"from": [ -3, 0, -1.5 ],
+													"to": [ 3, 7, 1.5 ],
+													"uv": [ 5, 30 ]
+												},
+												{
+													"type": "plane",
+													"from": [ 14.1875, 14.125, -6.6875 ],
+													"to": [ 19.1875, 19.125, -6.6875 ],
+													"uv": [ 38, 50 ],
+													"rotation": [ 0, 180, 45 ],
+													"scale": [ 0.25, 0.25, 0.25 ],
+													"hide_front": true,
+													"3d": true
+												},
+												{
+													"type": "plane",
+													"from": [ 8.5625, 8.625, -6.6875 ],
+													"to": [ 13.5625, 13.625, -6.6875 ],
+													"uv": [ 38, 50 ],
+													"rotation": [ 0, 180, 45 ],
+													"scale": [ 0.25, 0.25, 0.25 ],
+													"hide_front": true,
+													"3d": true
+												},
+												{
+													"type": "plane",
+													"from": [ 2.75, 2.875, -6.6875 ],
+													"to": [ 7.75, 7.875, -6.6875 ],
+													"uv": [ 38, 50 ],
+													"rotation": [ 0, 180, 45 ],
+													"scale": [ 0.25, 0.25, 0.25 ],
+													"hide_front": true,
+													"3d": true
+												}
+											],
+											"parts": [
+												{
+													"name": "Neck",
+													"position": [ 0, 7, 0 ],
+													"bend": {
+														"offset": 0.3125,
+														"size": 0.125,
+														"part": "upper",
+														"axis": [ "x", "y", "z" ]
+													},
+													"shapes": [
+														{
+															"type": "block",
+															"from": [ -1, 0, -1 ],
+															"to": [ 1, 1, 1 ],
+															"uv": [ 23, 11 ]
+														}
+													],
+													"parts": [
+														{
+															"name": "Neck (2)",
+															"position": [ 0, 1, 0 ],
+															"bend": {
+																"offset": 0.3125,
+																"size": 0.125,
+																"inherit_bend": 1,
+																"part": "upper",
+																"axis": [ "x", "y", "z" ]
+															},
+															"shapes": [
+																{
+																	"type": "block",
+																	"from": [ -1, 0, -1 ],
+																	"to": [ 1, 1, 1 ],
+																	"uv": [ 23, 12 ]
+																}
+															],
+															"parts": [
+																{
+																	"name": "Neck (3)",
+																	"position": [ 0, 1, 0 ],
+																	"bend": {
+																		"offset": 0.3125,
+																		"size": 0.125,
+																		"inherit_bend": 1,
+																		"part": "upper",
+																		"axis": [ "x", "y", "z" ]
+																	},
+																	"shapes": [
+																		{
+																			"type": "block",
+																			"from": [ -1, 0, -1 ],
+																			"to": [ 1, 1, 1 ],
+																			"uv": [ 23, 13 ]
+																		}
+																	],
+																	"parts": [
+																		{
+																			"name": "Neck (4)",
+																			"position": [ 0, 1, 0 ],
+																			"bend": {
+																				"offset": 0.3125,
+																				"size": 0.125,
+																				"inherit_bend": 1,
+																				"part": "upper",
+																				"axis": [ "x", "y", "z" ]
+																			},
+																			"shapes": [
+																				{
+																					"type": "block",
+																					"from": [ -1, 0, -1 ],
+																					"to": [ 1, 1, 1 ],
+																					"uv": [ 23, 14 ]
+																				}
+																			],
+																			"parts": [
+																				{
+																					"name": "Head",
+																					"position": [ 0, 0, 0 ],
+																					"shapes": [
+																						{
+																							"type": "block",
+																							"from": [ -4, 0, -3 ],
+																							"to": [ 4, 8, 3 ],
+																							"uv": [ 25, 22 ],
+																							"scale": [ 0.93, 1, 1 ]
+																						}
+																					],
+																					"parts": [
+																						{
+																							"name": " ",
+																							"position": [ 0, 0.125, 0 ],
+																							"rotation": [ 0, -180, 0 ],
+																							"shapes": [
+																								{
+																									"type": "plane",
+																									"from": [ 4.1875, 2.9375, -5.5 ],
+																									"to": [ 6.1875, 4.9375, -5.5 ],
+																									"uv": [ 4, 18 ],
+																									"scale": [ 0.75, 0.75, 0.75 ],
+																									"3d": true
+																								},
+																								{
+																									"type": "plane",
+																									"from": [ -6.1875, 2.9375, -5.5 ],
+																									"to": [ -4.1875, 4.9375, -5.5 ],
+																									"uv": [ 14, 18 ],
+																									"scale": [ 0.75, 0.75, 0.75 ],
+																									"3d": true
+																								},
+																								{
+																									"type": "plane",
+																									"from": [ -1, 5.4375, -15.1875 ],
+																									"to": [ 1, 7.4375, -15.1875 ],
+																									"uv": [ 9, 19 ],
+																									"scale": [ 0.75, 0.375, 0.25 ],
+																									"3d": true
+																								},
+																								{
+																									"type": "plane",
+																									"from": [ 0.4375, 5.4375, -15.1875 ],
+																									"to": [ 1.4375, 7.4375, -15.1875 ],
+																									"uv": [ 9, 19 ],
+																									"scale": [ 0.75, 0.375, 0.25 ],
+																									"3d": true
+																								},
+																								{
+																									"type": "plane",
+																									"from": [ -1.4375, 5.4375, -15.1875 ],
+																									"to": [ -0.4375, 7.4375, -15.1875 ],
+																									"uv": [ 9, 19 ],
+																									"scale": [ 0.75, 0.375, 0.25 ],
+																									"3d": true
+																								},
+																								{
+																									"type": "plane",
+																									"from": [ -1, -0.5, -15 ],
+																									"to": [ 1, 1.5, -15 ],
+																									"uv": [ 9, 19 ],
+																									"scale": [ 0.75, 0.375, 0.25 ],
+																									"3d": true
+																								},
+																								{
+																									"type": "plane",
+																									"from": [ -4, -0.5, -12.0625 ],
+																									"to": [ 4, 8.5, -12.0625 ],
+																									"uv": [ 6, 8 ],
+																									"scale": [ 1, 1, 0.3 ],
+																									"texture_mirror": true,
+																									"3d": true
+																								},
+																								{
+																									"type": "plane",
+																									"from": [ -4, -3.62, -28.375 ],
+																									"to": [ 4, 0.38, -28.375 ],
+																									"uv": [ 6, 3 ],
+																									"rotation": [ 90, 0, 0 ],
+																									"scale": [ 1, 1, 0.3 ],
+																									"texture_mirror": true,
+																									"3d": true
+																								},
+																								{
+																									"type": "plane",
+																									"from": [ -0.382, -0.5, 12.3125 ],
+																									"to": [ 3.618, 8.5, 12.3125 ],
+																									"uv": [ 1, 8 ],
+																									"rotation": [ 0, 90, 0 ],
+																									"scale": [ 1, 1, 0.3 ],
+																									"3d": true
+																								},
+																								{
+																									"type": "plane",
+																									"from": [ -0.4, 1.5, 5.25 ],
+																									"to": [ 3.6, 4.5, 5.25 ],
+																									"uv": [ 1, 12 ],
+																									"rotation": [ 0, 90, 0 ],
+																									"scale": [ 1, 1, 0.75 ],
+																									"hide_back": true,
+																									"3d": true
+																								},
+																								{
+																									"type": "plane",
+																									"from": [ 0.62, 4.5, 4.75 ],
+																									"to": [ 2.62, 5.5, 4.75 ],
+																									"uv": [ 2, 12 ],
+																									"rotation": [ 0, 90, 0 ],
+																									"scale": [ 1, 1, 0.75 ],
+																									"hide_back": true,
+																									"3d": true
+																								},
+																								{
+																									"type": "plane",
+																									"from": [ -3.61, 1.5, 5.25 ],
+																									"to": [ 0.39, 4.5, 5.25 ],
+																									"uv": [ 15, 12 ],
+																									"rotation": [ 0, -90, 0 ],
+																									"scale": [ 1, 1, 0.75 ],
+																									"hide_back": true,
+																									"3d": true
+																								},
+																								{
+																									"type": "plane",
+																									"from": [ -2.63, 4.5, 4.75 ],
+																									"to": [ -0.63, 5.5, 4.75 ],
+																									"uv": [ 16, 12 ],
+																									"rotation": [ 0, -90, 0 ],
+																									"scale": [ 1, 1, 0.75 ],
+																									"hide_back": true,
+																									"3d": true
+																								},
+																								{
+																									"type": "plane",
+																									"from": [ -0.382, -0.5, -13.33 ],
+																									"to": [ 3.618, 8.5, -13.33 ],
+																									"uv": [ 15, 8 ],
+																									"rotation": [ 0, 90, 0 ],
+																									"scale": [ 1, 1, 0.3 ],
+																									"texture_mirror": true,
+																									"3d": true
+																								},
+																								{
+																									"type": "plane",
+																									"from": [ -4, 2.5, -12.0625 ],
+																									"to": [ 4, 3.5, -12.0625 ],
+																									"uv": [ 15, 6 ],
+																									"scale": [ 1, 1, 0.3 ],
+																									"texture_mirror": true,
+																									"3d": true
+																								}
+																							],
+																							"parts": [
+																								{
+																									"name": "BEND and parts (1)",
+																									"position": [ 2.9375, 2, -3.467 ],
+																									"rotation": [ 0, 0, 10 ],
+																									"bend": {
+																										"offset": -0.6875,
+																										"size": 35.5625,
+																										"part": "lower",
+																										"axis": "z",
+																										"angle": -80
+																									},
+																									"shapes": [
+																										{
+																											"type": "plane",
+																											"from": [ -0.5, -2.5, -0.5 ],
+																											"to": [ 0.5, 0.5, -0.5 ],
+																											"uv": [ 6, 14 ],
+																											"scale": [ 1, 1, 0.3 ],
+																											"texture_mirror": true,
+																											"hide_front": true,
+																											"3d": true
+																										}
+																									]
+																								},
+																								{
+																									"name": "BEND and parts (2)",
+																									"position": [ -2.9375, 2, -3.467 ],
+																									"rotation": [ 0, -180, 10 ],
+																									"bend": {
+																										"offset": -0.6875,
+																										"size": 35.5625,
+																										"part": "lower",
+																										"axis": "z",
+																										"angle": -80
+																									},
+																									"shapes": [
+																										{
+																											"type": "plane",
+																											"from": [ -0.5, -2.5, -0.5 ],
+																											"to": [ 0.5, 0.5, -0.5 ],
+																											"uv": [ 13, 14 ],
+																											"scale": [ 1, 1, 0.3 ],
+																											"texture_mirror": true,
+																											"hide_back": true,
+																											"3d": true
+																										}
+																									]
+																								},
+																								{
+																									"name": "BEND and parts (3)",
+																									"position": [ 2, 3.5625, -3.47 ],
+																									"rotation": [ 0, 0, 9 ],
+																									"bend": {
+																										"offset": 0,
+																										"size": 45.25,
+																										"part": "right",
+																										"axis": "z",
+																										"angle": -20
+																									},
+																									"shapes": [
+																										{
+																											"type": "plane",
+																											"from": [ -1, -0.5, -0.5 ],
+																											"to": [ 1, 0.5, -0.5 ],
+																											"uv": [ 16, 6 ],
+																											"scale": [ 1.01, 0.375, 0.3 ],
+																											"texture_mirror": true,
+																											"hide_front": true,
+																											"3d": true
+																										}
+																									]
+																								},
+																								{
+																									"name": "BEND and parts (4)",
+																									"position": [ 2, 5.4375, -3.47 ],
+																									"rotation": [ 0, 0, 10 ],
+																									"bend": {
+																										"offset": 0,
+																										"size": 45.25,
+																										"part": "right",
+																										"axis": "z",
+																										"angle": -20
+																									},
+																									"shapes": [
+																										{
+																											"type": "plane",
+																											"from": [ -1, -0.5, -0.5 ],
+																											"to": [ 1, 0.5, -0.5 ],
+																											"uv": [ 7, 10 ],
+																											"scale": [ 1.01, 0.625, 0.3 ],
+																											"texture_mirror": true,
+																											"hide_front": true,
+																											"3d": true
+																										}
+																									]
+																								},
+																								{
+																									"name": "BEND and parts (5)",
+																									"position": [ -2, 3.5625, -3.47 ],
+																									"rotation": [ 0, 0, 9 ],
+																									"bend": {
+																										"offset": 0,
+																										"size": 45.25,
+																										"part": "right",
+																										"axis": "z",
+																										"angle": -20
+																									},
+																									"shapes": [
+																										{
+																											"type": "plane",
+																											"from": [ -1, -0.5, -0.5 ],
+																											"to": [ 1, 0.5, -0.5 ],
+																											"uv": [ 20, 6 ],
+																											"scale": [ 1.01, 0.375, 0.3 ],
+																											"texture_mirror": true,
+																											"hide_front": true,
+																											"3d": true
+																										}
+																									]
+																								},
+																								{
+																									"name": "BEND and parts (6)",
+																									"position": [ -2, 5.4375, -3.47 ],
+																									"rotation": [ 0, 0, 10 ],
+																									"bend": {
+																										"offset": 0,
+																										"size": 45.25,
+																										"part": "right",
+																										"axis": "z",
+																										"angle": -20
+																									},
+																									"shapes": [
+																										{
+																											"type": "plane",
+																											"from": [ -1, -0.5, -0.5 ],
+																											"to": [ 1, 0.5, -0.5 ],
+																											"uv": [ 11, 10 ],
+																											"scale": [ 1.01, 0.625, 0.3 ],
+																											"texture_mirror": true,
+																											"hide_front": true,
+																											"3d": true
+																										}
+																									]
+																								},
+																								{
+																									"name": "BEND and parts (7)",
+																									"position": [ 0, -0.14, 0 ],
+																									"bend": {
+																										"offset": 3.75,
+																										"part": "upper",
+																										"axis": "z",
+																										"angle": 10
+																									},
+																									"shapes": [
+																										{
+																											"type": "plane",
+																											"from": [ 1.125, 2.75, -12.25 ],
+																											"to": [ 2.125, 3.75, -12.25 ],
+																											"uv": [ 7, 18 ],
+																											"scale": [ 1, 1, 0.3 ],
+																											"texture_mirror": true,
+																											"3d": true
+																										}
+																									]
+																								},
+																								{
+																									"name": "BEND and parts",
+																									"position": [ 0, -0.14, 0 ],
+																									"bend": {
+																										"offset": 3.75,
+																										"part": "upper",
+																										"axis": "z",
+																										"invert": true,
+																										"angle": 10
+																									},
+																									"shapes": [
+																										{
+																											"type": "plane",
+																											"from": [ -2.125, 2.75, -12.25 ],
+																											"to": [ -1.125, 3.75, -12.25 ],
+																											"uv": [ 12, 18 ],
+																											"scale": [ 1, 1, 0.3 ],
+																											"texture_mirror": true,
+																											"3d": true
+																										}
+																									]
+																								}
+																							]
+																						},
+																						{
+																							"name": "eyes",
+																							"position": [ 0, 3.3125, 3.25 ],
+																							"rotation": [ 0, -180, 0 ],
+																							"parts": [
+																								{
+																									"name": "blackeyes",
+																									"position": [ 0, 0, 0 ],
+																									"shapes": [
+																										{
+																											"type": "plane",
+																											"from": [ -3, 0, 0 ],
+																											"to": [ 3, 2, 0 ],
+																											"uv": [ 23, 0 ],
+																											"hide_front": true
+																										}
+																									]
+																								},
+																								{
+																									"name": "right_pupil",
+																									"position": [ 1.625, 1.125, 0 ],
+																									"shapes": [
+																										{
+																											"type": "plane",
+																											"from": [ -8, -8, -0.5 ],
+																											"to": [ 8, 8, -0.5 ],
+																											"uv": [ 32, 0 ],
+																											"scale": [ 0.04, 0.04, 0.04 ],
+																											"hide_front": true,
+																											"3d": true
+																										}
+																									]
+																								},
+																								{
+																									"name": "left_pupil",
+																									"position": [ -1.625, 1.125, 0 ],
+																									"shapes": [
+																										{
+																											"type": "plane",
+																											"from": [ -8, -8, -0.5 ],
+																											"to": [ 8, 8, -0.5 ],
+																											"uv": [ 32, 0 ],
+																											"scale": [ 0.04, 0.04, 0.04 ],
+																											"hide_front": true,
+																											"3d": true
+																										}
+																									]
+																								}
+																							]
+																						}
+																					]
+																				}
+																			]
+																		}
+																	]
+																}
+															]
+														}
+													]
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "W",
+					"position": [ 0, -1.8125, 0 ],
+					"shapes": [
+						{
+							"type": "block",
+							"from": [ -2.5, -1.5, -1.5 ],
+							"to": [ 2.5, 0, 1.5 ],
+							"uv": [ 5, 50 ]
+						}
+					],
+					"parts": [
+						{
+							"name": "right_leg bend",
+							"position": [ -1.25, -1.375, 0 ],
+							"scale": [ 0.8, 1, 0.8 ],
+							"bend": {
+								"offset": -0.5625,
+								"size": 0,
+								"part": "lower",
+								"axis": [ "x", "z" ]
+							},
+							"shapes": [
+								{
+									"type": "block",
+									"from": [ -1.5, -1, -1.5 ],
+									"to": [ 1.5, -0.125, 1.5 ],
+									"uv": [ 5, 56 ],
+									"scale": [ 1, 0.61, 1 ]
+								}
+							],
+							"parts": [
+								{
+									"name": "right_leg",
+									"position": [ 0, -0.5, 0 ],
+									"bend": {
+										"offset": -10,
+										"size": 20,
+										"part": "lower",
+										"axis": [ "x", "y", "z" ]
+									},
+									"shapes": [
+										{
+											"type": "block",
+											"from": [ 0.5, -14, 1.5 ],
+											"to": [ 1.5, 0, 1.5 ],
+											"uv": [ 7, 56 ],
+											"rotation": [ 1, 0, -1 ]
+										},
+										{
+											"type": "block",
+											"from": [ 0.5, -14, 1.5 ],
+											"to": [ 1.5, 0, 1.5 ],
+											"uv": [ 4, 56 ],
+											"rotation": [ 1, -90, -1 ]
+										},
+										{
+											"type": "block",
+											"from": [ 0.5, -14, 1.5 ],
+											"to": [ 1.5, 0, 1.5 ],
+											"uv": [ 13, 56 ],
+											"rotation": [ 1, -180, -1 ]
+										},
+										{
+											"type": "block",
+											"from": [ 0.5, -14, 1.5 ],
+											"to": [ 1.5, 0, 1.5 ],
+											"uv": [ 10, 56 ],
+											"rotation": [ 1, 90, -1 ]
+										},
+										{
+											"type": "block",
+											"from": [ -1.5, -14, 1.5 ],
+											"to": [ -0.5, 0, 1.5 ],
+											"uv": [ 5, 56 ],
+											"rotation": [ 1, 0, 2 ]
+										},
+										{
+											"type": "block",
+											"from": [ -1.5, -14, 1.5 ],
+											"to": [ -0.5, 0, 1.5 ],
+											"uv": [ 5, 56 ],
+											"rotation": [ 1, 0, 1 ]
+										},
+										{
+											"type": "block",
+											"from": [ -1.5, -14, 1.5 ],
+											"to": [ -0.5, 0, 1.5 ],
+											"uv": [ 11, 56 ],
+											"rotation": [ 1, -180, 1 ]
+										},
+										{
+											"type": "block",
+											"from": [ -1.5, -14, 1.5 ],
+											"to": [ -0.5, 0, 1.5 ],
+											"uv": [ 8, 56 ],
+											"rotation": [ 1, 90, 1 ]
+										},
+										{
+											"type": "block",
+											"from": [ -1.5, -14, 1.5 ],
+											"to": [ -0.5, 0, 1.5 ],
+											"uv": [ 2, 56 ],
+											"rotation": [ 1, -90, 1 ]
+										},
+										{
+											"type": "block",
+											"from": [ -0.5, -14, 1.5 ],
+											"to": [ 0.5, 0, 1.5 ],
+											"uv": [ 12, 56 ],
+											"rotation": [ 1, -180, 0 ]
+										},
+										{
+											"type": "block",
+											"from": [ -0.5, -14, 1.5 ],
+											"to": [ 0.5, 0, 1.5 ],
+											"uv": [ 9, 56 ],
+											"rotation": [ 1, 90, 0 ]
+										},
+										{
+											"type": "block",
+											"from": [ -0.5, -14, 1.5 ],
+											"to": [ 0.5, 0, 1.5 ],
+											"uv": [ 6, 56 ],
+											"rotation": [ 1, 0, 0 ]
+										},
+										{
+											"type": "block",
+											"from": [ -0.5, -14, 1.5 ],
+											"to": [ 0.5, 0, 1.5 ],
+											"uv": [ 3, 56 ],
+											"rotation": [ 1, -90, 0 ]
+										}
+									],
+									"parts": [
+										{
+											"name": "right_leg (2)",
+											"position": [ 0, 0, 0 ],
+											"bend": {
+												"offset": -16.75,
+												"size": 10,
+												"part": "lower",
+												"axis": [ "x", "y", "z" ]
+											},
+											"shapes": [
+												{
+													"type": "block",
+													"from": [ 0.5, -20, 1.5 ],
+													"to": [ 1.5, -14, 1.5 ],
+													"uv": [ 7, 70 ],
+													"rotation": [ 1, 0, -1 ]
+												},
+												{
+													"type": "block",
+													"from": [ 0.5, -20, 1.5 ],
+													"to": [ 1.5, -14, 1.5 ],
+													"uv": [ 4, 70 ],
+													"rotation": [ 1, -90, -1 ]
+												},
+												{
+													"type": "block",
+													"from": [ 0.5, -20, 1.5 ],
+													"to": [ 1.5, -14, 1.5 ],
+													"uv": [ 13, 70 ],
+													"rotation": [ 1, -180, -1 ]
+												},
+												{
+													"type": "block",
+													"from": [ 0.5, -20, 1.5 ],
+													"to": [ 1.5, -14, 1.5 ],
+													"uv": [ 10, 70 ],
+													"rotation": [ 1, 90, -1 ]
+												},
+												{
+													"type": "block",
+													"from": [ -1.5, -20, 1.5 ],
+													"to": [ -0.5, -14, 1.5 ],
+													"uv": [ 5, 70 ],
+													"rotation": [ 1, 0, 2 ]
+												},
+												{
+													"type": "block",
+													"from": [ -1.5, -20, 1.5 ],
+													"to": [ -0.5, -14, 1.5 ],
+													"uv": [ 5, 70 ],
+													"rotation": [ 1, 0, 1 ]
+												},
+												{
+													"type": "block",
+													"from": [ -1.5, -20, 1.5 ],
+													"to": [ -0.5, -14, 1.5 ],
+													"uv": [ 11, 70 ],
+													"rotation": [ 1, -180, 1 ]
+												},
+												{
+													"type": "block",
+													"from": [ -1.5, -20, 1.5 ],
+													"to": [ -0.5, -14, 1.5 ],
+													"uv": [ 8, 70 ],
+													"rotation": [ 1, 90, 1 ]
+												},
+												{
+													"type": "block",
+													"from": [ -1.5, -20, 1.5 ],
+													"to": [ -0.5, -14, 1.5 ],
+													"uv": [ 2, 70 ],
+													"rotation": [ 1, -90, 1 ]
+												},
+												{
+													"type": "block",
+													"from": [ -0.5, -20, 1.5 ],
+													"to": [ 0.5, -14, 1.5 ],
+													"uv": [ 12, 70 ],
+													"rotation": [ 1, -180, 0 ]
+												},
+												{
+													"type": "block",
+													"from": [ -0.5, -20, 1.5 ],
+													"to": [ 0.5, -14, 1.5 ],
+													"uv": [ 9, 70 ],
+													"rotation": [ 1, 90, 0 ]
+												},
+												{
+													"type": "block",
+													"from": [ -0.5, -20, 1.5 ],
+													"to": [ 0.5, -14, 1.5 ],
+													"uv": [ 6, 70 ],
+													"rotation": [ 1, 0, 0 ]
+												},
+												{
+													"type": "block",
+													"from": [ -0.5, -20, 1.5 ],
+													"to": [ 0.5, -14, 1.5 ],
+													"uv": [ 3, 70 ],
+													"rotation": [ 1, -90, 0 ]
+												},
+												{
+													"type": "block",
+													"from": [ -1.5, -67, -1.5 ],
+													"to": [ 1.5, -66, 1.5 ],
+													"uv": [ 5, 56 ],
+													"scale": [ 0.71, 0.3, 0.71 ]
+												},
+												{
+													"type": "block",
+													"from": [ -1.5, -67, -1.5 ],
+													"to": [ 1.5, -66, 1.5 ],
+													"uv": [ 5, 56 ],
+													"scale": [ 0.71, 0.3, 0.71 ]
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "left_leg bend",
+							"position": [ 1.25, -1.375, 0 ],
+							"scale": [ 0.8, 1, 0.8 ],
+							"bend": {
+								"offset": -0.5625,
+								"size": 0,
+								"part": "lower",
+								"axis": [ "x", "z" ]
+							},
+							"shapes": [
+								{
+									"type": "block",
+									"from": [ -1.5, -1, -1.5 ],
+									"to": [ 1.5, -0.125, 1.5 ],
+									"uv": [ 5, 56 ],
+									"scale": [ 1, 0.61, 1 ]
+								}
+							],
+							"parts": [
+								{
+									"name": "left_leg",
+									"position": [ 0, -0.5, 0 ],
+									"bend": {
+										"offset": -10,
+										"size": 20,
+										"part": "lower",
+										"axis": [ "x", "y", "z" ]
+									},
+									"shapes": [
+										{
+											"type": "block",
+											"from": [ 0.5, -20, 1.5 ],
+											"to": [ 1.5, 0, 1.5 ],
+											"uv": [ 7, 56 ],
+											"rotation": [ 1, 0, -1 ]
+										},
+										{
+											"type": "block",
+											"from": [ 0.5, -20, 1.5 ],
+											"to": [ 1.5, 0, 1.5 ],
+											"uv": [ 4, 56 ],
+											"rotation": [ 1, -90, -1 ]
+										},
+										{
+											"type": "block",
+											"from": [ 0.5, -20, 1.5 ],
+											"to": [ 1.5, 0, 1.5 ],
+											"uv": [ 13, 56 ],
+											"rotation": [ 1, -180, -1 ]
+										},
+										{
+											"type": "block",
+											"from": [ 0.5, -20, 1.5 ],
+											"to": [ 1.5, 0, 1.5 ],
+											"uv": [ 10, 56 ],
+											"rotation": [ 1, 90, -1 ]
+										},
+										{
+											"type": "block",
+											"from": [ -1.5, -20, 1.5 ],
+											"to": [ -0.5, 0, 1.5 ],
+											"uv": [ 5, 56 ],
+											"rotation": [ 1, 0, 2 ]
+										},
+										{
+											"type": "block",
+											"from": [ -1.5, -20, 1.5 ],
+											"to": [ -0.5, 0, 1.5 ],
+											"uv": [ 5, 56 ],
+											"rotation": [ 1, 0, 1 ]
+										},
+										{
+											"type": "block",
+											"from": [ -1.5, -20, 1.5 ],
+											"to": [ -0.5, 0, 1.5 ],
+											"uv": [ 11, 56 ],
+											"rotation": [ 1, -180, 1 ]
+										},
+										{
+											"type": "block",
+											"from": [ -1.5, -20, 1.5 ],
+											"to": [ -0.5, 0, 1.5 ],
+											"uv": [ 8, 56 ],
+											"rotation": [ 1, 90, 1 ]
+										},
+										{
+											"type": "block",
+											"from": [ -1.5, -20, 1.5 ],
+											"to": [ -0.5, 0, 1.5 ],
+											"uv": [ 2, 56 ],
+											"rotation": [ 1, -90, 1 ]
+										},
+										{
+											"type": "block",
+											"from": [ -0.5, -20, 1.5 ],
+											"to": [ 0.5, 0, 1.5 ],
+											"uv": [ 12, 56 ],
+											"rotation": [ 1, -180, 0 ]
+										},
+										{
+											"type": "block",
+											"from": [ -0.5, -20, 1.5 ],
+											"to": [ 0.5, 0, 1.5 ],
+											"uv": [ 9, 56 ],
+											"rotation": [ 1, 90, 0 ]
+										},
+										{
+											"type": "block",
+											"from": [ -0.5, -20, 1.5 ],
+											"to": [ 0.5, 0, 1.5 ],
+											"uv": [ 6, 56 ],
+											"rotation": [ 1, 0, 0 ]
+										},
+										{
+											"type": "block",
+											"from": [ -0.5, -20, 1.5 ],
+											"to": [ 0.5, 0, 1.5 ],
+											"uv": [ 3, 56 ],
+											"rotation": [ 1, -90, 0 ]
+										},
+										{
+											"type": "block",
+											"from": [ -1.5, -67, -1.5 ],
+											"to": [ 1.5, -66, 1.5 ],
+											"uv": [ 5, 56 ],
+											"scale": [ 0.71, 0.3, 0.71 ]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}

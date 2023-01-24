@@ -2,9 +2,8 @@
 /// @arg view
 
 var view, size, angle;
-var offset3d, offset2d, offseterr, bent3d, bent2d, benterr, unbent3d, unbent2d, unbenterr;
+var offset3d, offset2d, offseterr, endoffset3d, endoffset2d, endoffseterr, bent3d, bent2d, benterr, unbent3d, unbent2d, unbenterr;
 view = argument0
-
 #region Calculate bend size/angle
 
 if (!el_edit.value[e_value.BEND_SIZE_CUSTOM])
@@ -28,6 +27,8 @@ offset3d = matrix_position(matrix_multiply(matrix_create(model_part_get_offset_p
 offset2d = point3D_project(offset3d, view_proj_matrix, render_width, render_height)
 offseterr = point3D_project_error
 
+
+
 // Unbent half
 unbent3d = matrix_position(matrix_multiply(matrix_create(model_part_get_offset_pos(el_edit, el_edit.value[e_value.BEND_OFFSET] + -size), vec3(0), vec3(1)), el_edit.matrix_parent))
 unbent2d = point3D_project(unbent3d, view_proj_matrix, render_width, render_height)
@@ -45,8 +46,21 @@ bent2d = point3D_project(bent3d, view_proj_matrix, render_width, render_height)
 benterr = point3D_project_error
 
 offset2d = vec2_mul(offset2d, 2)
+
+
 unbent2d = vec2_mul(unbent2d, 2)
 bent2d = vec2_mul(bent2d, 2)
+
+//End Offset position
+var endbendmatrix;
+with (el_edit)
+	endbendmatrix = matrix_create(model_part_get_offset_pos(el_edit, -el_edit.value[e_value.BEND_END_OFFSET]), vec3(0), vec3(1))
+endbendmatrix = matrix_multiply(endbendmatrix, matrix_create(model_part_get_offset_pos(el_edit), angle, vec3(1)))
+endoffset3d = matrix_position(matrix_multiply(endbendmatrix, el_edit.matrix_parent))
+endoffset2d = point3D_project(endoffset3d, view_proj_matrix, render_width, render_height)
+endoffseterr = point3D_project_error
+endoffset2d = vec2_mul(endoffset2d, 2)
+		draw_image(spr_circle_22, 0, endoffset2d[X], endoffset2d[Y], 1.5, 1.5, 255, 1)		
 
 #endregion
 
@@ -117,7 +131,9 @@ if (!offseterr && !unbenterr && !benterr)
 		}
 		
 		view.control_mouseon = e_control.BEND_SIZE
-		draw_image(spr_circle_22, 0, unbent2d[X], unbent2d[Y], 2, 2, c_hover, a_hover)
+		draw_image(spr_circle_22, 0, unbent2d[X], unbent2d[Y], 2, 2, c_hover, a_hover)				
+
+
 	}
 	draw_image(spr_circle_18, 0, unbent2d[X], unbent2d[Y], 2, 2, c_background, el_edit.value[e_value.BEND_SIZE_CUSTOM] ? 1 : .75)
 	
