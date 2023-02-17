@@ -20,8 +20,9 @@ with (obj_texture)
 	
 	export_save_tex = false
 }
+var file;
+file = file_text_open_write(export_mtl_fn)
 
-var file = file_text_open_write(export_mtl_fn)
 file_text_write_string(file, str)
 file_text_close(file)
 

@@ -7,13 +7,13 @@
     "option_windows_borderless": false,
     "option_windows_company_info": "",
     "option_windows_copy_exe_to_dest": false,
-    "option_windows_copyright_info": "(c) 2021 Bailey Krueger",
+    "option_windows_copyright_info": "(c) ModelBench 2021 Bailey Krueger, Mod By Swooplezz",
     "option_windows_description_info": "",
-    "option_windows_disable_sandbox": false,
+    "option_windows_disable_sandbox": true,
     "option_windows_display_cursor": true,
-    "option_windows_display_name": "Modelbench",
+    "option_windows_display_name": "Modelbench Community Build",
     "option_windows_enable_steam": false,
-    "option_windows_executable_name": "${project_name}",
+    "option_windows_executable_name": "Modelbench CB",
     "option_windows_icon": "${options_dir}\\windows\\icons\\icon.ico",
     "option_windows_installer_finished": "${base_options_dir}\\windows\\installer\\finished.bmp",
     "option_windows_installer_header": "${base_options_dir}\\windows\\installer\\header.bmp",
@@ -31,10 +31,10 @@
     "option_windows_texture_page": "2048x2048",
     "option_windows_use_splash": false,
     "option_windows_version": {
-        "build": 3,
+        "build": 4,
         "major": 1,
         "minor": 1,
-        "revision": 0
+        "revision": 2
     },
     "option_windows_vsync": false
 }

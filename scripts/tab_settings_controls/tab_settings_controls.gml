@@ -172,6 +172,22 @@ if (!setting_collapse_controls_navigation)
 	draw_keycontrol("settingskeyslow", dx, dy, dw, setting_key_slow, new_shortcut(vk_lshift, false, false), action_setting_key_slow, true)
 	tab_next()
 	
+	tab_control_keycontrol()
+	draw_keycontrol("settingskeysnapcamx", dx, dy, dw, setting_key_snap_cam_x, new_shortcut(ord("I"), false, false), action_setting_key_snap_x, true)
+	tab_next()
+	
+			tab_control_keycontrol()
+	draw_keycontrol("settingskeysnapcamy", dx, dy, dw, setting_key_snap_cam_y, new_shortcut(ord("O"), false, false), action_setting_key_snap_y, true)
+	tab_next()
+	
+	tab_control_keycontrol()
+	draw_keycontrol("settingskeysnapcamz", dx, dy, dw, setting_key_snap_cam_z, new_shortcut(ord("P"), false, false), action_setting_key_snap_z, true)
+	tab_next()
+	
+	tab_control_keycontrol()
+	draw_keycontrol("settingskeytoggleprojmode", dx, dy, dw, toggle_proj_mode, new_shortcut(ord("L"), false, false), action_setting_key_toggle_proj, true)
+	tab_next()
+	
 	draw_divide(dx, dy, dw)
 	dy += 8
 }

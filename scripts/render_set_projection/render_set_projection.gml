@@ -12,6 +12,15 @@ var mV = matrix_build_lookat(argument0[X], argument0[Y], argument0[Z],
 							 argument2[X], argument2[Y], argument2[Z]);
 var mP = matrix_build_projection_perspective_fov(-argument3, -argument4, argument5, argument6);
 
+if(render_proj_mode == 1){
+	if(render_width == render_height){
+	mP = matrix_build_projection_ortho(display_get_height() * (view_cam.zoom * 0.001), -display_get_height() * (view_cam.zoom*0.001)  , argument5, argument6);
+	}
+else{
+mP = matrix_build_projection_ortho(render_width * (view_cam.zoom * 0.001), -render_height * (view_cam.zoom*0.001)  , argument5, argument6);
+}
+}
+
 camera_set_view_mat(cam_render, mV)
 camera_set_proj_mat(cam_render, mP)
 camera_apply(cam_render)

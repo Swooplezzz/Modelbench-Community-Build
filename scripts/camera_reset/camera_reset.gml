@@ -4,9 +4,26 @@ var cam = id;
 
 if (object_index = app)
 	cam = view_cam
+	
+snapped_x = false;
+
+x_snap_positive = false;
+
+snapped_y = false;
+
+render_proj_mode = 0;
+
+y_snap_positive = false;
+
+snapped_z = false;
+
+z_snap_positive = false;
 
 with (cam)
 {
+	
+	
+	
 	focus = point3D(0, 0, 16)
 	focus_last = point3D(0, 0, 6)
 

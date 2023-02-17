@@ -78,6 +78,14 @@ if (ds_map_valid(controlsmap) && load_format >= e_settings.FORMAT_111)
 	setting_key_fast = value_get_array(controlsmap[?"key_fast"], setting_key_fast)
 	setting_key_slow = value_get_array(controlsmap[?"key_slow"], setting_key_slow)
 	
+		setting_key_snap_cam_x = value_get_array(controlsmap[?"snap_cam_x"], setting_key_snap_cam_x)		
+		setting_key_snap_cam_y = value_get_array(controlsmap[?"snap_cam_y"], setting_key_snap_cam_y)
+		setting_key_snap_cam_z = value_get_array(controlsmap[?"snap_cam_z"], setting_key_snap_cam_z)
+		
+		
+		toggle_proj_mode = value_get_array(controlsmap[?"toggle_proj_mode"], toggle_proj_mode)
+
+		
 	setting_look_sensitivity = value_get_real(controlsmap[?"look_sensitivity"], setting_look_sensitivity)
 	
 	setting_smooth_camera = value_get_real(controlsmap[?"smooth_camera"], setting_smooth_camera)

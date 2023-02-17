@@ -41,7 +41,7 @@ setting_smooth_camera = false
 setting_viewport_controls_middle = false
 
 setting_theme = theme_darker
-setting_accent = 6
+setting_accent = 7
 setting_accent_custom = hex_to_color("03A9F4")
 setting_language_filename = "english.mblanguage"
 setting_tip_show = true

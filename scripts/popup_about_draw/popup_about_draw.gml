@@ -9,7 +9,7 @@ if (draw_button_icon("aboutclose", dx + dw - 12 - 28, dy + 8, 28, 28, false, ico
 
 // Logo
 gpu_set_tex_filter(true)
-draw_sprite_ext(spr_logo, 0, dx + dw / 2, dy + 54, .75, .75, 0, c_white, draw_get_alpha())
+draw_sprite_ext(spr_logo, 0, dx + dw / 2, dy + 39, .4, .4, 0, c_white, draw_get_alpha())
 gpu_set_tex_filter(false)
 
 // Program info
@@ -32,6 +32,9 @@ dy += 12
 draw_label(text_get("aboutdevelopment"), dx, dy, fa_left, fa_bottom, c_text_tertiary, a_text_tertiary, font_subheading)
 dy += 26
 draw_button_text("Nimi", dx, dy, open_url, "https://twitter.com/NimiKitamura", "https://twitter.com/NimiKitamura", font_emphasis)
+dy += 26
+
+draw_button_text("Swooplezz", dx, dy, open_url, "https://twitter.com/Swooplezz", "https://twitter.com/Swooplezz", font_emphasis)
 
 // UI/Branding
 dy += 34
@@ -48,10 +51,27 @@ dy += 19
 draw_label("Mr.Banders", dx, dy, fa_left, fa_bottom, c_text_secondary, a_text_secondary, font_emphasis)
 dy += 19
 draw_label("SoundsDotZip", dx, dy, fa_left, fa_bottom, c_text_secondary, a_text_secondary, font_emphasis)
+dy += 19
+
+
+
+draw_label("BNMBrandonMI", dx, dy, fa_left, fa_bottom, c_text_secondary, a_text_secondary, font_emphasis)
+dy += 19
+draw_label("Jnick", dx, dy, fa_left, fa_bottom, c_text_secondary, a_text_secondary, font_emphasis)
+
+
+dx += 130 + 24
+dy = content_y + 186
+
+draw_label("Jossmations", dx, dy, fa_left, fa_bottom, c_text_secondary, a_text_secondary, font_emphasis)
+dy += 19
+draw_label("Chrisation", dx, dy, fa_left, fa_bottom, c_text_secondary, a_text_secondary, font_emphasis)
+dy += 19
+draw_label("StarWeevil", dx, dy, fa_left, fa_bottom, c_text_secondary, a_text_secondary, font_emphasis)
+dy += 26
 
 // Special thanks
-dx += 130 + 24
-dy = content_y + 176
+
 
 // Special thanks
 dy += 12
@@ -70,7 +90,7 @@ for (var i = 0; i < ds_list_size(special_thanks_list); i++)
 	if (i = 7)
 	{
 		dx += 130 + 24
-		dy = content_y + 176 + 38
+		dy = content_y + 186 + 38 - 19 - 19
 	}
 }
 

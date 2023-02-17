@@ -54,6 +54,12 @@ json_save_object_start("controls")
 	json_save_var("key_reset", setting_key_reset)
 	json_save_var("key_fast", setting_key_fast)
 	json_save_var("key_slow", setting_key_slow)
+	json_save_var("snap_cam_x", setting_key_snap_cam_x)	
+	json_save_var("snap_cam_y", setting_key_snap_cam_y)
+	json_save_var("snap_cam_z", setting_key_snap_cam_z)
+	
+	json_save_var("toggle_proj_mode", toggle_proj_mode)
+
 	
 	json_save_var("look_sensitivity", setting_look_sensitivity)
 	

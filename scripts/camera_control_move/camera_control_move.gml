@@ -57,5 +57,7 @@ view_cam.from[Z] += zd * spdm
 if (keyboard_check_pressed(setting_key_reset[e_shortcut.KEY]))
 	camera_reset()
 		
+
+
 camera_set_angle()
 

@@ -15,3 +15,4 @@ view_cam_viewport = new(obj_camera)
 view_cam_preview = new(obj_camera)
 
 view_cam = view_cam_viewport
+

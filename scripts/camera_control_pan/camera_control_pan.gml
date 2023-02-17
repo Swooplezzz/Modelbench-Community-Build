@@ -3,6 +3,10 @@
 var mx, my, move;
 mx = -((mouse_x - mouse_previous_x) / 8) * (.075 * (view_cam.zoom/50))
 my = ((mouse_y - mouse_previous_y) / 8) * (.075 * (view_cam.zoom/50))
+if(render_proj_mode = 1){
+	mx = -((mouse_x - mouse_previous_x) / 8) * (.075 * (view_cam.zoom/16))
+my = ((mouse_y - mouse_previous_y) / 8) * (.075 * (view_cam.zoom/16))
+}
 move = 4 * setting_move_speed
 
 app_mouse_wrap(content_x, content_y, content_width, content_height)

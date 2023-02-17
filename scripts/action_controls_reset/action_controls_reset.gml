@@ -35,3 +35,14 @@ setting_key_descend = new_shortcut(ord("Q"), false, false)
 setting_key_reset = new_shortcut(ord("R"), false, false)
 setting_key_fast = new_shortcut(vk_space, false, false)
 setting_key_slow = new_shortcut(vk_lshift, false, false)
+
+setting_key_snap_cam_x = new_shortcut(ord("I"), false, false)
+setting_key_snap_cam_y = new_shortcut(ord("O"), false, false)
+setting_key_snap_cam_z = new_shortcut(ord("P"), false, false)
+
+toggle_proj_mode = new_shortcut(ord("L"), false, false)
+
+
+
+
+

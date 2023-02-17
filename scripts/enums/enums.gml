@@ -179,6 +179,7 @@ enum e_control
 	BEND_Y,
 	BEND_Z,
 	BEND_OFFSET,
+	BEND_END_OFFSET,
 	BEND_SIZE,
 	
 	RESIZE_XP,

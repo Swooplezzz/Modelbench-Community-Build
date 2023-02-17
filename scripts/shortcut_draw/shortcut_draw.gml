@@ -11,7 +11,7 @@ imgpadding = 4
 // Keyboard shortcut ("0")
 if (shortcut[0] != null)
 {
-	var keyboardarray = text_control_name(shortcut[0], true);
+	var keyboardarray = text_control_name(shortcut[0], true)
 	for (var i = 0; i < array_length_1d(keyboardarray); i++)
 	{
 		var stringsize = string_width_font(keyboardarray[i], font_emphasis);

@@ -6,7 +6,9 @@ globalvar render_width, render_height, render_ratio, render_camera, render_targe
 
 globalvar render_light_from, render_light_to, render_light_near, render_light_far, render_light_fov, render_light_color, proj_depth_near, proj_depth_far, 
 		  render_light_matrix, render_surface;
-
+		  
+globalvar render_proj_mode;
+render_proj_mode = 0;
 log("Render init")
 
 gpu_set_blendenable(true)

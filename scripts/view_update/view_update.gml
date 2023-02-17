@@ -10,6 +10,11 @@ cam = argument1
 view_update_surface(view, cam)
 
 // Add shortcuts
+	shortcut_bar_add(setting_key_snap_cam_x, null, "snapcamx");	
+	shortcut_bar_add(setting_key_snap_cam_y, null, "snapcamy");
+	shortcut_bar_add(setting_key_snap_cam_z, null, "snapcamz");	
+	shortcut_bar_add(toggle_proj_mode, null, "toggleprojmode");
+
 if (view.control_mouseon_last != null || window_busy = "rendercontrol")
 {
 	if (window_busy = "rendercontrol")
@@ -67,14 +72,18 @@ if (window_busy = "viewmovecamera" || window_busy = "viewmovecameratoggle")
 	shortcut_bar_add(setting_key_fast, null, "movefast")
 	shortcut_bar_add(setting_key_slow, null, "moveslow")
 	
-	shortcut_bar_add(setting_key_reset, null, "movereset")
+	shortcut_bar_add(setting_key_reset, null, "movereset")	
+	
+
+
+
 }
 
 // Click
 if (view.control_mouseon_last = null && content_mouseon && window_busy = "")
 {
 	mouse_cursor = cr_handpoint
-	
+
 	if (mouse_left_pressed)
 	{
 		window_busy = "viewclick"
@@ -165,9 +174,13 @@ if (window_focus = string(view))
 		}
 	}
 	
+
+	
 	// Rotate camera
 	if (window_busy = "viewrotatecamera")
 	{
+				
+
 		mouse_cursor = cr_none
 		
 		camera_control_rotate(cam, view_click_x, view_click_y)
@@ -179,6 +192,7 @@ if (window_focus = string(view))
 	// Move camera
 	if (window_busy = "viewmovecamera" || window_busy = "viewmovecameratoggle")
 	{
+		
 		mouse_cursor = cr_none
 		
 		camera_control_move(cam, view_click_x, view_click_y)
@@ -225,5 +239,41 @@ if (window_focus = string(view))
 		
 		camera_set_from()
 	}
+	
+
+	//Toggle Proj
+
+	if(content_mouseon && keyboard_check_pressed(toggle_proj_mode[e_shortcut.KEY])){
+	toggle_proj()
+	log("Projection Toggle")
+}
+	//Camera Snapping
+		if(content_mouseon && keyboard_check_pressed(setting_key_snap_cam_x[e_shortcut.KEY])){
+	camera_snap_x()
+}
+if(content_mouseon && keyboard_check_pressed(setting_key_snap_cam_y[e_shortcut.KEY])){
+	camera_snap_y()
+}
+if(content_mouseon && keyboard_check_pressed(setting_key_snap_cam_z[e_shortcut.KEY])){
+	camera_snap_z()
+}
+
+	
+
+	
+	if(window_busy = "viewrotatecamera" || window_busy = "viewmovecamera" || window_busy = "viewmovecameratoggle"){
+		if(view_cam.snapped_x || view_cam.snapped_y || view_cam.snapped_z){
+		render_proj_mode = 0
+		view_cam.x_snap_positive = false;		
+		view_cam.y_snap_positive = false;
+		view_cam.z_snap_positive = false;
+		view_cam.snapped_x = false;		
+		view_cam.snapped_y = false;
+		view_cam.snapped_z = false;
+
+		}
+	}
+	
+
 
 }

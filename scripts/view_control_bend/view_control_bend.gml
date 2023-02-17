@@ -77,8 +77,32 @@ if (!offseterr && !benterr)
 
 render_set_culling(true)
 
-if (!offseterr && !unbenterr && !benterr)
+if (!offseterr && !unbenterr && !benterr && !endoffseterr)
 {
+		if (point_distance(mouse_x - content_x, mouse_y - content_y, endoffset2d[X]/2, endoffset2d[Y]/2) < 14)
+	{
+		mouse_cursor = cr_handpoint
+				if (mouse_left_pressed)
+		{
+			window_busy = "rendercontrol"
+			view_control_edit_view = view
+			view_control_edit = e_control.BEND_END_OFFSET
+			view_control_vec = point2D_sub(endoffset2d, offset2d)
+			view_control_value = el_edit.value[e_value.BEND_END_OFFSET]
+			view_control_move_distance = 0
+		}
+		
+		// Right click
+		if (mouse_right_pressed && keyboard_check(vk_shift))
+		{
+			axis_edit = X
+			action_el_bend_end_offset(element_value_default(e_value.BEND_END_OFFSET), false)
+			app_mouse_clear()
+		}
+		
+		view.control_mouseon = e_control.BEND_END_OFFSET
+	}
+	
 	// Offset
 	if (point_distance(mouse_x - content_x, mouse_y - content_y, offset2d[X]/2, offset2d[Y]/2) < 14)
 	{
@@ -305,6 +329,48 @@ if (window_busy = "rendercontrol" && view_control_edit_view = view && view_contr
 	}
 }
 
+if (window_busy = "rendercontrol" && view_control_edit_view = view && view_control_edit = e_control.BEND_END_OFFSET)
+{
+	mouse_cursor = cr_handpoint
+	
+	// Move
+	var veclen = vec2_length(view_control_vec)
+	if (veclen > 0 && !mouse_still)
+	{
+		var vecmouse, vecdot, move, snapval;
+		
+		// Find move factor
+		vecmouse = vec2(mouse_dx, mouse_dy)
+		vecdot = vec2_dot(vec2_normalize(view_control_vec), vec2_normalize(vecmouse))
+		
+		view_control_move_distance += ((vec2_length(vecmouse) / veclen) * (view_control_value * 2) * vecdot) * dragger_multiplier
+		move = view_control_move_distance
+		snapval = (dragger_snap ? setting_snap_size_position : snap_min)
+		
+		if (!setting_snap_absolute && dragger_snap)
+			move = snap(move, snapval)
+		
+		move += view_control_value
+		move = el_value_clamp(e_value.BEND_END_OFFSET, move)
+		
+		if (setting_snap_absolute || !dragger_snap)
+			move = snap(move, snapval)
+		
+		move -= el_edit.value[e_value.BEND_END_OFFSET]
+		
+		// Update
+		el_value_set_start(action_el_bend_end_offset, true)
+		el_value_set(e_value.BEND_END_OFFSET, move, true)
+		el_value_set_done()
+	}
+	
+	// Release
+	if (!mouse_left)
+	{
+		window_busy = ""
+		view_control_edit = null
+	}
+}
 #endregion
 
 #region Bend size
