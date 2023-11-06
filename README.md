@@ -9,8 +9,6 @@
 
 Modelbench C-B 
 
-Modelbench By Nimic.
+Modelbench By Nimi.
 
 Created in GameMaker Studio 2.
-
-Download: Soon.
