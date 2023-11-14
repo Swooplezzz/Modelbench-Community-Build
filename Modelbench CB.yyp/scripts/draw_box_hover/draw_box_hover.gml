@@ -16,7 +16,9 @@ function draw_box_hover()
 	size = 2
 	color = c_hover
 	alpha = a_hover * argument[4]
-	
+	if(argument_count > 5){
+		color = argument[5]
+	}
 	if (alpha = 0)
 		return 0
 	

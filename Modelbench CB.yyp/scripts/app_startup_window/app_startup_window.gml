@@ -9,7 +9,8 @@ function app_startup_window()
 	step_event_time_start = 0
 	draw_event_time = 0
 	draw_event_time_start = 0
-	
+	tbx_recent_search = new_textbox(true,0,"")
+	search_string = ""
 	log("Windows startup")
 	
 	http_toast_news = null
@@ -124,5 +125,5 @@ function app_startup_window()
 	popup_mouseon = false
 
 	// Set garbage collector
-	//gc_target_frame_time(100)
+	gc_target_frame_time(100)
 }

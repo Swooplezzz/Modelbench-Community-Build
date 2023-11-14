@@ -12,8 +12,12 @@ function draw_floodfill(surf, alphasurf, xx, yy, targ_color, color, side){
     var red = buffer_peek(buffer, offset, buffer_u8);
     var green = buffer_peek(buffer, offset + 1, buffer_u8);
     var blue = buffer_peek(buffer, offset + 2, buffer_u8);
-    //var alpha = buffer_peek(buffer, offset + 3, buffer_u8);
-    
+    var alpha = buffer_peek(buffer, offset + 3, buffer_u8);
+    if(alpha < 1){ 
+		    buffer_delete(buffer);
+		return;
+		
+		}
     var check_tolerance = color_cie76_diffrence(targ_color, make_color_rgb(red, green,blue)) <= 50 * paint_tolerance;
 
     var col = make_colour_rgb(red, green, blue);

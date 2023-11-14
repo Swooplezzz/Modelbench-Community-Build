@@ -40,7 +40,7 @@ function app_startup()
 
 	app_startup_interface()
 	app_startup_collapse()
-	//app_startup_painter()
+	app_startup_painter()
 	if (dev_mode)
 		model_create()
 	else if (model_startup_fn != "")

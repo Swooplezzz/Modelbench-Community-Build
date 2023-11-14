@@ -8,5 +8,8 @@ if(paint_tool_selected = e_paint.PICK){
 	if(mouse_check_button(mb_right)){
 		paint_secondary_color = surface_getpixel(colorsurf, mousexsnap + 1, mouseysnap + 1);
 	}
+	if(mouse_left_released || mouse_right_released){
+		add_recent_color(surface_getpixel(colorsurf, mousexsnap + 1, mouseysnap + 1));
+	}
 }
 }

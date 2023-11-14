@@ -38,12 +38,17 @@ function debug_draw_info()
 	str += "working_directory: " + working_directory + " \n"
 	str += "file_directory: " + file_directory + " \n"
 	str += "\n"
+	if(program_mode != e_mode.TEXTURING){
 	str += "Parts: " + string(model_parts) + " \n"
 	str += "Shapes: " + string(model_shapes) + " \n"
 	str += "    Planes: " + string(model_planes) + " \n"
 	str += "    3D planes: " + string(model_planes3d) + " \n"
 	str += "    Blocks: " + string(model_blocks) + " \n"
-	
+	}
+	else{
+	str += "History Amount: " + string(painter_history_amount) + " \n"
+	str += "History Pos: " + string(painter_history_pos) + " \n"
+	}
 	var h = string_height_font(str, font_label) + 16;
 	
 	draw_box(8, window_height - h - 8, string_width_font(str, font_label) + 16, h, false, c_black, .75)

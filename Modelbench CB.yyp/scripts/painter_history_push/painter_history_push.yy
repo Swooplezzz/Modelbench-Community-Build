@@ -5,7 +5,7 @@
   "isCompatibility": false,
   "isDnD": false,
   "parent": {
-    "name": "Painter",
-    "path": "folders/Scripts/App/Controls/Interface/Components/Painter.yy",
+    "name": "History",
+    "path": "folders/Scripts/App/Controls/Interface/Components/Painter/History.yy",
   },
 }

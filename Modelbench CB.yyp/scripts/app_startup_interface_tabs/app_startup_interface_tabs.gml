@@ -310,6 +310,7 @@ function app_startup_interface_tabs()
 			tbx_name = new_textbox(true, 0, "")
 			name_edit_element = null
 			}
+			textures = tab_add_category("textures", icons.TEXTURE_SMALL, tab_painter_textures, false)
 			}
 			
 		toolproperties = new_tab(setting_tool_properties_location, false,null)

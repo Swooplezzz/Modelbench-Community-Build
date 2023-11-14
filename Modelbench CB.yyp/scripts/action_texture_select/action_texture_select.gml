@@ -22,7 +22,8 @@ function action_texture_select()
 			save_var_new_value = (res_edit = list_item_script_value ? null : save_id_get(list_item_script_value))
 		}
 		
-		res_edit = (res_edit = list_item_script_value ? null : list_item_script_value)
+		res_edit = (res_edit = list_item_script_value && program_mode != e_mode.TEXTURING? null : list_item_script_value)
+	    painter_reset()
 	}
 	
 	textures_list.update = true

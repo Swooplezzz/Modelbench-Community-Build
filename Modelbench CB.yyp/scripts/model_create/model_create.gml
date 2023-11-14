@@ -45,5 +45,5 @@ function model_create()
 	res_edit.size = point2D(16, 16)
 	res_edit.filename = text_get("assetsdefaulttexture") + ".png"
 	res = res_edit
-	app_startup_painter()
+	painter_reset()
 }

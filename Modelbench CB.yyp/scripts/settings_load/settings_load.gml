@@ -102,7 +102,7 @@ function settings_load()
 		setting_uv_editor_size = value_get_real(interfacemap[?"uv_editor_size"], setting_uv_editor_size)
 		setting_uv_editor_location = value_get_string(interfacemap[?"uv_editor_location"], setting_uv_editor_location)
 		
-		setting_show_name_warnings = value_get_real(generalmap[?"show_name_warnings"], setting_show_name_warnings)
+		setting_show_name_warnings = value_get_real(interfacemap[?"show_name_warnings"], setting_show_name_warnings)
 		
 		setting_adjust_pivot_resize = value_get_real(interfacemap[?"adjust_pivot_resize"], setting_adjust_pivot_resize)
 		setting_show_shortcuts_bar = value_get_real(interfacemap[?"show_shortcuts_bar"], setting_show_shortcuts_bar)

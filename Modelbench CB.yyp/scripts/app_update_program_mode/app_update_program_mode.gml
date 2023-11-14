@@ -21,6 +21,7 @@ function app_update_program_mode()
 			}
 		// Free render surfaces from preview mode
 		render_free()
+		painter_free()
 	}
 	else if (program_mode = e_mode.PREVIEW)
 	{
@@ -32,8 +33,7 @@ function app_update_program_mode()
 		view_cam = view_cam_preview
 		textures_list.update = true;
 		tex_preview.update = true
-		view_cam = view_cam_viewport
-					with (obj_model_element)
+			with (obj_model_element)
 			{
 				if (element_type = TYPE_SHAPE)
 					update_vbuffer = true
@@ -47,7 +47,8 @@ function app_update_program_mode()
 		tab_close(preview)
 		tab_show(colors)
 		tab_show(toolproperties)
-		
+		textures_list.update = true;
+		tex_preview.update = true
 		view_cam = view_cam_viewport
 		// Free render surfaces from preview mode
 		render_free()

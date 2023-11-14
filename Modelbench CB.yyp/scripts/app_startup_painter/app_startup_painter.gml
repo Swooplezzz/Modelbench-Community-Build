@@ -2,62 +2,39 @@
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 function app_startup_painter(){
 paint_tool_selected = e_paint.BRUSH
-paint_primary_color = c_white
-paint_secondary_color = c_black
+paint_primary_color = c_black
+paint_secondary_color = c_white
 paint_opacity = 1
 paint_width = 1
 paint_tolerance = .05
 filling = false
-
+painter_update_spr = true
 fillarr = array_create(0);
 
 pallette_list = ds_list_create()
+recentcolor_list = array_create()
 
-	globalvar painter_history_data;
-	painter_history[0] = null
-	painter_history_amount = 0
-	painter_history_pos = 0
-	painter_history_undo = 0
-	painter_history_redo = 0
-	painter_history_data = null
+globalvar painter_history_data;
+painter_history[0] = null
+painter_history_amount = 0
+painter_history_pos = 0
+painter_history_undo = 0
+painter_history_redo = 0
+painter_history_data = null
 
 pallettes_load()
 
-texturewidth = res_edit.size[X]
-textureheight = res_edit.size[Y]
+texturewidth = 16
+textureheight = 16
 texsurf = surface_create(texturewidth, textureheight)
 drawsurf = surface_create(texturewidth, textureheight)
 alphasurf = surface_create(texturewidth, textureheight)
 colorsurf = surface_create(texturewidth, textureheight)
 selectionsurf = surface_create(texturewidth, textureheight)
-	surface_set_target(selectionsurf){
-		draw_clear_alpha(c_white,0)
-	}
-	surface_reset_target()
-
 offx = 0
 offy = 0
 targetoffx = 0
 targetoffy = 0
-texspr = res_edit.sprite
-
-surface_set_target(alphasurf){
-shader_set(shader_alphamask)
-draw_clear(c_black)
-alphafix
-draw_sprite(texspr,0,0,0)
-gpu_set_blendmode(bm_normal)
-shader_reset();
-}
-surface_reset_target()
-
-surface_set_target(colorsurf){
-shader_set(shader_colormask)
-
-draw_sprite(texspr,0,0,0)
-shader_reset();
-}
-surface_reset_target()
 
 colorspr = sprite_create_from_surface(colorsurf,0,0,texturewidth, textureheight, false,false, 0,0)
 	finalspr = sprite_create_from_surface(colorsurf, 0,0,surface_get_width(colorsurf), surface_get_height(colorsurf), false, false, 0, 0)

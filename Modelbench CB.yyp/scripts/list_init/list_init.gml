@@ -215,7 +215,7 @@ function list_init(name)
 			list_item_last.disabled = (el_edit = null) || (program_mode = e_mode.PREVIEW)
 			
 			list_item_add(text_get("contextmenuviewportselectall"), null, text_control_name(keybinds[e_keybind.SELECT_ALL].keybind), null, icons.SELECT_ALL, null, action_el_select_all, true)
-			list_item_last.disabled = (program_mode = e_mode.PREVIEW)
+			list_item_last.disabled = (program_mode = e_mode.PREVIEW) 
 			list_item_add(text_get("contextmenuelementexpandall"), null, "", null, icons.MINIMIZE, null, action_expand_all, false)
 			list_item_add(text_get("contextmenuelementcollapseall"), null, "", null, icons.MAXIMIZE, null, action_collapse_all, false)
 			break

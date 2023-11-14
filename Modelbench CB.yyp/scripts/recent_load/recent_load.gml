@@ -40,6 +40,6 @@ function recent_load()
 		}
 	}
 	
-	recent_list_amount = ds_list_size(recent_list)
+	recent_list_amount_search = ds_list_size(recent_list)
 	recent_update()
 }

@@ -10,8 +10,14 @@
 
 function colorpicker_show(name, color, def, script, xx, yy, width, height)
 {
-	if (settings_menu_name = "colorpicker" && colorpicker.value_script = script)
+	var istexedit;
+	if(argument_count > 8){
+		istexedit = argument[8]
+	}
+	if (settings_menu_name = "colorpicker" && colorpicker.value_script = script){
 		popup_close()
+
+	}
 	else
 	{
 		settings_menu_busy_prev = window_busy

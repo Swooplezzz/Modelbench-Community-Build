@@ -32,6 +32,7 @@ function action_setting_home_screen()
 
 	program_mode = e_mode.MODELING
 	app_update_program_mode()
+	history_clear()
 	window_busy = ""
 	settings_menu_ani = 0
 	settings_menu_ani_type = ""

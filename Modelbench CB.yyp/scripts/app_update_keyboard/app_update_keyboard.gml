@@ -49,6 +49,14 @@ function app_update_keyboard()
 			if (keybinds[e_keybind.FILL].pressed)
             paint_tool_selected = e_paint.FILL
 	}
+	if(window_state = "startup"){
+		if (keybinds[e_keybind.UNDO].pressed)
+			action_toolbar_undo()
+		
+		if (keybinds[e_keybind.REDO].pressed)
+			action_toolbar_redo()		
+	}
+
 	if (window_state = "" && window_busy = "" && !textbox_isediting && program_mode != e_mode.TEXTURING)
 	{
 

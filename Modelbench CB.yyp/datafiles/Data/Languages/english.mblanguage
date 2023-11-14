@@ -32,6 +32,7 @@
 	},
 	"recent/": {
 		"lastopened": "Last opened",
+		"searchcaption": "Search...",
 		"lastopened/": {
 			"recently": "Last opened recently",
 			"minutes": "Last opened %1 minutes ago",
@@ -44,6 +45,7 @@
 			"future": "Last opened in the future"
 		},
 		"none": "The models you've opened recently will appear here!",
+		"searchnone": "No search matches",
 		"sortascendingtip": "Sort ascending",
 		"sortdescendingtip": "Sort descending",
 		"pintip": "Pin",

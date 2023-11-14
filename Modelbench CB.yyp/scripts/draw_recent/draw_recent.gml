@@ -14,16 +14,16 @@ function draw_recent(xx, yy, wid, hei, mode)
 	recenty = yy
 	
 
-		if (mode = "grid")
+	if (mode = "grid")
 	{
 		// Set scrollbar
 		var liststart = 0;
 		
-		if ((recent_list_amount * 256) > hei)
+		if ((recent_list_amount_search * 256) > hei)
 		{
 			window_scroll_focus = string(recent_scrollbar)
 			
-			scrollbar_draw(recent_scrollbar, e_scroll.VERTICAL, xx + wid + 12, yy, hei, ceil(recent_list_amount/4) * 256)
+			scrollbar_draw(recent_scrollbar, e_scroll.VERTICAL, xx + wid + 12, yy, hei, ceil(recent_list_amount_search/4) * 256)
 			liststart = recent_scrollbar.value
 		}
 	
@@ -36,7 +36,7 @@ function draw_recent(xx, yy, wid, hei, mode)
 		
 		clip_begin(xx - 2, yy - 1, wid + 4, hei + 2)
 		
-		for (var i = 0; i < recent_list_amount; i++)
+		for (var i = 0; i < recent_list_amount_search; i++)
 		{
 			// Only draw card if visible
 			if (cardy < yy + hei || cardy + 240 + 16 > yy)
@@ -134,11 +134,11 @@ function draw_recent(xx, yy, wid, hei, mode)
 		var liststart = 0;
 		recent_scrollbar.snap_value = 44
 		
-		if ((recent_list_amount * 44) > hei - 28)
+		if ((recent_list_amount_search * 44) > hei - 28)
 		{
 			window_scroll_focus = string(recent_scrollbar)
 			
-			scrollbar_draw(recent_scrollbar, e_scroll.VERTICAL, xx + wid - 9, yy + 28, hei - 28, recent_list_amount * 44)
+			scrollbar_draw(recent_scrollbar, e_scroll.VERTICAL, xx + wid - 9, yy + 28, hei - 28, recent_list_amount_search * 44)
 			liststart = snap(recent_scrollbar.value / 44, 1)
 			wid -= 12
 		}
@@ -175,7 +175,7 @@ function draw_recent(xx, yy, wid, hei, mode)
 		recenty += 28
 		
 		// Draw list
-		for (var i = liststart; i < recent_list_amount; i++)
+		for (var i = liststart; i < recent_list_amount_search; i++)
 		{
 			var hover = app_mouse_box(xx, recenty, wid, 44) && !popup_mouseon && !toast_mouseon && !context_menu_mouseon;
 			mouseon = hover
@@ -242,7 +242,7 @@ function draw_recent(xx, yy, wid, hei, mode)
 	}
 	if (mode = "simple")
 	{
-		for (var i = 0; i < recent_list_amount; i++)
+		for (var i = 0; i < recent_list_amount_search; i++)
 		{
 			var hover = app_mouse_box(xx, recenty, wid, 44) && !popup_mouseon && !toast_mouseon && !context_menu_mouseon;
 			var mouseon = hover;

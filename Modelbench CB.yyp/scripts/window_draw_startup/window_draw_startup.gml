@@ -92,6 +92,10 @@ function window_draw_startup()
 		draw_label(text_get("recentnone"), window_width / 2, dy, fa_center, fa_middle, c_dkgray, 1, font_heading_big)
 		dy += 48
 	}
+			
+	if(recent_list_amount_search = 0 && recent_list_amount > 0){
+		draw_label(text_get("recentsearchnone"), window_width / 2, dy, fa_center, fa_middle, c_dkgray, 1, font_heading_big)
+	}
 	
 	// Draw buttons
 	var newmodelwidth, browsewidth, centerx;
@@ -100,10 +104,21 @@ function window_draw_startup()
 	centerx = round((window_width / 2) - ((browsewidth + 24 + newmodelwidth + 24) / 2))
 	
 	if (recent_list_amount > 0)
+    dx = (window_width / 2) - (dw / 2)
+		else
+	dx = (window_width / 2) - 256/2
+	// Element search
+	if (recent_list_amount > 0){
+	tab_control(24)
+	draw_textfield("searchmodels",dx, dy, 256, 24, tbx_recent_search, action_recent_search, text_get("recentsearchcaption"), "none")
+	tab_next()
+	}
+	
+	if (recent_list_amount > 0)
 		dx = (window_width / 2) + (dw / 2) - 24
 	else
 		dx = centerx + (browsewidth + 24 + newmodelwidth)
-	
+
 	// New model
 
 	draw_settings_button("startupnewmodeloptions", dx, dy, 24, 32, true)
@@ -146,7 +161,7 @@ function window_draw_startup()
 		if (recent_display_mode = "list")
 			listheight = 28 + min(window_height - dy, (min(ds_list_size(recent_list), 8) * 44))
 		else
-			listheight = min(window_height - dy, ceil(recent_list_amount / 4) * 256)
+			listheight = min(window_height - dy, ceil(recent_list_amount_search / 4) * 256)
 		tab_control(listheight)
 		draw_recent(dx, dy, dw, listheight, recent_display_mode)
 		tab_next()

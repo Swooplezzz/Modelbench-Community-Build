@@ -18,6 +18,7 @@ function app_event_step()
 	app_update_work_camera()
 	app_update_caption()
 	app_update_toasts()
+	app_update_painter()
 	app_update_lists()
 	app_update_highlight()
 	
@@ -50,5 +51,4 @@ function app_event_step()
 	
 	current_step += 60 / room_speed
 	step_event_time = current_time - step_event_time_start
-	gc_collect()
 }

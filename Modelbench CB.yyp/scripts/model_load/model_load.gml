@@ -75,7 +75,7 @@ function model_load()
 	
 	textures_list.update = true
 	
-	app_startup_painter()
+	painter_reset()
 	app_update_name_warning()
 	el_update_lock_tree(false)
 	el_update_hidden_tree(false)

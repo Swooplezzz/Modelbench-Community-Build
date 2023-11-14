@@ -51,4 +51,5 @@ function colorpicker_update(control, color, gethsb)
 		colorpicker.tbx_hexadecimal.text = color_to_hex(colorpicker.color)
 	
 	script_execute(colorpicker.value_script, colorpicker.color)
+
 }
