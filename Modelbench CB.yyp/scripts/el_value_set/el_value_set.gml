@@ -79,7 +79,7 @@ function el_value_set(vid, val, add)
 				
 				var nval;
 				
-				if (vid = e_value.TEXTURE_OBJ)
+				if (vid = e_value.TEXTURE_OBJ ||vid = e_value.IK_ANGLE_TARGET || vid = e_value.IK_TARGET)
 					nval = val
 				else
 					nval = value[vid] * add + val

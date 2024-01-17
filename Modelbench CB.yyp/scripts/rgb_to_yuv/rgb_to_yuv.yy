@@ -1,11 +1,11 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "action_color_secondary",
+  "name": "rgb_to_yuv",
   "isCompatibility": false,
   "isDnD": false,
   "parent": {
-    "name": "Colors",
-    "path": "folders/Scripts/App/Actions/Colors.yy",
+    "name": "Color",
+    "path": "folders/Scripts/Utility/Color.yy",
   },
 }

@@ -29,7 +29,12 @@ offx = 0
 offy = 0
 targetoffx = 0
 targetoffy = 0
-texspr = res_edit.sprite
+
+if(sprite_exists(texspr))
+sprite_delete(texspr);
+
+if(sprite_exists(res_edit.sprite))
+texspr = sprite_duplicate(res_edit.sprite)
 
 surface_set_target(alphasurf){
 shader_set(shader_alphamask)
@@ -54,6 +59,8 @@ colorspr = sprite_create_from_surface(colorsurf,0,0,texturewidth, textureheight,
 alphaspr = sprite_create_from_surface(alphasurf, 0,0,surface_get_width(alphasurf), surface_get_height(alphasurf), false, false, 0, 0)
 selectionspr = sprite_create_from_surface(selectionsurf, 0,0,surface_get_width(selectionsurf), surface_get_height(selectionsurf), false, false, 0, 0)
 targetzoom = 5
+painter_history_pop()
+painter_history_push()
 painter_history[0] = sprite_duplicate(texspr);
 painter_history_limit()
 zoom = targetzoom

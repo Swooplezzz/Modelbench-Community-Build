@@ -10,7 +10,7 @@
 
 function colorpicker_show(name, color, def, script, xx, yy, width, height)
 {
-	var istexedit;
+	var istexedit, c, i;
 	if(argument_count > 8){
 		istexedit = argument[8]
 	}

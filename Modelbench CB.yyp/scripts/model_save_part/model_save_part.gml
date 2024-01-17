@@ -2,13 +2,17 @@
 
 function model_save_part()
 {
-	if (ds_map_exists(save_name_count_map, name) || name = "")
+	purename = string_get_name(name)
+
+	if (ds_map_exists(save_name_count_map, purename) || purename = "")
 	{
-		var count, savename;
-		count = save_name_count_map[?name]
+		var count, savename, purename;
+
+
+		count = save_name_count_map[?purename]
 		savename = ""
 		
-		if (name = "")
+		if (purename = "")
 		{
 			if (count = undefined)
 			{
@@ -28,16 +32,16 @@ function model_save_part()
 		}
 		else
 		{
-			json_save_var("name", json_string_encode(name + " (" + string(count) + ")"))
-			save_name_count_map[?name] += 1
+			json_save_var("name", json_string_encode(purename + " (" + string(count) + ")"))
+			save_name_count_map[?purename] += 1
 		}
 		
 		json_save_var("mb_name", json_string_encode(name))
 	}
 	else
 	{
-		json_save_var("name", json_string_encode(name))
-		save_name_count_map[?name] = 1
+		json_save_var("name", json_string_encode(purename))
+		save_name_count_map[?purename] = 1
 	}
 	
 	if (value[e_value.DEPTH] != 0)
@@ -64,7 +68,11 @@ function model_save_part()
 	
 	if (value[e_value.OPEN_POSITION_TAB])
 		json_save_var("show_position", true)
-	
+		
+	//if (value[e_value.IK_TARGET] != null)
+	//    json_save_var("ik_target", save_id_get(value[e_value.IK_TARGET]))
+	//if (value[e_value.IK_ANGLE_TARGET] != null)
+	//    json_save_var("ik_angle_target", save_id_get(value[e_value.IK_ANGLE_TARGET]))
 	if (locked)
 		json_save_var_bool("locked", true)
 	

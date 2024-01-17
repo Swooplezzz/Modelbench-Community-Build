@@ -22,7 +22,7 @@ function render_start()
 	render_background = (program_mode = e_mode.MODELING || (program_mode = e_mode.PREVIEW && setting_preview_background))&& program_mode != e_mode.TEXTURING
 	render_ssao = ((program_mode = e_mode.MODELING && setting_shading_ao && setting_shading) || (program_mode = e_mode.PREVIEW && setting_render_ao))&& program_mode != e_mode.TEXTURING
 	render_shadows = (program_mode = e_mode.PREVIEW && setting_render_shadows)&& program_mode != e_mode.TEXTURING
-	render_aa = (program_mode = e_mode.PREVIEW && setting_render_aa)&& program_mode != e_mode.TEXTURING
+	render_aa = (program_mode = e_mode.PREVIEW && setting_render_aa) || (program_mode = e_mode.MODELING) 
 	
 	render_prev_color = draw_get_color()
 	render_prev_alpha = draw_get_alpha()

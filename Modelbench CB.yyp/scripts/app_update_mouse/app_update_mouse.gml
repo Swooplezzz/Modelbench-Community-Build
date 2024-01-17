@@ -18,6 +18,7 @@ function app_update_mouse()
 	mouse_right_released = (mouse_right && !mouse_check_button(mb_right))
 	mouse_right = mouse_check_button(mb_right)
 	mouse_middle_pressed = (!mouse_middle && mouse_check_button(mb_middle))
+	mouse_middle_released = (mouse_middle && !mouse_check_button(mb_middle))
 	mouse_middle = mouse_check_button(mb_middle)
 	mouse_wheel = mouse_wheel_down() - mouse_wheel_up()
 	

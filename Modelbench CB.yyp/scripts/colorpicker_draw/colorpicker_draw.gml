@@ -75,6 +75,7 @@ function colorpicker_draw()
 	draw_togglebutton("colorpickermode", dx, dy, true, false)
 	tab_next()
 	
+	
 	if (colorpicker.mode = "rgb")
 	{
 		// RGB

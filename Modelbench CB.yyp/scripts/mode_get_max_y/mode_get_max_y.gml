@@ -9,8 +9,8 @@ function model_get_max_y(){
 			for (var i = 0; i < ds_list_size(shape_list); i++)
 			{
 				with (shape_list[|i]){
-					if((world_pos[@ Z] + ((value[e_value.HEIGHT]  - value[e_value.OFFSET_Z])*value[e_value.SCA_Z]*app.root_scale)) > max_y){
-						max_y = (world_pos[@ Z] + ((value[e_value.HEIGHT]  - value[e_value.OFFSET_Z])*value[e_value.SCA_Z]*app.root_scale));
+					if((world_pos[@ Z] + ((value[e_value.HEIGHT]  + value[e_value.OFFSET_Z])*value[e_value.SCA_Z]*app.root_scale)) > max_y){
+						max_y = (world_pos[@ Z] + ((value[e_value.HEIGHT]  + value[e_value.OFFSET_Z])*value[e_value.SCA_Z]*app.root_scale));
 					}
 				}
 					

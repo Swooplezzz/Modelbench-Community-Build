@@ -3,13 +3,13 @@
 function tab_painter_textures(){
 // Preview selected texture
 	var itemhover = null;
-	
+	dw = content_width - 24
 	tab_control(ds_list_size(textures_list.item) * 32)
 	for (var i = 0; i < ds_list_size(textures_list.item); i++)
 	{
 		var tex = textures_list.item[|i];
 
-		list_item_draw(tex, dx, dy + i * 32, dw, 32, tex.value = res_edit, 4)
+		list_item_draw(tex, dx, dy + i * 32, dw, 32, tex.value = res_edit, 4, 0, true, true)
 		
 		if (!itemhover && app_mouse_box(dx, dy + i * 32, dw, 32))
 			itemhover = tex
@@ -26,9 +26,15 @@ function tab_painter_textures(){
 		else
 			shortcut_bar_state = "contextmenutextureselect"
 	}
+	textfield_group_add("paintertexsizex", texturewidth, 16, action_painter_size_width, X, tab.tbx_width)
+	textfield_group_add("paintertexsizey", textureheight, 16, action_painter_size_height, Y, tab.tbx_height)
 	
-	// Add texture
+	tab_control_textfield_group(false, false)
+	draw_textfield_group("paintertexsize",dx,dy, dw, 1,1, 512, 1,false,false,0,false);
+	tab_next();
+	
 	tab_control_button_label()
+	// Add texture
 	if (draw_button_label("assetsaddtexture", floor(dx + dw/2), dy, null, icons.PLUS, e_button.PRIMARY, null, e_anchor.CENTER))
 	{
 		var fn = file_dialog_open_image();

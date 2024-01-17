@@ -29,7 +29,10 @@ function tab_assets_model_properties()
 	tab_control_switch()
 	draw_switch("assetsplayerskin", dx, dy, player_skin, action_player_skin, "assetsplayerskinhelp")
 	tab_next()
-	
+		
+	tab_control_switch()
+	draw_switch("assetsflooruvs", dx, dy, floor_box_uvs, action_floor_box_uvs, "assetsflooruvshelp")
+	tab_next()
 	var snapval = (dragger_snap ? setting_snap_size_scale : snap_min);
 	
 	tab_control_dragger()

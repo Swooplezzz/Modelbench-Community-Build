@@ -1,6 +1,7 @@
 // Script assets have changed for v2.3.0 see
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 function painter_history_pop(){
+	model_changed = true;
 	if (painter_history_pos > 0)
 	{
 		painter_history_amount -= painter_history_pos

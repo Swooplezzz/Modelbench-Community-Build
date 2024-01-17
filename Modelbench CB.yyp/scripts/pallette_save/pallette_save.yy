@@ -1,11 +1,11 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "action_color_primary",
+  "name": "pallette_save",
   "isCompatibility": false,
   "isDnD": false,
   "parent": {
-    "name": "Colors",
-    "path": "folders/Scripts/App/Actions/Colors.yy",
+    "name": "Painter",
+    "path": "folders/Scripts/App/Painter.yy",
   },
 }

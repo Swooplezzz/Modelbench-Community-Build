@@ -214,9 +214,22 @@ function view_draw(view)
 	if(program_mode != e_mode.TEXTURING)
 	view_toolbar_draw(toolbarx, toolbary, toolbarwid, toolbarhei)
 	
-		toolbarhei = 4 + (28 * 5) + (8) + 12
+	toolbarx = boxx + 16
+	toolbary = boxy + captionh + 16
+	toolbarwid = 36
+	toolbarhei = 4 + (28 * 5) + (8) + 12
+
+	
 	if(program_mode == e_mode.TEXTURING)
 	painter_toolbar_draw(toolbarx, toolbary, toolbarwid, toolbarhei)
+	
+	toolbarx = boxx + 16 + 36 + 8
+	toolbary = boxy + captionh + 16
+	toolbarwid = 28 * 2 + 12
+	toolbarhei = 36
+	
+	if(program_mode == e_mode.TEXTURING)
+	painter_controls_draw(toolbarx, toolbary, toolbarwid, toolbarhei)
 	
 	// Navigation
 	toolbarx = boxx + boxw - (16 + 36)

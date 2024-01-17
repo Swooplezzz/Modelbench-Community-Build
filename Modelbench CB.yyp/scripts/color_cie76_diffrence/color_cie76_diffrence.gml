@@ -2,12 +2,12 @@
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 function color_cie76_diffrence(color1, color2){
 var r1 = color_get_red(color1) / 255;
-var g1 = color_get_green(color1) / 255;
-var b1 = color_get_blue(color1) / 255;
+var g1 = color_get_green(color1)/ 255;
+var b1 = color_get_blue(color1)/ 255;
 
-var r2 = color_get_red(color2) / 255;
-var g2 = color_get_green(color2) / 255;
-var b2 = color_get_blue(color2) / 255;
+var r2 = color_get_red(color2)/ 255;
+var g2 = color_get_green(color2)/ 255;
+var b2 = color_get_blue(color2)/ 255;
 
 var lab1 = rgb_to_lab(r1, g1, b1);
 var lab2 = rgb_to_lab(r2, g2, b2);

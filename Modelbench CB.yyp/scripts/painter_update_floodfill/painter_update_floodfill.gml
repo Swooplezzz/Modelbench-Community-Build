@@ -5,7 +5,7 @@ function painter_update_floodfill(){
 if(array_length(fillarr) > 0){
 for(var a = 0; a < array_length(fillarr); a++){
 	if(a > 250) break;
-draw_floodfill(fillarr[a].surf,fillarr[a].alphasurf,fillarr[a].xx,fillarr[a].yy,fillarr[a].targ_color,fillarr[a].color, fillarr[a].side)	
+draw_floodfill(fillarr[a].surf,fillarr[a].alphasurf,fillarr[a].xx,fillarr[a].yy,fillarr[a].targ_color,fillarr[a].color, fillarr[a].side, fillarr[a].targ_alpha)	
 
 array_delete(fillarr, a,1)
 }

@@ -9,8 +9,8 @@ function macros()
 	
 	// Versions
 	#macro modelbench_version			"1.1.0 CB"
-	#macro modelbench_version_full		modelbench_version + ""
-	#macro modelbench_version_extra		"Alpha 1"
+	#macro modelbench_version_full		modelbench_version + " " + modelbench_version_extra
+	#macro modelbench_version_extra		"(Alpha 2)"
 	#macro modelbench_version_date		"11.11.2023"
 	#macro gm_runtime					GM_runtime_version
 	

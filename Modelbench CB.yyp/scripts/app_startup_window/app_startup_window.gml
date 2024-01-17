@@ -30,6 +30,7 @@ function app_startup_window()
 	window_in_focus = window_has_focus()
 	
 	mouse_cursor = cr_default
+	mouse_obj = "";
 	mouse_current_x = 0
 	mouse_current_y = 0
 	mouse_previous_x = 0

@@ -8,6 +8,8 @@ function texture_event_create()
 	
 	filepath = ""
 	filename = ""
+	ext = ""
+	oldname = ""
 	sprite = null
 	scale = 1
 	

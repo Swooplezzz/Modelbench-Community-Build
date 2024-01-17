@@ -21,10 +21,12 @@ function action_texture_select()
 			save_var_old_value = save_id_get(res_edit)
 			save_var_new_value = (res_edit = list_item_script_value ? null : save_id_get(list_item_script_value))
 		}
-		
+		var painting = (res_edit != list_item_script_value);
 		res_edit = (res_edit = list_item_script_value && program_mode != e_mode.TEXTURING? null : list_item_script_value)
-	    painter_reset()
+		 if(program_mode = e_mode.TEXTURING && painting){
+		    painter_reset()
+	        textures_list.update = true
+		 }
 	}
-	
-	textures_list.update = true
+
 }

@@ -8,6 +8,7 @@
 //uniform float zNear;
 
 //varying vec2 vTexCoord;
+//varying vec4 vColor;
 
 // //Get Depth Value
 //float unpackDepth(vec4 c)
@@ -29,15 +30,23 @@
 //{
 //vec2 pos = vec2(vTexCoord.x + off.x * (1.0 / uTexSize.x)
 //              , vTexCoord.y + off.y * (1.0 / uTexSize.y));
+			  
+//float depthDiffrence =  unpackDepth(texture2D(uDepthBuffer, pos))- depth;
+//depthDiffrence *= 2500.0;
+//depthDiffrence = clamp(depthDiffrence, 0.0, 1.0);
+//depthDiffrence = pow(depthDiffrence, 600.0);
+
 // //Edge of model? Darken.
-
-
-//vec3 normalDiff = normal - unpackNormal(texture2D(uNormalBuffer, pos));
-//if (length(normalDiff) > 0.7 )
-//return 100.0;
+// if(texture2D(uShapeBuffer, pos).a == 0.0) return -100.0;
+ 
+ 
+// vec3 normalDiff =  unpackNormal(texture2D(uNormalBuffer, pos)) - normal;
+ 
+//if(depthDiffrence >= 0.001) return -100.0;
+//else if (length(normalDiff) > 0.7 && length(normalDiff) < sqrt(3.0) && !(depthDiffrence >= 0.001))
+//return normalDiff.x * normalDiff.x + normalDiff.y * normalDiff.y + normalDiff.z + normalDiff.z;
 //else
 //return 0.0;
-
 //}
 //void main()
 //{
@@ -45,46 +54,26 @@
 //if (texture2D(gm_BaseTexture, vTexCoord).a == 8.8)
 //discard;
 
-//vec4 finalColor = texture2D(uTexture, vTexCoord);
+
 //vec3 coordNormal = unpackNormal(texture2D(uNormalBuffer, vTexCoord));
 //float coordDepth = unpackDepth(texture2D(uDepthBuffer, vTexCoord));
 //vec3 coordShape = texture2D(uShapeBuffer, vTexCoord).rgb;
 //float highlight = 0.0;
-//vec2 UVTopRight =vTexCoord + vec2(1.0/uTexSize.x,1.0/uTexSize.y) * 3.0;
-//vec2 UVBtmLeft =vTexCoord - vec2(1.0/uTexSize.x,1.0/uTexSize.y)* 3.0;;
-//vec2 UVTopLeft = vTexCoord + vec2(-1.0/uTexSize.x,1.0/uTexSize.y)* 3.0;;
-//vec2 UVBtmRight =vTexCoord  + vec2(1.0/uTexSize.x,-1.0/uTexSize.y)* 3.0;;
-	
-//float Depth1 = unpackDepth(texture2D(uDepthBuffer, UVTopRight));
-//float Depth2 = unpackDepth(texture2D(uDepthBuffer, UVBtmLeft));
-//float Depth3 = unpackDepth(texture2D(uDepthBuffer, UVTopLeft));
-//float Depth4 = unpackDepth(texture2D(uDepthBuffer, UVBtmRight));
 
-//float D2MD1 = Depth1-Depth2;
-//float D3MD4 = Depth3-Depth4;
-
-//float DALL = (D2MD1*D2MD1) + (D3MD4*D3MD4);
-
-//float final = sqrt(DALL) * 100.0;
-
-//final = step(coordDepth * 2.5, final);
-
-//for(int i = -3; i < 3 + 1; i++){
-//for(int j = -3; i < 3 + 1; i++){
+//for(int i = -2; i < 2 + 1; i++){
+//for(int j = -2; i < 2 + 1; i++){
 //	highlight += isHighlight(vec2(i,j), coordNormal, coordDepth, coordShape);
 //}
 //}
 
+//vec4 finalColor = vec4(0.0,0.0,0.0,1.0);
 
-
-//finalColor.rgb -= vec3(0.2);
-
-//if(highlight > 0.0 && final <= 0.0 &&texture2D(uShapeBuffer,vTexCoord).a != 0.0)
-//gl_FragColor = vec4(finalColor.rgb+vec3(0.3), 1.0);
-//else if(final > 0.0 &&texture2D(uShapeBuffer,vTexCoord).a != 0.0)
-//gl_FragColor = vec4(finalColor.rgb+vec3(-0.3), 1.0);
+//if(highlight > 0.0 &&texture2D(uShapeBuffer,vTexCoord).a != 0.0)
+//gl_FragColor = vec4(texture2D(gm_BaseTexture, vTexCoord).rgb.rgb+vec3(0.1), 1.0);
+//else if(highlight < 0.0 &&texture2D(uShapeBuffer,vTexCoord).a != 0.0)
+//gl_FragColor = vec4(texture2D(gm_BaseTexture, vTexCoord).rgb+vec3(-0.08), 1.0);
 //else
-//gl_FragColor = finalColor;
+//gl_FragColor = texture2D(gm_BaseTexture, vTexCoord);
 //}
 
 uniform vec2 uTexSize;

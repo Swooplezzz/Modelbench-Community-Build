@@ -4,7 +4,7 @@ function action_painter_pallette_add(){
 var struct =
 {
 name: "New Pallette",
-color_list: array_create()
+color_list: array_create(0)
 }
 
 ds_list_add(pallette_list, struct)

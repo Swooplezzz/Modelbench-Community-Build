@@ -12,7 +12,7 @@
 
 function list_item_draw()
 {
-	var item, xx, yy, width, height, toggled, margin, xoffset, components, animation, name;
+	var item, xx, yy, width, height, toggled, margin, xoffset, components, animation, name, renamable;
 	var leftp, rightp, middley, mousehover, hover;
 	item = argument[0]
 	xx = argument[1]
@@ -24,7 +24,7 @@ function list_item_draw()
 	xoffset = 0
 	components = 0
 	animation = true
-	
+	renamable = false
 	if (item.list != null && item.list.get_name)
 		name = text_get(item.name)
 	else
@@ -48,6 +48,8 @@ function list_item_draw()
 	
 	if (argument_count > 8)
 		animation = argument[8]
+	if (argument_count > 9)
+		renamable = argument[9]
 	
 	if (xx + width < content_x || xx > content_x + content_width || yy + height < content_y || yy > content_y + content_height)
 		return 0
@@ -57,6 +59,7 @@ function list_item_draw()
 	
 	item.draw_x = xx
 	item.draw_y = yy
+
 	
 	// Draw divider below item
 	if (item.divider)
@@ -229,18 +232,61 @@ function list_item_draw()
 	leftp += 8 + (4 * (height > 24 && (item.thumbnail || (item.icon_left != null))))
 	
 	draw_set_font(font_value)
-	
+
 	var textwidth = width - (leftp + rightp) - 8;
+	if(renamable){
+
+	if (tab.color_editor.name_edit_element != item.value)
+	{
+		var labelshort = string_limit_font(item.name, width, font_value)
+		draw_label(labelshort, xx + leftp, middley, fa_left, fa_middle, textcolor, textalpha)
+			var boxwid = min(string_width(labelshort) + 32, width);
+			
+			if (app_mouse_box(xx + leftp, middley-8, boxwid, height))
+			{
+				if (mouse_left_double_pressed)
+				{
+					window_busy = string(tab.color_editor.tbx_name)
+					window_focus = string(tab.color_editor.tbx_name)
+					item.ext = filename_ext(item.value.filename)
+					item.value.oldname = item.value.filename
+
+					tab.color_editor.tbx_name.text = filename_change_ext(item.value.filename, "");
+					tab.color_editor.name_edit_element = item.value
+				}
+			}
+	}
+	// Edit name
+	if (tab.color_editor.name_edit_element = item.value)
+	{
+		show_debug_message(true);
+		if (textbox_draw(tab.color_editor.tbx_name, xx + leftp, middley-8, width, height))
+		{
+			var name = item.value.filename;
+				item.value.filename = tab.color_editor.tbx_name.text + filename_ext(item.value.filename)
+				file_rename(app.model_folder + "\\" + name, app.model_folder + "\\" + item.value.filename)
+				textures_list.update = true;
+		}
+		
+		if (window_focus != string(tab.color_editor.tbx_name))
+		{
+			tab.color_editor.name_edit_element = null
+		}
+	}
+	}
+	else{
 	draw_label(string_limit(name, textwidth), xx + leftp, middley, fa_left, fa_middle, textcolor, textalpha)
-	
+	}
+
 	item.hover = hover
 	if (hover && item.interact)
 		mouse_cursor = cr_handpoint
 	
-	if (item.script && hover && mouse_left_released)
+	if (item.script && hover && mouse_left_released && (renamable ? res_edit != item.value : 1))
 	{
 		list_item_script = item.script
 		list_item_script_value = item.value
 		list_item_value = context_menu_value
 	}
+	
 }

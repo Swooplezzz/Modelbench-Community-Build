@@ -2,9 +2,18 @@
 
 function shortcut_bar_update()
 {
-	if (shortcut_bar_state != shortcut_bar_state_prev)
-	{
+	if(program_mode = e_mode.TEXTURING){
 		ds_list_clear(shortcut_bar_list)
+		var mxsnap =  snap((window_mouse_get_x()-scale_offset_x) /  zoom-.5 , 1)
+		var mysnap =  snap((window_mouse_get_y()-scale_offset_y) /  zoom-.5 , 1)
+		var selectionsize = vec2(selection_btmright[0]-selection_topleft[0],selection_btmright[1]-selection_topleft[1]);
+		ds_list_add(app.shortcut_bar_list, [null, null, text_get("painterinfotexsize") + " : " + string(texturewidth)+ "x"+ string(textureheight)])
+		ds_list_add(app.shortcut_bar_list, [null, null, text_get("painterinfomousepos") + " : " + string(mxsnap)+ ","+ string(mysnap)])
+		ds_list_add(app.shortcut_bar_list, [null, null, text_get("painterinfoselectionsize") + " : " + string(selectionsize[0])+ ","+ string(selectionsize[1])])
+	}
+	else if (shortcut_bar_state != shortcut_bar_state_prev)
+	{
+ds_list_clear(shortcut_bar_list)
 			
 			shortcut_bar_add(keybinds[e_keybind.CAM_SNAP_VIEW_X].keybind, null, "camsnapviewx");	
 	        shortcut_bar_add(keybinds[e_keybind.CAM_SNAP_VIEW_Y].keybind, null, "camsnapviewy");
@@ -135,7 +144,7 @@ function shortcut_bar_update()
 			
 			shortcut_bar_add(null, e_mouse.CLICK_RIGHT, "contextmenuelement")
 		}
-		
+			
 	}
 	
 	shortcut_bar_state_prev = shortcut_bar_state

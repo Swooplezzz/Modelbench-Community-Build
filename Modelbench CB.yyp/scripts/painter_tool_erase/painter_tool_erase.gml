@@ -20,6 +20,8 @@ gpu_set_blendmode(bm_subtract)
 draw_set_color(c_black)
 draw_surface(selectionsurf,0,0)
 gpu_set_blendmode(bm_normal)	
+
+
 }
 
 }

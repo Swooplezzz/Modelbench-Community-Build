@@ -40,7 +40,30 @@ function list_init(name)
 			
 			break
 		}
-		
+		case "elementeditoriktarget":
+		{
+			// Inherit texture
+			list_item_add(text_get("elementeditornopart"), null, "")
+			
+			// Add all loaded textures in model
+			with (obj_model_element)
+			if(element_type = TYPE_PART && id != el_edit)
+				list_item_add(id.name, id, "", null, null, null, null)
+			
+			break
+		}
+		case "elementeditorikangle":
+		{
+			// Inherit texture
+			list_item_add(text_get("elementeditornopart"), null, "")
+			
+			// Add all loaded textures in model
+			with (obj_model_element)
+			if(element_type = TYPE_PART && id != el_edit)
+				list_item_add(id.name, id, "", null, null, null, null)
+			
+			break
+		}
 		case "elementeditorwindaxis":
 		{
 			list_item_add(text_get("elementeditorwindaxisnone"), e_vertex_wave.NONE, "")

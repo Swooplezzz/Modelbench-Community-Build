@@ -13,7 +13,7 @@ function painter_draw(mousexsnap,mouseysnap,inbounds){
 	texx = scale_offset_x
 	texy = scale_offset_y
 	texw = texturewidth * zoom
-	texh = texturewidth * zoom
+	texh = textureheight * zoom
 	
 	boxx = floor(boxx)
 	boxy = floor(boxy)
@@ -24,9 +24,26 @@ function painter_draw(mousexsnap,mouseysnap,inbounds){
 	texscale = 1
 	
 draw_sprite_ext(finalspr, 0, scale_offset_x, scale_offset_y, zoom, zoom,0, c_white, 1)
-draw_surface_ext(drawsurf, scale_offset_x, scale_offset_y, zoom, zoom,0, c_white, paint_opacity)
-draw_surface_ext(selectionsurf, scale_offset_x, scale_offset_y, zoom, zoom,0, c_white, .5)
 
+
+draw_surface_ext(drawsurf, scale_offset_x, scale_offset_y, zoom, zoom,0, c_white, paint_opacity)
+			draw_surface_ext(selectionsurf, scale_offset_x, scale_offset_y, zoom, zoom,0, c_white, 0.25)
+if(selection_active)
+{
+			gpu_set_texrepeat(false)
+			render_shader_obj = shader_map[?shader_selection_outline]
+			with (render_shader_obj)
+				shader_use()
+				
+			shader_border_set(c_accent, 1, texturewidth * zoom, textureheight * zoom)
+			
+			draw_surface_ext(selectionsurf, scale_offset_x, scale_offset_y, zoom, zoom,0, c_white, 1.0)
+
+			with (render_shader_obj)
+				shader_clear()
+			
+			gpu_set_texrepeat(true)
+}
 
 if(inbounds){
 //Draw Cursor
@@ -48,6 +65,7 @@ else if(paint_tool_selected = e_paint.PICK || paint_tool_selected = e_paint.FILL
 
 
 }
+
 //draw_rectangle_color( ((mousexsnap + .5)* zoom) + scale_offset_x, ((mouseysnap + .5) *zoom) + scale_offset_y,((mousexsnap + 1.5)* zoom) + scale_offset_x, ((mouseysnap + 1.5) *zoom) + scale_offset_y,  c_white, c_white,c_white, c_white,true);
 if(inbounds){
 		mouse_cursor = cr_none
@@ -93,15 +111,15 @@ break
 	gpu_set_blendmode_ext(bm_inv_dest_color, bm_inv_src_color)
 	
 	// Pixel outline(zoom required multiplied by texscale for bigger textures)
-	var snapval = (setting_snap ? max(setting_snap_size_uv, .125) : 1);
-	if (zoom * texscale > 5)
+	var snapval = 1;
+	if (zoom * texscale > 5 && paint_view_grid)
 	{
 		var alpha = percent(zoom * texscale, 5, 7);
 		
 		// Highlight pixels seperately if snap value is not 1
 		if (snapval != 1)
 		{
-			for (var i = texscale; i < textureheight; i += texscale)
+			for (var i = texscale; i < texturewidth; i += texscale)
 			{
 				if (texx + floor(i * zoom) > boxx && texx + floor(i * zoom) < boxx + boxw)
 					draw_line_ext(texx + floor(i * zoom) + 1, texy, texx + floor(i * zoom) + 1, texy + texh, merge_color(c_black, c_white, 0.03 * alpha), 1)
@@ -126,6 +144,19 @@ break
 				draw_line_ext(texx, texy + floor(i * zoom) + 1, texx + texw, texy + floor(i * zoom) + 1, merge_color(c_black, c_white, 0.15 * alpha), 1)
 		}
 	}
-	
+		
+	// Text
 	gpu_set_blendmode(bm_normal)
+	if(paint_view_brush_guides){
+	draw_line_ext((mousexsnap + .5)  * zoom + scale_offset_x, boxy, (mousexsnap+ .5) * zoom + scale_offset_x, boxy + boxh,merge_color(c_black,c_accent_pressed, 0.75), .5)
+	draw_line_ext((mousexsnap + 1.5)  * zoom + scale_offset_x, boxy, (mousexsnap + 1.5) * zoom + scale_offset_x, boxy + boxh,merge_color(c_black,c_accent_pressed, 0.75), .5)
+    draw_line_ext(boxx, (mouseysnap+ .5)  * zoom+ scale_offset_y, boxx + boxw, (mouseysnap+ .5)  * zoom + scale_offset_y,merge_color(c_black,c_accent_pressed, 0.75), .5)
+    draw_line_ext(boxx, (mouseysnap  + 1.5)  * zoom+ scale_offset_y, boxx + boxw, (mouseysnap  + 1.5)  * zoom + scale_offset_y,merge_color(c_black,c_accent_pressed, 0.75), .5)
+	}
+	draw_label("[ 0, 0 ]", texx - 8, texy - 8, fa_right, fa_bottom, c_text_main, 0.5, font_label)
+	draw_label("[ " + string(texturewidth) + ", 0 ]", texx + texw + 8, texy - 8, fa_left, fa_bottom, c_text_main, 0.5, font_label)
+	draw_label("[ 0, " + string(textureheight) + " ]", texx - 8, texy + texh + 8, fa_right, fa_top, c_text_main, 0.5, font_label)
+	draw_label("[ " + string(texturewidth) + ", " + string(textureheight) + " ]", texx + texw + 8, texy + texh + 8, fa_left, fa_top, c_text_main, 0.5, font_label)
+
+
 }

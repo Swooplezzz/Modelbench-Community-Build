@@ -13,4 +13,7 @@ function action_texture_refresh()
 		tex_preview.update = true
 		tex_preview.reset_view = true
 	}
+	if(program_mode = e_mode.TEXTURING ){
+		painter_reset()
+	}
 }

@@ -1,19 +1,38 @@
 // Script assets have changed for v2.3.0 see
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 function draw_recentcolors(){
-		var xx = dx;
+		var stack = (content_width > 230 + 176)
+	    if(!stack) dx = content_x + 12 + content_width /2 - 230/2;
+	    else dx = content_x + 12 ;
+		var xx = dx + 24;
+		var ddx = xx;
+		var ww = 230 - 12;
+
+		if(stack)
+		{
+
+			ww = content_width 
+			xx = dx + content_width - 176 - 24;
+			ddx = xx;
+			dy -= 64;
+		}
 		for(var i = 0; i < array_length(recentcolor_list); i++){
-		if(xx >= (dx + content_width - 64 - 28 - 28)){
-		xx = dx	
+		if(xx >= (dx + ww - 42)){
+		xx = ddx
 		dy += 28
 		}
 		
-		draw_button_colorpallette("col" + string(i), xx, dy, recentcolor_list[i], action_painter_recent_pick_color)
+		draw_button_colorpallette("col" + string(i), xx, dy, recentcolor_list[i], action_painter_recent_pick_color, null, action_painter_recent_remove_color, -1, i)
 		xx += 28
 		}
-		if(xx >= (dx + content_width - 64 - 28 - 28)){
-		xx = dx	
+		if(xx >= (dx + ww)){
+		xx = ddx	
 		dy += 28
 		}
-		dy += 38
+		dy += 38 + 12
+				if(stack)
+		{
+			dy += 12;
+		}
+		dx = content_x + 12 
 		}

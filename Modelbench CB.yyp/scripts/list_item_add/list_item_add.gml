@@ -44,6 +44,8 @@ function list_item_add()
 	item = new_obj(obj_list_item)
 	item.name = name
 	item.value = value
+	item.ext = ""
+	item.oldname = ""
 	item.caption = caption
 	item.thumbnail = thumbnail
 	item.thumbnail_backdrop = true

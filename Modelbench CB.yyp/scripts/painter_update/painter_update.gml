@@ -20,50 +20,56 @@ painter_surf_require()
 painter_view();
 scale_offset_x = floor(boxx + (boxw / 2 - (texturewidth / 2 + offx) * zoom))
 scale_offset_y = floor(boxy + (boxh / 2 - (textureheight / 2 + offy) * zoom))
-if(keyboard_check_pressed(ord("V"))){
-	if(!clipboard_has_img()) return;
-	clipboard_dump_image(app.model_folder + "\\clipboard.png")
+#region cpypsting
+//if(keyboard_check_pressed(ord("V"))){
+//	if(!clipboard_has_img()) return;
+//	clipboard_dump_image(app.model_folder + "\\clipboard.png")
 
 	
-	var tempspr = sprite_add(app.model_folder + "\\clipboard.png",1,false,false,0,0);
+//	var tempspr = sprite_add(app.model_folder + "\\clipboard.png",1,false,false,0,0);
 	
-surface_set_target(colorsurf){
-draw_clear_alpha(c_black, 0)
-shader_set(shader_colormask)
-draw_sprite(tempspr,0,0,0)
-shader_reset()
+//surface_set_target(colorsurf){
+//draw_clear_alpha(c_black, 0)
+//shader_set(shader_colormask)
+//draw_sprite(tempspr,0,0,0)
+//shader_reset()
 
-gpu_set_blendmode(bm_normal);
-}
-	surface_reset_target()
-surface_set_target(alphasurf){
+//gpu_set_blendmode(bm_normal);
+//}
+//	surface_reset_target()
+//surface_set_target(alphasurf){
 
-draw_clear_alpha(c_black, 1)
-shader_set(shader_alphamask)
-alphafix
-draw_sprite_ext(tempspr, 0,0,0,1,1,0, c_white, 1)
-shader_reset()
-   gpu_set_colorwriteenable(true, true, true, true);
+//draw_clear_alpha(c_black, 1)
+//shader_set(shader_alphamask)
+//alphafix
+//draw_sprite_ext(tempspr, 0,0,0,1,1,0, c_white, 1)
+//shader_reset()
+//   gpu_set_colorwriteenable(true, true, true, true);
 
-gpu_set_blendmode(bm_normal);
-}
-	surface_reset_target()
-	sprite_delete(tempspr)
-	if(sprite_exists(colorspr))
-sprite_delete(colorspr)
-colorspr = sprite_create_from_surface(colorsurf, 0,0,surface_get_width(colorsurf), surface_get_height(colorsurf), false, false, 0, 0)
-	if(sprite_exists(alphaspr))
-sprite_delete(alphaspr)
-alphaspr = sprite_create_from_surface(alphasurf, 0,0,surface_get_width(alphasurf), surface_get_height(alphasurf), false, false, 0, 0)
-}
+//gpu_set_blendmode(bm_normal);
+//}
+//	surface_reset_target()
+//	sprite_delete(tempspr)
+//	if(sprite_exists(colorspr))
+//sprite_delete(colorspr)
+//colorspr = sprite_create_from_surface(colorsurf, 0,0,surface_get_width(colorsurf), surface_get_height(colorsurf), false, false, 0, 0)
+//	if(sprite_exists(alphaspr))
+//sprite_delete(alphaspr)
+//alphaspr = sprite_create_from_surface(alphasurf, 0,0,surface_get_width(alphasurf), surface_get_height(alphasurf), false, false, 0, 0)
+//}
+#endregion
 //Undo,redo
 painter_history();
 
 #region MouseVariables
-var mousexsnap = snap((window_mouse_get_x()-scale_offset_x) /  zoom-.5 , 1)-.5
-var mouseysnap =  snap((window_mouse_get_y() -scale_offset_y) /  zoom-.5 ,1)-.5
-var prevmousexsnap =  snap(mouse_x_prev /  zoom-.5 ,1) -.5
-var prevmouseysnap =  snap(mouse_y_prev  /  zoom-.5 ,1) -.5
+if(!keyboard_check_direct(vk_alt))
+mousexsnap = snap((window_mouse_get_x()-scale_offset_x) /  zoom-.5 , 1)-.5
+if(!keyboard_check_direct(vk_shift))
+mouseysnap =  snap((window_mouse_get_y() -scale_offset_y) /  zoom-.5 ,1)-.5
+if(!keyboard_check_direct(vk_alt))
+prevmousexsnap =  snap(mouse_x_prev /  zoom-.5 ,1) -.5
+if(!keyboard_check_direct(vk_shift))
+prevmouseysnap =  snap(mouse_y_prev  /  zoom-.5 ,1) -.5
 var inbounds = ((mousexsnap + 1) < texturewidth && (mouseysnap + 1) < textureheight && (mousexsnap + 1) > 0 && (mouseysnap + 1) > 0) && content_mouseon
 #endregion
 

@@ -48,6 +48,10 @@ function app_update_keyboard()
             paint_tool_selected = e_paint.BOX_SELECT
 			if (keybinds[e_keybind.FILL].pressed)
             paint_tool_selected = e_paint.FILL
+			if (keybinds[e_keybind.VIEW_PTR_GRID].pressed)
+            paint_view_grid = !paint_view_grid
+			if (keybinds[e_keybind.VIEW_PTR_GUIDES].pressed)
+            paint_view_brush_guides = !paint_view_brush_guides
 	}
 	if(window_state = "startup"){
 		if (keybinds[e_keybind.UNDO].pressed)

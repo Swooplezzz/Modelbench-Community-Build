@@ -1,36 +1,42 @@
-//
-// Simple passthrough fragment shader
-//
+uniform vec2 uTexSize;
+uniform vec4 uColor;
+uniform float uSize;
+uniform float uTime;
 varying vec2 vTexCoord;
 varying vec4 v_vColour;
-vec2 uTexSize = vec2(100.0);
-float isHighlight(vec2 off, vec4 shape)
+
+bool isHighlight(vec2 off)
 {
-	vec2 posdouble = vec2(vTexCoord.x + (off.x * 2.0) * (1.0 / uTexSize.x),
-					vTexCoord.y + (off.y * 2.0) * (1.0 / uTexSize.y));
-	
-	if (texture2D(gm_BaseTexture, posdouble).a < 1.0)
-		return 1.0;
-	else
-	{
-		vec2 pos = vec2(vTexCoord.x + off.x * (1.0 / uTexSize.x),
+	vec2 pos = vec2(vTexCoord.x + off.x * (1.0 / uTexSize.x),
 					vTexCoord.y + off.y * (1.0 / uTexSize.y));
-		if(((shape.rgb != texture2D(gm_BaseTexture, pos).rgb)))
-		return 1.0;
-	}
-	return 0.0;
+	if(pos.x > 1.0 || pos.y > 1.0 || pos.x < 0.0 || pos.y < 0.0)
+	return true;
+
+	return (texture2D(gm_BaseTexture, pos).a > 0.0);
 }
+
+bool checkHighlight(float size)
+{
+	return (isHighlight(vec2(size, size)) || isHighlight(vec2(-size, size)) || isHighlight(vec2(size, -size)) || isHighlight(vec2(-size, -size)));
+}
+
 void main()
 {
-	vec4 shape = v_vColour * texture2D( gm_BaseTexture, vTexCoord );
-	float highlight = 0.0;
-	for(int i = -1; i < 1 + 1; i++){
-			for(int j = -1; j < 1 + 1; j++){
-				highlight += isHighlight(vec2(i,j), shape);
-	        }
+	float blackOrWhitex = 0.0;
+	float blackOrWhitey = 0.0;
+
+	if(sin((vTexCoord.y* uTexSize.y + vTexCoord.x* uTexSize.x) * 0.5 + uTime * 0.05)  >0.0){
+	blackOrWhitey = 1.0;	
 	}
-	if (highlight > 0.0)
-	  gl_FragColor = v_vColour * texture2D( gm_BaseTexture, vTexCoord ) + vec4(1.0,.6,0.2,1.0);
+	
+	float size = uSize;
+	if (texture2D(gm_BaseTexture, vTexCoord).a > 0.0)
+		discard;
 	else
-      gl_FragColor = v_vColour * texture2D( gm_BaseTexture, vTexCoord );
+	{
+		if (checkHighlight(size))
+			gl_FragColor = vec4( vec3(1.0)* blackOrWhitey, 1.0) ;
+		else
+			gl_FragColor =  vec4(uColor.xyz, (0.35+sin(uTime * 0.1) *0.05)) ;
+	}
 }

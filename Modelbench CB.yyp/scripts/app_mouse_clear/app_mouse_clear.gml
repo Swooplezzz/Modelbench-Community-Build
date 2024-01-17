@@ -11,6 +11,7 @@ function app_mouse_clear()
 	mouse_right_released = false
 	mouse_middle = false
 	mouse_middle_pressed = false
+	mouse_middle_released = false
 	
 	mouse_clear(mb_left)
 	mouse_clear(mb_right)

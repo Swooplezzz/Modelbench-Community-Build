@@ -27,6 +27,7 @@ function model_startup()
 	model_name = ""
 	//model_author = ""
 	player_skin = true
+	floor_box_uvs = false
 	root_scale = 1
 	model_temporary = false
 	model_changed = false

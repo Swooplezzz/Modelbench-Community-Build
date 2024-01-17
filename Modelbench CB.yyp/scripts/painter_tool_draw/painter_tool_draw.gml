@@ -5,6 +5,8 @@ function painter_tool_draw(mousexsnap,mouseysnap,prevmousexsnap,prevmouseysnap){
 if ((mouse_check_button(mb_left) || mouse_check_button(mb_right))&& paint_tool_selected = e_paint.BRUSH){
  
 	var color = (mouse_check_button(mb_left)? paint_primary_color : paint_secondary_color)
+	if(painter_main_color = 1)
+	 color = (mouse_check_button(mb_left)? paint_secondary_color : paint_primary_color)
 
 draw_circle_color( mousexsnap, mouseysnap, paint_width*.6 ,  color, color, false);
 

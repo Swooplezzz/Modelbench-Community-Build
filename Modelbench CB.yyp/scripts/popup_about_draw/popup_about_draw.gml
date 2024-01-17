@@ -48,7 +48,7 @@ function popup_about_draw()
 	width = string_width_font(text, font_value)
 	textx = dx + dw/2 - width/2
 	
-	draw_button_text(text_get("aboutversion", modelbench_version_full), textx, dy + 120, open_url, "https://www.mineimator.com/modelbench", "https://www.mineimator.com/modelbench")
+	draw_button_text(text_get("aboutversion", modelbench_version_full), textx, dy + 120, open_url, "https://www.communitybuild.netlify.app", "https://www.communitybuild.netlify.app")
 	textx += string_width_font(text_get("aboutversion", modelbench_version_full), font_value)
 	
 	draw_label(text_get("aboutreleasedate", modelbench_version_date), textx, dy + 120, fa_left, fa_bottom, c_text_secondary, a_text_secondary, font_value)

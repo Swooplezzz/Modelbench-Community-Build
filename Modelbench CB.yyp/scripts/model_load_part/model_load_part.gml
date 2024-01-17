@@ -68,6 +68,11 @@ function model_load_part(map, root)
 		// Tab states for Mine-imator frame editor panel
 		value[e_value.OPEN_POSITION_TAB] = value_get_real(map[?"show_position"], false)
 		
+		//value[e_value.IK_ANGLE_TARGET] = save_id_find(value_get_string(map[?"ik_target"], null))
+		//value[e_value.IK_TARGET] = save_id_find(value_get_string(map[?"ik_angle_target"], null))
+		
+		
+		
 		// Rotation (optional)
 		rotation = value_get_point3D(map[?"rotation"], vec3(0))
 		value[e_value.ROT_X] = rotation[X]

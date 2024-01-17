@@ -46,7 +46,7 @@ function draw_colorpallettes(){
 		dy += 28
 		}
 		
-		draw_button_colorpallette("col" + string(c) + string(i), xx+16, dy, pallette_list[|c].color_list[i], action_painter_pallette_pick_color)
+		draw_button_colorpallette("col" + string(c) + string(i), xx+16, dy, pallette_list[|c].color_list[i], action_painter_pallette_pick_color, action_edit_pallette_color, action_delete_pallette_color, c, i)
 		xx += 28
 		}
 		if(xx >= (dx + content_width - 64 - 28 - 28)){
@@ -54,7 +54,7 @@ function draw_colorpallettes(){
 		dy += 28
 		}
 		draw_button_icon_value("deletepallette" + string(c), dx+8 + content_width - 48, dy, 24,24,c, icons.DELETE, action_painter_pallette_remove)
-		draw_button_icon_value("exportpallette" + string(c), dx + content_width - 48 - 24,  dy, 24,24,c, icons.FILE_EXPORT)
+		draw_button_icon_value("exportpallette" + string(c), dx + content_width - 48 - 24,  dy, 24,24,c, icons.FILE_EXPORT, action_painter_pallette_export)
 		draw_button_icon_value("addcolor" + string(c), xx+16,  dy, 24,24, c, icons.PLUS, action_painter_add_pallette_color)
 		dy += 38
 		}

@@ -3,8 +3,10 @@
 function painter_tool_floodfill(mousexsnap,mouseysnap,inbounds){
 if((mouse_check_button_pressed(mb_left) || mouse_check_button_pressed(mb_right)) && paint_tool_selected = e_paint.FILL && !filling && inbounds){
 	var color = (mouse_check_button_pressed(mb_left)? paint_primary_color : paint_secondary_color)
-	
-draw_floodfill(colorsurf, alphasurf, mousexsnap+ .5, mouseysnap + .5,surface_getpixel(colorsurf, mousexsnap +1, mouseysnap +1), color, 0)
+	if(painter_main_color = 1)
+	 color = (mouse_check_button_pressed(mb_left)? paint_secondary_color : paint_primary_color)
+
+draw_floodfill(colorsurf, alphasurf, mousexsnap+ .5, mouseysnap + .5,surface_getpixel(colorsurf, mousexsnap +1, mouseysnap +1), color, 0, color_get_red(surface_getpixel(alphasurf, mousexsnap +1, mouseysnap +1)))
 filling = true;
 if(sprite_exists(colorspr))
 sprite_delete(colorspr)

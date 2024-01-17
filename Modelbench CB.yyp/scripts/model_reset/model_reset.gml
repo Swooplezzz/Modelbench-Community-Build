@@ -27,6 +27,7 @@ function model_reset()
 	res = null
 	
 	player_skin = false
+	floor_box_uvs = false
 	root_scale = 1
 	
 	camera_reset()

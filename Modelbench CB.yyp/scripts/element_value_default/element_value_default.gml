@@ -47,6 +47,8 @@ function element_value_default(vid)
 		
 		// Misc
 		case e_value.TEXTURE_OBJ: return null
+		case e_value.IK_TARGET: return null
+		case e_value.IK_ANGLE_TARGET: return null
 	}
 	
 	return 0

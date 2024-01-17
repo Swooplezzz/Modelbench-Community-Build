@@ -12,6 +12,7 @@ function app_startup_collapse()
 	collapse_register("file")
 	collapse_register("edit")
 	collapse_register("tools")
+	collapse_register("paintertools")
 	collapse_register("camera")
 	
 	collapse_register("bend_x")

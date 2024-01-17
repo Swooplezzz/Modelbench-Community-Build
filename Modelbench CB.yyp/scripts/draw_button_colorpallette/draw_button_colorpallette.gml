@@ -5,7 +5,7 @@
 /// @arg value
 /// @arg script
 
-function draw_button_colorpallette(name, xx, yy, value, script)
+function draw_button_colorpallette(name, xx, yy, value, script, script2, script3, c, i)
 {
 	var h, w, mouseon, mouseclick, active;
 	h = 24
@@ -64,5 +64,19 @@ function draw_button_colorpallette(name, xx, yy, value, script)
 	{
 		if(script != null)
 		script_execute(script, value)
+	}
+	if (mouseon && mouse_right_released)
+	{
+		if(script2 != null){
+		painter_pallette_id = c;
+		painter_pallette_col = i;
+		colorpicker_show(name, pallette_list[|c].color_list[i], c_black, action_edit_pallette_color, xx, yy, w, h)
+		colorpicker.mode = "hsv"
+		}
+	}
+	if (mouseon && mouse_middle_released)
+	{
+		if(script3 != null)
+		script_execute(script3, c, i)
 	}
 }

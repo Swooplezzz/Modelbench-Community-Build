@@ -12,8 +12,9 @@ function keybinds_update_match()
 			if (id = other.id)
 				continue
 			
-			if (array_equals(keybind, other.keybind) && (windowcheck = other.windowcheck))
+			if (array_equals(keybind, other.keybind) && (windowcheck = other.windowcheck) && (string_contains(name, "painter") && string_contains(other.name, "painter")))
 			{
+				
 				other.match_error = true
 				break
 			}

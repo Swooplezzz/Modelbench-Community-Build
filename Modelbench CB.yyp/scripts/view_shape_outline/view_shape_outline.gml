@@ -1,4 +1,4 @@
-/////// view_shape_outline()
+///// view_shape_outline()
 
 //function view_shape_outline()
 //{
@@ -40,24 +40,27 @@
 //		render_world_done()
 //	}
 //	surface_reset_target()
-	
-//	surface_set_target(render_target)
+//	render_surface[3] = surface_require(render_surface[3], render_width, render_height)
+//	var finalsurf = render_surface[3]
+//	surface_set_target(finalsurf)
 //	{
-//		gpu_set_blendmode_ext(bm_zero, bm_src_color)
-		
-//		gpu_set_texrepeat(false)
+
 //		render_shader_obj = shader_map[?shader_shape_outline]
 //		with (render_shader_obj)
 //		{
 //			shader_set(shader_shape_outline)
 //			shader_shape_outline_set(shapesurf, normalssurf, depthsurf)
 //		}
-//		draw_blank(0, 0, render_width, render_height) // Blank quad
+//		draw_surface_exists(render_target,0,0)
 //		with (render_shader_obj)
 //			shader_clear()
-//		gpu_set_texrepeat(true)
-		
-//		gpu_set_blendmode(bm_normal)
+
+//	}
+//	surface_reset_target()
+//		surface_set_target(render_target)
+//	{
+//		draw_surface_exists(finalsurf,0,0)
+
 //	}
 //	surface_reset_target()
 //}

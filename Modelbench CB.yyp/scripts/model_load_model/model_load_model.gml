@@ -36,6 +36,7 @@ function model_load_model(map)
 	
 	// Allow Minecraft skins
 	player_skin = value_get_real(map[?"player_skin"], false)
+	floor_box_uvs = value_get_real(map[?"floor_box_uvs"], false)
 	
 	// Scale (optional)
 	scale = value_get_point3D(map[?"scale"], vec3(1))

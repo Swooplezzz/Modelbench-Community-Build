@@ -297,26 +297,28 @@ function app_startup_interface_tabs()
 		// Interface
 		interface = tab_add_category("interface", icons.BRUSH_SMALL, tab_settings_interface, false)
 		
-
+		painter = tab_add_category("painter", icons.PENCIL, tab_settings_painter, false)
 			
 		
 	}
 			colors = new_tab(setting_color_editor_location, false, null)
 			colors.closeable = false
 			with(colors){
-			color_editor = tab_add_category("coloreditor", icons.FILL_TOOL, tab_color_editor, false)
+			color_editor = tab_add_category("coloreditor", icons.FILL_TOOL, tab_color_editor, true)
 			with(color_editor)
 			{
 			tbx_name = new_textbox(true, 0, "")
 			name_edit_element = null
 			}
-			textures = tab_add_category("textures", icons.TEXTURE_SMALL, tab_painter_textures, false)
+			textures = tab_add_category("textures", icons.TEXTURE_SMALL, tab_painter_textures, true)
+			tbx_width = new_textbox_integer()
+			tbx_height = new_textbox_integer()
 			}
 			
 		toolproperties = new_tab(setting_tool_properties_location, false,null)
 			toolproperties.closeable = false
 		with(toolproperties){
-			properties = tab_add_category("properties", icons.BRUSH, tab_tool_properties, false)	
+			properties = tab_add_category("properties", icons.BRUSH, tab_tool_properties, true)	
 					with (properties)
 		{
 			tbx_opacity = new_textbox_integer()

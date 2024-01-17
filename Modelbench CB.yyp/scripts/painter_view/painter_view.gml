@@ -27,7 +27,7 @@ zoom += (targetzoom - zoom) / max(1, 8 / delta)
 			offx += (targetoffx - offx) / max(1, 8 / delta)
 			offy += (targetoffy - offy) / max(1, 8 / delta)
 
-if(mouse_check_button(mb_middle)){
+if(mouse_check_button(mb_middle) && content_mouseon){
 	offx -= mouse_dx/ zoom;
 	offy -= mouse_dy / zoom;
 		targetoffx -= mouse_dx / zoom;

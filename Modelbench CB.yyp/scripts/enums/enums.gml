@@ -319,6 +319,8 @@ function enums()
 		// Mine-imator
 		OPEN_POSITION_TAB,
 		DEPTH,
+		IK_TARGET,
+		IK_ANGLE_TARGET,
 		
 		// Non-editable
 		BEND,
@@ -728,7 +730,8 @@ function enums()
 		PAINT_BRUSH,
 		COLOR_PICKER,
 		ERASER,
-		FILL_TOOL
+		FILL_TOOL,
+		SWITCH
 	}
 	
 	enum e_paint{
