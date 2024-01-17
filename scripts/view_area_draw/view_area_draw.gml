@@ -41,7 +41,7 @@ if (resizemouseon)
 if (resizemouseon || window_busy = "uveditorresize")
 {
 	// Add shortcut
-	ds_list_clear(shortcut_bar_list)
+	if(shortcut_bar_list)
 	shortcut_bar_add(null, e_mouse.LEFT_DRAG, "resizearea")
 }
 
