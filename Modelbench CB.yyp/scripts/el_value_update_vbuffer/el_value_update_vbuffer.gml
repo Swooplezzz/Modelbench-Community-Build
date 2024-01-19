@@ -23,6 +23,7 @@ function el_value_update_vbuffer(vid)
 		case e_value.BEND_OFFSET:
 		case e_value.BEND_SIZE_CUSTOM:
 		case e_value.BEND_SIZE:
+		case e_value.BEND_DETAIL:
 		case e_value.BEND_PART:
 		case e_value.BEND_AXIS_X:
 		case e_value.BEND_AXIS_Y:

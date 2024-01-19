@@ -328,6 +328,7 @@
     {"name":"shader_hue","order":11,"path":"shaders/shader_hue/shader_hue.yy",},
     {"name":"history_restore_el","order":13,"path":"scripts/history_restore_el/history_restore_el.yy",},
     {"name":"history_restore_tex","order":15,"path":"scripts/history_restore_tex/history_restore_tex.yy",},
+    {"name":"action_el_bend_detail","order":24,"path":"scripts/action_el_bend_detail/action_el_bend_detail.yy",},
     {"name":"history_save_el_select","order":1,"path":"scripts/history_save_el_select/history_save_el_select.yy",},
     {"name":"history_save_var","order":3,"path":"scripts/history_save_var/history_save_var.yy",},
     {"name":"history_save_var_start","order":5,"path":"scripts/history_save_var_start/history_save_var_start.yy",},

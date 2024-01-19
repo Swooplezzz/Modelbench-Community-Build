@@ -161,6 +161,7 @@ function app_startup_interface_tabs()
 			tbx_offset = new_textbox_ndecimals()
 			tbx_end_offset = new_textbox_ndecimals()
 			tbx_size = new_textbox_decimals()
+			tbx_detail = new_textbox_decimals()
 			
 			tbx_min[0] = new_textbox_ndecimals()
 			tbx_min[0].suffix = "°"

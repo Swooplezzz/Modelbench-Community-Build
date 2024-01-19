@@ -37,8 +37,8 @@ if(sprite_exists(res_edit.sprite))
 texspr = sprite_duplicate(res_edit.sprite)
 
 surface_set_target(alphasurf){
-shader_set(shader_alphamask)
 draw_clear(c_black)
+shader_set(shader_alphamask)
 alphafix
 draw_sprite(texspr,0,0,0)
 gpu_set_blendmode(bm_normal)

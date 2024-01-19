@@ -114,16 +114,25 @@ function model_load_part(map, root)
 			
 			// Size
 			bend_size = value_get_real(bendmap[?"size"], null)
+			bend_detail = value_get_real(bendmap[?"detail"], null)
 			
 			if (bend_size != null)
 			{
 				value[e_value.BEND_SIZE_CUSTOM] = true
 				value[e_value.BEND_SIZE] = bend_size
+
 			}
 			else
 			{
 				value[e_value.BEND_SIZE_CUSTOM] = false
 				value[e_value.BEND_SIZE] = 4
+
+			}
+			if(bend_detail != null){
+				value[e_value.BEND_DETAIL] = bend_detail
+			}
+			else{
+				value[e_value.BEND_DETAIL] = 1
 			}
 			
 			// Inherit bend angle(s)
@@ -319,6 +328,7 @@ function model_load_part(map, root)
 			
 			value[e_value.BEND_SIZE_CUSTOM] = false
 			value[e_value.BEND_SIZE] = 4
+			value[e_value.BEND_DETAIL] = 1
 			value[e_value.INHERIT_BEND] = false
 			
 			value[e_value.BEND_PART] = e_part.RIGHT

@@ -92,5 +92,9 @@ function tab_element_editor_bend()
 		tab_control_dragger()
 		draw_dragger("elementeditorbendsize", dx, dy, dragger_width, el_edit.value[e_value.BEND_SIZE], 0.1, snap_min, no_limit, 4, snap_min, element_editor.bend.tbx_size, action_el_bend_size, null, true, !el_edit.value[e_value.BEND])
 		tab_next()
+		
+		tab_control_dragger()
+		draw_dragger("elementeditorbenddetail", dx, dy, dragger_width, el_edit.value[e_value.BEND_DETAIL], 1, 1, no_limit, 1, 1, element_editor.bend.tbx_detail, action_el_bend_detail, null, true, !el_edit.value[e_value.BEND])
+		tab_next()
 	}
 }

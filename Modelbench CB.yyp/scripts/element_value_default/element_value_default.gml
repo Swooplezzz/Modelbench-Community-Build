@@ -32,6 +32,7 @@ function element_value_default(vid)
 		case e_value.BEND_Z_MAX: return 180
 		case e_value.BEND_PART: return e_part.UPPER
 		case e_value.BEND_SIZE: return 4
+		case e_value.BEND_DETAIL: return 1
 		
 		// Shape UV
 		case e_value.UV_X:

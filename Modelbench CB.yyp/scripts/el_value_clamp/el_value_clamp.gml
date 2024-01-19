@@ -50,6 +50,7 @@ function el_value_clamp()
 		case e_value.SCA_Z: return clamp(val, snap_min, world_size)
 		
 		case e_value.BEND_SIZE: return clamp(val, 0, no_limit)
+		case e_value.BEND_DETAIL: return clamp(val, 1, 16)
 		
 		case e_value.MIX_AMOUNT:
 		case e_value.OPACITY:

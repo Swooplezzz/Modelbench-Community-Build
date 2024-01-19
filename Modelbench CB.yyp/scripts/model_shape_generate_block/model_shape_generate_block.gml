@@ -118,7 +118,7 @@ function model_shape_generate_block(bend)
 	if ((bend_size != null && bend_size >= 1) && scale[segaxis] > .5)
 		detail /= scale[segaxis]
 	
-	bendsegsize = bendsize / detail;
+	bendsegsize = bendsize / (detail * bend_detail);
 	invangle = (bend_part = e_part.LOWER || bend_part = e_part.BACK || bend_part = e_part.LEFT)
 	
 	// Find start points/normals

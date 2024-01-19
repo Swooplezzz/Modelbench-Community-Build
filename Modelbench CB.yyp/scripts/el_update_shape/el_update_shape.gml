@@ -94,6 +94,7 @@ function el_update_shape()
 	bend_default_angle = other.bend_default_angle
 	bend_offset = other.bend_offset
 	bend_size = other.bend_size
+	bend_detail = other.bend_detail
 	bend_invert = other.bend_invert
 	
 	if (!vec3_equals(bend_default_angle, bend_default_angle_prev))

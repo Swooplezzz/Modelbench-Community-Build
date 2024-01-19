@@ -14,8 +14,10 @@ function model_save_bend()
 	if (value[e_value.BEND_END_OFFSET] != 0)
 		json_save_var("end_offset", value[e_value.BEND_END_OFFSET])
 	
-	if (value[e_value.BEND_SIZE_CUSTOM])
+	if (value[e_value.BEND_SIZE_CUSTOM]){
 		json_save_var("size", value[e_value.BEND_SIZE])
+		json_save_var("detail", value[e_value.BEND_DETAIL])
+	}
 	
 	if (value[e_value.INHERIT_BEND])
 		json_save_var("inherit_bend", value[e_value.INHERIT_BEND])

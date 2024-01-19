@@ -527,6 +527,7 @@
     {"id":{"name":"shader_hue","path":"shaders/shader_hue/shader_hue.yy",},},
     {"id":{"name":"history_restore_el","path":"scripts/history_restore_el/history_restore_el.yy",},},
     {"id":{"name":"history_restore_tex","path":"scripts/history_restore_tex/history_restore_tex.yy",},},
+    {"id":{"name":"action_el_bend_detail","path":"scripts/action_el_bend_detail/action_el_bend_detail.yy",},},
     {"id":{"name":"history_save_el_select","path":"scripts/history_save_el_select/history_save_el_select.yy",},},
     {"id":{"name":"history_save_var","path":"scripts/history_save_var/history_save_var.yy",},},
     {"id":{"name":"history_save_var_start","path":"scripts/history_save_var_start/history_save_var_start.yy",},},

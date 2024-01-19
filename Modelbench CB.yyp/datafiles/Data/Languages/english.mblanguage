@@ -542,8 +542,10 @@
       "offset": "Joint offset",
       "endoffset": "Joint end",
       "customsize": "Custom bend size",
+      "customdetail": "Custom bend detail",
       "customsizehelp": "Allows for a custom bend size. This part's bending will ignore program bend styles.",
       "size": "Size",
+      "detail": "Detail",
       "part": "Part",
       "part/": {
         "right": "Right",

@@ -7,7 +7,7 @@ function tab_control_textfield_group()
 	var label, height, stack;
 	if (argument_count > 1)
 		stack = argument[1]
-	else stack = false
+	else stack = true
 	
 	if (argument_count > 0)
 		label = argument[0]
