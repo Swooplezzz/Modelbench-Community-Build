@@ -1019,6 +1019,7 @@
     {"name":"string_remove_newline","order":13,"path":"scripts/string_remove_newline/string_remove_newline.yy",},
     {"name":"tab_element_editor_transform","order":20,"path":"scripts/tab_element_editor_transform/tab_element_editor_transform.yy",},
     {"name":"shader_premalphacolmask","order":18,"path":"shaders/shader_premalphacolmask/shader_premalphacolmask.yy",},
+    {"name":"painter_transform","order":21,"path":"scripts/painter_transform/painter_transform.yy",},
     {"name":"string_width_font","order":15,"path":"scripts/string_width_font/string_width_font.yy",},
     {"name":"string_height_font","order":17,"path":"scripts/string_height_font/string_height_font.yy",},
     {"name":"string_wrap","order":19,"path":"scripts/string_wrap/string_wrap.yy",},

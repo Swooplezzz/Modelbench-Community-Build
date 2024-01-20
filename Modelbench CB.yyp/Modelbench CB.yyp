@@ -1234,6 +1234,7 @@
     {"id":{"name":"string_remove_newline","path":"scripts/string_remove_newline/string_remove_newline.yy",},},
     {"id":{"name":"tab_element_editor_transform","path":"scripts/tab_element_editor_transform/tab_element_editor_transform.yy",},},
     {"id":{"name":"shader_premalphacolmask","path":"shaders/shader_premalphacolmask/shader_premalphacolmask.yy",},},
+    {"id":{"name":"painter_transform","path":"scripts/painter_transform/painter_transform.yy",},},
     {"id":{"name":"action_painter_opacity","path":"scripts/action_painter_opacity/action_painter_opacity.yy",},},
     {"id":{"name":"string_width_font","path":"scripts/string_width_font/string_width_font.yy",},},
     {"id":{"name":"string_height_font","path":"scripts/string_height_font/string_height_font.yy",},},

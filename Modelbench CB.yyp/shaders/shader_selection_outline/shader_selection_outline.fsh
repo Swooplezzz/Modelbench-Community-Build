@@ -37,6 +37,6 @@ void main()
 		if (checkHighlight(size))
 			gl_FragColor = vec4( vec3(1.0)* blackOrWhitey, 1.0) ;
 		else
-			gl_FragColor =  vec4(uColor.xyz, (0.35+sin(uTime * 0.1) *0.05)) ;
+			gl_FragColor =  vec4(uColor.xyz, (uColor.a+sin(uTime * 0.1) *0.05)) ;
 	}
 }

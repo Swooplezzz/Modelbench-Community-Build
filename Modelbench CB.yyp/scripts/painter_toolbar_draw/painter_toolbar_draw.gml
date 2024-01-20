@@ -86,5 +86,15 @@ function painter_toolbar_draw(barx, bary, barw, barh)
 		paint_tool_selected = e_paint.BOX_SELECT
 	draw_set_alpha(1)
 	
+				if (dw > dh)
+		dx += buttonsize
+	else
+		dy += buttonsize
+		
+			tip_set_keybind(e_keybind.SELECT_TRANSFORM)
+	if(draw_button_icon("tooltransform", dx, dy, 28, 28, paint_tool_selected = e_paint.TRANSFORM, icons.TRANSFORM, null, false, "tooltippainttransform"))
+		paint_tool_selected = e_paint.TRANSFORM
+	draw_set_alpha(1)
+	
 	tip_force_left = false
 }

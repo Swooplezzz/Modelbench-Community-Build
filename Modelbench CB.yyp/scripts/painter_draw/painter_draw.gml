@@ -26,16 +26,17 @@ function painter_draw(mousexsnap,mouseysnap,inbounds){
 draw_sprite_ext(finalspr, 0, scale_offset_x, scale_offset_y, zoom, zoom,0, c_white, 1)
 
 
+
 draw_surface_ext(drawsurf, scale_offset_x, scale_offset_y, zoom, zoom,0, c_white, paint_opacity)
 			draw_surface_ext(selectionsurf, scale_offset_x, scale_offset_y, zoom, zoom,0, c_white, 0.25)
-if(selection_active)
+if(selection_active && paint_tool_selected != e_paint.TRANSFORM)
 {
 			gpu_set_texrepeat(false)
 			render_shader_obj = shader_map[?shader_selection_outline]
 			with (render_shader_obj)
 				shader_use()
 				
-			shader_border_set(c_accent, 1, texturewidth * zoom, textureheight * zoom)
+			shader_border_set(c_accent, 1, texturewidth * zoom, textureheight * zoom, 0.35)
 			
 			draw_surface_ext(selectionsurf, scale_offset_x, scale_offset_y, zoom, zoom,0, c_white, 1.0)
 
@@ -44,6 +45,9 @@ if(selection_active)
 			
 			gpu_set_texrepeat(true)
 }
+
+if(paint_tool_selected = e_paint.TRANSFORM)
+painter_transform(mousexsnap,mouseysnap);
 
 if(inbounds){
 //Draw Cursor
@@ -68,8 +72,10 @@ else if(paint_tool_selected = e_paint.PICK || paint_tool_selected = e_paint.FILL
 
 //draw_rectangle_color( ((mousexsnap + .5)* zoom) + scale_offset_x, ((mouseysnap + .5) *zoom) + scale_offset_y,((mousexsnap + 1.5)* zoom) + scale_offset_x, ((mouseysnap + 1.5) *zoom) + scale_offset_y,  c_white, c_white,c_white, c_white,true);
 if(inbounds){
-		mouse_cursor = cr_none
-		window_set_cursor(mouse_cursor)
+if(!mouse_left &&paint_tool_selected != e_tool.TRANSFORM){
+mouse_cursor = cr_none
+window_set_cursor(mouse_cursor)
+}
 
 switch(paint_tool_selected){
 case e_paint.BRUSH:

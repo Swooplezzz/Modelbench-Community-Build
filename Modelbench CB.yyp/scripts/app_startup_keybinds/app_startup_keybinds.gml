@@ -78,6 +78,7 @@ function app_startup_keybinds()
 		PICK,
 		FILL,
 		BOX_SELECT,
+		SELECT_TRANSFORM,
 		BRUSH_WIDTH,
 		
 		VIEW_PTR_GRID,
@@ -150,6 +151,7 @@ function app_startup_keybinds()
 	keybind_register("painterpick", e_keybind.PICK, keybind_new("R", true, false), false, true)
 	keybind_register("painterfilltool", e_keybind.FILL, keybind_new("F", true, false), false, true)
 	keybind_register("painterboxselect", e_keybind.BOX_SELECT, keybind_new("B", false, false), false, true)
+	keybind_register("painterboxtransform", e_keybind.SELECT_TRANSFORM, keybind_new("T", false, false), false, true)
 	keybind_register("painterbrushwidth", e_keybind.BRUSH_WIDTH, keybind_new("F", false, false), false, true)
 	
 	keybind_register("painterviewgrid", e_keybind.VIEW_PTR_GRID, keybind_new("G", false, false), false, true)

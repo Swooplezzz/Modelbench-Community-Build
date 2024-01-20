@@ -36,6 +36,7 @@ drawsurf = surface_create(texturewidth, textureheight)
 alphasurf = surface_create(texturewidth, textureheight)
 colorsurf = surface_create(texturewidth, textureheight)
 selectionsurf = surface_create(texturewidth, textureheight)
+transformsurf = surface_create(texturewidth, textureheight)
 offx = 0
 offy = 0
 targetoffx = 0

@@ -740,6 +740,7 @@ function enums()
 	   ERASE,
 	   PICK,
 	   FILL,
-	   BOX_SELECT
+	   BOX_SELECT,
+	   TRANSFORM
 	}
 }
