@@ -48,6 +48,7 @@ finalspr = sprite_create_from_surface(colorsurf, 0,0,surface_get_width(colorsurf
 alphaspr = sprite_create_from_surface(alphasurf, 0,0,surface_get_width(alphasurf), surface_get_height(alphasurf), false, false, 0, 0)
 selectionspr = sprite_create_from_surface(selectionsurf, 0,0,surface_get_width(selectionsurf), surface_get_height(selectionsurf), false, false, 0, 0)
 transformspr = sprite_create_from_surface(selectionsurf, 0,0,surface_get_width(selectionsurf), surface_get_height(selectionsurf), false, false, 0, 0)
+seltrnspr = sprite_create_from_surface(selectionsurf, 0,0,surface_get_width(selectionsurf), surface_get_height(selectionsurf), false, false, 0, 0)
 targetzoom = 5
 
 zoom = targetzoom
@@ -60,6 +61,8 @@ mouse_y_prev = window_mouse_get_y() - scale_offset_y
 selection_pos = vec2(0,0)
 selection_topleft = vec2(0,0)
 selection_btmright = vec2(0,0)
+selection_topleft_prev = vec2(0,0)
+selection_btmright_prev = vec2(0,0)
 selectionsize = vec2(selection_btmright[0]-selection_topleft[0],selection_btmright[1]-selection_topleft[1]);
 selection_active = false
 }

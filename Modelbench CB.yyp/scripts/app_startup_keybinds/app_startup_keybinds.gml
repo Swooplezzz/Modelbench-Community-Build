@@ -83,6 +83,8 @@ function app_startup_keybinds()
 		
 		VIEW_PTR_GRID,
 		VIEW_PTR_GUIDES,
+		COPY,
+		PASTE,
 
 
 		
@@ -145,6 +147,9 @@ function app_startup_keybinds()
 	keybind_register("freepos", e_keybind.FREE_POS, keybind_new("J", false, false), false, true)
 	keybind_register("freerot", e_keybind.FREE_ROT, keybind_new("K", false, false), false, true)
 	keybind_register("freesca", e_keybind.FREE_SCA, keybind_new("N", false, false), false, true)
+	
+	keybind_register("copy", e_keybind.COPY, keybind_new("C", true, false), false, true)
+	keybind_register("paste", e_keybind.PASTE, keybind_new("V", true, false), false, true)
 	
 	keybind_register("painterbrush", e_keybind.BRUSH, keybind_new("B", true, false), false, true)
 	keybind_register("paintererase", e_keybind.ERASE, keybind_new("E", true, false), false, true)

@@ -74,5 +74,6 @@ z_snap_positive = false;
 }
 
 camera_set_from()
+
 }
 

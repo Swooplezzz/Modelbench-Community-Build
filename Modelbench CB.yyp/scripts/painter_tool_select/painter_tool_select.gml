@@ -63,7 +63,7 @@ if((mouse_check_button_released(mb_left) || mouse_check_button_released(mb_right
 	selectionspr = sprite_create_from_surface(selectionsurf, 0,0, surface_get_width(selectionsurf), surface_get_height(selectionsurf), false, false, 0,0)
 	selectionsize = vec2(selection_btmright[0]-selection_topleft[0],selection_btmright[1]-selection_topleft[1]);
 	if(selection_active){
-	var tempsurf = surface_create(selectionsize[X], selectionsize[Y]);
+			var tempsurf = surface_create(selectionsize[X], selectionsize[Y]);
 	surface_set_target(tempsurf){
 	draw_sprite(finalspr,0,-selection_topleft[X], -selection_topleft[Y]);
    gpu_set_blendmode(bm_subtract)
@@ -71,12 +71,29 @@ if((mouse_check_button_released(mb_left) || mouse_check_button_released(mb_right
    draw_surface(selectionsurf,-selection_topleft[X], -selection_topleft[Y])
    gpu_set_blendmode(bm_normal)
 	}
+
 	surface_reset_target()
 	if(sprite_exists(transformspr))
 	sprite_delete(transformspr)
-	transformspr = sprite_create_from_surface(tempsurf,0,0,selectionsize[X],selectionsize[Y],false,false,0,0);
+	transformspr = sprite_create_from_surface(tempsurf,0, 0,selectionsize[X],selectionsize[Y],false,false,0,0);
 	surface_free(tempsurf)
+	surface_set_target(drawsurf){
+draw_clear(c_black)
+gpu_set_blendmode(bm_subtract)
+draw_set_color(c_black)
+draw_surface(selectionsurf,0,0)
+gpu_set_blendmode(bm_normal)
+}
+surface_reset_target()
+if(sprite_exists(seltrnspr))
+sprite_delete(seltrnspr)
+seltrnspr = sprite_create_from_surface(drawsurf,selection_topleft[X],selection_topleft[Y],selectionsize[X],selectionsize[Y],false,false,0,0)
+	surface_set_target(drawsurf){
+		draw_clear_alpha(c_black,0)
 	}
+	surface_reset_target()
+}
+
 }
 
 	if(keybinds[e_keybind.SELECT_ALL].pressed && content_mouseon){
