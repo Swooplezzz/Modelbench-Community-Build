@@ -34,6 +34,8 @@ function model_save_shape()
 	
 	if (value[e_value.TEX_MIRROR])
 		json_save_var_bool("texture_mirror", true)
+	if (value[e_value.TEX_MIRROR_X])
+		json_save_var_bool("texture_mirror_y", true)
 	
 	if (value[e_value.INVERT])
 		json_save_var_bool("invert", true)

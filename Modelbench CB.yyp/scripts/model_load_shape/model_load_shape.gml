@@ -82,6 +82,7 @@ function model_load_shape(map)
 		
 		// Mirror (optional)
 		value[e_value.TEX_MIRROR] = value_get_real(map[?"texture_mirror"], false)
+		value[e_value.TEX_MIRROR_X] = value_get_real(map[?"texture_mirror_y"], false)
 		
 		// Invert (optional)
 		value[e_value.INVERT] = value_get_real(map[?"invert"], false)

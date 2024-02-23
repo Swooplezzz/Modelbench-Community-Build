@@ -42,20 +42,7 @@ function draw_painter_color_editor(name, script, color){
 		paintercolorpicker.value_name = name
 		paintercolorpicker.value_script = script
 		
-		paintercolorpicker.def = c_black
-		paintercolorpicker.color = color
-		paintercolorpicker.red = color_get_red(color)
-		paintercolorpicker.green = color_get_green(color)
-		paintercolorpicker.blue = color_get_blue(color)
-		
-		paintercolorpicker.hue = color_get_hue(color)
-		paintercolorpicker.saturation = color_get_saturation(color)
-		paintercolorpicker.brightness = color_get_value(color)
-		
-		paintercolorpicker.tbx_red.text = string(paintercolorpicker.red)
-		paintercolorpicker.tbx_green.text = string(paintercolorpicker.green)
-		paintercolorpicker.tbx_blue.text = string(paintercolorpicker.blue)
-		paintercolorpicker.tbx_hexadecimal.text = color_to_hex(color)
+
 	
 	draw_sprite_general(spr_colorpicker, 0, 0, 0, 192, 192, bx, by, 1, 1, 0, c_white, make_color_hsv(paintercolorpicker.hue, 255, 255), make_color_hsv(paintercolorpicker.hue, 255, 255), c_white, draw_get_alpha())
 	draw_image(spr_colorpicker_cursor, 0, bx + (bw * (paintercolorpicker.saturation/255)), by + (bh * (1 - (paintercolorpicker.brightness/255))), 1, 1, c_white, 1)

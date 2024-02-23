@@ -31,7 +31,7 @@ function tab_element_editor_mineimator()
 	//tab_control_menu(32)
 	//draw_button_menu("elementeditoriktarget", e_menu.LIST, dx, dy, dw, 32, value, text, action_el_ik_target, false)
 	//tab_next()
-	//if (el_edit.value[e_value.IK_ANGLE_TARGET] != 0)
+	//if (el_edit.value[e_value.IK_ANGLE_TARGET] != null)
 	//{
 	//	value = el_edit.value[e_value.IK_ANGLE_TARGET]
 	//	text = value.name
@@ -42,7 +42,7 @@ function tab_element_editor_mineimator()
 	//	text = text_get("elementeditornopart")
 	//}
 
-	tab_control_menu(32)
-	draw_button_menu("elementeditorikangle", e_menu.LIST, dx, dy, dw, 32, value, text, action_el_ik_angle_target, false)
-	tab_next()
+	//tab_control_menu(32)
+	//draw_button_menu("elementeditorikangle", e_menu.LIST, dx, dy, dw, 32, value, text, action_el_ik_angle_target, false)
+	//tab_next()
 }

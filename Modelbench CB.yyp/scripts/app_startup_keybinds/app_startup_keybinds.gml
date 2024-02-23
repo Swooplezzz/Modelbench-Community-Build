@@ -85,6 +85,7 @@ function app_startup_keybinds()
 		VIEW_PTR_GUIDES,
 		COPY,
 		PASTE,
+		CUT,
 
 
 		
@@ -150,12 +151,13 @@ function app_startup_keybinds()
 	
 	keybind_register("copy", e_keybind.COPY, keybind_new("C", true, false), false, true)
 	keybind_register("paste", e_keybind.PASTE, keybind_new("V", true, false), false, true)
+	keybind_register("cut", e_keybind.CUT, keybind_new("X", true, false), false, true)
 	
-	keybind_register("painterbrush", e_keybind.BRUSH, keybind_new("B", true, false), false, true)
-	keybind_register("paintererase", e_keybind.ERASE, keybind_new("E", true, false), false, true)
-	keybind_register("painterpick", e_keybind.PICK, keybind_new("R", true, false), false, true)
+	keybind_register("painterbrush", e_keybind.BRUSH, keybind_new("B", false, false), false, true)
+	keybind_register("paintererase", e_keybind.ERASE, keybind_new("E", false, false), false, true)
+	keybind_register("painterpick", e_keybind.PICK, keybind_new("R", false, false), false, true)
 	keybind_register("painterfilltool", e_keybind.FILL, keybind_new("F", true, false), false, true)
-	keybind_register("painterboxselect", e_keybind.BOX_SELECT, keybind_new("B", false, false), false, true)
+	keybind_register("painterboxselect", e_keybind.BOX_SELECT, keybind_new("S", false, false), false, true)
 	keybind_register("painterboxtransform", e_keybind.SELECT_TRANSFORM, keybind_new("T", false, false), false, true)
 	keybind_register("painterbrushwidth", e_keybind.BRUSH_WIDTH, keybind_new("F", false, false), false, true)
 	

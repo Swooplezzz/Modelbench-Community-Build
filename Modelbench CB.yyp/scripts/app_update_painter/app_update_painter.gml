@@ -2,7 +2,6 @@
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 function app_update_painter(){
 if(painter_update_spr = true && res_edit != null){
-	show_debug_message(true)
 if(sprite_exists(res_edit.sprite))
 sprite_delete(res_edit.sprite)
 res_edit.sprite = sprite_duplicate(finalspr)

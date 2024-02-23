@@ -5,8 +5,6 @@ function view_control_move_free(view)
 {
 	var mat, len;
 	
-	show_debug_message(cam_from)
-	show_debug_message(el_edit.world_pos)
 	
 	
 	len = point3D_distance(cam_from, el_edit.world_pos) * view_3d_control_size * view_control_ratio

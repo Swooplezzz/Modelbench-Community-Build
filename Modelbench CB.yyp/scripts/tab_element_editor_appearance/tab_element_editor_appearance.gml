@@ -16,6 +16,12 @@ function tab_element_editor_appearance()
 	draw_checkbox("elementeditormirrortexture", dx, dy, el_edit.value[e_value.TEX_MIRROR], action_el_mirror_texture)
 	tab_next()
 	
+	if(el_edit.type = "block"){
+	tab_control_checkbox()
+	draw_checkbox("elementeditormirrorxtexture", dx, dy, el_edit.value[e_value.TEX_MIRROR_X], action_el_mirror_y_texture)
+	tab_next()
+	}
+	
 	if (setting_feature_set = e_features.MIMODEL)
 	{
 		tab_control_checkbox()

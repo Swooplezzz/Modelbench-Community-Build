@@ -26,6 +26,7 @@ y_snap_positive = false;
 
 
 				if(!snapped_z){
+						target_Focus =  point3D(0, 0 , 25)
 						//zoom_goal = 100
 	z_snap_positive = false
 	}
@@ -38,7 +39,7 @@ render_proj_mode = 1;
 	if(!z_snap_positive && dir != "N"){
 				
 				done_snapping = false;
-	target_Focus =  point3D(0, 0 , 25)
+	target_Focus =  point3D(0, 0 , focus[Z])
 	
 	var notClockwise = !x_positive
 
@@ -54,7 +55,7 @@ render_proj_mode = 1;
 	else{
 				done_snapping = false;
 
-	target_Focus =  point3D(0, 0 , 25)
+	target_Focus =  point3D(0, 0 , focus[Z])
 
 	var notClockwise = x_positive
 

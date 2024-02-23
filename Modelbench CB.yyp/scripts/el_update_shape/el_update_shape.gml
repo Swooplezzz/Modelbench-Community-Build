@@ -47,6 +47,7 @@ function el_update_shape()
 	
 	// Shape appearance
 	texture_mirror = value[e_value.TEX_MIRROR]
+	texture_mirror_y = value[e_value.TEX_MIRROR_X]
 	invert = value[e_value.INVERT]
 	hide_back = value[e_value.HIDE_BACK]
 	hide_front = value[e_value.HIDE_FRONT]

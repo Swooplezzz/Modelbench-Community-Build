@@ -8,5 +8,5 @@ color_list: array_create(0)
 }
 
 ds_list_add(pallette_list, struct)
-pallettes_save()
+//pallettes_save()
 }

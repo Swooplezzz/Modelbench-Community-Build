@@ -33,6 +33,11 @@ function toolbar_draw()
 	toolbar_draw_button("toolbarview", dx, dy, capwid)
 	dx += capwid + padding
 	
+	if(program_mode = e_mode.TEXTURING){
+	capwid = string_width(text_get("toolbaradjust")) + 16
+	toolbar_draw_button("toolbaradjust", dx, dy, capwid)
+	dx += capwid + padding
+	}
 	capwid = string_width(text_get("toolbarhelp")) + 16
 	toolbar_draw_button("toolbarhelp", dx, dy, capwid)
 	dx += capwid + padding

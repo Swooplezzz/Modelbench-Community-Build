@@ -59,13 +59,27 @@ colorspr = sprite_create_from_surface(colorsurf,0,0,texturewidth, textureheight,
 alphaspr = sprite_create_from_surface(alphasurf, 0,0,surface_get_width(alphasurf), surface_get_height(alphasurf), false, false, 0, 0)
 selectionspr = sprite_create_from_surface(selectionsurf, 0,0,surface_get_width(selectionsurf), surface_get_height(selectionsurf), false, false, 0, 0)
 targetzoom = 5
-painter_history_pop()
-painter_history_push()
-painter_history[0] = sprite_duplicate(texspr);
-painter_history_limit()
+
+painter_history_set("painting", texspr, selectionspr, transformspr)
+
 zoom = targetzoom
 scale_offset_x= window_get_width() / 2 - (texturewidth*zoom /2 )
 scale_offset_y = window_get_height() / 2 - (texturewidth*zoom /2 )
 
+		paintercolorpicker.def = c_black
+		paintercolorpicker.color = paint_primary_color
+		paintercolorpicker.red = color_get_red(paint_primary_color)
+		paintercolorpicker.green = color_get_green(paint_primary_color)
+		paintercolorpicker.blue = color_get_blue(paint_primary_color)
+		
+		paintercolorpicker.hue = color_get_hue(paint_primary_color)
+		paintercolorpicker.saturation = color_get_saturation(paint_primary_color)
+		paintercolorpicker.brightness = color_get_value(paint_primary_color)
+		
+		paintercolorpicker.tbx_red.text = string(paintercolorpicker.red)
+		paintercolorpicker.tbx_green.text = string(paintercolorpicker.green)
+		paintercolorpicker.tbx_blue.text = string(paintercolorpicker.blue)
+		paintercolorpicker.tbx_hexadecimal.text = color_to_hex(paint_primary_color)
+		
 selection_active = false
 }

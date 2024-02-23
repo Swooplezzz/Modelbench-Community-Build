@@ -2,5 +2,5 @@
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 function action_painter_recent_pick_color(value){
 	paint_primary_color = value
-
+	paintercolorpicker_update(null, value, true)
 }

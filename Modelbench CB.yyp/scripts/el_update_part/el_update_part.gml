@@ -146,7 +146,7 @@ function el_update_part()
 	
 	// Set world position
 	world_pos = point3D(matrix[MAT_X], matrix[MAT_Y], matrix[MAT_Z])
-	show_debug_message(matrix);
+
 
 	if (shape_list != null)
 	{

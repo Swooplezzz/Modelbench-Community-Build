@@ -12,6 +12,12 @@ paint_tolerance = .05
 filling = false
 painter_update_spr = true
 fillarr = array_create(0);
+
+//Adjustments
+hue=0;
+sat=100;
+val=0;
+editing_hue = false;
 painter_main_color = 0;
 painter_editing_color = 0;
 painter_pallette_id = -1;
@@ -19,6 +25,8 @@ painter_pallette_col = -1;
 pallette_list = ds_list_create()
 recentcolor_list = array_create(0)
 
+
+//History
 globalvar painter_history_data;
 painter_history[0] = null
 painter_history_amount = 0
@@ -27,7 +35,7 @@ painter_history_undo = 0
 painter_history_redo = 0
 painter_history_data = null
 
-pallettes_load()
+//pallettes_load()
 
 texturewidth = 16
 textureheight = 16
@@ -59,10 +67,12 @@ mouse_x_prev = window_mouse_get_x() - scale_offset_x
 mouse_y_prev = window_mouse_get_y() - scale_offset_y
 
 selection_pos = vec2(0,0)
+drawsize = vec2(0,0)
 selection_topleft = vec2(0,0)
 selection_btmright = vec2(0,0)
 selection_topleft_prev = vec2(0,0)
 selection_btmright_prev = vec2(0,0)
 selectionsize = vec2(selection_btmright[0]-selection_topleft[0],selection_btmright[1]-selection_topleft[1]);
 selection_active = false
+selection_moved = false
 }

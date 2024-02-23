@@ -1,7 +1,7 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "painter_get_final_sprite",
+  "name": "painter_create_finalspr",
   "isCompatibility": false,
   "isDnD": false,
   "parent": {

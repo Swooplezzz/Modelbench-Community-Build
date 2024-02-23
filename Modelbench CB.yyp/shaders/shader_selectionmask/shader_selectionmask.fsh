@@ -8,7 +8,8 @@ void main()
 {
 	
 vec4 Colour = v_vColour * texture2D( gm_BaseTexture, v_vTexcoord );
-	Colour.rgb = vec3(1.0);
 
-    gl_FragColor = Colour;
+Colour.rgba = vec4(1.0);
+	
+gl_FragColor = Colour;
 }

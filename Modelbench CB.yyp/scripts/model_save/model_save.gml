@@ -37,6 +37,7 @@ function model_save()
 	
 	model_save_start(fn)
 	model_save_children()
+	model_save_painter_pallettes()
 	model_save_done()
 	
 	ds_map_clear(save_name_count_map)

@@ -56,5 +56,5 @@ function model_load_model(map)
 			ds_list_add(part_list, part)
 	}
 	
-	ds_map_destroy(map)
+
 }

@@ -51,6 +51,7 @@ function shader_startup()
 		new_shader("shader_selection_outline")
 		//new_shader("shader_high_bevel")
 		new_shader("shader_hue")
+		new_shader("shader_huesat")
 		new_shader("shader_premalphacolmask")
 
 		
@@ -203,6 +204,7 @@ function shader_startup()
 		new_shader_uniform("uTexSize")
 		new_shader_uniform("uColor")
 		new_shader_uniform("uSize")
+		new_shader_uniform("uInvert")
 	}
 	with (shader_map[?shader_clip])
 	{
@@ -226,8 +228,12 @@ function shader_startup()
 	//}
 		with (shader_map[?shader_hue])
 	{
-		new_shader_uniform("uPosition")
-		new_shader_uniform("uPosition_s")
+		new_shader_uniform("u_Position")
+		new_shader_uniform("u_Position_s")
+	}		with (shader_map[?shader_huesat])
+	{
+		new_shader_uniform("u_Position")
+		new_shader_uniform("u_Position_s")
 	}
 	
 	return true

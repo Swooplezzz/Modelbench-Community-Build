@@ -77,7 +77,7 @@ colorspr = sprite_create_from_surface(colorsurf, 0,0,surface_get_width(colorsurf
 	draw_clear_alpha(c_black, 0)
 	}
 	surface_reset_target();
-	
+
 
 painter_update_spr = true;
 }

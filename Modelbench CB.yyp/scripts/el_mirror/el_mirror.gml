@@ -56,6 +56,10 @@ if(string_contains(mirrorAxis, "X")){
 			if(string_contains(mirrorAxis, "Texture"))
 			value[e_value.INVERT] = !value[e_value.INVERT] 
 		}
+		else{
+				if(string_contains(mirrorAxis, "Texture"))
+		value[e_value.TEX_MIRROR_X] = !value[e_value.TEX_MIRROR_X]
+		}
 		
 	}
 		if (type = "plane"){

@@ -23,6 +23,14 @@
     "texsize/": {
       "x": "W",
       "y": "H"
+    },
+    "adjustments/": {
+      "huesat": "Adjust hue/sat/val",
+      "brightcontrast": "Adjust brightness/contrast",
+      "hue": "Hue",
+      "sat": "Saturation",
+      "val": "Value",
+      "ok": "Ok"
     }
   },
   "colorpicker/": {
@@ -203,6 +211,11 @@
       "saveas": "Save model as...",
       "import": "Import model...",
       "exportobj": "Export model as .obj..."
+    },
+    "adjust": "Adjustments",
+    "adjust/": {
+      "huesat": "Hue / Saturation",
+      "brightcontrast": "Brightness / Contrast"
     },
     "edit": "Edit",
     "edit/": {
@@ -570,7 +583,8 @@
     "brightness": "Emissive",
     "inflate": "Inflate",
     "bend": "Bend",
-    "mirrortexture": "Mirror texture",
+    "mirrortexture": "Mirror texture Z",
+    "mirrorxtexture": "Mirror texture X",
     "invert": "Invert",
     "facecamera": "Face camera",
     "hover": "Hover",

@@ -69,6 +69,7 @@ function model_load_part(map, root)
 		value[e_value.OPEN_POSITION_TAB] = value_get_real(map[?"show_position"], false)
 		
 		//value[e_value.IK_ANGLE_TARGET] = save_id_find(value_get_string(map[?"ik_target"], null))
+		
 		//value[e_value.IK_TARGET] = save_id_find(value_get_string(map[?"ik_angle_target"], null))
 		
 		

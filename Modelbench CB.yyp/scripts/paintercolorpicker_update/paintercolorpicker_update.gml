@@ -1,4 +1,4 @@
-/// paintercolorpicker_update(control, color, gethsb)
+  /// paintercolorpicker_update(control, color, gethsb)
 /// @arg control
 /// @arg color
 /// @arg gethsb

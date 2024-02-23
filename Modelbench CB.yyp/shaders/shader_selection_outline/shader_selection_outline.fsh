@@ -2,6 +2,7 @@ uniform vec2 uTexSize;
 uniform vec4 uColor;
 uniform float uSize;
 uniform float uTime;
+uniform float uInvert;
 varying vec2 vTexCoord;
 varying vec4 v_vColour;
 
@@ -11,8 +12,14 @@ bool isHighlight(vec2 off)
 					vTexCoord.y + off.y * (1.0 / uTexSize.y));
 	if(pos.x > 1.0 || pos.y > 1.0 || pos.x < 0.0 || pos.y < 0.0)
 	return true;
-
+	
+	if(uInvert == 0.0)
 	return (texture2D(gm_BaseTexture, pos).a > 0.0);
+	else
+	return (texture2D(gm_BaseTexture, pos).a < 1.0);
+	
+	return false;
+
 }
 
 bool checkHighlight(float size)
@@ -30,7 +37,7 @@ void main()
 	}
 	
 	float size = uSize;
-	if (texture2D(gm_BaseTexture, vTexCoord).a > 0.0)
+	if ((texture2D(gm_BaseTexture, vTexCoord).a > 0.0 && uInvert == 0.0) || (texture2D(gm_BaseTexture, vTexCoord).a < 1.0 && uInvert == 1.0))
 		discard;
 	else
 	{

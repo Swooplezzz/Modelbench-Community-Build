@@ -299,6 +299,7 @@ function enums()
 		INFLATE,
 		BEND_SHAPE,
 		TEX_MIRROR,
+		TEX_MIRROR_X,
 		INVERT,
 		FACE_CAMERA,
 		HOVER,

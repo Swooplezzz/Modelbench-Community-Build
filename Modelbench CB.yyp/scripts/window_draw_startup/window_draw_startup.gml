@@ -142,6 +142,9 @@ function window_draw_startup()
 				recent_display_mode = "list"
 		}
 	}
+	//if(keyboard_check_pressed(vk_space)){
+	//popup_show(popup_whatsnew)
+	//}
 	// Show recent models
 	if (recent_list_amount > 0)
 	{
@@ -152,7 +155,7 @@ function window_draw_startup()
 		dx = (window_width / 2) - (dw / 2)
 		
 		// Recent models label
-		draw_label(text_get("startuprecentmodels"), dx, dy + 16, fa_left, fa_middle, c_accent, 1, font_heading)
+		draw_label(text_get("startuprecentmodels"), dx, dy + 16, fa_left, fa_top, c_accent, 1, font_heading)
 		dy += 72
 		
 		var listheight; 

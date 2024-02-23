@@ -259,7 +259,6 @@ function list_item_draw()
 	// Edit name
 	if (tab.color_editor.name_edit_element = item.value)
 	{
-		show_debug_message(true);
 		if (textbox_draw(tab.color_editor.tbx_name, xx + leftp, middley-8, width, height))
 		{
 			var name = item.value.filename;

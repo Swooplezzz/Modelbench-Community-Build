@@ -1,10 +1,11 @@
 // Script assets have changed for v2.3.0 see
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 function painter_update(view, cam){
-painter_update_surface(view, cam)
-var boxx, boxy, boxw, boxh;	
-painter_surf_require()
+	painter_update_surface(view, cam)
+	var boxx, boxy, boxw, boxh;	
+	painter_surf_require()
 // Calculate box
+
 #region Variables
 	boxx = view_area_x
 	boxy = view_area_y
@@ -16,7 +17,8 @@ painter_surf_require()
 	boxw = floor(boxw)
 	boxh = floor(boxh)
 	#endregion
-#macro alphafix gpu_set_blendmode_ext(bm_one, bm_inv_src_alpha);
+
+	#macro alphafix gpu_set_blendmode_ext(bm_one, bm_inv_src_alpha);
 painter_view();
 scale_offset_x = floor(boxx + (boxw / 2 - (texturewidth / 2 + offx) * zoom))
 scale_offset_y = floor(boxy + (boxh / 2 - (textureheight / 2 + offy) * zoom))
@@ -77,7 +79,7 @@ clip_begin(scale_offset_x, scale_offset_y, zoom*texturewidth, zoom*textureheight
 clip_end()
 #endregion
 
-painter_get_final_sprite(inbounds);
+painter_done(inbounds);
 
 painter_draw(mousexsnap,mouseysnap,inbounds);
 
@@ -85,6 +87,14 @@ mouse_x_prev = window_mouse_get_x() - scale_offset_x
 
 mouse_y_prev = window_mouse_get_y() - scale_offset_y
 
+if(selection_moved && paint_tool_selected != e_paint.TRANSFORM){
+	selection_btmright[X] = clamp(selection_btmright[X],0, texturewidth)
+	selection_btmright[Y]= clamp(selection_btmright[Y],0, textureheight)
+	selection_topleft[X] = clamp(selection_topleft[X],0, texturewidth)
+	selection_topleft[Y]= clamp(selection_topleft[Y],0, textureheight)
+	selectionsize = vec2(selection_btmright[0]-selection_topleft[0],selection_btmright[1]-selection_topleft[1]);
+	selection_moved = false;
+}
 
 render_set_culling(true)
 }

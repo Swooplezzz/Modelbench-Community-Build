@@ -14,7 +14,12 @@ function painter_history_pop(){
 					//with (obj_history_save)
 					//	if (hobj = other.id)
 					//		instance_destroy()
-					sprite_delete(id);
+					if(sprite_exists(id.sprite))
+					sprite_delete(id.sprite);
+					if(sprite_exists(id.selsprite))
+					sprite_delete(id.selsprite);
+					if(sprite_exists(id.trnsprite))
+					sprite_delete(id.trnsprite);
 				}
 			}
 			painter_history[h] = painter_history[h + painter_history_pos]

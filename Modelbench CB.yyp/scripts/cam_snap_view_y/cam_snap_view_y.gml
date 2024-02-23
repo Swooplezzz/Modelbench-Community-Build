@@ -27,7 +27,7 @@ z_snap_positive = false;
 
 
 			if(!snapped_y){
-	
+		target_Focus =  point3D(0, 0 , 25)
 		//zoom_goal = 100
 		y_snap_positive = false
 
@@ -40,7 +40,7 @@ render_proj_mode = 1;
 	if(!y_snap_positive && dir != "N"){
 		
 				done_snapping = false;
-	target_Focus =  point3D(0, 0 , 25)
+	target_Focus =  point3D(0, 0 , focus[Z])
 
 
 	target_angle_xy = angle_xy + (270-angle_xy+540)mod 360-180
@@ -54,7 +54,7 @@ render_proj_mode = 1;
 	}
 	else{
 				done_snapping = false;
-	target_Focus =  point3D(0, 0 , 25)
+	target_Focus =  point3D(0, 0 , focus[Z])
 
 
 	target_angle_xy = angle_xy + (270-angle_xy+540)mod 360-180

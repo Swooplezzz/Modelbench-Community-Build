@@ -86,6 +86,24 @@ function model_shape_generate_block(bend)
 	texdown1 = point2D_add(texdown4, point2D(0, texsizefix[Y]))
 	
 	// Mirror texture on X
+	if (texture_mirror_y)
+	{
+		// Switch east/west sides
+		var tmp1, tmp2, tmp3, tmp4;
+		tmp1 = texsouth1; tmp2 = texsouth2; tmp3 = texsouth3; tmp4 = texsouth1;
+		texsouth1 = texnorth2; texsouth2 = texnorth1; texsouth3 = texnorth4; texsouth4 = texnorth3;
+		texnorth1 = tmp2; texnorth2 = tmp1; texnorth3 = tmp4; texnorth4 = tmp3;
+		
+		tmp1 = texeast1; texeast1 = texeast2; texeast2 = tmp1
+		tmp1 = texeast3; texeast3 = texeast4; texeast4 = tmp1
+		tmp1 = texwest1; texwest1 = texwest2; texwest2 = tmp1
+		tmp1 = texwest3; texwest3 = texwest4; texwest4 = tmp1
+
+		tmp1 = texup1; texup1 = texup4; texup4 = tmp1
+		tmp1 = texup2; texup2 = texup3; texup3 = tmp1
+		tmp1 = texdown1; texdown1 = texdown4; texdown4 = tmp1
+		tmp1 = texdown2; texdown2 = texdown3; texdown3 = tmp1
+	}
 	if (texture_mirror)
 	{
 		// Switch east/west sides
@@ -302,8 +320,8 @@ function model_shape_generate_block(bend)
 				nn3 = vec3(0, 0, 1)
 				nn4 = vec3(0, 0, -1)
 				var toff = (segpos / size[X]) * texsizefix[X] * negate(texture_mirror);
-				ntexp1 = texsouth1[X] + toff // South/Above X
-				ntexp2 = texnorth2[X] - toff // North X
+				ntexp1 = texsouth1[X] + toff  * negate(texture_mirror_y)// South/Above X
+				ntexp2 = texnorth2[X] - toff * negate(texture_mirror_y)// North X
 				ntexp3 = texdown4[X] + toff // Below X
 				break
 			}
@@ -320,9 +338,9 @@ function model_shape_generate_block(bend)
 				nn3 = vec3(0, 0, 1)
 				nn4 = vec3(0, 0, -1)
 				var toff = (segpos / size[Y]) * texsizefix[Y];
-				ntexp1 = texeast2[X] - toff * negate(texture_mirror) // East X
-				ntexp2 = texwest1[X] + toff * negate(texture_mirror) // West X
-				ntexp3 = texup1[Y] + toff // Above/Below Y
+				ntexp1 = texeast2[X] - toff * negate(texture_mirror)// East X
+				ntexp2 = texwest1[X] + toff * negate(texture_mirror)// West X
+				ntexp3 = texup1[Y]  // Above/Below Y
 				break
 			}
 			
@@ -337,7 +355,7 @@ function model_shape_generate_block(bend)
 				nn2 = vec3(-1, 0, 0)
 				nn3 = vec3(0, 1, 0)
 				nn4 = vec3(0, -1, 0)
-				var toff = (segpos / size[Z]) * texsizefix[Z];
+				var toff = (segpos / size[Z]) * texsizefix[Z] 
 				ntexp1 = texsouth3[Y] - toff // East/South/West/North Y
 				break
 			}
@@ -425,6 +443,12 @@ function model_shape_generate_block(bend)
 				t2 = vec2(ntexp1, texup1[Y])
 				t3 = vec2(ntexp1, texup3[Y])
 				t4 = vec2(texp1, texup3[Y])
+				if(texture_mirror_y){
+				t1 = vec2(texp2, texup1[Y])
+				t2 = vec2(ntexp2, texup1[Y])
+				t3 = vec2(ntexp2, texup3[Y])
+				t4 = vec2(texp2, texup3[Y])	
+				}
 				vbuffer_add_triangle(p1, np1, np2, t1, t2, t3, n3, nn3, nn3, invert)
 				vbuffer_add_triangle(np2, p2, p1, t3, t4, t1, nn3, n3, n3, invert)
 				
@@ -463,6 +487,7 @@ function model_shape_generate_block(bend)
 				t2 = vec2(texup2[X], texp3)
 				t3 = vec2(texup2[X], ntexp3)
 				t4 = vec2(texup1[X], ntexp3)
+				
 				vbuffer_add_triangle(p2, p1, np1, t1, t2, t3, n3, n3, nn3, invert)
 				vbuffer_add_triangle(np1, np2, p2, t3, t4, t1, nn3, nn3, n3, invert)
 				

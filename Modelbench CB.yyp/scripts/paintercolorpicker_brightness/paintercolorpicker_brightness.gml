@@ -4,6 +4,6 @@
 
 function paintercolorpicker_brightness(value, add)
 {
-	colorpicker.brightness = min(255, colorpicker.brightness * add + value)
-	colorpicker_update(null, make_color_hsv(colorpicker.hue, colorpicker.saturation, colorpicker.brightness), false)
+	paintercolorpicker.brightness = min(255, paintercolorpicker.brightness * add + value)
+	paintercolorpicker_update(null, make_color_hsv(paintercolorpicker.hue, paintercolorpicker.saturation, paintercolorpicker.brightness), false)
 }

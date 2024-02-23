@@ -54,6 +54,7 @@ function el_value_update_vbuffer(vid)
 		
 		case e_value.INFLATE:
 		case e_value.TEX_MIRROR:
+		case e_value.TEX_MIRROR_X:
 		case e_value.INVERT:
 		case e_value.FACE_CAMERA:
 		case e_value.HOVER:

@@ -59,6 +59,7 @@ function model_load()
 	
 	// Load model
 	model_load_model(rootmap)
+	model_load_painter_pallettes(rootmap)
 	ds_map_destroy(rootmap)
 	
 	with (obj_model_element)

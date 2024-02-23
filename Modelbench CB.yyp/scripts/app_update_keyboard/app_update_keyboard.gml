@@ -46,6 +46,8 @@ function app_update_keyboard()
 			
 			if (keybinds[e_keybind.BOX_SELECT].pressed)
             paint_tool_selected = e_paint.BOX_SELECT
+			if (keybinds[e_keybind.SELECT_TRANSFORM].pressed)
+            paint_tool_selected = e_paint.TRANSFORM
 			if (keybinds[e_keybind.FILL].pressed)
             paint_tool_selected = e_paint.FILL
 			if (keybinds[e_keybind.VIEW_PTR_GRID].pressed)

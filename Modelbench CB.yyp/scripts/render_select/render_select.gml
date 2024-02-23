@@ -26,7 +26,7 @@ function render_select(surf)
 			with (render_shader_obj)
 				shader_set(shader)
 			
-			shader_border_set(c_white, 2, render_width, render_height, 1.0)
+			shader_border_set(c_white, 2, render_width, render_height, 1.0, 0)
 			
 			draw_surface_exists(hlsurf, 0, 0)
 			with (render_shader_obj)
