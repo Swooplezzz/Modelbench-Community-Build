@@ -1,147 +1,164 @@
-// Script assets have changed for v2.3.0 see
-// https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
-function painter_draw(mousexsnap,mouseysnap,inbounds){
+/// painter_draw(x, y, inbounds)
+/// @arg x
+/// @arg y
+/// @arg inbounds
+
+function painter_draw(xx, yy, inbounds)
+{
 	var boxx, boxy, boxw, boxh;
 	var texx, texy, texw, texh;
 	
 	// Calculate box
-	boxx = view_area_x
-	boxy = view_area_y
-	boxw = view_area_width
-	boxh = view_area_height
+	boxx = floor(view_area_x)
+	boxy = floor(view_area_y)
+	boxw = floor(view_area_width)
+	boxh = floor(view_area_height)
 	
 	texx = scale_offset_x
 	texy = scale_offset_y
 	texw = texturewidth * zoom
 	texh = textureheight * zoom
 	
-	boxx = floor(boxx)
-	boxy = floor(boxy)
-	boxw = floor(boxw)
-	boxh = floor(boxh)
 	var tex, texscale;
 	tex = texspr
 	texscale = 1
 	
-draw_sprite_ext(finalspr, 0, scale_offset_x, scale_offset_y, zoom, zoom,0, c_white, 1)
+	draw_sprite_ext(finalspr, 0, scale_offset_x, scale_offset_y, zoom, zoom, 0, c_white, 1)
 
-draw_surface_ext(drawsurf, scale_offset_x, scale_offset_y, zoom, zoom,0, c_white, paint_opacity)
-			draw_surface_ext(selectionsurf, scale_offset_x, scale_offset_y, zoom, zoom,0, c_white, 0.25)
-			
-if(selection_active && paint_tool_selected != e_paint.TRANSFORM  && !editing_hue)
-{
-			gpu_set_texrepeat(false)
-			render_shader_obj = shader_map[?shader_selection_outline]
-			with (render_shader_obj)
-				shader_use()
-				
-			shader_border_set(c_accent, 1, texturewidth * zoom, textureheight * zoom, 0.35, 0)
-			
-			draw_surface_ext(selectionsurf, scale_offset_x, scale_offset_y, zoom, zoom,0, c_white, 1.0)
-
-			with (render_shader_obj)
-				shader_clear()
-			
-			gpu_set_texrepeat(true)
-}
-
-if(paint_tool_selected = e_paint.TRANSFORM && !editing_hue)
-painter_transform(mousexsnap,mouseysnap);
-
-if(editing_hue){
-//	render_shader_obj = shader_map[?shader_huesat]
-
-//	shader_set(shader_huesat)
-//	render_set_uniform("u_Position", 2 * pi - degtorad(hue))
-//	render_set_uniform("u_Position_s", sat/100)
-//	alphafix
-//	draw_surface_ext(transformsurf, scale_offset_x, scale_offset_y, zoom, zoom, 0, c_white, 1);
-//	gpu_set_blendmode(bm_normal);
-//	shader_reset();
-//     gpu_set_texrepeat(false)
-//			render_shader_obj = shader_map[?shader_selection_outline]
-//			with (render_shader_obj)
-//				shader_use()
-				
-//			shader_border_set(c_white, 1, texturewidth * zoom, textureheight * zoom, 0.0, 0)
-			
-//			draw_surface_ext(selectionsurf, scale_offset_x, scale_offset_y, zoom, zoom,0, c_white, 1)
-
-//			with (render_shader_obj)
-//				shader_clear()
-//gpu_set_texrepeat(true)
-}
-
-if(inbounds){
-//Draw Cursor
-if(paint_tool_selected = e_paint.BRUSH || paint_tool_selected = e_paint.ERASE){
-draw_set_alpha(0.5)
-draw_circle_color( ((mousexsnap + 1)* zoom) + scale_offset_x, ((mouseysnap + 1) *zoom) + scale_offset_y, paint_width / 2 * zoom,  c_black, c_black,true);
-
-draw_circle_color( ((mousexsnap + 1)* zoom) + scale_offset_x, ((mouseysnap + 1) *zoom) + scale_offset_y, paint_width / 2 * zoom,  c_white, c_white,true);
-draw_set_alpha(1)
-}
-else if(paint_tool_selected = e_paint.PICK || paint_tool_selected = e_paint.FILL){
-	draw_set_alpha(0.5)
-
-    draw_box_hover((mousexsnap + .5)* zoom + scale_offset_x,(mouseysnap + .5)* zoom + scale_offset_y, zoom, zoom, 3, c_white);
-    draw_box_hover((mousexsnap + .5)* zoom + scale_offset_x,(mouseysnap + .5)* zoom + scale_offset_y, zoom, zoom, 3, c_black);
-
-    draw_set_alpha(1)
-}
-
-
-}
-
-//draw_rectangle_color( ((mousexsnap + .5)* zoom) + scale_offset_x, ((mouseysnap + .5) *zoom) + scale_offset_y,((mousexsnap + 1.5)* zoom) + scale_offset_x, ((mouseysnap + 1.5) *zoom) + scale_offset_y,  c_white, c_white,c_white, c_white,true);
-if(inbounds){
-if(!mouse_left &&paint_tool_selected != e_tool.TRANSFORM){
-mouse_cursor = cr_none
-window_set_cursor(mouse_cursor)
-}
-
-switch(paint_tool_selected){
-case e_paint.BRUSH:
-draw_sprite_ext(spr_icons,icons.BRUSH, window_mouse_get_x(), window_mouse_get_y(),1,1,0, c_black, .5)
-draw_sprite_ext(spr_icons,icons.BRUSH, window_mouse_get_x(), window_mouse_get_y(),1,1,0, c_white, .5)
-break
-case e_paint.FILL:
-draw_sprite_ext(spr_icons,icons.FILL_TOOL, window_mouse_get_x(), window_mouse_get_y(),1,1,0, c_black, .5)
-draw_sprite_ext(spr_icons,icons.FILL_TOOL, window_mouse_get_x(), window_mouse_get_y(),1,1,0, c_white, .5)
-break
-case e_paint.PICK:
-draw_sprite_ext(spr_icons,icons.PICKER, window_mouse_get_x(), window_mouse_get_y(),1,1,0, c_black, .5)
-draw_sprite_ext(spr_icons,icons.PICKER, window_mouse_get_x(), window_mouse_get_y(),1,1,0, c_white, .5)
-break
-case e_paint.ERASE:
-draw_sprite_ext(spr_icons,icons.ERASER, window_mouse_get_x(), window_mouse_get_y(),1,1,0, c_black, .5)
-draw_sprite_ext(spr_icons,icons.ERASER, window_mouse_get_x(), window_mouse_get_y(),1,1,0, c_white, .5)
-break
-case e_paint.BOX_SELECT:
-draw_sprite_ext(spr_icons,icons.BOX_SELECT, window_mouse_get_x(), window_mouse_get_y(),1,1,0, c_white, .5)
-draw_sprite_ext(spr_icons,icons.BOX_SELECT, window_mouse_get_x(), window_mouse_get_y(),1,1,0, c_black, .5)
-
-break
-}
-
-
-}
-
-//SELECTION DEBUG, ONLY IN DEV MODE.
-if(dev_mode && debug_info && paint_tool_selected = e_paint.BOX_SELECT){
-	draw_box(scale_offset_x + selection_topleft[X] * zoom,scale_offset_y + selection_topleft[Y] * zoom,selectionsize[X] * zoom,selectionsize[Y] * zoom,true, c_white, 0.5);
-	draw_box(scale_offset_x + selection_topleft[X] * zoom,scale_offset_y + selection_topleft[Y] * zoom,selectionsize[X] * zoom,selectionsize[Y] * zoom,true, c_black, 0.5);
-	draw_box(scale_offset_x + selection_topleft[X] * zoom,scale_offset_y + selection_topleft[Y] * zoom,selectionsize[X] * zoom,selectionsize[Y] * zoom,true, c_red, 0.5);
+	draw_surface_ext(drawsurf, scale_offset_x, scale_offset_y, zoom, zoom, 0, c_white, paint_opacity)
+	draw_surface_ext(selectionsurf, scale_offset_x, scale_offset_y, zoom, zoom, 0, c_white, 0.25)
 	
-	draw_box((selection_btmright[X] )* zoom+ scale_offset_x - 5, (selection_btmright[Y] )* zoom+ scale_offset_y - 5, 10, 10, false, c_white, .75)
-	draw_box((selection_btmright[X] )* zoom+ scale_offset_x - 5, (selection_btmright[Y] )* zoom+ scale_offset_y - 5, 10, 10, true, c_black, .75)
-	draw_box((selection_btmright[X] )* zoom+ scale_offset_x - 5, (selection_btmright[Y] )* zoom+ scale_offset_y - 5, 10, 10, true, c_red, .75)
-	
+	// Add shortcuts
+	if (inbounds)
+	{
+		window_focus = "painter"
+		shortcut_bar_state = "painterviewport"
+	}
+		
+	if (selection_active && paint_tool_selected != e_paint.TRANSFORM_SELECTION && !editing_hue)
+	{
+		gpu_set_texrepeat(false)
+		render_shader_obj = shader_map[?shader_selection_outline]
+		with (render_shader_obj)
+			shader_use()
+				
+		shader_border_set(c_accent, 1, texturewidth * zoom, textureheight * zoom, 0.35, 0)
+			
+		draw_surface_ext(selectionsurf, scale_offset_x, scale_offset_y, zoom, zoom,0, c_white, 1.0)
 
-	draw_box((selection_topleft[X] )* zoom+ scale_offset_x - 5, (selection_topleft[Y] )* zoom+ scale_offset_y - 5, 10, 10, false, c_white, .75)
-	draw_box((selection_topleft[X] )* zoom+ scale_offset_x - 5, (selection_topleft[Y] )* zoom+ scale_offset_y - 5, 10, 10, false, c_red, .75)
-	draw_box((selection_topleft[X] )* zoom+ scale_offset_x - 5, (selection_topleft[Y] )* zoom+ scale_offset_y - 5, 10, 10, true, c_black, .75)
-}
+		with (render_shader_obj)
+			shader_clear()
+			
+		gpu_set_texrepeat(true)
+	}
+
+	if(paint_tool_selected = e_paint.TRANSFORM_SELECTION && !editing_hue)
+		painter_transform(xx, yy);
+
+	//if (editing_hue)
+	//{
+	//	render_shader_obj = shader_map[?shader_huesat]
+
+	//	shader_set(shader_huesat)
+	//	render_set_uniform("u_Position", 2 * pi - degtorad(hue))
+	//	render_set_uniform("u_Position_s", sat/100)
+	//	alphafix
+	//	draw_surface_ext(transformsurf, scale_offset_x, scale_offset_y, zoom, zoom, 0, c_white, 1);
+	//	gpu_set_blendmode(bm_normal);
+	//	shader_reset();
+	//	gpu_set_texrepeat(false)
+	//	render_shader_obj = shader_map[?shader_selection_outline]
+	//	with (render_shader_obj)
+	//		shader_use()
+				
+	//	shader_border_set(c_white, 1, texturewidth * zoom, textureheight * zoom, 0.0, 0)
+			
+	//	draw_surface_ext(selectionsurf, scale_offset_x, scale_offset_y, zoom, zoom,0, c_white, 1)
+
+	//	with (render_shader_obj)
+	//		shader_clear()
+	//	gpu_set_texrepeat(true)
+	//}
+	
+	if(inbounds)
+	{
+		//Draw Cursor
+		if (paint_tool_selected = e_paint.BRUSH || paint_tool_selected = e_paint.ERASE)
+		{
+			draw_set_alpha(0.875)
+			draw_circle_color(((xx + 1) * zoom) + scale_offset_x, ((yy + 1) * zoom) + scale_offset_y, ((paint_width + 0.1) / 2 * zoom) + 1, c_white, c_white, true)
+			draw_circle_color(((xx + 1) * zoom) + scale_offset_x, ((yy + 1) * zoom) + scale_offset_y, ((paint_width + 0.1) / 2 * zoom) - 1, c_white, c_white, true)
+			draw_circle_color(((xx + 1) * zoom) + scale_offset_x, ((yy + 1) * zoom) + scale_offset_y, (paint_width + 0.1) / 2 * zoom, c_black, c_black, true)
+			draw_set_alpha(1)
+		}
+		else if (paint_tool_selected = e_paint.PICK || paint_tool_selected = e_paint.FILL)
+		{
+			draw_set_alpha(0.875)
+		    draw_box_hover((xx + .5) * zoom + scale_offset_x, (yy + .5)* zoom + scale_offset_y, zoom, zoom, 1, c_white);
+		    draw_box_hover((xx + .5) * zoom + scale_offset_x, (yy + .5)* zoom + scale_offset_y, zoom, zoom, 1, c_black);
+		    draw_set_alpha(1)
+		}
+	}
+
+	//draw_rectangle_color( ((xx + .5)* zoom) + scale_offset_x, ((yy + .5) *zoom) + scale_offset_y,((xx + 1.5)* zoom) + scale_offset_x, ((yy + 1.5) *zoom) + scale_offset_y,  c_white, c_white,c_white, c_white, true);
+	if (inbounds)
+	{
+		var iconoffset = [0, 0]
+		switch (paint_tool_selected)
+		{
+			case e_paint.BRUSH:
+				mouse_cursor = cr_none
+				iconoffset = [-3, 3]
+				draw_sprite_ext(spr_icons,icons.BRUSH, window_mouse_get_x() - iconoffset[0], window_mouse_get_y() - iconoffset[1], 1, 1, 0, c_black, .75)
+				draw_sprite_ext(spr_icons,icons.BRUSH, window_mouse_get_x() - iconoffset[0] - 1, window_mouse_get_y() - iconoffset[1] - 1, 1, 1, 0, c_white, .75)
+			break
+			case e_paint.ERASE:
+				mouse_cursor = cr_none
+				iconoffset = [-3, 3]
+				draw_sprite_ext(spr_icons,icons.ERASER, window_mouse_get_x() - iconoffset[0], window_mouse_get_y() - iconoffset[1], 1, 1, 0, c_black, .75)
+				draw_sprite_ext(spr_icons,icons.ERASER, window_mouse_get_x() - iconoffset[0] - 1, window_mouse_get_y() - iconoffset[1] - 1, 1, 1, 0, c_white, .75)
+			break
+			case e_paint.PICK:
+				mouse_cursor = cr_none
+				iconoffset = [-5, 5]
+				draw_sprite_ext(spr_icons,icons.PICKER, window_mouse_get_x() - iconoffset[0], window_mouse_get_y() - iconoffset[1], 1, 1, 0, c_black, .75)
+				draw_sprite_ext(spr_icons,icons.PICKER, window_mouse_get_x() - iconoffset[0] - 1, window_mouse_get_y() - iconoffset[1] - 1, 1, 1, 0, c_white, .75)
+			break
+			case e_paint.FILL:
+				mouse_cursor = cr_none
+				if !filling
+				{
+					draw_sprite_ext(spr_icons,icons.FILL_TOOL, window_mouse_get_x() - iconoffset[0], window_mouse_get_y() - iconoffset[1], 1, 1, 0, c_black, .75)
+					draw_sprite_ext(spr_icons,icons.FILL_TOOL, window_mouse_get_x() - iconoffset[0] - 1, window_mouse_get_y() - iconoffset[1] - 1, 1, 1, 0, c_white, .75)
+				}
+				else
+					mouse_cursor = cr_hourglass
+			break
+			case e_paint.BOX_SELECT:
+				mouse_cursor = cr_none
+				draw_sprite_ext(spr_icons,icons.BOX_SELECT, window_mouse_get_x() - iconoffset[0], window_mouse_get_y() - iconoffset[1], 1, 1, 0, c_black, .75)
+				draw_sprite_ext(spr_icons,icons.BOX_SELECT, window_mouse_get_x() - iconoffset[0] - 1, window_mouse_get_y() - iconoffset[1] - 1, 1, 1, 0, c_white, .75)
+			break
+		}
+
+
+	}
+
+	//SELECTION DEBUG, ONLY IN DEV MODE.
+	if (dev_mode && debug_info && paint_tool_selected = e_paint.BOX_SELECT)
+	{
+		draw_box(scale_offset_x + selection_topleft[X] * zoom,scale_offset_y + selection_topleft[Y] * zoom,selectionsize[X] * zoom,selectionsize[Y] * zoom,true, c_white, 0.5);
+		draw_box(scale_offset_x + selection_topleft[X] * zoom,scale_offset_y + selection_topleft[Y] * zoom,selectionsize[X] * zoom,selectionsize[Y] * zoom,true, c_black, 0.5);
+		draw_box(scale_offset_x + selection_topleft[X] * zoom,scale_offset_y + selection_topleft[Y] * zoom,selectionsize[X] * zoom,selectionsize[Y] * zoom,true, c_red, 0.5);
+	
+		draw_box((selection_btmright[X] )* zoom+ scale_offset_x - 5, (selection_btmright[Y] )* zoom+ scale_offset_y - 5, 10, 10, false, c_white, .75)
+		draw_box((selection_btmright[X] )* zoom+ scale_offset_x - 5, (selection_btmright[Y] )* zoom+ scale_offset_y - 5, 10, 10, true, c_black, .75)
+		draw_box((selection_btmright[X] )* zoom+ scale_offset_x - 5, (selection_btmright[Y] )* zoom+ scale_offset_y - 5, 10, 10, true, c_red, .75)
+	
+		draw_box((selection_topleft[X] )* zoom+ scale_offset_x - 5, (selection_topleft[Y] )* zoom+ scale_offset_y - 5, 10, 10, false, c_white, .75)
+		draw_box((selection_topleft[X] )* zoom+ scale_offset_x - 5, (selection_topleft[Y] )* zoom+ scale_offset_y - 5, 10, 10, false, c_red, .75)
+		draw_box((selection_topleft[X] )* zoom+ scale_offset_x - 5, (selection_topleft[Y] )* zoom+ scale_offset_y - 5, 10, 10, true, c_black, .75)
+	}
 
 
 	// Texture outline
@@ -190,16 +207,28 @@ if(dev_mode && debug_info && paint_tool_selected = e_paint.BOX_SELECT){
 		
 	// Text
 	gpu_set_blendmode(bm_normal)
-	if(paint_view_brush_guides){
-	draw_line_ext((mousexsnap + .5)  * zoom + scale_offset_x, boxy, (mousexsnap+ .5) * zoom + scale_offset_x, boxy + boxh,merge_color(c_black,c_accent_pressed, 0.75), .5)
-	draw_line_ext((mousexsnap + 1.5)  * zoom + scale_offset_x, boxy, (mousexsnap + 1.5) * zoom + scale_offset_x, boxy + boxh,merge_color(c_black,c_accent_pressed, 0.75), .5)
-    draw_line_ext(boxx, (mouseysnap+ .5)  * zoom+ scale_offset_y, boxx + boxw, (mouseysnap+ .5)  * zoom + scale_offset_y,merge_color(c_black,c_accent_pressed, 0.75), .5)
-    draw_line_ext(boxx, (mouseysnap  + 1.5)  * zoom+ scale_offset_y, boxx + boxw, (mouseysnap  + 1.5)  * zoom + scale_offset_y,merge_color(c_black,c_accent_pressed, 0.75), .5)
+	if(paint_view_brush_guides)
+	{
+		draw_line_ext((xx + .5) * zoom + scale_offset_x, boxy, (xx + .5) * zoom + scale_offset_x, boxy + boxh,merge_color(c_black,c_accent_pressed, 0.75), .5)
+		draw_line_ext((xx + 1.5) * zoom + scale_offset_x, boxy, (xx + 1.5) * zoom + scale_offset_x, boxy + boxh,merge_color(c_black,c_accent_pressed, 0.75), .5)
+	    draw_line_ext(boxx, (yy + .5) * zoom + scale_offset_y, boxx + boxw, (yy + .5) * zoom + scale_offset_y,merge_color(c_black,c_accent_pressed, 0.75), .5)
+	    draw_line_ext(boxx, (yy + 1.5) * zoom + scale_offset_y, boxx + boxw, (yy + 1.5) * zoom + scale_offset_y,merge_color(c_black,c_accent_pressed, 0.75), .5)
 	}
 	draw_label("[ 0, 0 ]", texx - 8, texy - 8, fa_right, fa_bottom, c_text_main, 0.5, font_label)
 	draw_label("[ " + string(texturewidth) + ", 0 ]", texx + texw + 8, texy - 8, fa_left, fa_bottom, c_text_main, 0.5, font_label)
 	draw_label("[ 0, " + string(textureheight) + " ]", texx - 8, texy + texh + 8, fa_right, fa_top, c_text_main, 0.5, font_label)
 	draw_label("[ " + string(texturewidth) + ", " + string(textureheight) + " ]", texx + texw + 8, texy + texh + 8, fa_left, fa_top, c_text_main, 0.5, font_label)
-
-
+	
+	// Info box
+	var str = "";
+	
+	var mxsnap = snap((window_mouse_get_x()-scale_offset_x) /  zoom-.5 , 1)
+	var mysnap = snap((window_mouse_get_y()-scale_offset_y) /  zoom-.5 , 1)
+	str += text_get("painterinfomousepos") + ": [" + string(mxsnap) + ", " + string(mysnap) + "]\n"
+	str += text_get("painterinfoselectionsize") + ": [" + string(selectionsize[0])+ ", " + string(selectionsize[1]) + "]\n"
+	var ww = string_width_font(str, font_label) + 16;
+	var hh = string_height_font(str, font_label) + 16;
+	
+	draw_box(boxx + boxw - ww - 16,  boxy + boxh - hh - 16, string_width_font(str, font_label) + 16, hh, false, c_black, .75)
+	draw_label(str, boxx + boxw - ww - 8, boxy + boxh - hh - 8, fa_left, fa_top, c_white, 1, font_label)
 }

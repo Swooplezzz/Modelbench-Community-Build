@@ -22,5 +22,5 @@ function window_draw()
 	window_draw_toasts()
 	tip_draw()
 	context_menu_draw()
-	debug_draw_info()
+	debug_info_draw()
 }

@@ -49,13 +49,6 @@ function view_draw(view)
 	// Textured rendering
 	// if centered
 	// Viewport toolbar
-
-
-
-
-
-
-	
 	
 	dx -= 16 + 4
 	draw_settings_button("shading", dx, dy, 16, dh, false, settings_menu_shading, disable || setting_render_mode = e_viewport_render.FLAT)
@@ -163,9 +156,9 @@ function view_draw(view)
 					draw_image(spr_uv_editor_pattern, 0, boxx + (i * 192), boxy + (j * 192), 1, 1, c_text_main, .05)
 		}
 		if(program_mode != e_mode.TEXTURING)
-		view_update(view, null)
+			view_update(view, null)
 		else
-		painter_update(view, null)
+			painter_update(view, null)
 		
 		draw_surface_size(view.surface, content_x, content_y, content_width, content_height)
 		
@@ -210,43 +203,36 @@ function view_draw(view)
 	
 	if (app_mouse_box(toolbarx, toolbary, toolbarwid, toolbarhei))
 		view.mouseon = false
-	
 	if(program_mode != e_mode.TEXTURING)
-	view_toolbar_draw(toolbarx, toolbary, toolbarwid, toolbarhei)
+		view_toolbar_draw(toolbarx, toolbary, toolbarwid, toolbarhei)
 	
 	toolbarx = boxx + 16
 	toolbary = boxy + captionh + 16
 	toolbarwid = 36
-	toolbarhei = 4 + (28 * 6) + (8) + 12 +8
-
-	
+	toolbarhei = 4 + (28 * 6) + (8) + 12 + 8
 	if(program_mode == e_mode.TEXTURING)
-	painter_toolbar_draw(toolbarx, toolbary, toolbarwid, toolbarhei)
+		painter_toolbar_draw(toolbarx, toolbary, toolbarwid, toolbarhei)
 	
 	toolbarx = boxx + 16 + 36 + 8
 	toolbary = boxy + captionh + 16
-	toolbarwid = 28 * 2 + 12
+	toolbarwid = (28 * 2) + 12
 	toolbarhei = 36
-	
 	if(program_mode == e_mode.TEXTURING)
-	painter_controls_draw(toolbarx, toolbary, toolbarwid, toolbarhei)
+		painter_controls_draw(toolbarx, toolbary, toolbarwid, toolbarhei)
 	
 	// Navigation
 	toolbarx = boxx + boxw - (16 + 36)
 	toolbarwid = 36
-	toolbarhei = 4 + (28 * 3) + (8) + 4
-	
+	toolbarhei = 4 + (28 * 3) + 8 + 4
 	if (app_mouse_box(toolbarx, toolbary, toolbarwid, toolbarhei))
 		view.mouseon = false
-	
-		if(program_mode != e_mode.TEXTURING)
-	view_toolbar_nav_draw(toolbarx, toolbary, toolbarwid, toolbarhei)
+	if(program_mode != e_mode.TEXTURING)
+		view_toolbar_nav_draw(toolbarx, toolbary, toolbarwid, toolbarhei)
 	
 	toolbary += toolbarhei + 8
     toolbarhei = 4 + (28 * 1) + (4) + 2
-
-			if(program_mode != e_mode.TEXTURING)
-	view_toolbar_projection_draw(toolbarx, toolbary, toolbarwid, toolbarhei)
+	if(program_mode != e_mode.TEXTURING)
+		view_toolbar_projection_draw(toolbarx, toolbary, toolbarwid, toolbarhei)
 	
 	// Navigation
 	
@@ -258,8 +244,8 @@ function view_draw(view)
 	toolbarwid = 82
 	toolbarhei = toolbarwid
 	toolbary = render_height - toolbarhei + captionh + 16;
-			if(program_mode != e_mode.TEXTURING)
-	view_toolbar_cam_nav_draw(toolbarx, toolbary, toolbarwid, toolbarhei)
+	if(program_mode != e_mode.TEXTURING)
+		view_toolbar_cam_nav_draw(toolbarx, toolbary, toolbarwid, toolbarhei)
 	
 	// Viewport toolbar
 	if (program_mode = e_mode.MODELING)

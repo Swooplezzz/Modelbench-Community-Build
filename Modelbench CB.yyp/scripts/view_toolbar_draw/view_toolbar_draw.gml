@@ -44,7 +44,7 @@ function view_toolbar_draw(barx, bary, barw, barh)
 	dy += 4
 	dx += 4
 	
-		// Add part
+	// Add part
 	if (draw_button_icon("toolsetaddpart", dx, dy, 28, 28, false, icons.PART_ADD, null, false, "toolsetaddpart"))
 		action_element_create(e_element.PART)
 	
@@ -170,9 +170,6 @@ function view_toolbar_draw(barx, bary, barw, barh)
 		dx += buttonsize
 	else
 		dy += buttonsize
-	
-	
-
 	
 	draw_set_alpha(1)
 	tip_force_right = false

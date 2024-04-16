@@ -15,7 +15,6 @@ function view_toolbar_projection_draw(barx, bary, barw, barh)
 	
 	content_mouseon = app_mouse_box(dx, dy, dw, dh) && !popup_mouseon && !toast_mouseon && !context_menu_mouseon
 	
-	
 	if (dh > dw)
 		tip_force_left = true
 	
@@ -45,7 +44,7 @@ function view_toolbar_projection_draw(barx, bary, barw, barh)
 	dy += 4
 	dx += 4
 	
-	// Walk navigation toggle
+	// Projection toggle
 	tip_set_keybind(e_keybind.TOGGLE_PROJ)
 	if (draw_button_icon("toolprojtoggle", dx, dy, 28, 28, 0,render_proj_mode == 0 ? icons.PRESPECTIVE : icons.ORTHOGRAPHIC, toggle_projection, false, render_proj_mode == 0 ? "tooltipprojtoggleortho" : "tooltipprojtogglepres")){
 	}

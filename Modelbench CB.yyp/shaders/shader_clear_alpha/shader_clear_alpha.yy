@@ -4,7 +4,7 @@
   "name": "shader_clear_alpha",
   "parent": {
     "name": "Shaders",
-    "path": "folders/Scripts/Shaders.yy",
+    "path": "folders/Shaders.yy",
   },
   "type": 1,
 }

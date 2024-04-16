@@ -11,12 +11,13 @@
 function colorpicker_show(name, color, def, script, xx, yy, width, height)
 {
 	var istexedit, c, i;
-	if(argument_count > 8){
+	if (argument_count > 8){
 		istexedit = argument[8]
 	}
-	if (settings_menu_name = "colorpicker" && colorpicker.value_script = script){
+	
+	if (settings_menu_name = "colorpicker" && colorpicker.value_script = script)
+	{
 		popup_close()
-
 	}
 	else
 	{

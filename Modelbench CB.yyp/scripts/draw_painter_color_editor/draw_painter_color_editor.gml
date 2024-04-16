@@ -1,33 +1,41 @@
-// Script assets have changed for v2.3.0 see
-// https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
-function draw_painter_color_editor(name, script, color){
+/// draw_painter_color_editor(name, script, color)
+/// @arg name
+/// @arg script
+/// @arg color
+
+function draw_painter_color_editor(name, script, color)
+{
 	var bx, by, bw, bh;
 	var stack = (content_width > 230 + 176)
-	if(!stack) dx = content_x + 12 + content_width /2 - 230/2;
+	if (!stack)
+		dx = content_x + 12 + content_width /2 - 230/2;
 				
 	bx = dx + 12
 	by = dy
 	ddy = dy;
 	bw = 192
 	bh = 192
-	if(window_busy = "" && painter_editing_color){
+	
+	if (window_busy = "" && painter_editing_color)
+	{
 		add_recent_color(color)
 		painter_editing_color = false;
 	}
-	if((window_busy = "colorpickersatbripick" || window_busy = "colorpickerhuepick") && !painter_editing_color){
+	if ((window_busy = "colorpickersatbripick" || window_busy = "colorpickerhuepick") && !painter_editing_color)
+	{
 		painter_editing_color = true;
 	}
-		// Saturation/brightness picker
+	// Saturation/brightness picker
 	if (app_mouse_box(bx, by, bw, bh))
 	{
 		mouse_cursor = cr_handpoint
-		if (mouse_left)
+		if (mouse_left || mouse_right)
 			window_busy = "paintercolorpickersatbripick"
 	}
 	
 	if (window_busy = "paintercolorpickersatbripick")
 	{
-		if (!mouse_left)
+		if (!mouse_left && !mouse_right)
 		{
 			window_busy = ""
 			window_focus = ""
@@ -39,10 +47,8 @@ function draw_painter_color_editor(name, script, color){
 		paintercolorpicker.brightness = floor((clamp(1 - (mouse_y - by) / bh, 0, 1)) * 255)
 		paintercolorpicker_update(null, make_color_hsv(paintercolorpicker.hue, paintercolorpicker.saturation, paintercolorpicker.brightness), false)
 	}
-		paintercolorpicker.value_name = name
-		paintercolorpicker.value_script = script
-		
-
+	paintercolorpicker.value_name = name
+	paintercolorpicker.value_script = script
 	
 	draw_sprite_general(spr_colorpicker, 0, 0, 0, 192, 192, bx, by, 1, 1, 0, c_white, make_color_hsv(paintercolorpicker.hue, 255, 255), make_color_hsv(paintercolorpicker.hue, 255, 255), c_white, draw_get_alpha())
 	draw_image(spr_colorpicker_cursor, 0, bx + (bw * (paintercolorpicker.saturation/255)), by + (bh * (1 - (paintercolorpicker.brightness/255))), 1, 1, c_white, 1)
@@ -60,13 +66,13 @@ function draw_painter_color_editor(name, script, color){
 	if (app_mouse_box(bx - 8, by, bw + 16, bh))
 	{
 		mouse_cursor = cr_handpoint
-		if (mouse_left)
+		if (mouse_left || mouse_right)
 			window_busy = "paintercolorpickerhuepick"
 	}
 	
 	if (window_busy = "paintercolorpickerhuepick")
 	{
-		if (!mouse_left)
+		if (!mouse_left && !mouse_right)
 		{
 			window_busy = ""
 			app_mouse_clear()
@@ -82,18 +88,21 @@ function draw_painter_color_editor(name, script, color){
 	draw_image(spr_colorpicker_cursor, 1, bx + ((paintercolorpicker.hue/255) * bw), by + 8, 1, 1)
 	dy += 16 + 8
 
-	if(stack){
+	if (stack)
+	{
 		dy = ddy;
 		dx = panel_area_width - 176 - 12;
 	}
-	if(!stack){
-	tab_control_button_label()
-	togglebutton_add("colorpickerrgb", null, "rgb", paintercolorpicker.mode = "rgb", paintercolorpicker_set_mode)
-	togglebutton_add("colorpickerhsv", null, "hsv", paintercolorpicker.mode = "hsv", paintercolorpicker_set_mode)
-	togglebutton_add("colorpickerhex", null, "hex", paintercolorpicker.mode = "hex", paintercolorpicker_set_mode)
-	draw_togglebutton("colorpickermode", dx, dy, true, false)
-	tab_next()
+	else
+	{
+		tab_control_button_label()
+		togglebutton_add("colorpickerrgb", null, "rgb", paintercolorpicker.mode = "rgb", paintercolorpicker_set_mode)
+		togglebutton_add("colorpickerhsv", null, "hsv", paintercolorpicker.mode = "hsv", paintercolorpicker_set_mode)
+		togglebutton_add("colorpickerhex", null, "hex", paintercolorpicker.mode = "hex", paintercolorpicker_set_mode)
+		draw_togglebutton("colorpickermode", dx, dy, true, false)
+		tab_next()
 	}
+	
 	if (paintercolorpicker.mode = "rgb" || stack)
 	{
 		// RGB
@@ -107,8 +116,8 @@ function draw_painter_color_editor(name, script, color){
 			paintercolorpicker.blue = min(255, string_get_real(paintercolorpicker.tbx_blue.text, 0))
 			paintercolorpicker_update(null, make_color_rgb(paintercolorpicker.red, paintercolorpicker.green, paintercolorpicker.blue), true)
 		}
-		if(stack)
-		dy += 24 * 3 + 12;
+		if (stack)
+			dy += 24 * 3 + 12;
 	}
 	if (paintercolorpicker.mode = "hsv" || stack)
 	{
@@ -132,8 +141,8 @@ function draw_painter_color_editor(name, script, color){
 			paintercolorpicker.brightness = min(255, string_get_real(paintercolorpicker.tbx_brightness.text, 0))
 			paintercolorpicker_update(paintercolorpicker.tbx_brightness, make_color_hsv(paintercolorpicker.hue, paintercolorpicker.saturation, paintercolorpicker.brightness), false)
 		}
-		if(stack)
-		dy += 24 * 3 + 12;
+		if (stack)
+			dy += 24 * 3 + 12;
 	}
 	if (paintercolorpicker.mode = "hex" || stack)
 	{
@@ -143,10 +152,8 @@ function draw_painter_color_editor(name, script, color){
 		if (paintercolorpicker.tbx_hexadecimal.text = "" && window_focus = "")
 			paintercolorpicker.tbx_hexadecimal.text = "000000"
 	}
-	if(stack){
-		dy = by ;
-
-	}
+	if (stack)
+		dy = by
 	dy += 24 + 4
 	
 	settings_menu_w = 192

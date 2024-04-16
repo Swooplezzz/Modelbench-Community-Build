@@ -91,7 +91,7 @@ function painter_cpy_pst() {
 			selectionsize = vec2(selection_btmright[0] - selection_topleft[0], selection_btmright[1] - selection_topleft[1]);
 			painter_get_sel_trn_spr();
 			selection_moved = true;
-			paint_tool_selected = e_paint.TRANSFORM;
+			paint_tool_selected = e_paint.TRANSFORM_SELECTION;
 			sprite_delete(tempspr);
 			painter_history_set("transform", finalspr, selectionspr, transformspr);
 

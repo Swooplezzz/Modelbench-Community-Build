@@ -70,6 +70,7 @@ function recent_add()
 	with (obj)
 	{
 		filename = app.model_file
+		name = app.model_name
 		last_opened = date_current_datetime()
 		pinned = false
 		thumbnail = texture_create(thumbnailfn)

@@ -4,7 +4,7 @@
   "name": "shader_alpha_test",
   "parent": {
     "name": "High quality",
-    "path": "folders/Scripts/Shaders/High quality.yy",
+    "path": "folders/Shaders/High quality.yy",
   },
   "type": 1,
 }

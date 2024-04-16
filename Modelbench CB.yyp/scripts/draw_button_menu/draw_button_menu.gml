@@ -108,7 +108,7 @@ function draw_button_menu()
 	// Caption
 	if (capwid = null)
 	{
-	draw_label(string_limit(cap, dw), xx, yy - (setting_compact_panels ? -12 : 3), fa_left, fa_top, textcolor, textalpha, font_label)
+		draw_label(string_limit(cap, dw), xx, yy - (setting_compact_panels ? -12 : 3), fa_left, fa_top, textcolor, textalpha, font_label)
 		yy += 8 + ((label_height) * (setting_compact_panels ? 0 : 1))
 	}
 	else if (capwid != null)
@@ -121,8 +121,8 @@ function draw_button_menu()
 	
 	if (menuactive && !setting_compact_panels)
 	{
-		xx = lerp(xx, menuid.menu_x, menuid.menu_ani_ease)
-		wid = lerp(wid, menuid.menu_w, menuid.menu_ani_ease)
+		xx = lerp(xx, max(dx, menuid.menu_x), menuid.menu_ani_ease)
+		wid = lerp(wid, min(dw, menuid.menu_w), menuid.menu_ani_ease)
 	}
 	
 	// Button
@@ -172,6 +172,62 @@ function draw_button_menu()
 	draw_box(xx, yy, wid, hei, false, c_overlay, a_overlay * microani_arr[e_microani.DISABLED])
 	
 	microani_update(mouseon, mouseon && mouse_left, (menuactive && !menuhide), disabled, ((menuactive && !menuhide) ? !flip : flip))
+	
+	// Ctrl + Scroll
+	if (mouseon && keyboard_check(vk_control) && mouse_wheel != 0)
+	{
+		var m = new_obj(obj_menu);
+		m.menu_ani = 0
+		m.menu_value = value
+		m.menu_name = nameid
+		menu_current = m
+		menu_scroll = true
+
+		var list;
+
+		if (type = e_menu.LIST)
+			list = list_init(name)
+
+		menu_scroll = false
+
+		// Find index of chosen value
+		var index = 0;
+		var item = null;
+
+		for (var i = 0; i < ds_list_size(list.item); i++)
+		{
+			var it = list.item[|i];
+
+			if (it.script != null)
+				continue
+
+			if (it.value = value)
+			{
+				index = i;
+				break
+			}
+		}
+
+		index += mouse_wheel
+		index = mod_fix(index, ds_list_size(list.item))
+		item = list.item[|index]
+
+		while (item.script != null)
+		{
+			index = mod_fix(index + mouse_wheel, ds_list_size(list.item))
+			item = list.item[|index]
+		}
+
+		list_item_script = script
+		list_item_script_value = item.value
+
+		list_destroy(list)
+		instance_destroy(m)
+
+		current_microani.holding.init(1)
+
+		return true
+	}
 	
 	// Update menu position
 	if (menuactive)

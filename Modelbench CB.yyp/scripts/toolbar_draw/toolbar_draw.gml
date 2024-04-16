@@ -104,6 +104,9 @@ function toolbar_draw()
 	
 	if (program_mode = e_mode.PREVIEW)
 		draw_button_icon("toolbarguides", dx, dy, 28, 28, setting_preview_guides, icons.LETTERBOX, action_toolbar_preview_guides, false, (setting_preview_guides ? "tooltipguideshide" : "tooltipguidesshow"))
-			if (program_mode = e_mode.MODELING)
+	else if (program_mode = e_mode.MODELING)
+	{
+		tip_set_keybind(e_keybind.UV_EDITOR)
 		draw_button_icon("toolbaruveditor", dx, dy, 28, 28, setting_show_uv_editor, icons.TEXTURE, action_toolbar_show_uv_editor, false, (setting_preview_guides ? "tooltipuveditorhide" : "tooltipuveditorshow"))
+	}
 }

@@ -49,8 +49,9 @@ function paintercolorpicker_update(control, color, gethsb)
 	
 	if (control != paintercolorpicker.tbx_hexadecimal)
 		paintercolorpicker.tbx_hexadecimal.text = color_to_hex(paintercolorpicker.color)
+	
 	if(program_mode = e_mode.TEXTURING)
-	painter_editing_color = true;
+		painter_editing_color = true;
 
 	script_execute(paintercolorpicker.value_script, paintercolorpicker.color)
 }

@@ -16,6 +16,7 @@ function recent_save()
 		json_save_object_start()
 		
 		json_save_var("filename", json_string_encode(recent.filename))
+		json_save_var("name", json_string_encode(recent.name))
 		json_save_var("last_opened", recent.last_opened)
 		json_save_var_bool("pinned", recent.pinned)
 		

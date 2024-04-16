@@ -50,7 +50,7 @@ function shader_startup()
 		new_shader("shader_ground")
 		new_shader("shader_selection_outline")
 		//new_shader("shader_high_bevel")
-		new_shader("shader_hue")
+		new_shader("shader_hue_yiq")
 		new_shader("shader_huesat")
 		new_shader("shader_premalphacolmask")
 
@@ -77,17 +77,17 @@ function shader_startup()
 		return false
 	}
 	
-
 	with (shader_map[?shader_color])
 	{
 		new_shader_uniform("uMixColor")
 		new_shader_uniform("uHighlightColor")
 	}
-		with (shader_map[?shader_premalphacolmask])
+	
+	with (shader_map[?shader_premalphacolmask])
 	{
 		new_shader_sampler("u_alphamask")
-
 	}
+	
 	with (shader_map[?shader_color_light])
 	{
 		new_shader_uniform("uMixColor")
@@ -226,11 +226,14 @@ function shader_startup()
 	//	new_shader_uniform("uTexSize")
 	//	new_shader_uniform("uSize")
 	//}
-		with (shader_map[?shader_hue])
+	
+	with (shader_map[?shader_hue_yiq])
 	{
 		new_shader_uniform("u_Position")
 		new_shader_uniform("u_Position_s")
-	}		with (shader_map[?shader_huesat])
+	}
+	
+	with (shader_map[?shader_huesat])
 	{
 		new_shader_uniform("u_Position")
 		new_shader_uniform("u_Position_s")

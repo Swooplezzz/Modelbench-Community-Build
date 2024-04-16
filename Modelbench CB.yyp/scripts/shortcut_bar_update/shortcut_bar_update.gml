@@ -2,148 +2,154 @@
 
 function shortcut_bar_update()
 {
-	if(program_mode = e_mode.TEXTURING){
-		ds_list_clear(shortcut_bar_list)
-		var mxsnap =  snap((window_mouse_get_x()-scale_offset_x) /  zoom-.5 , 1)
-		var mysnap =  snap((window_mouse_get_y()-scale_offset_y) /  zoom-.5 , 1)
-		ds_list_add(app.shortcut_bar_list, [null, null, text_get("painterinfotexsize") + " : " + string(texturewidth)+ "x"+ string(textureheight)])
-		ds_list_add(app.shortcut_bar_list, [null, null, text_get("painterinfomousepos") + " : " + string(mxsnap)+ ","+ string(mysnap)])
-		ds_list_add(app.shortcut_bar_list, [null, null, text_get("painterinfoselectionsize") + " : " + string(selectionsize[0])+ ","+ string(selectionsize[1])])
-	}
-	else if (shortcut_bar_state != shortcut_bar_state_prev)
+	if (shortcut_bar_state != shortcut_bar_state_prev)
 	{
-ds_list_clear(shortcut_bar_list)
-			
+		ds_list_clear(shortcut_bar_list)
+		
+		if (program_mode = e_mode.TEXTURING)
+		{
+			if (shortcut_bar_state = "painterviewport")
+			{
+				shortcut_bar_add(keybinds[e_keybind.BRUSH_WIDTH].keybind, e_mouse.SCROLL, "brushwidth")
+				shortcut_bar_add(keybind_new(null, false, true), null, "snaphorizontal")
+				shortcut_bar_add(keybind_new(null, false, false, true), null, "snapvertical")
+				shortcut_bar_add(null, e_mouse.SCROLL, "scrollvertical")
+				shortcut_bar_add(keybind_new(null, false, true), e_mouse.SCROLL, "scrollhorizontal")
+				shortcut_bar_add(keybind_new(null, true), e_mouse.SCROLL, "zoom")
+				shortcut_bar_add(null, e_mouse.DRAG_MIDDLE, "pan")
+			}
+		}
+		else
+		{
 			shortcut_bar_add(keybinds[e_keybind.CAM_SNAP_VIEW_X].keybind, null, "camsnapviewx");	
-	        shortcut_bar_add(keybinds[e_keybind.CAM_SNAP_VIEW_Y].keybind, null, "camsnapviewy");
-	        shortcut_bar_add(keybinds[e_keybind.CAM_SNAP_VIEW_Z].keybind, null, "camsnapviewz");	
-	        shortcut_bar_add(keybinds[e_keybind.TOGGLE_PROJ].keybind, null, "toggleprojection");
+			shortcut_bar_add(keybinds[e_keybind.CAM_SNAP_VIEW_Y].keybind, null, "camsnapviewy");
+			shortcut_bar_add(keybinds[e_keybind.CAM_SNAP_VIEW_Z].keybind, null, "camsnapviewz");	
 			
-		    shortcut_bar_add(keybinds[e_keybind.ELEMENT_MIRROR].keybind, null, "elmirror");	
+			shortcut_bar_add(keybinds[e_keybind.ELEMENT_MIRROR].keybind, null, "elmirror");	
 
 		
-		if (shortcut_bar_state = "uveditorxy")
-			shortcut_bar_add(null, e_mouse.DRAG_LEFT, "uveditoredituvs")
+			if (shortcut_bar_state = "uveditorxy")
+				shortcut_bar_add(null, e_mouse.DRAG_LEFT, "uveditoredituvs")
 		
-		if (shortcut_bar_state = "uveditorwh")
-			shortcut_bar_add(null, e_mouse.DRAG_LEFT, "uveditoreditwidthheight")
+			if (shortcut_bar_state = "uveditorwh")
+				shortcut_bar_add(null, e_mouse.DRAG_LEFT, "uveditoreditwidthheight")
 		
-		if (shortcut_bar_state = "uveditorlength")
-			shortcut_bar_add(null, e_mouse.DRAG_LEFT, "uveditoreditlength")
+			if (shortcut_bar_state = "uveditorlength")
+				shortcut_bar_add(null, e_mouse.DRAG_LEFT, "uveditoreditlength")
 		
-		if (shortcut_bar_state = "uveditor")
-			shortcut_bar_add(null, e_mouse.DRAG_LEFT, "pan")
+			if (shortcut_bar_state = "uveditor")
+				shortcut_bar_add(null, e_mouse.DRAG_LEFT, "pan")
 		
-		if (string_contains(shortcut_bar_state, "uveditor"))
-		{
-			if (el_edit != null && el_edit.element_type = TYPE_SHAPE)
-			shortcut_bar_add(keybind_new(null, true, false), e_mouse.DRAG_LEFT, "uveditorboxuvs")
-			
-			shortcut_bar_add(null, e_mouse.SCROLL, "zoom")
-			shortcut_bar_add(null, e_mouse.CLICK_RIGHT, "contextmenuuveditor")
-		}
-		
-		if (shortcut_bar_state = "rendercontrol")
-		{
-			shortcut_bar_add(null, e_mouse.DRAG_LEFT, "transform")
-			shortcut_bar_add(keybind_new(null, false, true), e_mouse.DRAG_RIGHT, "reset")
-		}
-		
-		if (shortcut_bar_state = "rendercontrolhover")
-		{
-			shortcut_bar_add(keybind_new(null, false, true), e_mouse.DRAG_LEFT, "transformslower")
-			shortcut_bar_add(keybind_new(null, true, false), e_mouse.DRAG_LEFT, "snap")
-			
-			if (view_control_edit >= e_control.RESIZE_XP && view_control_edit <= e_control.RESIZE_ZN)
-				shortcut_bar_add(keybind_new(vk_alt, false, false), e_mouse.DRAG_LEFT, "resizeaxis")
-		}
-		
-		if (shortcut_bar_state = "viewport")
-		{
-			//shortcut_bar_add(null, e_mouse.CLICK_LEFT, "select")
-			
-			if (program_mode = e_mode.MODELING)
+			if (string_contains(shortcut_bar_state, "uveditor"))
 			{
-				shortcut_bar_add(null, e_mouse.CLICK_LEFT, "select")
-				shortcut_bar_add(keybind_new(null, true, false), e_mouse.CLICK_LEFT, "selectshape")
-			}
+				if (el_edit != null && el_edit.element_type = TYPE_SHAPE)
+					shortcut_bar_add(keybind_new(null, true), e_mouse.DRAG_LEFT, "uveditorboxuvs")
 			
-			if (!setting_viewport_controls_middle)
-			{
-				shortcut_bar_add(null, e_mouse.DRAG_LEFT, "orbit")
-				shortcut_bar_add(keybind_new(null, false, true, false), e_mouse.DRAG_LEFT, "pan")
-			}
-			else
-			{
-				shortcut_bar_add(null, e_mouse.DRAG_MIDDLE, "orbit")
-				shortcut_bar_add(keybind_new(null, false, true, false), e_mouse.DRAG_MIDDLE, "pan")
-			}
-			
-			
-			shortcut_bar_add(null, e_mouse.SCROLL, "zoom")
-			shortcut_bar_add(null, e_mouse.DRAG_RIGHT, "walk")
-		}
-		
-		if (shortcut_bar_state = "cameramove")
-		{
-			shortcut_bar_add(keybinds[e_keybind.CAM_FORWARD].keybind, null, "forward")
-			shortcut_bar_add(keybinds[e_keybind.CAM_LEFT].keybind, null, "left")
-			shortcut_bar_add(keybinds[e_keybind.CAM_BACK].keybind, null, "back")
-			shortcut_bar_add(keybinds[e_keybind.CAM_RIGHT].keybind, null, "right")
-			shortcut_bar_add(keybinds[e_keybind.CAM_ASCEND].keybind, null, "ascend")
-			shortcut_bar_add(keybinds[e_keybind.CAM_DESCEND].keybind, null, "descend")
-			shortcut_bar_add(keybinds[e_keybind.CAM_FAST].keybind, null, "faster")
-			shortcut_bar_add(keybinds[e_keybind.CAM_SLOW].keybind, null, "slower")
-			shortcut_bar_add(keybinds[e_keybind.CAM_RESET].keybind, null, "reset")
-		}
-		
-		if (shortcut_bar_state = "camerapan")
-		{
-			shortcut_bar_add(keybinds[e_keybind.CAM_FORWARD].keybind, null, "forward")
-			shortcut_bar_add(keybinds[e_keybind.CAM_LEFT].keybind, null, "left")
-			shortcut_bar_add(keybinds[e_keybind.CAM_BACK].keybind, null, "back")
-			shortcut_bar_add(keybinds[e_keybind.CAM_RIGHT].keybind, null, "right")
-		}
-		
-		if (string_contains(shortcut_bar_state, "contextmenutexture"))
-		{
-			if (shortcut_bar_state = "contextmenutexturedeselect")
-				shortcut_bar_add(null, e_mouse.CLICK_RIGHT, "deselect")
-			else
-				shortcut_bar_add(null, e_mouse.CLICK_RIGHT, "select")
-			
-			shortcut_bar_add(null, e_mouse.CLICK_RIGHT, "contextmenutexture")
-		}
-		
-		if (shortcut_bar_state = "uveditorresize")
-			shortcut_bar_add(null, e_mouse.DRAG_LEFT, "resizearea")
-		
-		if (string_contains(shortcut_bar_state, "preview"))
-		{
-			shortcut_bar_add(null, e_mouse.DRAG_LEFT, "pan")
-			
-			if (shortcut_bar_state = "previewzoom")
 				shortcut_bar_add(null, e_mouse.SCROLL, "zoom")
-		}
+				shortcut_bar_add(null, e_mouse.CLICK_RIGHT, "contextmenuuveditor")
+			}
 		
-		if (string_contains(shortcut_bar_state, "elementhover"))
-		{
-			if (shortcut_bar_state = "elementhoverselected")
+			if (shortcut_bar_state = "rendercontrol")
 			{
-				shortcut_bar_add(keybind_new(null, true, false), e_mouse.CLICK_RIGHT, "deselect")
-				shortcut_bar_add(null, e_mouse.DRAG_LEFT, "moveselection")
+				shortcut_bar_add(null, e_mouse.DRAG_LEFT, "transform")
+				shortcut_bar_add(keybind_new(null, false, true), e_mouse.DRAG_RIGHT, "reset")
 			}
-			else
+		
+			if (shortcut_bar_state = "rendercontrolhover")
 			{
-				shortcut_bar_add(null, e_mouse.CLICK_LEFT, "select")
-				shortcut_bar_add(keybind_new(null, false, true), e_mouse.CLICK_LEFT, "selectadd")
-				shortcut_bar_add(null, e_mouse.DRAG_LEFT, "groupselect")
+				shortcut_bar_add(keybind_new(null, false, true), e_mouse.DRAG_LEFT, "transformslower")
+				shortcut_bar_add(keybind_new(null, true), e_mouse.DRAG_LEFT, "snap")
+			
+				if (view_control_edit >= e_control.RESIZE_XP && view_control_edit <= e_control.RESIZE_ZN)
+					shortcut_bar_add(keybind_new(vk_alt), e_mouse.DRAG_LEFT, "resizeaxis")
 			}
+		
+			if (shortcut_bar_state = "viewport")
+			{
+				//shortcut_bar_add(null, e_mouse.CLICK_LEFT, "select")
+			
+				if (program_mode = e_mode.MODELING)
+				{
+					shortcut_bar_add(null, e_mouse.CLICK_LEFT, "select")
+					shortcut_bar_add(keybind_new(null, true), e_mouse.CLICK_LEFT, "selectshape")
+				}
+			
+				if (!setting_viewport_controls_middle)
+				{
+					shortcut_bar_add(null, e_mouse.DRAG_LEFT, "orbit")
+					shortcut_bar_add(keybind_new(null, false, true), e_mouse.DRAG_LEFT, "pan")
+				}
+				else
+				{
+					shortcut_bar_add(null, e_mouse.DRAG_MIDDLE, "orbit")
+					shortcut_bar_add(keybind_new(null, false, true, false), e_mouse.DRAG_MIDDLE, "pan")
+				}
 			
 			
-			shortcut_bar_add(null, e_mouse.CLICK_RIGHT, "contextmenuelement")
+				shortcut_bar_add(null, e_mouse.SCROLL, "zoom")
+				shortcut_bar_add(null, e_mouse.DRAG_RIGHT, "walk")
+			}
+		
+			if (shortcut_bar_state = "cameramove")
+			{
+				shortcut_bar_add(keybinds[e_keybind.CAM_FORWARD].keybind, null, "forward")
+				shortcut_bar_add(keybinds[e_keybind.CAM_LEFT].keybind, null, "left")
+				shortcut_bar_add(keybinds[e_keybind.CAM_BACK].keybind, null, "back")
+				shortcut_bar_add(keybinds[e_keybind.CAM_RIGHT].keybind, null, "right")
+				shortcut_bar_add(keybinds[e_keybind.CAM_ASCEND].keybind, null, "ascend")
+				shortcut_bar_add(keybinds[e_keybind.CAM_DESCEND].keybind, null, "descend")
+				shortcut_bar_add(keybinds[e_keybind.CAM_FAST].keybind, null, "faster")
+				shortcut_bar_add(keybinds[e_keybind.CAM_SLOW].keybind, null, "slower")
+				shortcut_bar_add(keybinds[e_keybind.CAM_RESET].keybind, null, "reset")
+			}
+		
+			if (shortcut_bar_state = "camerapan")
+			{
+				shortcut_bar_add(keybinds[e_keybind.CAM_FORWARD].keybind, null, "forward")
+				shortcut_bar_add(keybinds[e_keybind.CAM_LEFT].keybind, null, "left")
+				shortcut_bar_add(keybinds[e_keybind.CAM_BACK].keybind, null, "back")
+				shortcut_bar_add(keybinds[e_keybind.CAM_RIGHT].keybind, null, "right")
+			}
+		
+			if (string_contains(shortcut_bar_state, "contextmenutexture"))
+			{
+				if (shortcut_bar_state = "contextmenutexturedeselect")
+					shortcut_bar_add(null, e_mouse.CLICK_RIGHT, "deselect")
+				else
+					shortcut_bar_add(null, e_mouse.CLICK_RIGHT, "select")
+			
+				shortcut_bar_add(null, e_mouse.CLICK_RIGHT, "contextmenutexture")
+			}
+		
+			if (shortcut_bar_state = "uveditorresize")
+				shortcut_bar_add(null, e_mouse.DRAG_LEFT, "resizearea")
+		
+			if (string_contains(shortcut_bar_state, "preview"))
+			{
+				shortcut_bar_add(null, e_mouse.DRAG_LEFT, "pan")
+			
+				if (shortcut_bar_state = "previewzoom")
+					shortcut_bar_add(null, e_mouse.SCROLL, "zoom")
+			}
+		
+			if (string_contains(shortcut_bar_state, "elementhover"))
+			{
+				if (shortcut_bar_state = "elementhoverselected")
+				{
+					shortcut_bar_add(keybind_new(null, true), e_mouse.CLICK_RIGHT, "deselect")
+					shortcut_bar_add(null, e_mouse.DRAG_LEFT, "moveselection")
+				}
+				else
+				{
+					shortcut_bar_add(null, e_mouse.CLICK_LEFT, "select")
+					shortcut_bar_add(keybind_new(null, false, true), e_mouse.CLICK_LEFT, "selectadd")
+					shortcut_bar_add(null, e_mouse.DRAG_LEFT, "groupselect")
+				}
+			
+			
+				shortcut_bar_add(null, e_mouse.CLICK_RIGHT, "contextmenuelement")
+			}
 		}
-			
 	}
 	
 	shortcut_bar_state_prev = shortcut_bar_state

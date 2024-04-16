@@ -67,10 +67,18 @@ function menu_draw()
 		draw_box(menu_x_draw + 1, yy + (m.menu_flip), menu_wid_draw - 2, menuh - 1, false, c_level_top, 1)
 		
 		// Drop shadow
-		var shadowy, shadowh;
-		shadowy = (m.menu_flip ? yy : yy - m.menu_button_h)
-		shadowh = menuh + m.menu_button_h
-		draw_dropshadow(menu_x_draw, shadowy, menu_wid_draw, shadowh, c_black, aniease)
+		if (m.menu_w > m.menu_w_start)
+		{
+			shadowy = yy
+			shadowh = menuh
+			draw_dropshadow(menu_x_draw, shadowy, menu_wid_draw, shadowh, c_black, aniease)
+		}
+		else
+		{
+			shadowy = (m.menu_flip ? yy : yy - m.menu_button_h)
+			shadowh = menuh + m.menu_button_h
+			draw_dropshadow(menu_x_draw, shadowy, menu_wid_draw, shadowh, c_black, aniease)
+		}
 		
 		if (window_busy = "menu" && m.menu_ani_type != "hide" && menu_active)
 			window_busy = ""
@@ -140,16 +148,11 @@ function menu_draw()
 				if (m.menu_type = e_menu.LIST)
 				{
 					if (updatewidth)
-					{
 						list_update_width(m.menu_list)
-						//m.menu_list.width += 16
-					}
 					
 					var w = m.menu_w;
 					m.menu_w = max(m.menu_list.width + 16, m.menu_w)
-					
-					if (m.menu_x + m.menu_w > (m.content_x + m.content_width))
-						m.menu_x = (m.menu_x + w) - m.menu_w
+					m.menu_x = (m.menu_x + w) - m.menu_w
 				}
 				
 				break
@@ -178,7 +181,9 @@ function menu_draw()
 				}
 				
 				app_mouse_clear()
-				close = true
+				
+				if (!keyboard_check(vk_shift))
+					close = true
 			}
 			
 			if (!content_mouseon)

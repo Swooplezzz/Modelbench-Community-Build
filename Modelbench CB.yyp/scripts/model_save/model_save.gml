@@ -37,7 +37,7 @@ function model_save()
 	
 	model_save_start(fn)
 	model_save_children()
-	model_save_painter_pallettes()
+	model_save_painter_palettes()
 	model_save_done()
 	
 	ds_map_clear(save_name_count_map)
@@ -62,7 +62,8 @@ function model_save()
 	
 	textures_list.update = true
 	
-	if(app.window_state = "startup"){
+	if(app.window_state = "startup")
+	{
 		model_reset()	
 	}
 	

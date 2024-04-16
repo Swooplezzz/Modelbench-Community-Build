@@ -4,7 +4,7 @@
   "name": "shader_alphamask",
   "parent": {
     "name": "Shaders",
-    "path": "folders/Scripts/Shaders.yy",
+    "path": "folders/Shaders.yy",
   },
   "type": 1,
 }
