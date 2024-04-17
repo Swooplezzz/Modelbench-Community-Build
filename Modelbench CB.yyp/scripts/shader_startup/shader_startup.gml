@@ -229,8 +229,8 @@ function shader_startup()
 	
 	with (shader_map[?shader_hue_yiq])
 	{
-		new_shader_uniform("u_Position")
-		new_shader_uniform("u_Position_s")
+		new_shader_uniform("hueShift")
+		new_shader_uniform("satShift")
 	}
 	
 	with (shader_map[?shader_huesat])

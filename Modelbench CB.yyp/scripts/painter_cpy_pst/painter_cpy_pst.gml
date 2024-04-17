@@ -1,8 +1,12 @@
-///painter_cpy_pst()
-function painter_cpy_pst() {
-	if (keybinds[e_keybind.PASTE].pressed) {
+/// painter_cpy_pst()
+
+function painter_cpy_pst()
+{
+	if (keybinds[e_keybind.PASTE].pressed)
+	{
 		show_debug_message(view_area_x)
-		if (clipboard_has_img()) {
+		if (clipboard_has_img())
+		{
 			clipboard_dump_image(app.model_folder + "\\clipboard.png");
 			
 			var tempspr = sprite_add(app.model_folder + "\\clipboard.png", 1, false, false, 0, 0);
@@ -12,7 +16,9 @@ function painter_cpy_pst() {
 			offset[Y] = snap(offset[Y],1);
 			offset[X] = clamp(offset[X], 0, paint_texture_width - sprite_get_width(tempspr))
 			offset[Y] = clamp(offset[Y], 0, paint_texture_height - sprite_get_height(tempspr))
-			if (selection_moved) {
+			
+			if (selection_moved)
+			{
 				surface_set_target(color_surf);
 				{
 					draw_clear_alpha(c_black, 0);
@@ -25,6 +31,7 @@ function painter_cpy_pst() {
 					gpu_set_blendmode(bm_normal);
 				}
 				surface_reset_target();
+				
 				// Update the alpha mask.
 				surface_set_target(alpha_surf);
 				{
@@ -40,19 +47,17 @@ function painter_cpy_pst() {
 				}
 				surface_reset_target();
 
-				if (sprite_exists(alpha_spr)) {
+				if (sprite_exists(alpha_spr))
 					sprite_delete(alpha_spr);
-				}
 				alpha_spr = sprite_create_from_surface(alpha_surf, 0, 0, surface_get_width(alpha_surf), surface_get_height(alpha_surf), false, false, 0, 0);
 
-				if (sprite_exists(color_spr)) {
+				if (sprite_exists(color_spr))
 					sprite_delete(color_spr);
-				}
 				color_spr = sprite_create_from_surface(color_surf, 0, 0, surface_get_width(color_surf), surface_get_height(color_surf), false, false, 0, 0);
+				
 				painter_create_final_spr()
 			}
-
-
+			
 			surface_set_target(transform_surf);
 			{
 				draw_clear_alpha(c_black, 0);
@@ -63,10 +68,11 @@ function painter_cpy_pst() {
 				gpu_set_blendmode(bm_normal);
 			}
 			surface_reset_target();
-			if (sprite_exists(transformspr)) {
+			
+			if (sprite_exists(transformspr))
 				sprite_delete(transformspr);
-			}
 			transformspr = sprite_create_from_surface(transform_surf, offset[X], offset[Y], sprite_get_width(tempspr), sprite_get_height(tempspr), false, false, 0, 0);
+			
 			surface_set_target(selection_surf);
 			{
 				draw_clear(c_black);
@@ -79,12 +85,11 @@ function painter_cpy_pst() {
 			}
 			surface_reset_target();
 
-			if (sprite_exists(selection_spr)) {
+			if (sprite_exists(selection_spr))
 				sprite_delete(selection_spr);
-			}
 			selection_spr = sprite_create_from_surface(selection_surf, 0, 0, paint_texture_width, paint_texture_height, false, false, 0, 0);
+			
 			selection_active = true;
-
 			selection_topleft = vec2(offset[X], offset[Y]);
 			selection_btmright = vec2(offset[X] + sprite_get_width(tempspr),offset[Y] +  sprite_get_height(tempspr));
 
@@ -129,21 +134,25 @@ function painter_cpy_pst() {
 			sprite_delete(tempspr);
 		}
 	}
-	if (keybinds[e_keybind.COPY].pressed && selection_active) {
+	if (keybinds[e_keybind.COPY].pressed && selection_active)
+	{
 		sprite_save(transformspr, 0, app.model_folder + "\\clipboard.png");
 		clipboard_load_image(app.model_folder + "\\clipboard.png");
 	}
-	if (keybinds[e_keybind.CUT].pressed && selection_active) {
+	if (keybinds[e_keybind.CUT].pressed && selection_active)
+	{
 		sprite_save(transformspr, 0, app.model_folder + "\\clipboard.png");
 		clipboard_load_image(app.model_folder + "\\clipboard.png");
+		
 		painter_clear_selection()
 	    painter_create_final_spr();
-	surface_set_target(selection_surf){
-		draw_clear_alpha(c_black,0)
-		selection_topleft = vec2(0,0)
-		selection_btmright = vec2(0,0)
-		selection_active = false
-	}
-	surface_reset_target()
+		surface_set_target(selection_surf)
+		{
+			draw_clear_alpha(c_black,0)
+			selection_topleft = vec2(0,0)
+			selection_btmright = vec2(0,0)
+			selection_active = false
+		}
+		surface_reset_target()
 	}
 }
