@@ -3,7 +3,7 @@
 function popup_about_draw()
 {
 	// Header
-	draw_box(dx, dy, dw, 156, false, c_overlay, a_overlay)
+	draw_box(dx, dy, dw, 144, false, c_overlay, a_overlay)
 	
 	// Close
 	if (draw_button_icon("aboutclose", dx + dw - 12 - 28, dy + 8, 28, 28, false, icons.CLOSE, null, false))
@@ -18,13 +18,13 @@ function popup_about_draw()
 	var text, width, textx;
 	text = text_get("aboutversion", modelbench_version_full) + text_get("aboutreleasedate", modelbench_version_date)
 	width = string_width_font(text, font_value)
-	textx = dx + dw/2 - width/2
+	textx = floor(dx + dw/2 - width/2)
 	
-	draw_button_text(text_get("aboutversion", modelbench_version_full), textx, dy + 120, open_url, "https://www.communitybuild.netlify.app", "https://www.communitybuild.netlify.app")
+	draw_button_text(text_get("aboutversion", modelbench_version_full), textx, dy + 114, open_url, "https://www.communitybuild.netlify.app", "https://www.communitybuild.netlify.app")
 	textx += string_width_font(text_get("aboutversion", modelbench_version_full), font_value)
 	
-	draw_label(text_get("aboutreleasedate", modelbench_version_date), textx, dy + 120, fa_left, fa_bottom, c_text_secondary, a_text_secondary, font_value)
-	draw_label(text_get("aboutforversion", "Mine-imator 2.0+"), content_x + dw/2, dy + 120 + 19, fa_middle, fa_bottom, c_text_secondary, a_text_secondary, font_value)
+	draw_label(text_get("aboutreleasedate", modelbench_version_date), textx, dy + 114, fa_left, fa_bottom, c_text_secondary, a_text_secondary, font_value)
+	draw_label(text_get("aboutforversion", "Mine-imator 2.0.2+"), content_x + dw/2, dy + 114 + 19, fa_middle, fa_bottom, c_text_secondary, a_text_secondary, font_value)
 	
 	dy += 128 + 48
 	dx = content_x + 64
@@ -34,6 +34,9 @@ function popup_about_draw()
 	draw_label(text_get("aboutmoddevelopment"), dx, dy, fa_left, fa_bottom, c_text_tertiary, a_text_tertiary, font_subheading)
 	dy += 26
 	draw_button_text("Swooplezz", dx, dy,  open_url, "https://www.twitter.com/@swooplezz", "https://www.twitter.com/@swooplezz", a_text_secondary, font_label)
+	dy += 19
+	draw_label("mbanders", dx, dy, fa_left, fa_bottom, c_text_secondary, a_text_secondary, font_label)
+	
 	
 	dy += 34
 	draw_label(text_get("aboutdevelopment"), dx, dy, fa_left, fa_bottom, c_text_tertiary, a_text_tertiary, font_subheading)
@@ -54,8 +57,6 @@ function popup_about_draw()
 
 	draw_label(text_get("aboutbetatesting"), dx, dy, fa_left, fa_bottom, c_text_tertiary, a_text_tertiary, font_subheading)
 	dy += 26
-	draw_label("mbanders", dx, dy, fa_left, fa_bottom, c_text_secondary, a_text_secondary, font_label)
-	dy += 19
 	draw_label("SoundsDotZip", dx, dy, fa_left, fa_bottom, c_text_secondary, a_text_secondary, font_label)
 	
 	dy += 19

@@ -1,5 +1,8 @@
-// Script assets have changed for v2.3.0 see
-// https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
-function action_painter_opacity(value,add){
-paint_opacity = paint_opacity * add + value/100
+/// action_painter_opacity(value, add)
+/// @arg value
+/// @arg add
+
+function action_painter_opacity(value, add)
+{
+	paint_opacity = paint_opacity * add + value/100
 }

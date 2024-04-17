@@ -35,12 +35,18 @@ function app_update_micro_animations()
 	{
 		toolbar_tools_alpha = toolbar_tools_alpha_goal
 		toolbar_nav_alpha = toolbar_nav_alpha_goal
+		toolbar_projection_alpha = toolbar_projection_alpha_goal
+		toolbar_painter_alpha = toolbar_painter_alpha_goal
+		toolbar_paintercontrols_alpha = toolbar_paintercontrols_alpha_goal
 		toolbar_cam_nav_alpha = toolbar_cam_nav_alpha_goal
 	}
 	else
 	{
 		toolbar_tools_alpha += (toolbar_tools_alpha_goal - toolbar_tools_alpha) / max(1, 4 / delta)
 		toolbar_nav_alpha += (toolbar_nav_alpha_goal - toolbar_nav_alpha) / max(1, 4 / delta)
+		toolbar_projection_alpha += (toolbar_projection_alpha_goal - toolbar_projection_alpha) / max(1, 4 / delta)
+		toolbar_painter_alpha += (toolbar_painter_alpha_goal - toolbar_painter_alpha) / max(1, 4 / delta)
+		toolbar_paintercontrols_alpha += (toolbar_paintercontrols_alpha_goal - toolbar_paintercontrols_alpha) / max(1, 4 / delta)
 		toolbar_cam_nav_alpha += (toolbar_cam_nav_alpha_goal - toolbar_cam_nav_alpha) / max(1, 4 / delta)
 	}
 	

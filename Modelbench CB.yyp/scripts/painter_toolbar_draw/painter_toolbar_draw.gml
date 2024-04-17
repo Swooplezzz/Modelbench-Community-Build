@@ -13,6 +13,9 @@ function painter_toolbar_draw(barx, bary, barw, barh)
 	dy_start = dy
 	dx_start = dx
 	
+	if (program_mode != e_mode.TEXTURING)
+		return 0
+	
 	content_mouseon = app_mouse_box(dx, dy, dw, dh) && !popup_mouseon && !toast_mouseon && !context_menu_mouseon
 	
 	if (dh > dw)
@@ -25,13 +28,13 @@ function painter_toolbar_draw(barx, bary, barw, barh)
 	window_busy = ""
 	
 	if (app_mouse_box(dx - 80, dy - 80, dw + 160, dh + 160) && !popup_mouseon && !toast_mouseon && !context_menu_mouseon)
-		toolbar_nav_alpha_goal = 1
+		toolbar_painter_alpha_goal = 1
 	else
-		toolbar_nav_alpha_goal = .65
+		toolbar_painter_alpha_goal = .65
 	
 	window_busy = busy
 	
-	draw_set_alpha(toolbar_nav_alpha)
+	draw_set_alpha(toolbar_painter_alpha)
 	
 	// Background
 	draw_box(dx, dy, dw, dh, false, c_level_middle, 1)
@@ -43,7 +46,7 @@ function painter_toolbar_draw(barx, bary, barw, barh)
 	
 	// Brush tool
 	tip_set_keybind(e_keybind.BRUSH)
-	if(draw_button_icon("toolbrush", dx, dy, 28, 28, paint_tool_selected = e_paint.BRUSH, icons.BRUSH, null, false, "toolsetpainterbrush"))
+	if (draw_button_icon("toolbrush", dx, dy, 28, 28, paint_tool_selected = e_paint.BRUSH, icons.BRUSH, null, false, "toolsetpainterbrush"))
 		paint_tool_selected = e_paint.BRUSH
 	
 	if (dw > dh)
@@ -106,7 +109,11 @@ function painter_toolbar_draw(barx, bary, barw, barh)
 	if(draw_button_icon("tooltransform", dx, dy, 28, 28, paint_tool_selected = e_paint.TRANSFORM_SELECTION, icons.TRANSFORM, null, false, "toolsetpaintertransformselection"))
 		paint_tool_selected = e_paint.TRANSFORM_SELECTION
 	
-	draw_set_alpha(1)
+	if (dw > dh)
+		dx += buttonsize
+	else
+		dy += buttonsize
 	
+	draw_set_alpha(1)
 	tip_force_left = false
 }

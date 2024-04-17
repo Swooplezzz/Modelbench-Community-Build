@@ -1,5 +1,7 @@
-// Script assets have changed for v2.3.0 see
-// https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
-function mat_angles(m){
+/// mat_angles(matrix)
+/// @arg matrix
+
+function mat_angles(m)
+{
 
 }

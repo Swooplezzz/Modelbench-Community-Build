@@ -10,10 +10,17 @@ function app_startup_interface_toolset()
 	toolbar_nav_alpha = .25
 	toolbar_nav_alpha_goal = toolbar_nav_alpha
 	
-		
+	toolbar_projection_alpha = .25
+	toolbar_projection_alpha_goal = toolbar_projection_alpha
+	
+	toolbar_painter_alpha = .25
+	toolbar_painter_alpha_goal = toolbar_painter_alpha
+	
+	toolbar_paintercontrols_alpha = .25
+	toolbar_paintercontrols_alpha_goal = toolbar_paintercontrols_alpha
+	
 	toolbar_cam_nav_alpha = .25
 	toolbar_cam_nav_alpha_goal = toolbar_cam_nav_alpha
-	
 	
 	// Viewport toolbar
 	tbx_snap_size_position = new_textbox_decimals()

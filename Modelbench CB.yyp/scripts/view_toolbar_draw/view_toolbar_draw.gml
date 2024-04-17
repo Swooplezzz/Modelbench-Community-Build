@@ -74,8 +74,7 @@ function view_toolbar_draw(barx, bary, barw, barh)
 	// Add plane (3d)
 	if (draw_button_icon("toolsetaddplane3d", dx, dy, 28, 28, false, icons.PLANE_3D_ADD, null, false, "toolsetaddplane3d"))
 		action_element_create(e_element.PLANE_3D)
-		
-		
+	
 	if (dw > dh)
 		dx += buttonsize
 	else

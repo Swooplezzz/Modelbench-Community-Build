@@ -11,7 +11,7 @@ function macros()
 	#macro modelbench_version			"Community Build 1.1.0"
 	#macro modelbench_version_extra		"Alpha 4"
 	#macro modelbench_version_full		modelbench_version + " (" + modelbench_version_extra + ")"
-	#macro modelbench_version_date		"2024.04.16"
+	#macro modelbench_version_date		"2024.04.17"
 	#macro gm_runtime					GM_runtime_version
 	
 	// File formats

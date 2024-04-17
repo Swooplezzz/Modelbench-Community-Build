@@ -231,7 +231,7 @@ function view_draw(view)
 	
 	toolbary += toolbarhei + 8
     toolbarhei = 4 + (28 * 1) + (4) + 2
-	if(program_mode != e_mode.TEXTURING)
+	if (program_mode != e_mode.TEXTURING)
 		view_toolbar_projection_draw(toolbarx, toolbary, toolbarwid, toolbarhei)
 	
 	// Navigation

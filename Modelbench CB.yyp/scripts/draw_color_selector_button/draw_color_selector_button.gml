@@ -1,6 +1,12 @@
-// Script assets have changed for v2.3.0 see
-// https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
-function draw_color_selector_button(name, xx, yy, value, script){
+/// draw_color_selector_button(name, x, y, value, script)
+/// @arg name
+/// @arg x
+/// @arg y
+/// @arg value
+/// @arg script
+
+function draw_color_selector_button(name, xx, yy, value, script)
+{
 	var h, w, mouseon, mouseclick, active;
 	h = 32
 	w = h;
@@ -10,15 +16,15 @@ function draw_color_selector_button(name, xx, yy, value, script){
 	mouseon = app_mouse_box(xx, yy, w, h) && content_mouseon
 	mouseclick = mouseon && mouse_left
 	
-	if (mouseon){
+	if (mouseon)
+	{
 		mouse_cursor = cr_handpoint
-		if(value = painter_main_color)
-		  mouse_obj = value; 
-		if(value != mouse_obj)
-		  mouseon = false
+		if (value = painter_main_color)
+			mouse_obj = value; 
+		if (value != mouse_obj)
+			mouseon = false
 		  
 		mouse_obj = value; 
-		  
 	}
 	
 	microani_set(name, script, mouseon, mouseclick, false, false, 1, true)
@@ -44,7 +50,6 @@ function draw_color_selector_button(name, xx, yy, value, script){
 	//// Color
 	draw_box(xx + 4, yy + 4, w - 8, h - 8, false, (value = 1? paint_secondary_color : paint_primary_color), 1)
 
-	
 	// Hover
 	//draw_box_hover(xx, yy, w, h, microani_arr[e_microani.PRESS])
 	
