@@ -4,7 +4,7 @@
   "name": "shader_high_ssao",
   "parent": {
     "name": "SSAO",
-    "path": "folders/Scripts/Shaders/High quality/SSAO.yy",
+    "path": "folders/Shaders/High quality/SSAO.yy",
   },
   "type": 1,
 }

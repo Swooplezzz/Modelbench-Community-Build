@@ -94,9 +94,8 @@ function export_start()
 	export_face_done = 0
 	export_face_max = ds_list_size(export_elements)
 	
-	
-	
-	if(export_generation_max = 0){ 
+	if (export_generation_max = 0)
+	{ 
 		toast_draw(toast_new(e_toast.WARNING, "toastnoshapesexport"))
 		exit
 	}

@@ -1,27 +1,29 @@
-// Script assets have changed for v2.3.0 see
-// https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
-function quat_mat(_quaternion){
-var _r = _quaternion[3];
-var _x = _quaternion[0];
-var _y = _quaternion[1];
-var _z = _quaternion[2];
+/// quat_mat(quaternion)
+/// @arg quaternion
 
-var _length = sqrt(_x*_x + _y*_y + _z*_z);
-var _hyp_sqr = _length*_length + _r*_r;
+function quat_mat(_quaternion)
+{
+	var _r = _quaternion[3];
+	var _x = _quaternion[0];
+	var _y = _quaternion[1];
+	var _z = _quaternion[2];
 
-//Calculate trig coefficients
-var _c   = 2*_r*_r / _hyp_sqr - 1;
-var _s   = 2*_length*_r*_hyp_sqr;
-var _omc = 1 - _c;
+	var _length = sqrt(_x*_x + _y*_y + _z*_z);
+	var _hyp_sqr = _length*_length + _r*_r;
 
-//Normalise the input vector
-_x /= _length;
-_y /= _length;
-_z /= _length;
+	//Calculate trig coefficients
+	var _c   = 2*_r*_r / _hyp_sqr - 1;
+	var _s   = 2*_length*_r*_hyp_sqr;
+	var _omc = 1 - _c;
 
-//Build matrix
-return [_omc*_x*_x + _c   , _omc*_x*_y + _s*_z,  _omc*_x*_z - _s*_y, 0,
-        _omc*_x*_y - _s*_z, _omc*_y*_y + _c   ,  _omc*_y*_z + _s*_x, 0,
-        _omc*_x*_z + _s*_y, _omc*_y*_z - _s*_x,  _omc*_z*_z + _c   , 0,
-                         0,                  0,                   0, 1];
+	//Normalise the input vector
+	_x /= _length;
+	_y /= _length;
+	_z /= _length;
+
+	//Build matrix
+	return [_omc*_x*_x + _c   , _omc*_x*_y + _s*_z,  _omc*_x*_z - _s*_y, 0,
+	        _omc*_x*_y - _s*_z, _omc*_y*_y + _c   ,  _omc*_y*_z + _s*_x, 0,
+	        _omc*_x*_z + _s*_y, _omc*_y*_z - _s*_x,  _omc*_z*_z + _c   , 0,
+	                         0,                  0,                   0, 1];
 }

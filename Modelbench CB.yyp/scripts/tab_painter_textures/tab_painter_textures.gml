@@ -1,7 +1,8 @@
-// Script assets have changed for v2.3.0 see
-// https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
-function tab_painter_textures(){
-// Preview selected texture
+/// tab_painter_textures()
+
+function tab_painter_textures()
+{
+	// Preview selected texture
 	var itemhover = null;
 	dw = content_width - 24
 	tab_control(ds_list_size(textures_list.item) * 32)

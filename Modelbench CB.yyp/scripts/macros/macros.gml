@@ -8,10 +8,10 @@ function macros()
 	#macro debug_export_normals			false
 	
 	// Versions
-	#macro modelbench_version			"1.1.0 CB"
-	#macro modelbench_version_full		modelbench_version + " " + modelbench_version_extra
-	#macro modelbench_version_extra		"(Indev 11)"
-	#macro modelbench_version_date		"3.30.2024"
+	#macro modelbench_version			"Community Build 1.1.0"
+	#macro modelbench_version_extra		"Alpha 4"
+	#macro modelbench_version_full		modelbench_version + " (" + modelbench_version_extra + ")"
+	#macro modelbench_version_date		"2024.04.17"
 	#macro gm_runtime					GM_runtime_version
 	
 	// File formats
@@ -30,7 +30,7 @@ function macros()
 	#macro language_file				languages_directory + "english.mblanguage"
 	#macro settings_file				data_directory + "settings.mbdata"
 	#macro recent_file					data_directory + "recent.mbdata"
-	#macro pallette_file					data_directory + "colorpallettes.mbdata"
+	#macro palette_file					data_directory + "colorpalettes.mbdata"
 	#macro scenery_file					data_directory + "scenery.mbdata"
 	#macro log_previous_file			file_directory + "log_previous.txt"
 	#macro log_file						file_directory + "log.txt"
@@ -64,6 +64,7 @@ function macros()
 	
 	// World
 	#macro world_size					30000
+	#macro alphafix						gpu_set_blendmode_ext(bm_one, bm_inv_src_alpha)
 	
 	// Vectors and matrices
 	#macro X							0
@@ -73,21 +74,21 @@ function macros()
 	#macro MAT_X						12
 	#macro MAT_Y						13
 	#macro MAT_Z						14
-    #macro MAT_00                        0
-    #macro MAT_01                        1
-    #macro MAT_02                        2
-    #macro MAT_03                        3
-    #macro MAT_10                        4
-    #macro MAT_11                        5
-    #macro MAT_12                        6
-    #macro MAT_13                        7
-    #macro MAT_20                        8
-    #macro MAT_21                        9
-    #macro MAT_22                        10
-    #macro MAT_23                        11
-    #macro MAT_30                        12
-    #macro MAT_31                        13
-    #macro MAT_32                        14
-    #macro MAT_33                        15
+	#macro MAT_00						0
+	#macro MAT_01						1
+	#macro MAT_02						2
+	#macro MAT_03						3
+	#macro MAT_10						4
+	#macro MAT_11						5
+	#macro MAT_12						6
+	#macro MAT_13						7
+	#macro MAT_20						8
+	#macro MAT_21						9
+	#macro MAT_22						10
+	#macro MAT_23						11
+	#macro MAT_30						12
+	#macro MAT_31						13
+	#macro MAT_32						14
+	#macro MAT_33						15
 	#macro MAT_IDENTITY					matrix_build(0, 0, 0, 0, 0, 0, 1, 1, 1)
 }

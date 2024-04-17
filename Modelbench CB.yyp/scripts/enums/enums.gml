@@ -736,12 +736,13 @@ function enums()
 		SWITCH
 	}
 	
-	enum e_paint{
+	enum e_paint
+	{
 	   BRUSH,
 	   ERASE,
 	   PICK,
 	   FILL,
 	   BOX_SELECT,
-	   TRANSFORM
+	   TRANSFORM_SELECTION
 	}
 }

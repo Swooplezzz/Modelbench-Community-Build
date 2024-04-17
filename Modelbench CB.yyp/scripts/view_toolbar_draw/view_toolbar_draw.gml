@@ -44,7 +44,7 @@ function view_toolbar_draw(barx, bary, barw, barh)
 	dy += 4
 	dx += 4
 	
-		// Add part
+	// Add part
 	if (draw_button_icon("toolsetaddpart", dx, dy, 28, 28, false, icons.PART_ADD, null, false, "toolsetaddpart"))
 		action_element_create(e_element.PART)
 	
@@ -74,8 +74,7 @@ function view_toolbar_draw(barx, bary, barw, barh)
 	// Add plane (3d)
 	if (draw_button_icon("toolsetaddplane3d", dx, dy, 28, 28, false, icons.PLANE_3D_ADD, null, false, "toolsetaddplane3d"))
 		action_element_create(e_element.PLANE_3D)
-		
-		
+	
 	if (dw > dh)
 		dx += buttonsize
 	else
@@ -170,9 +169,6 @@ function view_toolbar_draw(barx, bary, barw, barh)
 		dx += buttonsize
 	else
 		dy += buttonsize
-	
-	
-
 	
 	draw_set_alpha(1)
 	tip_force_right = false

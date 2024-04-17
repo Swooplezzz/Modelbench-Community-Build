@@ -25,6 +25,7 @@ function recent_load()
 		{
 			var recentobj = new_obj(obj_recent);
 			recentobj.filename = value_get_string(modelmap[?"filename"], "")
+			recentobj.name = value_get_string(modelmap[?"name"], "")
 			recentobj.last_opened = value_get_real(modelmap[?"last_opened"], -1)
 			recentobj.pinned = value_get_real(modelmap[?"pinned"], false)
 			

@@ -9,8 +9,7 @@ function app_startup_window()
 	step_event_time_start = 0
 	draw_event_time = 0
 	draw_event_time_start = 0
-	tbx_recent_search = new_textbox(true,0,"")
-	search_string = ""
+	tbx_recent_search = new_textbox(true, 0, "")
 	log("Windows startup")
 	
 	http_toast_news = null

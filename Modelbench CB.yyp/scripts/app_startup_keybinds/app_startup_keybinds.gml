@@ -78,16 +78,15 @@ function app_startup_keybinds()
 		PICK,
 		FILL,
 		BOX_SELECT,
-		SELECT_TRANSFORM,
-		BRUSH_WIDTH,
+		TRANSFORM_SELECTION,
 		
+		BRUSH_WIDTH,
 		VIEW_PTR_GRID,
 		VIEW_PTR_GUIDES,
+		
 		COPY,
 		PASTE,
 		CUT,
-
-
 		
 		amount
 	}
@@ -144,7 +143,6 @@ function app_startup_keybinds()
 	keybind_register("camsnapviewy", e_keybind.CAM_SNAP_VIEW_Y, keybind_new("O", false, false), false, true)
 	keybind_register("camsnapviewz", e_keybind.CAM_SNAP_VIEW_Z, keybind_new("P", false, false), false, true)
 	
-	
 	keybind_register("freepos", e_keybind.FREE_POS, keybind_new("J", false, false), false, true)
 	keybind_register("freerot", e_keybind.FREE_ROT, keybind_new("K", false, false), false, true)
 	keybind_register("freesca", e_keybind.FREE_SCA, keybind_new("N", false, false), false, true)
@@ -156,15 +154,13 @@ function app_startup_keybinds()
 	keybind_register("painterbrush", e_keybind.BRUSH, keybind_new("B", false, false), false, true)
 	keybind_register("paintererase", e_keybind.ERASE, keybind_new("E", false, false), false, true)
 	keybind_register("painterpick", e_keybind.PICK, keybind_new("R", false, false), false, true)
-	keybind_register("painterfilltool", e_keybind.FILL, keybind_new("F", true, false), false, true)
+	keybind_register("painterfill", e_keybind.FILL, keybind_new("F", true, false), false, true)
 	keybind_register("painterboxselect", e_keybind.BOX_SELECT, keybind_new("S", false, false), false, true)
-	keybind_register("painterboxtransform", e_keybind.SELECT_TRANSFORM, keybind_new("T", false, false), false, true)
-	keybind_register("painterbrushwidth", e_keybind.BRUSH_WIDTH, keybind_new("F", false, false), false, true)
+	keybind_register("paintertransformselection", e_keybind.TRANSFORM_SELECTION, keybind_new("T", false, false), false, true)
 	
-	keybind_register("painterviewgrid", e_keybind.VIEW_PTR_GRID, keybind_new("G", false, false), false, true)
-	keybind_register("painterviewguides", e_keybind.VIEW_PTR_GUIDES, keybind_new("G", true, false), false, true)
-
-
+	keybind_register("painterbrushwidth", e_keybind.BRUSH_WIDTH, keybind_new("F", false, false), false, true)
+	keybind_register("paintergrid", e_keybind.VIEW_PTR_GRID, keybind_new("G", false, false), false, true)
+	keybind_register("painterguides", e_keybind.VIEW_PTR_GUIDES, keybind_new("G", true, false), false, true)
 	
 	keybinds_update_match()
 }

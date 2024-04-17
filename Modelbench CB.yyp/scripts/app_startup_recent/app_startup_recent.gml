@@ -3,14 +3,16 @@
 function app_startup_recent()
 {
 	enum e_recent_sort {
-		filename_ascend,
-		filename_descend,
-		date_ascend,
-		date_descend
+		date_newest,
+		date_oldest,
+		name_az,
+		name_za
 	}
 	
+	recent_search = ""
+	
 	recent_display_mode = "grid"
-	recent_sort_mode = e_recent_sort.date_descend
+	recent_sort_mode = e_recent_sort.date_newest
 	
 	recent_list = ds_list_create()
 	recent_list_display = ds_list_create()

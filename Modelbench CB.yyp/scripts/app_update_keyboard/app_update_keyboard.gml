@@ -35,27 +35,36 @@ function app_update_keyboard()
 	
 	if (keyboard_check_pressed(vk_f12))
 		debug_info = !debug_info
-	if(program_mode = e_mode.TEXTURING && window_state = "" && window_busy = "" && !textbox_isediting){
-			if (keybinds[e_keybind.BRUSH].pressed)
+	
+	if (program_mode = e_mode.TEXTURING && window_state = "" && window_busy = "" && !textbox_isediting)
+	{
+		if (keybinds[e_keybind.BRUSH].pressed)
 			paint_tool_selected = e_paint.BRUSH
-	        if (keybinds[e_keybind.ERASE].pressed)
+		
+	    if (keybinds[e_keybind.ERASE].pressed)
 			paint_tool_selected = e_paint.ERASE
 		
-	        if (keybinds[e_keybind.PICK].pressed)
-            paint_tool_selected = e_paint.PICK
-			
-			if (keybinds[e_keybind.BOX_SELECT].pressed)
-            paint_tool_selected = e_paint.BOX_SELECT
-			if (keybinds[e_keybind.SELECT_TRANSFORM].pressed)
-            paint_tool_selected = e_paint.TRANSFORM
-			if (keybinds[e_keybind.FILL].pressed)
-            paint_tool_selected = e_paint.FILL
-			if (keybinds[e_keybind.VIEW_PTR_GRID].pressed)
-            paint_view_grid = !paint_view_grid
-			if (keybinds[e_keybind.VIEW_PTR_GUIDES].pressed)
-            paint_view_brush_guides = !paint_view_brush_guides
+	    if (keybinds[e_keybind.PICK].pressed)
+			paint_tool_selected = e_paint.PICK
+		
+		if (keybinds[e_keybind.FILL].pressed)
+			paint_tool_selected = e_paint.FILL
+		
+		if (keybinds[e_keybind.BOX_SELECT].pressed)
+			paint_tool_selected = e_paint.BOX_SELECT
+
+		if (keybinds[e_keybind.TRANSFORM_SELECTION].pressed)
+			paint_tool_selected = e_paint.TRANSFORM_SELECTION
+		
+		if (keybinds[e_keybind.VIEW_PTR_GRID].pressed)
+			paint_view_grid = !paint_view_grid
+		
+		if (keybinds[e_keybind.VIEW_PTR_GUIDES].pressed)
+			paint_view_brush_guides = !paint_view_brush_guides
 	}
-	if(window_state = "startup"){
+	
+	if(window_state = "startup")
+	{
 		if (keybinds[e_keybind.UNDO].pressed)
 			action_toolbar_undo()
 		
@@ -150,24 +159,24 @@ function app_update_keyboard()
 				
 			if (keybinds[e_keybind.ELEMENT_MIRROR_X].pressed)
 				action_el_mirror_x()
-				
-	if (keybinds[e_keybind.TOGGLE_PROJ].pressed)
-		toggle_projection()
-		
-	if (keybinds[e_keybind.CAM_SNAP_VIEW_X].pressed)
-		cam_snap_view_x()
-		
-	if (keybinds[e_keybind.CAM_SNAP_VIEW_Y].pressed)
-		cam_snap_view_y()
-		
-	if (keybinds[e_keybind.CAM_SNAP_VIEW_Z].pressed)
-		cam_snap_view_z()
-		
-
 			
 			// Toggle snapping
 			if (keybinds[e_keybind.SNAP].pressed)
 				action_setting_snap(!setting_snap)
+			
+			// Camera snapping
+			if (keybinds[e_keybind.TOGGLE_PROJ].pressed)
+				toggle_projection()
+		
+			if (keybinds[e_keybind.CAM_SNAP_VIEW_X].pressed)
+				cam_snap_view_x()
+	
+			if (keybinds[e_keybind.CAM_SNAP_VIEW_Y].pressed)
+				cam_snap_view_y()
+	
+			if (keybinds[e_keybind.CAM_SNAP_VIEW_Z].pressed)
+				cam_snap_view_z()
+			
 		}
 
 	}

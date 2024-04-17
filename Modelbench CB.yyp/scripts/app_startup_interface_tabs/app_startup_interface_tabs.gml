@@ -284,11 +284,13 @@ function app_startup_interface_tabs()
 			tbx_backup_amount = new_textbox_integer()
 			
 			tbx_fov = new_textbox_integer()
+			tbx_fov.suffix = "°"
 		}
 		
 		// Controls
 		controls = tab_add_category("controls", icons.KEYBOARD_SMALL, tab_settings_controls, false)
-		with (controls){
+		with (controls)
+		{
 			tbx_look_sensitivity = new_textbox_decimals()
 			tbx_move_speed = new_textbox_decimals()
 			tbx_fast_modifier = new_textbox_decimals()
@@ -297,34 +299,42 @@ function app_startup_interface_tabs()
 		
 		// Interface
 		interface = tab_add_category("interface", icons.BRUSH_SMALL, tab_settings_interface, false)
-		
 		painter = tab_add_category("painter", icons.PENCIL, tab_settings_painter, false)
-			
-		
 	}
-			colors = new_tab(setting_color_editor_location, false, null)
-			colors.closeable = false
-			with(colors){
-			color_editor = tab_add_category("coloreditor", icons.FILL_TOOL, tab_color_editor, true)
-			with(color_editor)
-			{
+	
+	colors = new_tab(setting_color_editor_location, false, null)
+	colors.closeable = false
+	with (colors)
+	{
+		color_editor = tab_add_category("coloreditor", icons.FILL_TOOL, tab_color_editor, true)
+		with(color_editor)
+		{
 			tbx_name = new_textbox(true, 0, "")
 			name_edit_element = null
-			}
-			textures = tab_add_category("textures", icons.TEXTURE_SMALL, tab_painter_textures, true)
-			tbx_width = new_textbox_integer()
-			tbx_height = new_textbox_integer()
-			}
-			
-		toolproperties = new_tab(setting_tool_properties_location, false,null)
-			toolproperties.closeable = false
-		with(toolproperties){
-			properties = tab_add_category("properties", icons.BRUSH, tab_tool_properties, true)	
-					with (properties)
-		{
-			tbx_opacity = new_textbox_integer()
-			tbx_tolerance = new_textbox_integer()
-			tbx_width = new_textbox_integer()
 		}
-	    }
+		color_palettes = tab_add_category("colorpalettes", icons.PALETTE, tab_color_palettes, true)
+		with(color_palettes)
+		{
+			tbx_name = new_textbox(true, 0, "")
+			name_edit_element = null
+		}
+		textures = tab_add_category("textures", icons.TEXTURE_SMALL, tab_painter_textures, true)
+		tbx_width = new_textbox_integer()
+		tbx_height = new_textbox_integer()
+	}
+			
+	toolproperties = new_tab(setting_tool_properties_location, false, null)
+	toolproperties.closeable = false
+	with (toolproperties)
+	{
+		properties = tab_add_category("properties", icons.BRUSH, tab_tool_properties, true)	
+		with (properties)
+		{
+			tbx_width = new_textbox_integer()
+			tbx_opacity = new_textbox_integer()
+			tbx_opacity.suffix = "%"
+			tbx_tolerance = new_textbox_integer()
+			tbx_tolerance.suffix = "%"
+		}
+	}
 }

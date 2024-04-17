@@ -286,18 +286,18 @@ function textbox_draw()
 		}
 		
 		action = -1
-		if ((keyboard_check(vk_control) && window_busy = "") || context_menu_tbx_action) // Ctrl commands
+		if (window_busy = "" || context_menu_tbx_action)
 		{
-			if ((!tbx.read_only && keyboard_check_pressed(ord("X"))) || context_menu_tbx_cut)
+			if ((!tbx.read_only && keybinds[e_keybind.CUT].pressed) || context_menu_tbx_cut)
 				action = 0
 			
-			if (keyboard_check_pressed(ord("C")) || context_menu_tbx_copy)
+			if (keybinds[e_keybind.COPY].pressed || context_menu_tbx_copy)
 				action = 1
 			
-			if ((!tbx.read_only && key_press[ord("V")]) || context_menu_tbx_paste)
+			if ((!tbx.read_only && keybinds[e_keybind.PASTE].pressed) || context_menu_tbx_paste)
 				action = 2
 			
-			if (keyboard_check_pressed(ord("A")) || context_menu_tbx_select_all)
+			if (keybinds[e_keybind.SELECT_ALL].pressed || context_menu_tbx_select_all)
 				action = 4
 			
 			context_menu_tbx_action = false

@@ -1,80 +1,69 @@
-// Script assets have changed for v2.3.0 see
-// https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
-function cam_snap_view_x(){
-/// camera_reset()
-var dir;
-dir = ""
-if(argument_count > 0)
-dir = argument[0]
+/// cam_snap_view_x()
 
-var cam = id;
-
-if (object_index = app)
-	cam = view_cam
-	
-
-
-
-
-with (cam)
+function cam_snap_view_x()
 {
-	var z_positive = z_snap_positive	
-if(snap_triggered_x = true){ exit }
-	snap_triggered_x = true
+	/// camera_reset()
+	var dir = "";
+	if (argument_count > 0)
+		dir = argument[0]
 
-	show_debug_message("X")
-
+	var cam = id;
+	if (object_index = app)
+		cam = view_cam
 	
+	with (cam)
+	{
+		var z_positive = z_snap_positive
+		
+		if (snap_triggered_x = true)
+			exit
+		snap_triggered_x = true
 		snapped_z = false
-	snapped_y = false
+		snapped_y = false
 
-y_snap_positive = false;
-z_snap_positive = false;
-
-
-
-		if(!snapped_x){
-				target_Focus =  point3D(0, 0 , 25)
-		//zoom_goal = 100
-		x_snap_positive = false
-
-	}
+		y_snap_positive = false;
+		z_snap_positive = false;
+		
+		if (!snapped_x)
+		{
+			target_Focus =  point3D(0, 0 , 25)
+			//zoom_goal = 100
+			x_snap_positive = false
+		}
 		snapped_x = true
 
-	render_proj_mode = 1;
+		render_proj_mode = 1;
 
-	if(!x_snap_positive && dir != "N"){
-					done_snapping = false;
-
+		if (!x_snap_positive && dir != "N")
+		{
+			done_snapping = false;
+			target_Focus =  point3D(0, 0 , focus[Z])
 	
-	target_Focus =  point3D(0, 0 , focus[Z])
+			var notClockwise = z_positive
 	
-	var notClockwise = z_positive
-	
-	target_angle_xy = angle_xy + (0 - angle_xy+540)mod 360 - 180
-	if(target_angle_xy < angle_xy && angle_xy - target_angle_xy >180)
-	target_angle_xy += 360
+			target_angle_xy = angle_xy + (0 - angle_xy+540)mod 360 - 180
+			if (target_angle_xy < angle_xy && angle_xy - target_angle_xy >180)
+				target_angle_xy += 360
 
 			x_snap_positive = true;
-	target_angle_z = 0;
-	}
-	else{
-				done_snapping = false;
-	target_Focus =  point3D(0, 0 , focus[Z])
+			target_angle_z = 0;
+		}
+		else
+		{
+			done_snapping = false;
+			target_Focus =  point3D(0, 0 , focus[Z])
 	
-		var notClockwise = !z_positive
+			var notClockwise = !z_positive
 
-	target_angle_xy = angle_xy +(180-angle_xy+540)mod 360 - 180
-	if(target_angle_xy < angle_xy && angle_xy - target_angle_xy >180)
-	target_angle_xy += 360
+			target_angle_xy = angle_xy +(180-angle_xy+540)mod 360 - 180
+			if (target_angle_xy < angle_xy && angle_xy - target_angle_xy >180)
+				target_angle_xy += 360
 
-	target_angle_z = 0;
-	roll = 0
-		x_snap_positive = false;
+			target_angle_z = 0;
+			roll = 0
+			x_snap_positive = false;
+		}
 	}
+
+	camera_set_from()
 }
-
-camera_set_from()
-
-}
-

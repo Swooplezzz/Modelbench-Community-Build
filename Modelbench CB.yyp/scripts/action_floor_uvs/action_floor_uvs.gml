@@ -1,6 +1,8 @@
-// Script assets have changed for v2.3.0 see
-// https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
-function action_floor_box_uvs(val){
+/// action_floor_box_uvs(val)
+/// @arg value
+
+function action_floor_box_uvs(val)
+{
 	if (history_undo)
 	{
 		with (history_data) 
@@ -21,8 +23,8 @@ function action_floor_box_uvs(val){
 		floor_box_uvs = val
 		with (obj_model_element)
 		{
-				if (element_type = TYPE_SHAPE && value[e_value.EXTRUDE] = false)
-					update_vbuffer = true
+			if (element_type = TYPE_SHAPE && value[e_value.EXTRUDE] = false)
+				update_vbuffer = true
 		}
 	}
 }

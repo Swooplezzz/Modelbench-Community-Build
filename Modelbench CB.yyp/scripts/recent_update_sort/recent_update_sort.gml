@@ -6,8 +6,8 @@ function recent_update_sort(list)
 {
 	var listsize, ascend, datesort, datalist, prevlist, newlist;
 	listsize = ds_list_size(list)
-	ascend = (recent_sort_mode = e_recent_sort.date_ascend || recent_sort_mode = e_recent_sort.filename_ascend)
-	datesort = (recent_sort_mode = e_recent_sort.date_ascend || recent_sort_mode = e_recent_sort.date_descend)
+	ascend = (recent_sort_mode = e_recent_sort.date_newest || recent_sort_mode = e_recent_sort.name_az)
+	datesort = (recent_sort_mode = e_recent_sort.date_newest || recent_sort_mode = e_recent_sort.date_oldest)
 	datalist = ds_list_create()
 	prevlist = ds_list_create()
 	newlist = ds_list_create()
@@ -17,7 +17,7 @@ function recent_update_sort(list)
 		for (var i = 0; i < listsize; i++)
 			ds_list_add(datalist, list[|i].last_opened)
 		
-		ds_list_sort(datalist, ascend)
+		ds_list_sort(datalist, !ascend)
 		ds_list_copy(prevlist, list)
 		
 		// Look for sorted values and fill list
@@ -37,9 +37,9 @@ function recent_update_sort(list)
 	else
 	{
 		for (var i = 0; i < listsize; i++)
-			ds_list_add(datalist, string_lower(filename_name(list[|i].filename)))
+			ds_list_add(datalist, list[|i].name)
 		
-		ds_list_sort(datalist, !ascend)
+		ds_list_sort(datalist, ascend)
 		ds_list_copy(prevlist, list)
 		
 		// Look for sorted values and fill list
@@ -47,7 +47,7 @@ function recent_update_sort(list)
 		{
 			for (var j = 0; j < ds_list_size(prevlist); j++)
 			{
-				if (datalist[|i] = string_lower(filename_name(list[|i].filename)))
+				if (datalist[|i] = prevlist[|j].name)
 				{
 					ds_list_add(newlist, prevlist[|j])
 					ds_list_delete(prevlist, j)

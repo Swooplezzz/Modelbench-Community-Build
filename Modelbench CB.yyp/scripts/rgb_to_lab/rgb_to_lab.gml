@@ -1,9 +1,13 @@
-// Script assets have changed for v2.3.0 see
-// https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
-function rgb_to_lab(){
-var r = argument0 ;
-var g = argument1 ;
-var b = argument2 ;
+/// rgb_to_lab(red, green, blue)
+/// @arg red
+/// @arg green
+/// @arg blue
+
+function rgb_to_lab(red, green, blue)
+{
+	var r = red;
+	var g = green;
+	var b = blue;
 
     // Convert RGB to XYZ
     var _x = (0.4124564 * r + 0.3575761 * g + 0.1804375 * b);
