@@ -6,7 +6,7 @@
 
 function painter_tool_erase(xx, yy, prevx, prevy)
 {
-	surface_set_target(drawsurf)
+	surface_set_target(draw_surf)
 	{
 		// Erase
 		if (paint_tool_selected = e_paint.ERASE)
@@ -16,7 +16,7 @@ function painter_tool_erase(xx, yy, prevx, prevy)
 			
 			gpu_set_blendmode(bm_subtract)
 			draw_set_color(c_black)
-			draw_surface(selectionsurf, 0, 0)
+			draw_surface(selection_surf, 0, 0)
 			gpu_set_blendmode(bm_normal)
 			
 			painter_erase_apply();
@@ -27,7 +27,7 @@ function painter_tool_erase(xx, yy, prevx, prevy)
 			draw_clear(c_black)
 			gpu_set_blendmode(bm_subtract)
 			draw_set_color(c_black)
-			draw_surface(selectionsurf, 0, 0)
+			draw_surface(selection_surf, 0, 0)
 			gpu_set_blendmode(bm_normal)
 			
 			painter_erase_apply();

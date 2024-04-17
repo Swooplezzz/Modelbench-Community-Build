@@ -38,14 +38,14 @@ function draw_floodfill(surf, alpha_surf, xx, yy, targ_color, color, side, targ_
     buffer_poke(alpha_fill_buffer, offset + 2, buffer_u8, 255);
     buffer_poke(alpha_fill_buffer, offset + 3, buffer_u8, 255);
 
-	for(var i = 0; i < array_length(fillarr); i++){
-		if(fillarr[i].xx = xx+1 && fillarr[i].yy = yy) 
+	for(var i = 0; i < array_length(fill_arr); i++){
+		if(fill_arr[i].xx = xx+1 && fill_arr[i].yy = yy) 
 		l = 1;
-		if(fillarr[i].xx = xx-1&& fillarr[i].yy = yy) 
+		if(fill_arr[i].xx = xx-1&& fill_arr[i].yy = yy) 
 		r = 1;
-		if(fillarr[i].yy = yy+1&& fillarr[i].xx = xx)
+		if(fill_arr[i].yy = yy+1&& fill_arr[i].xx = xx)
 		u = 1
-		if(fillarr[i].yy = yy-1&& fillarr[i].xx = xx) 
+		if(fill_arr[i].yy = yy-1&& fill_arr[i].xx = xx) 
 		d = 1
 	
 	

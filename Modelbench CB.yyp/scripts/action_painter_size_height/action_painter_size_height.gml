@@ -3,5 +3,5 @@
 
 function action_painter_size_height(value)
 {
-	textureheight = value
+	paint_texture_height = value
 }

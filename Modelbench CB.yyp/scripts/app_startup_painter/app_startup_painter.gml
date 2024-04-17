@@ -12,13 +12,13 @@ function app_startup_painter()
 	paint_tolerance = .05
 	filling = false
 	painter_update_spr = true
-	fillarr = array_create(0);
+	fill_arr = array_create(0);
 
 	//Adjustments
 	hue=0;
 	sat=100;
 	val=0;
-	editing_hue = false;
+	adjusting_hue = false;
 	painter_main_color = 0;
 	painter_editing_color = 0;
 	painter_palette_id = -1;
@@ -38,42 +38,42 @@ function app_startup_painter()
 
 	//palettes_load()
 
-	texturewidth = 16
-	textureheight = 16
-	texsurf = surface_create(texturewidth, textureheight)
-	drawsurf = surface_create(texturewidth, textureheight)
-	alphasurf = surface_create(texturewidth, textureheight)
-	colorsurf = surface_create(texturewidth, textureheight)
-	selectionsurf = surface_create(texturewidth, textureheight)
-	transformsurf = surface_create(texturewidth, textureheight)
+	paint_texture_width = 16
+	paint_texture_height = 16
+	tex_surf = surface_create(paint_texture_width, paint_texture_height)
+	draw_surf = surface_create(paint_texture_width, paint_texture_height)
+	alpha_surf = surface_create(paint_texture_width, paint_texture_height)
+	color_surf = surface_create(paint_texture_width, paint_texture_height)
+	selection_surf = surface_create(paint_texture_width, paint_texture_height)
+	transform_surf = surface_create(paint_texture_width, paint_texture_height)
 	offx = 0
 	offy = 0
 	targetoffx = 0
 	targetoffy = 0
 
-	texspr = sprite_duplicate(spr_empty)
-	colorspr = sprite_create_from_surface(colorsurf,0,0,texturewidth, textureheight, false,false, 0,0)
-	finalspr = sprite_create_from_surface(colorsurf, 0,0,surface_get_width(colorsurf), surface_get_height(colorsurf), false, false, 0, 0)
-	alphaspr = sprite_create_from_surface(alphasurf, 0,0,surface_get_width(alphasurf), surface_get_height(alphasurf), false, false, 0, 0)
-	selectionspr = sprite_create_from_surface(selectionsurf, 0,0,surface_get_width(selectionsurf), surface_get_height(selectionsurf), false, false, 0, 0)
-	transformspr = sprite_create_from_surface(selectionsurf, 0,0,surface_get_width(selectionsurf), surface_get_height(selectionsurf), false, false, 0, 0)
-	seltrnspr = sprite_create_from_surface(selectionsurf, 0,0,surface_get_width(selectionsurf), surface_get_height(selectionsurf), false, false, 0, 0)
+	tex_spr = sprite_duplicate(spr_empty)
+	color_spr = sprite_create_from_surface(color_surf,0,0,paint_texture_width, paint_texture_height, false,false, 0,0)
+	final_spr = sprite_create_from_surface(color_surf, 0,0,surface_get_width(color_surf), surface_get_height(color_surf), false, false, 0, 0)
+	alpha_spr = sprite_create_from_surface(alpha_surf, 0,0,surface_get_width(alpha_surf), surface_get_height(alpha_surf), false, false, 0, 0)
+	selection_spr = sprite_create_from_surface(selection_surf, 0,0,surface_get_width(selection_surf), surface_get_height(selection_surf), false, false, 0, 0)
+	transform_spr = sprite_create_from_surface(selection_surf, 0,0,surface_get_width(selection_surf), surface_get_height(selection_surf), false, false, 0, 0)
+	sel_trn_spr = sprite_create_from_surface(selection_surf, 0,0,surface_get_width(selection_surf), surface_get_height(selection_surf), false, false, 0, 0)
 	targetzoom = 12
 
 	zoom = targetzoom
-	scale_offset_x= window_get_width() / 2 - (texturewidth*zoom /2 )
-	scale_offset_y = window_get_height() / 2 - (texturewidth*zoom /2 )
+	scale_offset_x= window_get_width() / 2 - (paint_texture_width*zoom /2 )
+	scale_offset_y = window_get_height() / 2 - (paint_texture_width*zoom /2 )
 
 	mouse_x_prev = window_mouse_get_x() - scale_offset_x
 	mouse_y_prev = window_mouse_get_y() - scale_offset_y
 
 	selection_pos = vec2(0,0)
-	drawsize = vec2(0,0)
+	draw_size = vec2(0,0)
 	selection_topleft = vec2(0,0)
 	selection_btmright = vec2(0,0)
 	selection_topleft_prev = vec2(0,0)
 	selection_btmright_prev = vec2(0,0)
-	selectionsize = vec2(selection_btmright[0]-selection_topleft[0],selection_btmright[1]-selection_topleft[1]);
+	selection_size = vec2(selection_btmright[0]-selection_topleft[0],selection_btmright[1]-selection_topleft[1]);
 	selection_active = false
 	selection_moved = false
 }

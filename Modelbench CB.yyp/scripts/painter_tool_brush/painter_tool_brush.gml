@@ -7,7 +7,7 @@
 
 function painter_tool_brush(xx, yy, prevx, prevy, mousebutton)
 {
-	surface_set_target(drawsurf)
+	surface_set_target(draw_surf)
 	{
 		// Draw
 		if (paint_tool_selected = e_paint.BRUSH)
@@ -21,7 +21,7 @@ function painter_tool_brush(xx, yy, prevx, prevy, mousebutton)
 		
 			gpu_set_blendmode(bm_subtract)
 			draw_set_color(c_black)
-			draw_surface(selectionsurf, 0, 0)
+			draw_surface(selection_surf, 0, 0)
 			gpu_set_blendmode(bm_normal)
 		}
 	}

@@ -16,17 +16,17 @@ function painter_draw(xx, yy, inbounds)
 	
 	texx = scale_offset_x
 	texy = scale_offset_y
-	texw = texturewidth * zoom
-	texh = textureheight * zoom
+	texw = paint_texture_width * zoom
+	texh = paint_texture_height * zoom
 	
 	var tex, texscale;
-	tex = texspr
+	tex = tex_spr
 	texscale = 1
 	
-	draw_sprite_ext(finalspr, 0, scale_offset_x, scale_offset_y, zoom, zoom, 0, c_white, 1)
+	draw_sprite_ext(final_spr, 0, scale_offset_x, scale_offset_y, zoom, zoom, 0, c_white, 1)
 
-	draw_surface_ext(drawsurf, scale_offset_x, scale_offset_y, zoom, zoom, 0, c_white, paint_opacity)
-	draw_surface_ext(selectionsurf, scale_offset_x, scale_offset_y, zoom, zoom, 0, c_white, 0.25)
+	draw_surface_ext(draw_surf, scale_offset_x, scale_offset_y, zoom, zoom, 0, c_white, paint_opacity)
+	draw_surface_ext(selection_surf, scale_offset_x, scale_offset_y, zoom, zoom, 0, c_white, 0.25)
 	
 	// Add shortcuts
 	if (inbounds)
@@ -35,16 +35,16 @@ function painter_draw(xx, yy, inbounds)
 		shortcut_bar_state = "painterviewport"
 	}
 		
-	if (selection_active && paint_tool_selected != e_paint.TRANSFORM_SELECTION && !editing_hue)
+	if (selection_active && paint_tool_selected != e_paint.TRANSFORM_SELECTION && !adjusting_hue)
 	{
 		gpu_set_texrepeat(false)
 		render_shader_obj = shader_map[?shader_selection_outline]
 		with (render_shader_obj)
 			shader_use()
 				
-		shader_border_set(c_accent, 1, texturewidth * zoom, textureheight * zoom, 0.35, 0)
+		shader_border_set(c_accent, 1, paint_texture_width * zoom, paint_texture_height * zoom, 0.35, 0)
 			
-		draw_surface_ext(selectionsurf, scale_offset_x, scale_offset_y, zoom, zoom,0, c_white, 1.0)
+		draw_surface_ext(selection_surf, scale_offset_x, scale_offset_y, zoom, zoom,0, c_white, 1.0)
 
 		with (render_shader_obj)
 			shader_clear()
@@ -52,10 +52,10 @@ function painter_draw(xx, yy, inbounds)
 		gpu_set_texrepeat(true)
 	}
 
-	if(paint_tool_selected = e_paint.TRANSFORM_SELECTION && !editing_hue)
+	if(paint_tool_selected = e_paint.TRANSFORM_SELECTION && !adjusting_hue)
 		painter_transform(xx, yy);
 
-	//if (editing_hue)
+	//if (adjusting_hue)
 	//{
 	//	render_shader_obj = shader_map[?shader_huesat]
 
@@ -63,7 +63,7 @@ function painter_draw(xx, yy, inbounds)
 	//	render_set_uniform("u_Position", 2 * pi - degtorad(hue))
 	//	render_set_uniform("u_Position_s", sat/100)
 	//	alphafix
-	//	draw_surface_ext(transformsurf, scale_offset_x, scale_offset_y, zoom, zoom, 0, c_white, 1);
+	//	draw_surface_ext(transform_surf, scale_offset_x, scale_offset_y, zoom, zoom, 0, c_white, 1);
 	//	gpu_set_blendmode(bm_normal);
 	//	shader_reset();
 	//	gpu_set_texrepeat(false)
@@ -71,9 +71,9 @@ function painter_draw(xx, yy, inbounds)
 	//	with (render_shader_obj)
 	//		shader_use()
 				
-	//	shader_border_set(c_white, 1, texturewidth * zoom, textureheight * zoom, 0.0, 0)
+	//	shader_border_set(c_white, 1, paint_texture_width * zoom, paint_texture_height * zoom, 0.0, 0)
 			
-	//	draw_surface_ext(selectionsurf, scale_offset_x, scale_offset_y, zoom, zoom,0, c_white, 1)
+	//	draw_surface_ext(selection_surf, scale_offset_x, scale_offset_y, zoom, zoom,0, c_white, 1)
 
 	//	with (render_shader_obj)
 	//		shader_clear()
@@ -147,9 +147,9 @@ function painter_draw(xx, yy, inbounds)
 	//SELECTION DEBUG, ONLY IN DEV MODE.
 	if (dev_mode && debug_info && paint_tool_selected = e_paint.BOX_SELECT)
 	{
-		draw_box(scale_offset_x + selection_topleft[X] * zoom,scale_offset_y + selection_topleft[Y] * zoom,selectionsize[X] * zoom,selectionsize[Y] * zoom,true, c_white, 0.5);
-		draw_box(scale_offset_x + selection_topleft[X] * zoom,scale_offset_y + selection_topleft[Y] * zoom,selectionsize[X] * zoom,selectionsize[Y] * zoom,true, c_black, 0.5);
-		draw_box(scale_offset_x + selection_topleft[X] * zoom,scale_offset_y + selection_topleft[Y] * zoom,selectionsize[X] * zoom,selectionsize[Y] * zoom,true, c_red, 0.5);
+		draw_box(scale_offset_x + selection_topleft[X] * zoom,scale_offset_y + selection_topleft[Y] * zoom,selection_size[X] * zoom,selection_size[Y] * zoom,true, c_white, 0.5);
+		draw_box(scale_offset_x + selection_topleft[X] * zoom,scale_offset_y + selection_topleft[Y] * zoom,selection_size[X] * zoom,selection_size[Y] * zoom,true, c_black, 0.5);
+		draw_box(scale_offset_x + selection_topleft[X] * zoom,scale_offset_y + selection_topleft[Y] * zoom,selection_size[X] * zoom,selection_size[Y] * zoom,true, c_red, 0.5);
 	
 		draw_box((selection_btmright[X] )* zoom+ scale_offset_x - 5, (selection_btmright[Y] )* zoom+ scale_offset_y - 5, 10, 10, false, c_white, .75)
 		draw_box((selection_btmright[X] )* zoom+ scale_offset_x - 5, (selection_btmright[Y] )* zoom+ scale_offset_y - 5, 10, 10, true, c_black, .75)
@@ -179,26 +179,26 @@ function painter_draw(xx, yy, inbounds)
 		// Highlight pixels seperately if snap value is not 1
 		if (snapval != 1)
 		{
-			for (var i = texscale; i < texturewidth; i += texscale)
+			for (var i = texscale; i < paint_texture_width; i += texscale)
 			{
 				if (texx + floor(i * zoom) > boxx && texx + floor(i * zoom) < boxx + boxw)
 					draw_line_ext(texx + floor(i * zoom) + 1, texy, texx + floor(i * zoom) + 1, texy + texh, merge_color(c_black, c_white, 0.03 * alpha), 1)
 			}
 			
-			for (var i = texscale; i < textureheight; i += texscale)
+			for (var i = texscale; i < paint_texture_height; i += texscale)
 			{
 				if (texy + floor(i * zoom) > boxy && texy + floor(i * zoom) < boxy + boxh)
 					draw_line_ext(texx, texy + floor(i * zoom) + 1, texx + texw, texy + floor(i * zoom) + 1, merge_color(c_black, c_white, 0.03 * alpha), 1)
 			}
 		}
 		
-		for (var i = (texscale * snapval); i < texturewidth; i += (texscale * snapval))
+		for (var i = (texscale * snapval); i < paint_texture_width; i += (texscale * snapval))
 		{
 			if (texx + floor(i * zoom) > boxx && texx + floor(i * zoom) < boxx + boxw)
 				draw_line_ext(texx + floor(i * zoom) + 1, texy, texx + floor(i * zoom) + 1, texy + texh, merge_color(c_black, c_white, 0.15 * alpha), 1)
 		}
 		
-		for (var i = (texscale * snapval); i < textureheight; i += (texscale * snapval))
+		for (var i = (texscale * snapval); i < paint_texture_height; i += (texscale * snapval))
 		{
 			if (texy + floor(i * zoom) > boxy && texy + floor(i * zoom) < boxy + boxh)
 				draw_line_ext(texx, texy + floor(i * zoom) + 1, texx + texw, texy + floor(i * zoom) + 1, merge_color(c_black, c_white, 0.15 * alpha), 1)
@@ -215,9 +215,9 @@ function painter_draw(xx, yy, inbounds)
 	    draw_line_ext(boxx, (yy + 1.5) * zoom + scale_offset_y, boxx + boxw, (yy + 1.5) * zoom + scale_offset_y,merge_color(c_black,c_accent_pressed, 0.75), .5)
 	}
 	draw_label("[ 0, 0 ]", texx - 8, texy - 8, fa_right, fa_bottom, c_text_main, 0.5, font_label)
-	draw_label("[ " + string(texturewidth) + ", 0 ]", texx + texw + 8, texy - 8, fa_left, fa_bottom, c_text_main, 0.5, font_label)
-	draw_label("[ 0, " + string(textureheight) + " ]", texx - 8, texy + texh + 8, fa_right, fa_top, c_text_main, 0.5, font_label)
-	draw_label("[ " + string(texturewidth) + ", " + string(textureheight) + " ]", texx + texw + 8, texy + texh + 8, fa_left, fa_top, c_text_main, 0.5, font_label)
+	draw_label("[ " + string(paint_texture_width) + ", 0 ]", texx + texw + 8, texy - 8, fa_left, fa_bottom, c_text_main, 0.5, font_label)
+	draw_label("[ 0, " + string(paint_texture_height) + " ]", texx - 8, texy + texh + 8, fa_right, fa_top, c_text_main, 0.5, font_label)
+	draw_label("[ " + string(paint_texture_width) + ", " + string(paint_texture_height) + " ]", texx + texw + 8, texy + texh + 8, fa_left, fa_top, c_text_main, 0.5, font_label)
 	
 	// Info box
 	var str = "";
@@ -225,7 +225,7 @@ function painter_draw(xx, yy, inbounds)
 	var mxsnap = snap((window_mouse_get_x()-scale_offset_x) /  zoom-.5 , 1)
 	var mysnap = snap((window_mouse_get_y()-scale_offset_y) /  zoom-.5 , 1)
 	str += text_get("painterinfomousepos") + ": [" + string(mxsnap) + ", " + string(mysnap) + "]\n"
-	str += text_get("painterinfoselectionsize") + ": [" + string(selectionsize[0])+ ", " + string(selectionsize[1]) + "]\n"
+	str += text_get("painterinfoselection_size") + ": [" + string(selection_size[0])+ ", " + string(selection_size[1]) + "]\n"
 	var ww = string_width_font(str, font_label) + 16;
 	var hh = string_height_font(str, font_label) + 16;
 	

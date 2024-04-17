@@ -17,12 +17,12 @@ floodfill_frame_count = 0;
 
 
 filling = true;
-if(sprite_exists(colorspr))
-sprite_delete(colorspr)
-colorspr = sprite_create_from_surface(color_surf, 0,0,surface_get_width(color_surf), surface_get_height(color_surf), false, false, 0, 0)
-if(sprite_exists(alphaspr))
-sprite_delete(alphaspr)
-alphaspr = sprite_create_from_surface(alpha_surf, 0,0,surface_get_width(alpha_surf), surface_get_height(alpha_surf), false, false, 0, 0)
+if(sprite_exists(color_spr))
+sprite_delete(color_spr)
+color_spr = sprite_create_from_surface(color_surf, 0,0,surface_get_width(color_surf), surface_get_height(color_surf), false, false, 0, 0)
+if(sprite_exists(alpha_spr))
+sprite_delete(alpha_spr)
+alpha_spr = sprite_create_from_surface(alpha_surf, 0,0,surface_get_width(alpha_surf), surface_get_height(alpha_surf), false, false, 0, 0)
 
 }
 

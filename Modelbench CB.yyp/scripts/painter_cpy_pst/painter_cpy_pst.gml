@@ -16,7 +16,7 @@ function painter_cpy_pst() {
 				surface_set_target(color_surf);
 				{
 					draw_clear_alpha(c_black, 0);
-					draw_sprite(colorspr, 0, 0, 0);
+					draw_sprite(color_spr, 0, 0, 0);
 
 					alphafix
 					shader_set(shader_premalpha);
@@ -30,7 +30,7 @@ function painter_cpy_pst() {
 				{
 					draw_clear(c_black);
 
-					draw_sprite(alphaspr, 0, 0, 0);
+					draw_sprite(alpha_spr, 0, 0, 0);
 					alphafix
 					shader_set(shader_alphamask);
 					draw_surface(transform_surf, 0, 0);
@@ -40,16 +40,16 @@ function painter_cpy_pst() {
 				}
 				surface_reset_target();
 
-				if (sprite_exists(alphaspr)) {
-					sprite_delete(alphaspr);
+				if (sprite_exists(alpha_spr)) {
+					sprite_delete(alpha_spr);
 				}
-				alphaspr = sprite_create_from_surface(alpha_surf, 0, 0, surface_get_width(alpha_surf), surface_get_height(alpha_surf), false, false, 0, 0);
+				alpha_spr = sprite_create_from_surface(alpha_surf, 0, 0, surface_get_width(alpha_surf), surface_get_height(alpha_surf), false, false, 0, 0);
 
-				if (sprite_exists(colorspr)) {
-					sprite_delete(colorspr);
+				if (sprite_exists(color_spr)) {
+					sprite_delete(color_spr);
 				}
-				colorspr = sprite_create_from_surface(color_surf, 0, 0, surface_get_width(color_surf), surface_get_height(color_surf), false, false, 0, 0);
-				painter_create_finalspr()
+				color_spr = sprite_create_from_surface(color_surf, 0, 0, surface_get_width(color_surf), surface_get_height(color_surf), false, false, 0, 0);
+				painter_create_final_spr()
 			}
 
 
@@ -79,10 +79,10 @@ function painter_cpy_pst() {
 			}
 			surface_reset_target();
 
-			if (sprite_exists(selectionspr)) {
-				sprite_delete(selectionspr);
+			if (sprite_exists(selection_spr)) {
+				sprite_delete(selection_spr);
 			}
-			selectionspr = sprite_create_from_surface(selection_surf, 0, 0, paint_texture_width, paint_texture_height, false, false, 0, 0);
+			selection_spr = sprite_create_from_surface(selection_surf, 0, 0, paint_texture_width, paint_texture_height, false, false, 0, 0);
 			selection_active = true;
 
 			selection_topleft = vec2(offset[X], offset[Y]);
@@ -93,7 +93,7 @@ function painter_cpy_pst() {
 			selection_moved = true;
 			paint_tool_selected = e_paint.TRANSFORM_SELECTION;
 			sprite_delete(tempspr);
-			painter_history_set("transform", finalspr, selectionspr, transformspr);
+			painter_history_set("transform", final_spr, selection_spr, transformspr);
 
 			#region dumped code
 			// surface_set_target(color_surf){
@@ -118,12 +118,12 @@ function painter_cpy_pst() {
 			// }
 			//	surface_reset_target()
 			//	sprite_delete(tempspr)
-			//	if(sprite_exists(colorspr))
-			// sprite_delete(colorspr)
-			// colorspr = sprite_create_from_surface(color_surf, 0,0,surface_get_width(color_surf), surface_get_height(color_surf), false, false, 0, 0)
-			//	if(sprite_exists(alphaspr))
-			// sprite_delete(alphaspr)
-			// alphaspr = sprite_create_from_surface(alpha_surf, 0,0,surface_get_width(alpha_surf), surface_get_height(alpha_surf), false, false, 0, 0)
+			//	if(sprite_exists(color_spr))
+			// sprite_delete(color_spr)
+			// color_spr = sprite_create_from_surface(color_surf, 0,0,surface_get_width(color_surf), surface_get_height(color_surf), false, false, 0, 0)
+			//	if(sprite_exists(alpha_spr))
+			// sprite_delete(alpha_spr)
+			// alpha_spr = sprite_create_from_surface(alpha_surf, 0,0,surface_get_width(alpha_surf), surface_get_height(alpha_surf), false, false, 0, 0)
 			#endregion
 
 			sprite_delete(tempspr);
@@ -137,7 +137,7 @@ function painter_cpy_pst() {
 		sprite_save(transformspr, 0, app.model_folder + "\\clipboard.png");
 		clipboard_load_image(app.model_folder + "\\clipboard.png");
 		painter_clear_selection()
-	    painter_create_finalspr();
+	    painter_create_final_spr();
 	surface_set_target(selection_surf){
 		draw_clear_alpha(c_black,0)
 		selection_topleft = vec2(0,0)

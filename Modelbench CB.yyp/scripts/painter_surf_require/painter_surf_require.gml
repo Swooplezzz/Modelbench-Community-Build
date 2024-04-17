@@ -2,10 +2,10 @@
 
 function painter_surf_require()
 {
-	texsurf = surface_require(texsurf, texturewidth, textureheight)
-	drawsurf = surface_require(drawsurf, texturewidth, textureheight)
-	alphasurf = surface_require(alphasurf, texturewidth, textureheight)
-	colorsurf = surface_require(colorsurf, texturewidth, textureheight)
-	selectionsurf = surface_require(selectionsurf, texturewidth, textureheight)
-	transformsurf = surface_require(transformsurf, texturewidth, textureheight)
+	tex_surf = surface_require(tex_surf, paint_texture_width, paint_texture_height)
+	draw_surf = surface_require(draw_surf, paint_texture_width, paint_texture_height)
+	alpha_surf = surface_require(alpha_surf, paint_texture_width, paint_texture_height)
+	color_surf = surface_require(color_surf, paint_texture_width, paint_texture_height)
+	selection_surf = surface_require(selection_surf, paint_texture_width, paint_texture_height)
+	transform_surf = surface_require(transform_surf, paint_texture_width, paint_texture_height)
 }

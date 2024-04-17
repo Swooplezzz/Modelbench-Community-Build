@@ -22,8 +22,8 @@ function painter_update(view, cam)
 	#endregion
 	
 	painter_view();
-	scale_offset_x = floor(boxx + (boxw / 2 - (texturewidth / 2 + offx) * zoom))
-	scale_offset_y = floor(boxy + (boxh / 2 - (textureheight / 2 + offy) * zoom))
+	scale_offset_x = floor(boxx + (boxw / 2 - (paint_texture_width / 2 + offx) * zoom))
+	scale_offset_y = floor(boxy + (boxh / 2 - (paint_texture_height / 2 + offy) * zoom))
 	#region cpypsting
 		painter_cpy_pst();
 	#endregion
@@ -41,7 +41,7 @@ function painter_update(view, cam)
 			mouseysnap =  snap((window_mouse_get_y() -scale_offset_y) /  zoom-.5 ,1)-.5
 			prevmouseysnap =  snap(mouse_y_prev  /  zoom-.5 ,1) -.5
 		}
-		var inbounds = ((mousexsnap + 1) < texturewidth && (mouseysnap + 1) < textureheight && (mousexsnap + 1) > 0 && (mouseysnap + 1) > 0) && content_mouseon
+		var inbounds = ((mousexsnap + 1) < paint_texture_width && (mouseysnap + 1) < paint_texture_height && (mousexsnap + 1) > 0 && (mouseysnap + 1) > 0) && content_mouseon
 	#endregion
 
 	render_set_culling(false)
@@ -81,7 +81,7 @@ function painter_update(view, cam)
 	draw_gradient(content_x, content_y + content_height/3, content_width, content_height/1.5, c_accent, 0, 0,0.1,0.1)
 
 	#region BgCheckers
-		clip_begin(scale_offset_x, scale_offset_y, zoom*texturewidth, zoom*textureheight)
+		clip_begin(scale_offset_x, scale_offset_y, zoom*paint_texture_width, zoom*paint_texture_height)
 		draw_box(boxx, boxy, boxw, boxh, false, c_level_middle, 1)
 		for (var i = 0; i < ceil(boxw/192); i++)
 			for (var j = 0; j < ceil(boxh/192); j++)
@@ -97,11 +97,11 @@ function painter_update(view, cam)
 
 	if (selection_moved && paint_tool_selected != e_paint.TRANSFORM_SELECTION)
 	{
-		selection_btmright[X] = clamp(selection_btmright[X],0, texturewidth)
-		selection_btmright[Y]= clamp(selection_btmright[Y],0, textureheight)
-		selection_topleft[X] = clamp(selection_topleft[X],0, texturewidth)
-		selection_topleft[Y]= clamp(selection_topleft[Y],0, textureheight)
-		selectionsize = vec2(selection_btmright[0]-selection_topleft[0],selection_btmright[1]-selection_topleft[1]);
+		selection_btmright[X] = clamp(selection_btmright[X],0, paint_texture_width)
+		selection_btmright[Y]= clamp(selection_btmright[Y],0, paint_texture_height)
+		selection_topleft[X] = clamp(selection_topleft[X],0, paint_texture_width)
+		selection_topleft[Y]= clamp(selection_topleft[Y],0, paint_texture_height)
+		selection_size = vec2(selection_btmright[0]-selection_topleft[0],selection_btmright[1]-selection_topleft[1]);
 		selection_moved = false;
 	}
 

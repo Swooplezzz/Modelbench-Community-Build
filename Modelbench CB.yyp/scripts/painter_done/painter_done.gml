@@ -3,16 +3,16 @@
 
 function painter_done(inbounds)
 {
-	surface_set_target(colorsurf)
+	surface_set_target(color_surf)
 	{
 		draw_clear_alpha(c_black,0)
-		draw_sprite(colorspr,0,0,0)
+		draw_sprite(color_spr,0,0,0)
 	
 		if (selection_moved && paint_tool_selected != e_paint.TRANSFORM_SELECTION)
 		{
 			alphafix
 			shader_set(shader_colormask)
-			draw_surface(transformsurf,0,0)	
+			draw_surface(transform_surf,0,0)	
 			shader_reset()
 			gpu_set_blendmode(bm_normal)
 		}
@@ -20,16 +20,16 @@ function painter_done(inbounds)
 	surface_reset_target()
 	
 	//Update the alpha mask.
-	surface_set_target(alphasurf)
+	surface_set_target(alpha_surf)
 	{
 		draw_clear(c_black)
 
-	    draw_sprite(alphaspr,0,0,0)
+	    draw_sprite(alpha_spr,0,0,0)
 		if(selection_moved && paint_tool_selected != e_paint.TRANSFORM_SELECTION)
 		{
 			alphafix
 			shader_set(shader_alphamask)
-			draw_surface(transformsurf,0,0)	
+			draw_surface(transform_surf,0,0)	
 			shader_reset()
 		}
 		gpu_set_blendmode(bm_normal);
@@ -38,17 +38,17 @@ function painter_done(inbounds)
 
 	if (selection_moved && paint_tool_selected != e_paint.TRANSFORM_SELECTION)
 	{
-		if(sprite_exists(alphaspr))
-			sprite_delete(alphaspr)
-		alphaspr = sprite_create_from_surface(alphasurf, 0,0,surface_get_width(alphasurf), surface_get_height(alphasurf), false, false, 0, 0)
+		if(sprite_exists(alpha_spr))
+			sprite_delete(alpha_spr)
+		alpha_spr = sprite_create_from_surface(alpha_surf, 0,0,surface_get_width(alpha_surf), surface_get_height(alpha_surf), false, false, 0, 0)
 
-		if(sprite_exists(colorspr))
-			sprite_delete(colorspr)
-		colorspr = sprite_create_from_surface(colorsurf, 0,0,surface_get_width(colorsurf), surface_get_height(colorsurf), false, false, 0, 0)
+		if(sprite_exists(color_spr))
+			sprite_delete(color_spr)
+		color_spr = sprite_create_from_surface(color_surf, 0,0,surface_get_width(color_surf), surface_get_height(color_surf), false, false, 0, 0)
 	}
 
 	//if(!filling)
-	painter_create_finalspr();
+	painter_create_final_spr();
 
 	if (painter_update_spr)
 	{
@@ -61,12 +61,12 @@ function painter_done(inbounds)
 	{
 		if(paint_tool_selected = e_paint.BRUSH || paint_tool_selected = e_paint.ERASE)
 		{
-			painter_history_set("painting", finalspr, selectionspr, transformspr)
+			painter_history_set("painting", final_spr, selection_spr, transform_spr)
 		}
 	}
 	
 	if (keybinds[e_keybind.ELEMENT_DELETE].pressed && selection_active)
 	{
-		painter_history_set("painting", finalspr, selectionspr, transformspr)
+		painter_history_set("painting", final_spr, selection_spr, transform_spr)
 	}
 }

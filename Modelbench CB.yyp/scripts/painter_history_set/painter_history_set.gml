@@ -1,7 +1,7 @@
-/// painter_history_set(value, sprite, selectionsprite, transparencysprite)
+/// painter_history_set(value, sprite, selection_sprite, transparencysprite)
 /// @arg value
 /// @arg sprite
-/// @arg selectionsprite
+/// @arg selection_sprite
 /// @arg transparencysprite
 
 function painter_history_set(val, spr, selspr, trnspr)

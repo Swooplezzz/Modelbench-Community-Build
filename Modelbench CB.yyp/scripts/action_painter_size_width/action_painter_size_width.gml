@@ -3,5 +3,5 @@
 
 function action_painter_size_width(value)
 {
-	texturewidth = value
+	paint_texture_width = value
 }

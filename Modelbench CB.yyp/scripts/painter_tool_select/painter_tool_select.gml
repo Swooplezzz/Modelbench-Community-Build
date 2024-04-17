@@ -11,8 +11,8 @@ function painter_tool_select(xx, yy)
 			selection_pos = vec2(xx + 0.5, yy + 0.5)
 		
 			//selection_btmright[1]  = yy + 1.5 
-			selection_topleft[0] = clamp(selection_topleft[0], 0, texturewidth)
-			selection_topleft[1] = clamp(selection_topleft[1], 0, textureheight)
+			selection_topleft[0] = clamp(selection_topleft[0], 0, paint_texture_width)
+			selection_topleft[1] = clamp(selection_topleft[1], 0, paint_texture_height)
 			selection_topleft_prev = vec2(selection_topleft[0], selection_topleft[1]);
 		
 			if (selection_topleft[0] > selection_pos[0])
@@ -25,10 +25,10 @@ function painter_tool_select(xx, yy)
 			//if (selection_btmright[1] < yy + 1.5)
 			//	selection_btmright[1] = yy + 1.5 
 	
-			selection_topleft[0] = clamp(selection_topleft[0], 0, texturewidth)
-			selection_topleft[1] = clamp(selection_topleft[1], 0, textureheight)
-			selection_btmright[0] = clamp(selection_btmright[0], 0, texturewidth)
-			selection_btmright[1] = clamp(selection_btmright[1], 0, textureheight)
+			selection_topleft[0] = clamp(selection_topleft[0], 0, paint_texture_width)
+			selection_topleft[1] = clamp(selection_topleft[1], 0, paint_texture_height)
+			selection_btmright[0] = clamp(selection_btmright[0], 0, paint_texture_width)
+			selection_btmright[1] = clamp(selection_btmright[1], 0, paint_texture_height)
 			selection_btmright_prev = vec2(selection_btmright[0], selection_btmright[1]);
 		
 			if (!selection_active)
@@ -39,9 +39,9 @@ function painter_tool_select(xx, yy)
 			}
 		}
 
-		if (mouse_right_pressed || (selection_active && !mouse_left && (selectionsize[X] = 0 || selectionsize[Y] = 0)))
+		if (mouse_right_pressed || (selection_active && !mouse_left && (selection_size[X] = 0 || selection_size[Y] = 0)))
 		{
-			surface_set_target(selectionsurf)
+			surface_set_target(selection_surf)
 			{
 				draw_clear_alpha(c_black,0)
 				selection_topleft = vec2(0,0)
@@ -77,28 +77,28 @@ function painter_tool_select(xx, yy)
 			if(selection_topleft[1] > selection_topleft_prev[1])
 			    selection_topleft[1] = selection_topleft_prev[1]
 		
-			selectionsize = vec2(selection_btmright[0]-selection_topleft[0],selection_btmright[1]-selection_topleft[1]);
+			selection_size = vec2(selection_btmright[0]-selection_topleft[0],selection_btmright[1]-selection_topleft[1]);
 	
 			draw_inbounds = 
-			(selection_pos[0] <= texturewidth && selection_pos[0] >= 0 && selection_pos[1] <= textureheight && selection_pos[1] >= 0) ||
-			(xx + 1.5 <= texturewidth && xx + 1.5 >= 0 && yy + 1.5 <= textureheight && yy + 1.5 >= 0) 
+			(selection_pos[0] <= paint_texture_width && selection_pos[0] >= 0 && selection_pos[1] <= paint_texture_height && selection_pos[1] >= 0) ||
+			(xx + 1.5 <= paint_texture_width && xx + 1.5 >= 0 && yy + 1.5 <= paint_texture_height && yy + 1.5 >= 0) 
 		
-			drawsize = vec2(xx + 1.5-selection_pos[0],yy + 1.5-selection_pos[1]);
+			draw_size = vec2(xx + 1.5-selection_pos[0],yy + 1.5-selection_pos[1]);
 
-			surface_set_target(selectionsurf)
+			surface_set_target(selection_surf)
 			{
 				if (!selection_active)
 				{
 				    draw_clear_alpha(c_black,1)
 			
-					if(sprite_exists(selectionspr))
-			            sprite_delete(selectionspr)
-			        selectionspr = sprite_create_from_surface(selectionsurf, 0,0, surface_get_width(selectionsurf), surface_get_height(selectionsurf), false, false, 0,0)
+					if(sprite_exists(selection_spr))
+			            sprite_delete(selection_spr)
+			        selection_spr = sprite_create_from_surface(selection_surf, 0,0, surface_get_width(selection_surf), surface_get_height(selection_surf), false, false, 0,0)
 
 				    selection_active = true
 				}
 
-				draw_sprite_ext(selectionspr, 0, 0, 0, 1, 1, 0, c_black, 1)
+				draw_sprite_ext(selection_spr, 0, 0, 0, 1, 1, 0, c_black, 1)
 				gpu_set_blendmode(bm_subtract)
 		        draw_rectangle_color(selection_pos[X], selection_pos[Y], xx + .5, yy + .5, c_white, c_white, c_white, c_white, false)
 		        gpu_set_blendmode(bm_normal)
@@ -110,7 +110,7 @@ function painter_tool_select(xx, yy)
 		{
 			if (mouse_left_released)
 			{
-				if (draw_inbounds && !(drawsize[0] = 0 || drawsize[1] = 0))
+				if (draw_inbounds && !(draw_size[0] = 0 || draw_size[1] = 0))
 				{
 				    if(selection_topleft[0] > selection_pos[0] )
 				        selection_topleft[0]  = selection_pos[0]	
@@ -125,73 +125,73 @@ function painter_tool_select(xx, yy)
 			        selection_btmright = vec2(selection_btmright_prev[0], selection_btmright_prev[1])
 			    }
 				
-				selection_topleft[X] = clamp(selection_topleft[X],0, texturewidth)
-			    selection_topleft[Y]= clamp(selection_topleft[Y],0, textureheight)
-				selection_btmright[0] = clamp(selection_btmright[0], 0, texturewidth)
-			    selection_btmright[1] = clamp(selection_btmright[1], 0, textureheight)
+				selection_topleft[X] = clamp(selection_topleft[X],0, paint_texture_width)
+			    selection_topleft[Y]= clamp(selection_topleft[Y],0, paint_texture_height)
+				selection_btmright[0] = clamp(selection_btmright[0], 0, paint_texture_width)
+			    selection_btmright[1] = clamp(selection_btmright[1], 0, paint_texture_height)
 			}
 			
-			if(sprite_exists(selectionspr))
-			    sprite_delete(selectionspr)
-			selectionspr = sprite_create_from_surface(selectionsurf, 0,0, surface_get_width(selectionsurf), surface_get_height(selectionsurf), false, false, 0,0)
+			if(sprite_exists(selection_spr))
+			    sprite_delete(selection_spr)
+			selection_spr = sprite_create_from_surface(selection_surf, 0,0, surface_get_width(selection_surf), surface_get_height(selection_surf), false, false, 0,0)
 	
-			selectionsize = vec2(selection_btmright[0]-selection_topleft[0],selection_btmright[1]-selection_topleft[1]);
+			selection_size = vec2(selection_btmright[0]-selection_topleft[0],selection_btmright[1]-selection_topleft[1]);
 		 	if (selection_active)
 			    painter_update_transform_sprite()
 	
-			selection_btmright[X] = clamp(selection_btmright[X],0, texturewidth)
-			selection_btmright[Y] = clamp(selection_btmright[Y],0, textureheight)
-			selection_topleft[X] = clamp(selection_topleft[X],0, texturewidth)
-			selection_topleft[Y] = clamp(selection_topleft[Y],0, textureheight)
+			selection_btmright[X] = clamp(selection_btmright[X],0, paint_texture_width)
+			selection_btmright[Y] = clamp(selection_btmright[Y],0, paint_texture_height)
+			selection_topleft[X] = clamp(selection_topleft[X],0, paint_texture_width)
+			selection_topleft[Y] = clamp(selection_topleft[Y],0, paint_texture_height)
 	
-			selectionsize = vec2(selection_btmright[0]-selection_topleft[0],selection_btmright[1]-selection_topleft[1]);
+			selection_size = vec2(selection_btmright[0]-selection_topleft[0],selection_btmright[1]-selection_topleft[1]);
 	
-			painter_history_set("selection", finalspr, selectionspr, transformspr);
+			painter_history_set("selection", final_spr, selection_spr, transform_spr);
 		}
 	}
 
 	if (keybinds[e_keybind.SELECT_ALL].pressed)
 	{
 		selection_topleft = vec2(0,0)
-		selection_btmright = vec2(texturewidth,textureheight)
-		selectionsize = vec2(selection_btmright[0]-selection_topleft[0],selection_btmright[1]-selection_topleft[1]);
+		selection_btmright = vec2(paint_texture_width,paint_texture_height)
+		selection_size = vec2(selection_btmright[0]-selection_topleft[0],selection_btmright[1]-selection_topleft[1]);
 		
-		surface_set_target(selectionsurf)
+		surface_set_target(selection_surf)
 		{
 		    draw_clear_alpha(c_white, 0)
 			selection_active = true
 		
-			if (sprite_exists(selectionspr))
-		        sprite_delete(selectionspr)	
-			selectionspr = sprite_create_from_surface(selectionsurf, 0,0, surface_get_width(selectionsurf), surface_get_height(selectionsurf), false, false, 0,0)
+			if (sprite_exists(selection_spr))
+		        sprite_delete(selection_spr)	
+			selection_spr = sprite_create_from_surface(selection_surf, 0,0, surface_get_width(selection_surf), surface_get_height(selection_surf), false, false, 0,0)
 		}
 		surface_reset_target()
 	
-		if(sprite_exists(transformspr))
-		    sprite_delete(transformspr)
+		if(sprite_exists(transform_spr))
+		    sprite_delete(transform_spr)
 		
-		transformspr = sprite_duplicate(finalspr)
+		transform_spr = sprite_duplicate(final_spr)
 
-		surface_set_target(drawsurf)
+		surface_set_target(draw_surf)
 		{
 	        draw_clear(c_black)
 	        gpu_set_blendmode(bm_subtract)
 	        draw_set_color(c_black)
-	        draw_surface(selectionsurf,0,0)
+	        draw_surface(selection_surf,0,0)
 	        gpu_set_blendmode(bm_normal)
 	    }
 	    surface_reset_target()
 	
-	    if (sprite_exists(seltrnspr))
-	        sprite_delete(seltrnspr)
-	    seltrnspr = sprite_create_from_surface(drawsurf,selection_topleft[X],selection_topleft[Y],selectionsize[X],selectionsize[Y],false,false,0,0)
+	    if (sprite_exists(sel_trn_spr))
+	        sprite_delete(sel_trn_spr)
+	    sel_trn_spr = sprite_create_from_surface(draw_surf,selection_topleft[X],selection_topleft[Y],selection_size[X],selection_size[Y],false,false,0,0)
 	
-		surface_set_target(drawsurf)
+		surface_set_target(draw_surf)
 		{
 			draw_clear_alpha(c_black,0)
 		}
 		surface_reset_target()
 	
-		painter_history_set("selection", finalspr, selectionspr, transformspr);
+		painter_history_set("selection", final_spr, selection_spr, transform_spr);
 	}
 }
