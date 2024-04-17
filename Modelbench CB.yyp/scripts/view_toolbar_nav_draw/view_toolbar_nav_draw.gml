@@ -60,7 +60,7 @@ function view_toolbar_nav_draw(barx, bary, barw, barh)
 	else
 		dy += buttonsize
 	
-	// Zoom
+	// zoom
 	draw_button_icon("toolzoom", dx, dy, 28, 28, window_busy = "viewzoom", icons.ZOOM, null, false, "tooltipzoom")
 	if (current_microani.holding.value && window_busy != "viewzoom")
 	{

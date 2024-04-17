@@ -17,28 +17,27 @@ function painter_transform(mousesnapx, mousesnapy)
 	transformspr = sprite_duplicate(finalspr);
 	}
 
-	surface_set_target(transformsurf){
+	surface_set_target(transform_surf){
 		draw_clear_alpha(c_black, 0)
 		alphafix
 	    gpu_set_colorwriteenable(false,false,false,true)
-		draw_sprite_ext(transformspr, 0, (selection_topleft[X]), (selection_topleft[Y]), sizex / selectionsize[X], sizey / selectionsize[Y], 0, c_white, 1)
+		draw_sprite_ext(transformspr, 0, (selection_topleft[X]), (selection_topleft[Y]), sizex / selection_size[X], sizey / selection_size[Y], 0, c_white, 1)
 		gpu_set_colorwriteenable(true,true,true,false)
-		draw_sprite_ext(transformspr, 0, (selection_topleft[X]), (selection_topleft[Y]), sizex / selectionsize[X], sizey / selectionsize[Y], 0, c_white, 1)
+		draw_sprite_ext(transformspr, 0, (selection_topleft[X]), (selection_topleft[Y]), sizex / selection_size[X], sizey / selection_size[Y], 0, c_white, 1)
 		gpu_set_colorwriteenable(true,true,true,true)
-
-	gpu_set_blendmode(bm_normal)
+	    gpu_set_blendmode(bm_normal)
 	}
 
 
 	surface_reset_target();
 
 
-	surface_set_target(selectionsurf){
+	surface_set_target(selection_surf){
 		draw_clear(c_black)
 
 	gpu_set_blendmode(bm_subtract)
 
-	draw_sprite_ext(seltrnspr, 0, (selection_topleft[X]), (selection_topleft[Y]), sizex / selectionsize[X], sizey / selectionsize[Y], 0, c_black, 1)
+	draw_sprite_ext(seltrnspr, 0, (selection_topleft[X]), (selection_topleft[Y]), sizex / selection_size[X], sizey / selection_size[Y], 0, c_black, 1)
 
 
 	gpu_set_blendmode(bm_normal)
@@ -50,14 +49,14 @@ function painter_transform(mousesnapx, mousesnapy)
 	if (!selection_active)
 	{
 		selection_topleft = vec2(0, 0)
-			selection_btmright = vec2(texturewidth, textureheight)
-			selectionsize = vec2(selection_btmright[0] - selection_topleft[0], selection_btmright[1] - selection_topleft[1]);
-		surface_set_target(selectionsurf){
+			selection_btmright = vec2(paint_texture_width, paint_texture_height)
+			selection_size = vec2(selection_btmright[0] - selection_topleft[0], selection_btmright[1] - selection_topleft[1]);
+		surface_set_target(selection_surf){
 			draw_clear_alpha(c_white, 0)
 		selection_active = true
 		if (sprite_exists(selectionspr))
 				sprite_delete(selectionspr)
-	    selectionspr = sprite_create_from_surface(selectionsurf, 0, 0, surface_get_width(selectionsurf), surface_get_height(selectionsurf), false, false, 0, 0)
+	    selectionspr = sprite_create_from_surface(selection_surf, 0, 0, surface_get_width(selection_surf), surface_get_height(selection_surf), false, false, 0, 0)
 
 
 		}
@@ -68,18 +67,18 @@ function painter_transform(mousesnapx, mousesnapy)
 			sprite_delete(transformspr)
 		transformspr = sprite_duplicate(finalspr)
 	
-	surface_set_target(drawsurf){
+	surface_set_target(draw_surf){
 			draw_clear(c_black)
 gpu_set_blendmode(bm_subtract)
 draw_set_color(c_black)
-draw_surface(selectionsurf, 0, 0)
+draw_surface(selection_surf, 0, 0)
 gpu_set_blendmode(bm_normal)
 }
 		surface_reset_target()
 	if (sprite_exists(seltrnspr))
 			sprite_delete(seltrnspr)
-	seltrnspr = sprite_create_from_surface(drawsurf, selection_topleft[X], selection_topleft[Y], selectionsize[X], selectionsize[Y], false, false, 0, 0)
-		surface_set_target(drawsurf){
+	seltrnspr = sprite_create_from_surface(draw_surf, selection_topleft[X], selection_topleft[Y], selection_size[X], selection_size[Y], false, false, 0, 0)
+		surface_set_target(draw_surf){
 			draw_clear_alpha(c_black, 0)
 	}
 		surface_reset_target()
@@ -102,14 +101,14 @@ gpu_set_blendmode(bm_normal)
 		{
 			if (sprite_exists(selectionspr))
 				sprite_delete(selectionspr)
-		selectionspr = sprite_create_from_surface(selectionsurf, 0, 0, surface_get_width(selectionsurf), surface_get_height(selectionsurf), false, false, 0, 0)
+		selectionspr = sprite_create_from_surface(selection_surf, 0, 0, surface_get_width(selection_surf), surface_get_height(selection_surf), false, false, 0, 0)
 	
 
 	painter_history_set("transform", finalspr, selectionspr, transformspr);
 
 			window_busy = ""
 		}
-		draw_surface_ext(transformsurf, scale_offset_x, scale_offset_y, zoom, zoom, 0, c_white, 1)
+		draw_surface_ext(transform_surf, scale_offset_x, scale_offset_y, zoom, zoom, 0, c_white, 1)
 	
 
 	draw_set_alpha(0.5)
@@ -122,7 +121,7 @@ gpu_set_blendmode(bm_normal)
 	render_surface[0] = surface_require(render_surface[0], render_width, render_height);
 		surface_set_target(render_surface[0]){
 			draw_clear_alpha(c_black, 0);
-			draw_sprite_ext(seltrnspr, 0, 0, 0, sizex / selectionsize[X], sizey / selectionsize[Y], 0, c_black, 1)
+			draw_sprite_ext(seltrnspr, 0, 0, 0, sizex / selection_size[X], sizey / selection_size[Y], 0, c_black, 1)
 		}
 		surface_reset_target();
 		gpu_set_texrepeat(false)
@@ -143,7 +142,7 @@ gpu_set_blendmode(bm_normal)
 	
 
 	//SIDES
-	if (app_mouse_box((selection_topleft[X]) * zoom + scale_offset_x + 5, (selection_topleft[Y]) * zoom + scale_offset_y - 5, sizex * zoom - 10, 10) && mouse_left && window_busy = "")
+	    if (app_mouse_box((selection_topleft[X]) * zoom + scale_offset_x + 5, (selection_topleft[Y]) * zoom + scale_offset_y - 5, sizex * zoom - 10, 10) && mouse_left && window_busy = "")
 		{
 			window_busy = "painter_resize_top";
 		}
@@ -226,7 +225,7 @@ gpu_set_blendmode(bm_normal)
 			window_busy = "painter_resize_topright";
 
 		}
-		if (app_mouse_box((selection_topleft[X]) * zoom + scale_offset_x, (selection_topleft[Y]) * zoom + scale_offset_y, sizex * zoom + scale_offset_y, sizey * zoom + scale_offset_y) && mouse_left && window_busy = "")
+		if (app_mouse_box((selection_topleft[X]) * zoom + scale_offset_x, (selection_topleft[Y]) * zoom + scale_offset_y, sizex * zoom , sizey * zoom ) && mouse_left && window_busy = "")
 		{
 			window_busy = "painter_transform_move";
 

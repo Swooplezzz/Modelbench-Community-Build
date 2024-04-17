@@ -10,30 +10,30 @@ function painter_cpy_pst() {
 			var offset = vec2(mousexsnap, mouseysnap)
 			offset[X] = snap(offset[X],1);
 			offset[Y] = snap(offset[Y],1);
-			offset[X] = clamp(offset[X], 0, texturewidth - sprite_get_width(tempspr))
-			offset[Y] = clamp(offset[Y], 0, textureheight - sprite_get_height(tempspr))
+			offset[X] = clamp(offset[X], 0, paint_texture_width - sprite_get_width(tempspr))
+			offset[Y] = clamp(offset[Y], 0, paint_texture_height - sprite_get_height(tempspr))
 			if (selection_moved) {
-				surface_set_target(colorsurf);
+				surface_set_target(color_surf);
 				{
 					draw_clear_alpha(c_black, 0);
 					draw_sprite(colorspr, 0, 0, 0);
 
 					alphafix
 					shader_set(shader_premalpha);
-					draw_surface(transformsurf, 0, 0);
+					draw_surface(transform_surf, 0, 0);
 					shader_reset();
 					gpu_set_blendmode(bm_normal);
 				}
 				surface_reset_target();
 				// Update the alpha mask.
-				surface_set_target(alphasurf);
+				surface_set_target(alpha_surf);
 				{
 					draw_clear(c_black);
 
 					draw_sprite(alphaspr, 0, 0, 0);
 					alphafix
 					shader_set(shader_alphamask);
-					draw_surface(transformsurf, 0, 0);
+					draw_surface(transform_surf, 0, 0);
 					shader_reset();
 
 					gpu_set_blendmode(bm_normal);
@@ -43,17 +43,17 @@ function painter_cpy_pst() {
 				if (sprite_exists(alphaspr)) {
 					sprite_delete(alphaspr);
 				}
-				alphaspr = sprite_create_from_surface(alphasurf, 0, 0, surface_get_width(alphasurf), surface_get_height(alphasurf), false, false, 0, 0);
+				alphaspr = sprite_create_from_surface(alpha_surf, 0, 0, surface_get_width(alpha_surf), surface_get_height(alpha_surf), false, false, 0, 0);
 
 				if (sprite_exists(colorspr)) {
 					sprite_delete(colorspr);
 				}
-				colorspr = sprite_create_from_surface(colorsurf, 0, 0, surface_get_width(colorsurf), surface_get_height(colorsurf), false, false, 0, 0);
+				colorspr = sprite_create_from_surface(color_surf, 0, 0, surface_get_width(color_surf), surface_get_height(color_surf), false, false, 0, 0);
 				painter_create_finalspr()
 			}
 
 
-			surface_set_target(transformsurf);
+			surface_set_target(transform_surf);
 			{
 				draw_clear_alpha(c_black, 0);
 				alphafix
@@ -66,8 +66,8 @@ function painter_cpy_pst() {
 			if (sprite_exists(transformspr)) {
 				sprite_delete(transformspr);
 			}
-			transformspr = sprite_create_from_surface(transformsurf, offset[X], offset[Y], sprite_get_width(tempspr), sprite_get_height(tempspr), false, false, 0, 0);
-			surface_set_target(selectionsurf);
+			transformspr = sprite_create_from_surface(transform_surf, offset[X], offset[Y], sprite_get_width(tempspr), sprite_get_height(tempspr), false, false, 0, 0);
+			surface_set_target(selection_surf);
 			{
 				draw_clear(c_black);
 
@@ -82,13 +82,13 @@ function painter_cpy_pst() {
 			if (sprite_exists(selectionspr)) {
 				sprite_delete(selectionspr);
 			}
-			selectionspr = sprite_create_from_surface(selectionsurf, 0, 0, texturewidth, textureheight, false, false, 0, 0);
+			selectionspr = sprite_create_from_surface(selection_surf, 0, 0, paint_texture_width, paint_texture_height, false, false, 0, 0);
 			selection_active = true;
 
 			selection_topleft = vec2(offset[X], offset[Y]);
 			selection_btmright = vec2(offset[X] + sprite_get_width(tempspr),offset[Y] +  sprite_get_height(tempspr));
 
-			selectionsize = vec2(selection_btmright[0] - selection_topleft[0], selection_btmright[1] - selection_topleft[1]);
+			selection_size = vec2(selection_btmright[0] - selection_topleft[0], selection_btmright[1] - selection_topleft[1]);
 			painter_get_sel_trn_spr();
 			selection_moved = true;
 			paint_tool_selected = e_paint.TRANSFORM;
@@ -96,7 +96,7 @@ function painter_cpy_pst() {
 			painter_history_set("transform", finalspr, selectionspr, transformspr);
 
 			#region dumped code
-			// surface_set_target(colorsurf){
+			// surface_set_target(color_surf){
 			// draw_clear_alpha(c_black, 0)
 			// shader_set(shader_colormask)
 			// draw_sprite(tempspr,0,0,0)
@@ -105,7 +105,7 @@ function painter_cpy_pst() {
 			// gpu_set_blendmode(bm_normal);
 			// }
 			//	surface_reset_target()
-			// surface_set_target(alphasurf){
+			// surface_set_target(alpha_surf){
 
 			// draw_clear_alpha(c_black, 1)
 			// shader_set(shader_alphamask)
@@ -120,10 +120,10 @@ function painter_cpy_pst() {
 			//	sprite_delete(tempspr)
 			//	if(sprite_exists(colorspr))
 			// sprite_delete(colorspr)
-			// colorspr = sprite_create_from_surface(colorsurf, 0,0,surface_get_width(colorsurf), surface_get_height(colorsurf), false, false, 0, 0)
+			// colorspr = sprite_create_from_surface(color_surf, 0,0,surface_get_width(color_surf), surface_get_height(color_surf), false, false, 0, 0)
 			//	if(sprite_exists(alphaspr))
 			// sprite_delete(alphaspr)
-			// alphaspr = sprite_create_from_surface(alphasurf, 0,0,surface_get_width(alphasurf), surface_get_height(alphasurf), false, false, 0, 0)
+			// alphaspr = sprite_create_from_surface(alpha_surf, 0,0,surface_get_width(alpha_surf), surface_get_height(alpha_surf), false, false, 0, 0)
 			#endregion
 
 			sprite_delete(tempspr);
@@ -138,7 +138,7 @@ function painter_cpy_pst() {
 		clipboard_load_image(app.model_folder + "\\clipboard.png");
 		painter_clear_selection()
 	    painter_create_finalspr();
-	surface_set_target(selectionsurf){
+	surface_set_target(selection_surf){
 		draw_clear_alpha(c_black,0)
 		selection_topleft = vec2(0,0)
 		selection_btmright = vec2(0,0)

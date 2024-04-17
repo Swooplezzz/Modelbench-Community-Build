@@ -1,9 +1,9 @@
 // Script assets have changed for v2.3.0 see
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
-function draw_floodfill_add(_surf, _alphasurf, _xx,_yy,_targ,_color,_side, _targ_alpha){
+function draw_floodfill_add(_surf, _alpha_surf, _xx,_yy,_targ,_color,_side, _targ_alpha){
 var struct = {
 surf : _surf,
-alphasurf : _alphasurf,
+alpha_surf : _alpha_surf,
 xx : _xx,
 yy : _yy,
 targ_color: _targ,
@@ -34,7 +34,7 @@ array_add(fillarr, struct)
 
     var col = make_colour_rgb(red, green, blue);
 
-    if((col == _color && alpha == 255)  ||!check_tolerance || array_length(fillarr) > 600){
+    if((col == _color && alpha == 255)  ||!check_tolerance || floodfill_frame_count > 600){
 		return;
 	}
     var r,l,u,d;
@@ -51,18 +51,18 @@ array_add(fillarr, struct)
 		u = 1
 		if(fillarr[i].yy = _yy-1&& fillarr[i].xx = _xx) 
 		d = 1
-	}
-	
+	} 
+	floodfill_frame_count += 1;
 	if(l != 1 && _side != 4)
-    draw_floodfill_add(_surf, _alphasurf, _xx + 1, _yy, _targ, _color, 1,_targ_alpha);
+    draw_floodfill_add(_surf, _alpha_surf, _xx + 1, _yy, _targ, _color, 1,_targ_alpha);
     
 	if(u != 1&& _side != 3)
-    draw_floodfill_add(_surf, _alphasurf, _xx, _yy + 1, _targ, _color, 2,_targ_alpha);
+    draw_floodfill_add(_surf, _alpha_surf, _xx, _yy + 1, _targ, _color, 2,_targ_alpha);
  
 	if(d != 1&& _side != 2)
-    draw_floodfill_add(_surf, _alphasurf, _xx, _yy - 1, _targ, _color, 3,_targ_alpha);
+    draw_floodfill_add(_surf, _alpha_surf, _xx, _yy - 1, _targ, _color, 3,_targ_alpha);
     
 	if(r != 1&& _side != 1)
-    draw_floodfill_add(_surf, _alphasurf, _xx - 1, _yy, _targ, _color, 4,_targ_alpha);
+    draw_floodfill_add(_surf, _alpha_surf, _xx - 1, _yy, _targ, _color, 4,_targ_alpha);
 
 }

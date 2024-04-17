@@ -2,7 +2,7 @@
 /// @arg depthsurface
 /// @arg normalsurface
 /// @arg brightnesssurf
-/// @arg colorsurf
+/// @arg color_surf
 
 function shader_high_ssao_set(depthsurface, normalsurface, brightnesssurf)
 {

@@ -338,9 +338,9 @@ function model_shape_generate_block(bend)
 				nn3 = vec3(0, 0, 1)
 				nn4 = vec3(0, 0, -1)
 				var toff = (segpos / size[Y]) * texsizefix[Y];
-				ntexp1 = texeast2[X] - toff * negate(texture_mirror)// East X
-				ntexp2 = texwest1[X] + toff * negate(texture_mirror)// West X
-				ntexp3 = texup1[Y]  // Above/Below Y
+				ntexp1 = texeast2[X] - toff * negate(texture_mirror) * negate(texture_mirror_y)// East X
+				ntexp2 = texwest1[X] + toff * negate(texture_mirror) * negate(texture_mirror_y)// West X
+				ntexp3 = texup1[Y] + toff * negate(texture_mirror_y) // Above/Below Y
 				break
 			}
 			

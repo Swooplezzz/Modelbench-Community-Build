@@ -50,7 +50,7 @@ function painter_toolbar_draw(barx, bary, barw, barh)
 	else
 		dy += buttonsize
 	
-	// Zoom
+	// painter_zoom
 			tip_set_keybind(e_keybind.ERASE)
 
 	if(draw_button_icon("tooleraser", dx, dy, 28, 28, paint_tool_selected = e_paint.ERASE, icons.ERASER, null, false, "tooltippainterase"))

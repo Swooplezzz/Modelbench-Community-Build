@@ -18,20 +18,20 @@ if(keyboard_check(vk_control)){
 	{
 		targetzoom = clamp(targetzoom * m,  0.1, 100)
 		
-		targetoffx = offx +((mouse_x - (boxx + boxw /2)) / zoom - (mouse_x - (boxx + boxw / 2)) / targetzoom)
-		targetoffy = offy +((mouse_y - (boxy + boxh /2)) / zoom - (mouse_y - (boxy + boxh / 2)) / targetzoom)
+		target_view_offset_x = view_offset_x +((mouse_x - (boxx + boxw /2)) / zoom - (mouse_x - (boxx + boxw / 2)) / targetzoom)
+		target_view_offset_y = view_offset_y +((mouse_y - (boxy + boxh /2)) / zoom - (mouse_y - (boxy + boxh / 2)) / targetzoom)
 	}
 }
 
-zoom += (targetzoom - zoom) / max(1, 8 / delta)
-			offx += (targetoffx - offx) / max(1, 8 / delta)
-			offy += (targetoffy - offy) / max(1, 8 / delta)
+            zoom += (targetzoom - zoom) / max(1, 8 / delta)
+			view_offset_x += (target_view_offset_x - view_offset_x) / max(1, 8 / delta)
+			view_offset_y += (target_view_offset_y - view_offset_y) / max(1, 8 / delta)
 
 if(mouse_check_button(mb_middle) && content_mouseon){
-	offx -= mouse_dx/ zoom;
-	offy -= mouse_dy / zoom;
-		targetoffx -= mouse_dx / zoom;
-	targetoffy -= mouse_dy / zoom;
+	view_offset_x -= mouse_dx/ zoom;
+	view_offset_y -= mouse_dy / zoom;
+		target_view_offset_x -= mouse_dx / zoom;
+	target_view_offset_y -= mouse_dy / zoom;
 	app_mouse_wrap(content_x, content_y, content_width, content_height)
 }
 }

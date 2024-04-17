@@ -84,7 +84,7 @@ function uv_editor_draw(viewx, viewy, vieww, viewh)
 		}
 	}
 	
-	// Zoom
+	// zoom
 	var zd, m, zoom;
 	m = (1 - 0.25 * mouse_wheel * (window_scroll_focus_prev = "uveditor"))
 	if (m != 1)

@@ -13,7 +13,7 @@ draw_circle_color( mousexsnap, mouseysnap, paint_width*.6 ,  color, color, false
 draw_line_width_color(prevmousexsnap, prevmouseysnap, mousexsnap, mouseysnap , paint_width*1.2, color, color);
 gpu_set_blendmode(bm_subtract)
 draw_set_color(c_black)
-draw_surface(selectionsurf,0,0)
+draw_surface(selection_surf,0,0)
 gpu_set_blendmode(bm_normal)
 }
 }

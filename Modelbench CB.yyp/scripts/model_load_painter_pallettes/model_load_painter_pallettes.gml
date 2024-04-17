@@ -12,10 +12,13 @@ function model_load_painter_pallettes(map){
 	show_debug_message("loading pallettes")
 
 
-	if (ds_map_valid(map[?"pallettelist"]))
-	var pallettelist = map[?"pallettelist"];
-	else
-	return 0
+	if (!ds_map_exists(map,"pallettelist"))
+		return 0
+		
+	 var pallettelist;
+	pallettelist = map[?"pallettelist"];
+
+
 
 
 	

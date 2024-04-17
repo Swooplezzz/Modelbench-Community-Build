@@ -12,7 +12,7 @@ if(keyboard_check_pressed(ord("Y"))){
 		
 		finalspr = sprite_duplicate(painter_history[painter_history_pos].sprite)
 		
-		surface_set_target(alphasurf){
+		surface_set_target(alpha_surf){
 				draw_clear_alpha(c_black, 1)
 			alphafix
 			shader_set(shader_alphamask)
@@ -21,7 +21,7 @@ if(keyboard_check_pressed(ord("Y"))){
 						gpu_set_blendmode(bm_normal)
 		}
 		surface_reset_target()
-		surface_set_target(colorsurf){
+		surface_set_target(color_surf){
 			draw_clear_alpha(c_black, 0)
 			shader_set(shader_colormask)
 			draw_sprite(finalspr,0,0,0)
@@ -29,8 +29,8 @@ if(keyboard_check_pressed(ord("Y"))){
 						gpu_set_blendmode(bm_normal)
 		}
 		surface_reset_target()
-		colorspr = sprite_create_from_surface(colorsurf,0,0,surface_get_width(colorsurf),surface_get_height(colorsurf), false, false,0,0)
-		alphaspr = sprite_create_from_surface(alphasurf,0,0,surface_get_width(alphasurf),surface_get_height(alphasurf), false, false,0,0)
+		colorspr = sprite_create_from_surface(color_surf,0,0,surface_get_width(color_surf),surface_get_height(color_surf), false, false,0,0)
+		alphaspr = sprite_create_from_surface(alpha_surf,0,0,surface_get_width(alpha_surf),surface_get_height(alpha_surf), false, false,0,0)
 		painter_update_spr = true;
 		
 		
@@ -38,7 +38,7 @@ if(keyboard_check_pressed(ord("Y"))){
 			paint_tool_selected = e_paint.BOX_SELECT
 		}
 		selectionspr = sprite_duplicate(painter_history[painter_history_pos].selsprite)
-			surface_set_target(selectionsurf){
+			surface_set_target(selection_surf){
             draw_sprite(selectionspr,0,0,0)
 	        }
 	        surface_reset_target()
@@ -53,10 +53,10 @@ if(keyboard_check_pressed(ord("Y"))){
 
 		selection_topleft = painter_history[painter_history_pos].pos_tl;
 		selection_btmright = painter_history[painter_history_pos].pos_br;
-		selectionsize = painter_history[painter_history_pos].sel_size;
+		selection_size = painter_history[painter_history_pos].sel_size;
 		selection_active = painter_history[painter_history_pos].sel_active;
 		if(!selection_active){
-			surface_set_target(selectionsurf){
+			surface_set_target(selection_surf){
 		draw_clear_alpha(c_black,0)
 		selection_topleft = vec2(0,0)
 		selection_btmright = vec2(0,0)
@@ -75,7 +75,7 @@ else if(keyboard_check_pressed(ord("Z"))){
 		
 		finalspr = sprite_duplicate(painter_history[painter_history_pos].sprite)
 		
-		surface_set_target(alphasurf){
+		surface_set_target(alpha_surf){
 				draw_clear_alpha(c_black, 1)
 			alphafix
 			shader_set(shader_alphamask)
@@ -84,7 +84,7 @@ else if(keyboard_check_pressed(ord("Z"))){
 			gpu_set_blendmode(bm_normal)
 		}
 		surface_reset_target()
-		surface_set_target(colorsurf){
+		surface_set_target(color_surf){
 			draw_clear_alpha(c_black, 0)
 			shader_set(shader_colormask)
 			draw_sprite(finalspr,0,0,0)
@@ -92,8 +92,8 @@ else if(keyboard_check_pressed(ord("Z"))){
 						gpu_set_blendmode(bm_normal)
 		}
 		surface_reset_target()
-		colorspr = sprite_create_from_surface(colorsurf,0,0,surface_get_width(colorsurf),surface_get_height(colorsurf), false, false,0,0)
-		alphaspr = sprite_create_from_surface(alphasurf,0,0,surface_get_width(alphasurf),surface_get_height(alphasurf), false, false,0,0)
+		colorspr = sprite_create_from_surface(color_surf,0,0,surface_get_width(color_surf),surface_get_height(color_surf), false, false,0,0)
+		alphaspr = sprite_create_from_surface(alpha_surf,0,0,surface_get_width(alpha_surf),surface_get_height(alpha_surf), false, false,0,0)
 		painter_update_spr = true;
 		
 		
@@ -102,7 +102,7 @@ else if(keyboard_check_pressed(ord("Z"))){
 		}
 			
 		selectionspr = sprite_duplicate(painter_history[painter_history_pos].selsprite)
-			surface_set_target(selectionsurf){
+			surface_set_target(selection_surf){
             draw_sprite(selectionspr,0,0,0)
 	        }
 	        surface_reset_target()
@@ -116,10 +116,10 @@ else if(keyboard_check_pressed(ord("Z"))){
 
 		selection_topleft = painter_history[painter_history_pos].pos_tl;
 		selection_btmright = painter_history[painter_history_pos].pos_br;
-		selectionsize = painter_history[painter_history_pos].sel_size;
+		selection_size = painter_history[painter_history_pos].sel_size;
 		selection_active = painter_history[painter_history_pos].sel_active;
 		if(!selection_active){
-			surface_set_target(selectionsurf){
+			surface_set_target(selection_surf){
 		draw_clear_alpha(c_black,0)
 		selection_topleft = vec2(0,0)
 		selection_btmright = vec2(0,0)

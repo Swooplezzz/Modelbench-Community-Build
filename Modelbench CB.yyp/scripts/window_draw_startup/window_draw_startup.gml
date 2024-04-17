@@ -132,7 +132,7 @@ function window_draw_startup()
 	
 	// Browse
 	draw_button_label("startupbrowse", dx, dy, browsewidth, icons.FOLDER, e_button.SECONDARY, model_load)
-		if (recent_list_amount > 0)
+	if (recent_list_amount > 0)
 	{
 		if (draw_button_icon("startuprecentdisplay", dx - 24 - 8, dy + 4, 24, 24, false, recent_display_mode = "grid" ? icons.VIEW_LIST : icons.VIEW_GRID, null, false, recent_display_mode = "grid" ? "tooltipviewlist" : "tooltipviewgrid"))
 		{

@@ -1,4 +1,4 @@
-function draw_floodfill(surf, alphasurf, xx, yy, targ_color, color, side, targ_alpha){
+function draw_floodfill(surf, alpha_surf, xx, yy, targ_color, color, side, targ_alpha){
     var surf_width = surface_get_width(surf);
     var surf_height = surface_get_height(surf);
 	
@@ -6,7 +6,7 @@ function draw_floodfill(surf, alphasurf, xx, yy, targ_color, color, side, targ_a
     if(!(xx >= 0 && yy >= 0 && xx < surf_width && yy < surf_height)) return;
     var offset = 4 * (xx + yy * surf_width);
 		var selection = buffer_peek(selection_buffer, offset + 3, buffer_u8);
-	//(surface_getpixel_ext(selectionsurf,xx+.5,yy+.5) >> 24) & 255
+	//(surface_getpixel_ext(selection_surf,xx+.5,yy+.5) >> 24) & 255
     if(selection = 255) return;
     var red = buffer_peek(fill_buffer, offset, buffer_u8);
     var green = buffer_peek(fill_buffer, offset + 1, buffer_u8);
@@ -50,13 +50,26 @@ function draw_floodfill(surf, alphasurf, xx, yy, targ_color, color, side, targ_a
 	
 	
 	}
+	floodfill_frame_count += 1;
+	if(floodfill_frame_count < 600){
 	if(l != 1 && side != 4)
-    draw_floodfill_add(surf, alphasurf, xx + 1, yy, targ_color, color, 1,targ_alpha);
+    draw_floodfill(surf, alpha_surf, xx + 1, yy, targ_color, color, 1,targ_alpha);
 	if(u != 1&& side != 3)
-    draw_floodfill_add(surf, alphasurf, xx, yy + 1, targ_color, color, 2,targ_alpha);
+    draw_floodfill(surf, alpha_surf, xx, yy + 1, targ_color, color, 2,targ_alpha);
 	if(d != 1&& side != 2)
-    draw_floodfill_add(surf, alphasurf, xx, yy - 1, targ_color, color, 3,targ_alpha);
+    draw_floodfill(surf, alpha_surf, xx, yy - 1, targ_color, color, 3,targ_alpha);
 	if(r != 1&& side != 1)
-    draw_floodfill_add(surf, alphasurf, xx - 1, yy, targ_color, color, 4,targ_alpha);
-  
+    draw_floodfill(surf, alpha_surf, xx - 1, yy, targ_color, color, 4,targ_alpha);
+	}
+	else{
+		
+	if(l != 1 && side != 4)
+    draw_floodfill_add(surf, alpha_surf, xx + 1, yy, targ_color, color, 1,targ_alpha);
+	if(u != 1&& side != 3)
+    draw_floodfill_add(surf, alpha_surf, xx, yy + 1, targ_color, color, 2,targ_alpha);
+	if(d != 1&& side != 2)
+    draw_floodfill_add(surf, alpha_surf, xx, yy - 1, targ_color, color, 3,targ_alpha);
+	if(r != 1&& side != 1)
+    draw_floodfill_add(surf, alpha_surf, xx - 1, yy, targ_color, color, 4,targ_alpha);
+	}
 }

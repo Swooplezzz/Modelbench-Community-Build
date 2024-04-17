@@ -8,5 +8,5 @@ res_edit.sprite = sprite_duplicate(finalspr)
 textures_list.update = true;
 painter_update_spr = false
 }
-//selectionsize = vec2(selection_btmright[0]-selection_topleft[0],selection_btmright[1]-selection_topleft[1]);
+//selection_size = vec2(selection_btmright[0]-selection_topleft[0],selection_btmright[1]-selection_topleft[1]);
 }

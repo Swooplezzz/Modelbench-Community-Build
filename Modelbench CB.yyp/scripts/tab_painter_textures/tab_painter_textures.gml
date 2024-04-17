@@ -26,8 +26,8 @@ function tab_painter_textures(){
 		else
 			shortcut_bar_state = "contextmenutextureselect"
 	}
-	textfield_group_add("paintertexsizex", texturewidth, 16, action_painter_size_width, X, tab.tbx_width)
-	textfield_group_add("paintertexsizey", textureheight, 16, action_painter_size_height, Y, tab.tbx_height)
+	textfield_group_add("paintertexsizex", paint_texture_width, 16, action_painter_size_width, X, tab.tbx_width)
+	textfield_group_add("paintertexsizey", paint_texture_height, 16, action_painter_size_height, Y, tab.tbx_height)
 	
 	tab_control_textfield_group(false, false)
 	draw_textfield_group("paintertexsize",dx,dy, dw, 1,1, 512, 1,false,false,0,false);

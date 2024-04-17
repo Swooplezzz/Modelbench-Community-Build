@@ -2,5 +2,5 @@
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 function action_painter_adjust_huesat(){
 popup_show(popup_huesat);
-editing_hue = true
+adjust_huesat = true
 }

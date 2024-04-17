@@ -234,6 +234,9 @@ function shader_startup()
 	{
 		new_shader_uniform("u_Position")
 		new_shader_uniform("u_Position_s")
+		new_shader_uniform("u_Position_l")
+		new_shader_uniform("u_colmask")
+		new_shader_sampler("u_clipsampler")
 	}
 	
 	return true
