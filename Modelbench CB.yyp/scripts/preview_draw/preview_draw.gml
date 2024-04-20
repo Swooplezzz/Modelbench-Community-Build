@@ -79,7 +79,7 @@ function preview_draw(preview, xx, yy, width, height)
 		}
 	}
 	
-	// zoom
+	// Zoom
 	var zd, m;
 	m = (1 - 0.25 * mouse_wheel * (window_scroll_focus_prev = string(preview)))
 	if (m != 1)
