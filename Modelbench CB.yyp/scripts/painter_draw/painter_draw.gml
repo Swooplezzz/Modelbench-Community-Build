@@ -225,7 +225,7 @@ function painter_draw(xx, yy, inbounds)
 	var mxsnap = snap((window_mouse_get_x()-scale_offset_x) /  zoom-.5 , 1)
 	var mysnap = snap((window_mouse_get_y()-scale_offset_y) /  zoom-.5 , 1)
 	str += text_get("painterinfomousepos") + ": [" + string(mxsnap) + ", " + string(mysnap) + "]\n"
-	str += text_get("painterinfoselection_size") + ": [" + string(selection_size[0])+ ", " + string(selection_size[1]) + "]\n"
+	str += text_get("painterinfoselectionsize") + ": [" + string(selection_size[0])+ ", " + string(selection_size[1]) + "]\n"
 	var ww = string_width_font(str, font_label) + 16;
 	var hh = string_height_font(str, font_label) + 16;
 	

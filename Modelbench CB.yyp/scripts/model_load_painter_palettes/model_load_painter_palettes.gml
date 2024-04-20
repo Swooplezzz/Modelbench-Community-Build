@@ -12,7 +12,7 @@ function model_load_painter_palettes(map)
 		return 0
 	show_debug_message("loading palettes")
 
-	if (ds_map_valid(map[?"palettelist"]))
+	if (ds_map_exists(map, "palettelist"))
 		var palettelist = map[?"palettelist"];
 	else
 		return 0
