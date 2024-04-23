@@ -69,9 +69,9 @@ function painter_cpy_pst()
 			}
 			surface_reset_target();
 			
-			if (sprite_exists(transformspr))
-				sprite_delete(transformspr);
-			transformspr = sprite_create_from_surface(transform_surf, offset[X], offset[Y], sprite_get_width(tempspr), sprite_get_height(tempspr), false, false, 0, 0);
+			if (sprite_exists(transform_spr))
+				sprite_delete(transform_spr);
+			transform_spr = sprite_create_from_surface(transform_surf, offset[X], offset[Y], sprite_get_width(tempspr), sprite_get_height(tempspr), false, false, 0, 0);
 			
 			surface_set_target(selection_surf);
 			{
@@ -98,7 +98,7 @@ function painter_cpy_pst()
 			selection_moved = true;
 			paint_tool_selected = e_paint.TRANSFORM_SELECTION;
 			sprite_delete(tempspr);
-			painter_history_set("transform", final_spr, selection_spr, transformspr);
+			painter_history_set("transform", final_spr, selection_spr, transform_spr);
 
 			#region dumped code
 			// surface_set_target(color_surf){
@@ -136,12 +136,12 @@ function painter_cpy_pst()
 	}
 	if (keybinds[e_keybind.COPY].pressed && selection_active)
 	{
-		sprite_save(transformspr, 0, app.model_folder + "\\clipboard.png");
+		sprite_save(transform_spr, 0, app.model_folder + "\\clipboard.png");
 		clipboard_load_image(app.model_folder + "\\clipboard.png");
 	}
 	if (keybinds[e_keybind.CUT].pressed && selection_active)
 	{
-		sprite_save(transformspr, 0, app.model_folder + "\\clipboard.png");
+		sprite_save(transform_spr, 0, app.model_folder + "\\clipboard.png");
 		clipboard_load_image(app.model_folder + "\\clipboard.png");
 		
 		painter_clear_selection()
