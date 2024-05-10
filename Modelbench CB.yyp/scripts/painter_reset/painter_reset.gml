@@ -50,17 +50,20 @@ function painter_reset()
 
 	surface_set_target(color_surf)
 	{
+		draw_clear_alpha(c_black, 0)
 		shader_set(shader_colormask)
-
+		alphafix
 		draw_sprite(tex_spr,0,0,0)
 		shader_reset();
 	}
 	surface_reset_target()
 
 	color_spr = sprite_create_from_surface(color_surf,0,0,paint_texture_width, paint_texture_height, false,false, 0,0)
-	final_spr = sprite_create_from_surface(color_surf, 0,0,surface_get_width(color_surf), surface_get_height(color_surf), false, false, 0, 0)
 	alpha_spr = sprite_create_from_surface(alpha_surf, 0,0,surface_get_width(alpha_surf), surface_get_height(alpha_surf), false, false, 0, 0)
 	selection_spr = sprite_create_from_surface(selection_surf, 0,0,surface_get_width(selection_surf), surface_get_height(selection_surf), false, false, 0, 0)
+	
+	final_spr = sprite_duplicate(tex_spr)
+	
 	targetzoom = 12
 
 	painter_history_set("painting", tex_spr, selection_spr, transform_spr)
@@ -69,20 +72,20 @@ function painter_reset()
 	scale_offset_x= window_get_width() / 2 - (paint_texture_width*zoom /2 )
 	scale_offset_y = window_get_height() / 2 - (paint_texture_width*zoom /2 )
 
-	paintercolorpicker.def = c_black
-	paintercolorpicker.color = paint_primary_color
-	paintercolorpicker.red = color_get_red(paint_primary_color)
-	paintercolorpicker.green = color_get_green(paint_primary_color)
-	paintercolorpicker.blue = color_get_blue(paint_primary_color)
+	painter_colorpicker.def = c_black
+	painter_colorpicker.color = paint_primary_color
+	painter_colorpicker.red = color_get_red(paint_primary_color)
+	painter_colorpicker.green = color_get_green(paint_primary_color)
+	painter_colorpicker.blue = color_get_blue(paint_primary_color)
 		
-	paintercolorpicker.hue = color_get_hue(paint_primary_color)
-	paintercolorpicker.saturation = color_get_saturation(paint_primary_color)
-	paintercolorpicker.brightness = color_get_value(paint_primary_color)
+	painter_colorpicker.hue = color_get_hue(paint_primary_color)
+	painter_colorpicker.saturation = color_get_saturation(paint_primary_color)
+	painter_colorpicker.brightness = color_get_value(paint_primary_color)
 		
-	paintercolorpicker.tbx_red.text = string(paintercolorpicker.red)
-	paintercolorpicker.tbx_green.text = string(paintercolorpicker.green)
-	paintercolorpicker.tbx_blue.text = string(paintercolorpicker.blue)
-	paintercolorpicker.tbx_hexadecimal.text = color_to_hex(paint_primary_color)
+	painter_colorpicker.tbx_red.text = string(painter_colorpicker.red)
+	painter_colorpicker.tbx_green.text = string(painter_colorpicker.green)
+	painter_colorpicker.tbx_blue.text = string(painter_colorpicker.blue)
+	painter_colorpicker.tbx_hexadecimal.text = color_to_hex(paint_primary_color)
 		
 	selection_active = false
 }

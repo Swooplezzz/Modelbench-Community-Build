@@ -3,7 +3,7 @@
 function colorpicker_startup()
 {
 	colorpicker = new_obj(obj_colorpicker)
-	paintercolorpicker = new_obj(obj_colorpicker)
+	painter_colorpicker = new_obj(obj_colorpicker)
 	
 	with (colorpicker)
 	{
@@ -28,7 +28,7 @@ function colorpicker_startup()
 		tbx_hexadecimal.next_tbx = tbx_red
 		mode = "rgb"
 	}
-	with(paintercolorpicker)
+	with(painter_colorpicker)
 	{
 		value_name = ""
 		value_script = null

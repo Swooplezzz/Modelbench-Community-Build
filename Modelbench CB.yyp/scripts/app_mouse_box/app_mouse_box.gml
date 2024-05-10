@@ -6,6 +6,9 @@
 
 function app_mouse_box(boxx, boxy, boxw, boxh)
 {
+	if(argument_count > 4){
+	draw_box(boxx, boxy,boxw,boxh,false)
+	}
 	if (sign(boxw) = 1 && sign(boxh) = 1)
 		return (mouse_x >= boxx &&
 				mouse_y >= boxy &&

@@ -57,7 +57,7 @@ function painter_tool_select(xx, yy)
 			    selection_btmright[0] = xx + 1.5
 
 		    if(yy + 1.5 > selection_topleft_prev[1] - 1)
-			    selection_btmright[1] = xx + 1.5
+			    selection_btmright[1] = yy + 1.5
 	
 			if(selection_btmright[0] < selection_btmright_prev[0])
 			    selection_btmright[0] = selection_btmright_prev[0]

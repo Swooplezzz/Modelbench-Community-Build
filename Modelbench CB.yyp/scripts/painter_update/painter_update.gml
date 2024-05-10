@@ -58,10 +58,11 @@ function painter_update(view, cam)
 		
 			// Erase tool
 			painter_tool_erase(mousexsnap, mouseysnap, prevmousexsnap, prevmouseysnap)
-			
+		}
+		if(mouse_left_pressed || mouse_right_pressed){
 			// Fill tool
 			if (inbounds)
-				painter_tool_floodfill(mousexsnap, mouseysnap, mouse_button)	
+				painter_tool_floodfill(mousexsnap, mouseysnap, mouse_button)		
 		}
 		
 		// Select tool

@@ -23,7 +23,15 @@ function painter_draw(xx, yy, inbounds)
 	tex = tex_spr
 	texscale = 1
 	
-	draw_sprite_ext(final_spr, 0, scale_offset_x, scale_offset_y, zoom, zoom, 0, c_white, 1)
+	if(adjusting_hue){
+        painter_adjust_huesat()
+    }
+	else if(adjusting_brightness_contrast){
+		  painter_adjust_brightness_contrast()
+	}
+    else{
+         draw_sprite_ext(final_spr, 0, scale_offset_x, scale_offset_y, zoom, zoom,0, c_white, 1)
+    }
 
 	draw_surface_ext(draw_surf, scale_offset_x, scale_offset_y, zoom, zoom, 0, c_white, paint_opacity)
 	draw_surface_ext(selection_surf, scale_offset_x, scale_offset_y, zoom, zoom, 0, c_white, 0.25)
@@ -37,19 +45,8 @@ function painter_draw(xx, yy, inbounds)
 		
 	if (selection_active && paint_tool_selected != e_paint.TRANSFORM_SELECTION && !adjusting_hue)
 	{
-		gpu_set_texrepeat(false)
-		render_shader_obj = shader_map[?shader_selection_outline]
-		with (render_shader_obj)
-			shader_use()
-				
-		shader_border_set(c_accent, 1, paint_texture_width * zoom, paint_texture_height * zoom, 0.35, 0)
-			
-		draw_surface_ext(selection_surf, scale_offset_x, scale_offset_y, zoom, zoom,0, c_white, 1.0)
+		draw_painter_selection_outline(c_accent, 1, 0.35, false,paint_texture_width * zoom,paint_texture_height * zoom);
 
-		with (render_shader_obj)
-			shader_clear()
-			
-		gpu_set_texrepeat(true)
 	}
 
 	if(paint_tool_selected = e_paint.TRANSFORM_SELECTION && !adjusting_hue)

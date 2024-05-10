@@ -15,26 +15,30 @@ function painter_transform(xx, yy)
 			sprite_delete(transform_spr)
 		transform_spr = sprite_duplicate(final_spr);
 	}
-
+	sprite_set_offset(transform_spr,sprite_get_width(transform_spr)/2, sprite_get_height(transform_spr)/2)
+	sprite_set_offset(sel_trn_spr,sprite_get_width(sel_trn_spr)/2, sprite_get_height(sel_trn_spr)/2)
+    // Update the transformation on the sprite
 	surface_set_target(transform_surf)
 	{
+
 		draw_clear_alpha(c_black, 0)
 		alphafix
 	    gpu_set_colorwriteenable(false,false,false,true)
-		draw_sprite_ext(transform_spr, 0, (selection_topleft[X]), (selection_topleft[Y]), sizex / selection_size[X], sizey / selection_size[Y], 0, c_white, 1)
+		draw_sprite_ext(transform_spr, 0, (selection_topleft[X])+sprite_get_xoffset(transform_spr), (selection_topleft[Y])+sprite_get_yoffset(transform_spr), sizex / selection_size[X], sizey / selection_size[Y], selection_rot, c_white, 1)
 		gpu_set_colorwriteenable(true,true,true,false)
-		draw_sprite_ext(transform_spr, 0, (selection_topleft[X]), (selection_topleft[Y]), sizex / selection_size[X], sizey / selection_size[Y], 0, c_white, 1)
+		draw_sprite_ext(transform_spr, 0, (selection_topleft[X])+sprite_get_xoffset(transform_spr), (selection_topleft[Y])+sprite_get_yoffset(transform_spr), sizex / selection_size[X], sizey / selection_size[Y], selection_rot, c_white, 1)
 		gpu_set_colorwriteenable(true,true,true,true)
 
 		gpu_set_blendmode(bm_normal)
 	}
 	surface_reset_target();
 	
+	// Update the selection on the sprite
 	surface_set_target(selection_surf)
 	{
 		draw_clear(c_black)
 		gpu_set_blendmode(bm_subtract)
-		draw_sprite_ext(sel_trn_spr, 0, (selection_topleft[X]), (selection_topleft[Y]), sizex / selection_size[X], sizey / selection_size[Y], 0, c_black, 1)
+		draw_sprite_ext(sel_trn_spr, 0, (selection_topleft[X])+sprite_get_xoffset(sel_trn_spr), (selection_topleft[Y])+sprite_get_yoffset(sel_trn_spr), sizex / selection_size[X], sizey / selection_size[Y], selection_rot, c_black, 1)
 		gpu_set_blendmode(bm_normal)
 	}
 	surface_reset_target();
@@ -111,7 +115,7 @@ function painter_transform(xx, yy)
 		surface_set_target(render_surface[0])
 		{
 			draw_clear_alpha(c_black, 0);
-			draw_sprite_ext(sel_trn_spr, 0, 0, 0, sizex / selection_size[X], sizey / selection_size[Y], 0, c_black, 1)
+			draw_sprite_ext(sel_trn_spr, 0, sprite_get_xoffset(sel_trn_spr), sprite_get_yoffset(sel_trn_spr), sizex / selection_size[X], sizey / selection_size[Y], selection_rot, c_black, 1)
 		}
 		surface_reset_target();
 		
@@ -122,12 +126,30 @@ function painter_transform(xx, yy)
 
 		shader_border_set(c_white, 1, render_width * zoom, render_height * zoom, 0, 1)
 		draw_surface_ext(render_surface[0], scale_offset_x + (selection_topleft[X] * zoom), scale_offset_y + (selection_topleft[Y] * zoom), zoom, zoom, 0, c_black, 1)
-	
+		
 		with(render_shader_obj)
 			shader_clear()
 		
 		gpu_set_texrepeat(true)
-	
+		// ROTATION
+	    
+		if((app_mouse_box((selection_topleft[X]) * zoom + scale_offset_x-40, (selection_topleft[Y]) * zoom + scale_offset_y - 40, sizex * zoom+80, 30)) ||
+		(app_mouse_box((selection_topleft[X]) * zoom + scale_offset_x-40, (selection_btmright[Y]) * zoom + scale_offset_y + 10, sizex * zoom+80, 30))|| 
+		(app_mouse_box((selection_btmright[X]) * zoom + scale_offset_x + 10, (selection_topleft[Y]) * zoom + scale_offset_y - 10, 30, sizey * zoom + 20)) ||
+		(app_mouse_box((selection_topleft[X]) * zoom + scale_offset_x - 40, (selection_topleft[Y]) * zoom + scale_offset_y - 10, 30, sizey * zoom + 20)) )
+		{
+			mouse_cursor = cr_none
+			var iconoffset = [0, 0]
+			draw_sprite_ext(spr_icons,icons.RESET, window_mouse_get_x() - iconoffset[0], window_mouse_get_y() - iconoffset[1], 1, 1, 0, c_black, .75)
+			draw_sprite_ext(spr_icons,icons.RESET, window_mouse_get_x() - iconoffset[0] - 1, window_mouse_get_y() - iconoffset[1] - 1, 1, 1, 0, c_white, .75)
+			if(mouse_left  && window_busy = "")
+			  window_busy = "painter_rotate";
+		}
+		if(window_busy = "painter_rotate"){
+			var center = vec2((selection_topleft[X] + selection_btmright[X]) /2,(selection_topleft[Y] + selection_btmright[Y]) /2)
+			selection_rot = point_direction(mouse_x , mouse_y, center[X] * zoom + scale_offset_x, center[Y] * zoom + scale_offset_y)
+		}
+		
 		//SIDES
 		if (app_mouse_box((selection_topleft[X]) * zoom + scale_offset_x + 5, (selection_topleft[Y]) * zoom + scale_offset_y - 5, sizex * zoom - 10, 10) && mouse_left && window_busy = "")
 		{

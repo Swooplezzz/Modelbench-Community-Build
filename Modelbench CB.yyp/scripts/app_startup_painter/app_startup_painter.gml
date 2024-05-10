@@ -3,22 +3,34 @@
 function app_startup_painter()
 {
 	paint_tool_selected = e_paint.BRUSH
-	paint_view_grid = true
+	paint_view_grid = false
 	paint_view_brush_guides = false
 	paint_primary_color = c_black
 	paint_secondary_color = c_white
 	paint_opacity = 1
 	paint_width = 1
-	paint_tolerance = .05
+	paint_tolerance = .15
 	filling = false
 	painter_update_spr = true
 	fill_arr = array_create(0);
 
 	//Adjustments
-	hue=0;
-	sat=100;
-	val=0;
+	
+	// HSV
+	hue = 0;
+	sat = 100;
+	val = 0;
+	
+	// B/C
+	
+	painter_adjust_brightness = 0;
+	painter_adjust_contrast = 0;
+	
+	// Bools
 	adjusting_hue = false;
+	adjusting_brightness_contrast = false;
+	
+	
 	painter_main_color = 0;
 	painter_editing_color = 0;
 	painter_palette_id = -1;
@@ -66,7 +78,8 @@ function app_startup_painter()
 
 	mouse_x_prev = window_mouse_get_x() - scale_offset_x
 	mouse_y_prev = window_mouse_get_y() - scale_offset_y
-
+	
+	selection_rot = 0
 	selection_pos = vec2(0,0)
 	draw_size = vec2(0,0)
 	selection_topleft = vec2(0,0)

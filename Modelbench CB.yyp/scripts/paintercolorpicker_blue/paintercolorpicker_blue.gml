@@ -1,9 +1,9 @@
-/// paintercolorpicker_blue(value, add)
+/// painter_colorpicker_blue(value, add)
 /// @arg value
 /// @arg add
 
-function paintercolorpicker_blue(value, add)
+function painter_colorpicker_blue(value, add)
 {
-	paintercolorpicker.blue = min(255, paintercolorpicker.blue * add + value)
-	paintercolorpicker_update(null, make_color_rgb(paintercolorpicker.red, paintercolorpicker.green, paintercolorpicker.blue), true)
+	painter_colorpicker.blue = min(255, painter_colorpicker.blue * add + value)
+	painter_colorpicker_update(null, make_color_rgb(painter_colorpicker.red, painter_colorpicker.green, painter_colorpicker.blue), true)
 }

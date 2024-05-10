@@ -1,9 +1,9 @@
-/// paintercolorpicker_saturation(value, add)
+/// painter_colorpicker_saturation(value, add)
 /// @arg value
 /// @arg add
 
-function paintercolorpicker_saturation(value, add)
+function painter_colorpicker_saturation(value, add)
 {
-	paintercolorpicker.saturation = min(255, paintercolorpicker.saturation * add + value)
-	paintercolorpicker_update(null, make_color_hsv(paintercolorpicker.hue, paintercolorpicker.saturation, paintercolorpicker.brightness), false)
+	painter_colorpicker.saturation = min(255, painter_colorpicker.saturation * add + value)
+	painter_colorpicker_update(null, make_color_hsv(painter_colorpicker.hue, painter_colorpicker.saturation, painter_colorpicker.brightness), false)
 }

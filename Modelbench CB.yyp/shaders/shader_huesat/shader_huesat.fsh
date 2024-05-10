@@ -136,12 +136,10 @@ void main()
     vec3 fragRGB = tColor.rgb;
     vec3 fragHSV = rgb2hsl(fragRGB).xyz;
     fragHSV.x += vHSV.x / 360.0;
-    fragHSV.y *= vHSV.y;
+    fragHSV.y *= vHSV.y * abs(1.0 - vHSV.z);
 	
-	if(u_Position_l > 0.0)
-    fragHSV.z += vHSV.z;
-	else
-	fragHSV.z *= (vHSV.z + 1.0);
+
+	fragHSV.z += (vHSV.z);
     fragHSV.x = mod(fragHSV.x, 1.0);
 
 

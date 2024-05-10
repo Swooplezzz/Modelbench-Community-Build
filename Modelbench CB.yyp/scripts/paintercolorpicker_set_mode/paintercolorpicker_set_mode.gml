@@ -1,6 +1,6 @@
-/// paintercolorpicker_set_mode(mode)
+/// painter_colorpicker_set_mode(mode)
 
-function paintercolorpicker_set_mode(mode)
+function painter_colorpicker_set_mode(mode)
 {
-	paintercolorpicker.mode = mode
+	painter_colorpicker.mode = mode
 }

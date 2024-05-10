@@ -51,8 +51,10 @@ function shader_startup()
 		new_shader("shader_selection_outline")
 		//new_shader("shader_high_bevel")
 		new_shader("shader_hue_yiq")
+		new_shader("shader_contrast_brightness")
 		new_shader("shader_huesat")
 		new_shader("shader_premalphacolmask")
+
 
 		
 		with (obj_shader)
@@ -238,6 +240,13 @@ function shader_startup()
 		new_shader_uniform("u_Position")
 		new_shader_uniform("u_Position_s")
 		new_shader_uniform("u_Position_l")
+		new_shader_uniform("u_colmask")
+		new_shader_sampler("u_clipsampler")
+	}
+	with (shader_map[?shader_contrast_brightness])
+	{
+		new_shader_uniform("uBrightness")
+		new_shader_uniform("uContrast")
 		new_shader_uniform("u_colmask")
 		new_shader_sampler("u_clipsampler")
 	}

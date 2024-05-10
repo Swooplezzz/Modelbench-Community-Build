@@ -4,8 +4,10 @@ function popup_hue_sat_draw()
 {
 	dy += 4
 
-	if (draw_button_icon("whatsnewclose", dx + dw - 12 - 28, dy + 8, 28, 28, false, icons.CLOSE, null, false))
+	if (draw_button_icon("whatsnewclose", dx + dw - 12 - 28, dy + 8, 28, 28, false, icons.CLOSE, null, false)){
 		popup_close()
+	}
+	
 	dy += 12
 	dx += 24
 	draw_label(text_get("painteradjustmentshuesat"),dx,dy)

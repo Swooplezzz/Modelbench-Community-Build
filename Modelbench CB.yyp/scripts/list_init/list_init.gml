@@ -386,7 +386,7 @@ function list_init(name)
 		case "toolbaradjust":
 		{
 			list_item_add(text_get("toolbaradjusthuesat"), undefined,"", null, icons.CIRCLE, null, action_painter_adjust_huesat)
-			list_item_add(text_get("toolbaradjustbrightcontrast"), popup_brightcontrast, "", null, icons.SUN, null, popup_show)
+			list_item_add(text_get("toolbaradjustbrightcontrast"), undefined, "", null, icons.SUN, null, action_painter_adjust_brightness_contrast)
 			break;
 		}
 		case "toolbarfilerecent":
