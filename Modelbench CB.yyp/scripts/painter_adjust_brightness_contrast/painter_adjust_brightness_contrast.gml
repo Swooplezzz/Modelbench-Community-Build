@@ -1,8 +1,7 @@
-// Script assets have changed for v2.3.0 see
-// https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
-function painter_adjust_brightness_contrast(){
-	
-	
+/// painter_adjust_brightness_contrast()
+
+function painter_adjust_brightness_contrast()
+{
     render_shader_obj = shader_map[?shader_contrast_brightness]
 	
     shader_set(shader_contrast_brightness)
@@ -18,5 +17,5 @@ function painter_adjust_brightness_contrast(){
     gpu_set_blendmode(bm_normal);
     shader_reset();
 	
-	draw_painter_selection_outline(c_white, 1, 0.0, false,paint_texture_width * zoom,paint_texture_height * zoom);
+	draw_painter_selection_outline(c_white, 1, paint_texture_width * zoom, paint_texture_height * zoom, 0.0, false);
 }

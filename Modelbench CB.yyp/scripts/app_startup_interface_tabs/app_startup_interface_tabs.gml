@@ -306,21 +306,29 @@ function app_startup_interface_tabs()
 	colors.closeable = false
 	with (colors)
 	{
+		// Color editor
 		color_editor = tab_add_category("coloreditor", icons.FILL_TOOL, tab_color_editor, true)
-		with(color_editor)
+		with (color_editor)
 		{
 			tbx_name = new_textbox(true, 0, "")
 			name_edit_element = null
 		}
+		
+		// Color palettes
 		color_palettes = tab_add_category("colorpalettes", icons.PALETTE, tab_color_palettes, true)
 		with(color_palettes)
 		{
 			tbx_name = new_textbox(true, 0, "")
 			name_edit_element = null
 		}
+		
+		// Painter textures
 		textures = tab_add_category("textures", icons.TEXTURE_SMALL, tab_painter_textures, true)
-		tbx_width = new_textbox_integer()
-		tbx_height = new_textbox_integer()
+		with (textures)
+		{
+			tbx_width = new_textbox_integer()
+			tbx_height = new_textbox_integer()
+		}
 	}
 			
 	toolproperties = new_tab(setting_tool_properties_location, false, null)

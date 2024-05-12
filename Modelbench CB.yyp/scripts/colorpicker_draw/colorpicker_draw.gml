@@ -72,7 +72,7 @@ function colorpicker_draw()
 	togglebutton_add("colorpickerrgb", null, "rgb", colorpicker.mode = "rgb", colorpicker_set_mode)
 	togglebutton_add("colorpickerhsv", null, "hsv", colorpicker.mode = "hsv", colorpicker_set_mode)
 	togglebutton_add("colorpickerhex", null, "hex", colorpicker.mode = "hex", colorpicker_set_mode)
-	draw_togglebutton("colorpickermode", dx, dy, true, false)
+	draw_togglebutton("colorpickermode", dx, dy, null, true, false)
 	tab_next()
 	
 	

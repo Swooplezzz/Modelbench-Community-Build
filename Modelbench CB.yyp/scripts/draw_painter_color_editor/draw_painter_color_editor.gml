@@ -55,7 +55,6 @@ function draw_painter_color_editor(name, script, color)
 	
 	dy = by + 192 + 8
 	dx += 20
-	dw = 176
 	
 	bx = dx+ 8
 	by = dy 
@@ -99,7 +98,7 @@ function draw_painter_color_editor(name, script, color)
 		togglebutton_add("colorpickerrgb", null, "rgb", painter_colorpicker.mode = "rgb", painter_colorpicker_set_mode)
 		togglebutton_add("colorpickerhsv", null, "hsv", painter_colorpicker.mode = "hsv", painter_colorpicker_set_mode)
 		togglebutton_add("colorpickerhex", null, "hex", painter_colorpicker.mode = "hex", painter_colorpicker_set_mode)
-		draw_togglebutton("colorpickermode", dx, dy, true, false)
+		draw_togglebutton("colorpickermode", dx, dy, 176, true, false)
 		tab_next()
 	}
 	
