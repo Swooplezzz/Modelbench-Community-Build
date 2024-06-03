@@ -10,6 +10,7 @@ function app_startup_painter()
 	paint_opacity = 1
 	paint_width = 1
 	paint_tolerance = .15
+	painter_transform_rot = 0
 	filling = false
 	painter_update_spr = true
 	fill_arr = array_create(0);

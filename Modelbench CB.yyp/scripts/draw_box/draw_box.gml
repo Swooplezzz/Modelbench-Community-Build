@@ -34,6 +34,6 @@ function draw_box()
 	draw_vertex_color(xx + ww, yy + hh, color, alpha)
 	draw_vertex_color(xx, yy + hh, color, alpha)
 	draw_vertex_color(xx, yy, color, alpha)
-	
+
 	draw_primitive_end()
 }

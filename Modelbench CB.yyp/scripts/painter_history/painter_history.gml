@@ -58,6 +58,7 @@ function painter_history()
 			}
 
 			selection_topleft = painter_history[painter_history_pos].pos_tl;
+			selection_pos = painter_history[painter_history_pos].pos_tl;
 			selection_btmright = painter_history[painter_history_pos].pos_br;
 			selection_size = painter_history[painter_history_pos].sel_size;
 			selection_active = painter_history[painter_history_pos].sel_active;
@@ -130,6 +131,7 @@ function painter_history()
 			}
 
 			selection_topleft = painter_history[painter_history_pos].pos_tl;
+			selection_pos = painter_history[painter_history_pos].pos_tl;
 			selection_btmright = painter_history[painter_history_pos].pos_br;
 			selection_size = painter_history[painter_history_pos].sel_size;
 			selection_active = painter_history[painter_history_pos].sel_active;

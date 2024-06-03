@@ -361,6 +361,7 @@
     {"name":"painter_history_pop","order":1,"path":"scripts/painter_history_pop/painter_history_pop.yy",},
     {"name":"list_item_draw","order":1,"path":"scripts/list_item_draw/list_item_draw.yy",},
     {"name":"draw_color_selector_button","order":16,"path":"scripts/draw_color_selector_button/draw_color_selector_button.yy",},
+    {"name":"vec2_rotate","order":44,"path":"scripts/vec2_rotate/vec2_rotate.yy",},
     {"name":"list_item_add","order":5,"path":"scripts/list_item_add/list_item_add.yy",},
     {"name":"list_item_add_action","order":7,"path":"scripts/list_item_add_action/list_item_add_action.yy",},
     {"name":"list_init","order":5,"path":"scripts/list_init/list_init.yy",},

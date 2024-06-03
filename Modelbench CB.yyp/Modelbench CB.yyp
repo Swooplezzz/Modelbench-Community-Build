@@ -561,6 +561,7 @@
     {"id":{"name":"painter_history_pop","path":"scripts/painter_history_pop/painter_history_pop.yy",},},
     {"id":{"name":"list_item_draw","path":"scripts/list_item_draw/list_item_draw.yy",},},
     {"id":{"name":"draw_color_selector_button","path":"scripts/draw_color_selector_button/draw_color_selector_button.yy",},},
+    {"id":{"name":"vec2_rotate","path":"scripts/vec2_rotate/vec2_rotate.yy",},},
     {"id":{"name":"list_item_add","path":"scripts/list_item_add/list_item_add.yy",},},
     {"id":{"name":"list_item_add_action","path":"scripts/list_item_add_action/list_item_add_action.yy",},},
     {"id":{"name":"list_init","path":"scripts/list_init/list_init.yy",},},

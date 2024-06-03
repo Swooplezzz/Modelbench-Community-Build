@@ -9,7 +9,7 @@ function painter_tool_select(xx, yy)
 		if (mouse_left_pressed)
 		{
 			selection_pos = vec2(xx + 0.5, yy + 0.5)
-		
+			selection_rot = 0;
 			//selection_btmright[1]  = yy + 1.5 
 			selection_topleft[0] = clamp(selection_topleft[0], 0, paint_texture_width)
 			selection_topleft[1] = clamp(selection_topleft[1], 0, paint_texture_height)
@@ -41,6 +41,7 @@ function painter_tool_select(xx, yy)
 
 		if (mouse_right_pressed || (selection_active && !mouse_left && (selection_size[X] = 0 || selection_size[Y] = 0)))
 		{
+			selection_rot = 0;
 			surface_set_target(selection_surf)
 			{
 				draw_clear_alpha(c_black,0)
@@ -152,6 +153,7 @@ function painter_tool_select(xx, yy)
 
 	if (keybinds[e_keybind.SELECT_ALL].pressed)
 	{
+		selection_rot = 0;
 		selection_topleft = vec2(0,0)
 		selection_btmright = vec2(paint_texture_width,paint_texture_height)
 		selection_size = vec2(selection_btmright[0]-selection_topleft[0],selection_btmright[1]-selection_topleft[1]);
