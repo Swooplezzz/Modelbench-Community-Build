@@ -37,10 +37,11 @@ function draw_colorpalettes()
 				palettes_save()
 			}
 		}
+		
+		var xx = dx;
 		var yy = dy;
 		dy += 30
-		var xx = dx;
-		for(var i = 0; i < array_length(palette_list[|c].color_list); i++)
+		for (var i = 0; i < array_length(palette_list[|c].color_list); i++)
 		{
 			if (xx >= (dx + content_width - 28 - 33))
 			{
@@ -56,9 +57,11 @@ function draw_colorpalettes()
 			xx = dx	
 			dy += 28
 		}
-		draw_button_icon_value("deletepalette" + string(c), dx + content_width - 28 - 24, yy, 24, 24,c, icons.DELETE, action_painter_palette_remove)
-		draw_button_icon_value("exportpalette" + string(c), dx + content_width - 28 - 52, yy, 24, 24,c, icons.ASSET_EXPORT, action_painter_palette_export)
-		draw_button_icon_value("addcolor" + string(c), xx+6, dy, 24,24, c, icons.PLUS, action_painter_add_palette_color)
+		tip_force_left = true
+		draw_button_icon_value("deletepalette" + string(c), dx + content_width - 28 - 24, yy, 24, 24,c, icons.DELETE, action_painter_palette_remove, null, "painterdeletepalette")
+		draw_button_icon_value("exportpalette" + string(c), dx + content_width - 28 - 52, yy, 24, 24,c, icons.ASSET_EXPORT, action_painter_palette_export, null, "painterexportpalette")
+		tip_force_left = false
+		draw_button_icon_value("addcolor" + string(c), xx + 6, dy, 24, 24, c, icons.PLUS, action_painter_add_palette_color, null, "painteraddpalettecolor")
 		dy += 32
 		
 		draw_divide(dx + 1, dy - 3, content_width - 28)

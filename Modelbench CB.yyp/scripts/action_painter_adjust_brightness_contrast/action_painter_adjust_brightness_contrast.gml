@@ -1,4 +1,4 @@
-/// action_painter_adjust_huesat()
+/// action_painter_adjust_brightness_contrast()
 
 function action_painter_adjust_brightness_contrast()
 {

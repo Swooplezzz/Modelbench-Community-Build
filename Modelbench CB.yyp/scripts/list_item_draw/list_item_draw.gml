@@ -234,48 +234,48 @@ function list_item_draw()
 	draw_set_font(font_value)
 
 	var textwidth = width - (leftp + rightp) - 8;
-	if(renamable){
-
-	if (tab.color_editor.name_edit_element != item.value)
+	
+	if (renamable)
 	{
-		var labelshort = string_limit_font(item.name, width, font_value)
-		draw_label(labelshort, xx + leftp, middley, fa_left, fa_middle, textcolor, textalpha)
-			var boxwid = min(string_width(labelshort) + 32, width);
+		if (tab.color_editor.name_edit_element != item.value)
+		{
+			var labelshort = string_limit_font(item.name, width, font_value)
+			draw_label(labelshort, xx + leftp, middley, fa_left, fa_middle, textcolor, textalpha)
+				var boxwid = min(string_width(labelshort) + 32, width);
 			
-			if (app_mouse_box(xx + leftp, middley-8, boxwid, height))
-			{
-				if (mouse_left_double_pressed)
+				if (app_mouse_box(xx + leftp, middley-8, boxwid, height))
 				{
-					window_busy = string(tab.color_editor.tbx_name)
-					window_focus = string(tab.color_editor.tbx_name)
-					item.ext = filename_ext(item.value.filename)
-					item.value.oldname = item.value.filename
+					if (mouse_left_double_pressed)
+					{
+						window_busy = string(tab.color_editor.tbx_name)
+						window_focus = string(tab.color_editor.tbx_name)
+						item.ext = filename_ext(item.value.filename)
+						item.value.oldname = item.value.filename
 
-					tab.color_editor.tbx_name.text = filename_change_ext(item.value.filename, "");
-					tab.color_editor.name_edit_element = item.value
+						tab.color_editor.tbx_name.text = filename_change_ext(item.value.filename, "");
+						tab.color_editor.name_edit_element = item.value
+					}
 				}
+		}
+		// Edit name
+		if (tab.color_editor.name_edit_element = item.value)
+		{
+			if (textbox_draw(tab.color_editor.tbx_name, xx + leftp, middley-8, width, height))
+			{
+				var name = item.value.filename;
+					item.value.filename = tab.color_editor.tbx_name.text + filename_ext(item.value.filename)
+					file_rename(app.model_folder + "\\" + name, app.model_folder + "\\" + item.value.filename)
+					textures_list.update = true;
 			}
-	}
-	// Edit name
-	if (tab.color_editor.name_edit_element = item.value)
-	{
-		if (textbox_draw(tab.color_editor.tbx_name, xx + leftp, middley-8, width, height))
-		{
-			var name = item.value.filename;
-				item.value.filename = tab.color_editor.tbx_name.text + filename_ext(item.value.filename)
-				file_rename(app.model_folder + "\\" + name, app.model_folder + "\\" + item.value.filename)
-				textures_list.update = true;
-		}
 		
-		if (window_focus != string(tab.color_editor.tbx_name))
-		{
-			tab.color_editor.name_edit_element = null
+			if (window_focus != string(tab.color_editor.tbx_name))
+			{
+				tab.color_editor.name_edit_element = null
+			}
 		}
 	}
-	}
-	else{
-	draw_label(string_limit(name, textwidth), xx + leftp, middley, fa_left, fa_middle, textcolor, textalpha)
-	}
+	else
+		draw_label(string_limit(name, textwidth), xx + leftp, middley, fa_left, fa_middle, textcolor, textalpha)
 
 	item.hover = hover
 	if (hover && item.interact)

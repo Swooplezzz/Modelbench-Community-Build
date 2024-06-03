@@ -67,7 +67,7 @@ function window_draw_startup()
 	browsewidth = string_width_font(text_get("startupbrowse"), font_button) + 52
 	centerx = round((window_width / 2) - ((browsewidth + 24 + newmodelwidth + 24) / 2))
 	
-	// Element search
+	// Model search
 	dx = recent_list_amount > 0 ? (window_width / 2) - (dw / 2) : (window_width / 2) - (256 / 2)
 	if (recent_list_amount > 0)
 	{
