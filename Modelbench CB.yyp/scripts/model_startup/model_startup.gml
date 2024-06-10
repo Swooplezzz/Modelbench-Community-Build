@@ -28,6 +28,7 @@ function model_startup()
 	//model_author = ""
 	player_skin = true
 	floor_box_uvs = false
+	model_color = c_white
 	root_scale = 1
 	model_temporary = false
 	model_changed = false

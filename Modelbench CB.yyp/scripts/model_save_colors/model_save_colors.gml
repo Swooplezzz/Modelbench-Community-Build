@@ -2,6 +2,9 @@
 
 function model_save_colors()
 {
+	if (value[e_value.USE_MODEL_COLOR])
+		json_save_var("use_model_color", true)
+	
 	if (!value[e_value.INHERIT_COLOR])
 		json_save_var("color_inherit", false)
 	

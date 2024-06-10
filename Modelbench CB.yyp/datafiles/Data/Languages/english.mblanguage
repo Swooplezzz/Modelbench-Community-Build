@@ -5,7 +5,7 @@
 		"locale": "en-US",
 		"translator": "Nimi, Swooplezz",
 		"forversion": "1.1.0 CB",
-		"lastchange": "2023.05.11"
+		"lastchange": "2023.06.10"
 	},
 	"startup/": {
 		"version": "v %1",
@@ -37,7 +37,8 @@
 		},
 		"info/": {
 			"mousepos": "Mouse",
-			"selectionsize": "Selection size"
+			"selectionsize": "Selection size",
+			"selectionangle": "Selection angle"
 		},
 		"newpalette": "New palette",
 		"importpalette": "Import palette",
@@ -472,6 +473,7 @@
 		"modelcolor": "Model color",
 		"flooruvs": "Floor box UVs",
 		"flooruvshelp": "Stretches textures of subpixel-wide elements.",
+		"modelcolor": "Model color",
 		"modelscale": "Model scale",
 		"searchelementscaption": "Search...",
 		"hideshapes": "Hide shapes",
@@ -584,6 +586,7 @@
 		"ikangle": "Angle target",
 		"inherittexture": "Inherit texture",
 		"nopart": "None",
+		"usemodelcolor": "Use model color",
 		"inheritcolor": "Inherit parent color",
 		"inheritcolorhelp": "Inherit color options including opacity and emissive.",
 		"blendcolor": "Blend color",

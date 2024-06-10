@@ -26,6 +26,14 @@ function tab_element_editor_material()
 	
 	if (setting_feature_set = e_features.MIMODEL)
 	{
+		if (el_edit.element_type = TYPE_SHAPE)
+		{
+			// Use model color
+			tab_control_switch()
+			draw_switch("elementeditorusemodelcolor", dx, dy, el_edit.value[e_value.USE_MODEL_COLOR], action_el_use_model_color)
+			tab_next()
+		}
+		
 		// Inherit color
 		tab_control_switch()
 		draw_switch("elementeditorinheritcolor", dx, dy, el_edit.value[e_value.INHERIT_COLOR], action_el_inherit_color, "elementeditorinheritcolorhelp")
@@ -33,12 +41,12 @@ function tab_element_editor_material()
 		
 		// Blend color
 		tab_control_color()
-		draw_button_color("elementeditorblendcolor", dx, dy, floor(dw/2), el_edit.value[e_value.BLEND_COLOR], c_white, false, action_el_blend_color)
+		draw_button_color("elementeditorblendcolor", dx, dy, dw, el_edit.value[e_value.BLEND_COLOR], c_white, false, action_el_blend_color)
 		tab_next()
 		
 		// Mix color
 		tab_control_color()
-		draw_button_color("elementeditormixcolor", dx, dy, floor(dw/2), el_edit.value[e_value.MIX_COLOR], c_black, false, action_el_mix_color)
+		draw_button_color("elementeditormixcolor", dx, dy, dw, el_edit.value[e_value.MIX_COLOR], c_black, false, action_el_mix_color)
 		tab_next()
 		
 		// Mix amount

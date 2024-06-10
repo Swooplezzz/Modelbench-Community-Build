@@ -23,15 +23,12 @@ function painter_draw(xx, yy, inbounds)
 	tex = tex_spr
 	texscale = 1
 	
-	if(adjusting_hue){
+	if (adjusting_hue)
         painter_adjust_huesat()
-    }
-	else if(adjusting_brightness_contrast){
+	else if (adjusting_brightness_contrast)
 		  painter_adjust_brightness_contrast()
-	}
-    else{
-         draw_sprite_ext(final_spr, 0, scale_offset_x, scale_offset_y, zoom, zoom,0, c_white, 1)
-    }
+    else
+         draw_sprite_ext(final_spr, 0, scale_offset_x, scale_offset_y, zoom, zoom, 0, c_white, 1)
 
 	draw_surface_ext(draw_surf, scale_offset_x, scale_offset_y, zoom, zoom, 0, c_white, paint_opacity)
 	draw_surface_ext(selection_surf, scale_offset_x, scale_offset_y, zoom, zoom, 0, c_white, 0.25)
@@ -48,8 +45,8 @@ function painter_draw(xx, yy, inbounds)
 		draw_painter_selection_outline(c_accent, 1, paint_texture_width * zoom, paint_texture_height * zoom, 0.35, false);
 	}
 
-	if(paint_tool_selected = e_paint.TRANSFORM_SELECTION && !adjusting_hue)
-		painter_transform(xx, yy);
+	if (paint_tool_selected = e_paint.TRANSFORM_SELECTION && !adjusting_hue)
+		painter_transform(xx, yy)
 
 	//if (adjusting_hue)
 	//{
@@ -218,10 +215,15 @@ function painter_draw(xx, yy, inbounds)
 	// Info box
 	var str = "";
 	
-	var mxsnap = snap((window_mouse_get_x()-scale_offset_x) /  zoom-.5 , 1)
-	var mysnap = snap((window_mouse_get_y()-scale_offset_y) /  zoom-.5 , 1)
+	var mxsnap = snap((window_mouse_get_x() - scale_offset_x) / zoom - .5, 1)
+	var mysnap = snap((window_mouse_get_y() - scale_offset_y) / zoom - .5, 1)
+	
+	if (selection_active)
+	{
+		str += text_get("painterinfoselectionsize") + ": [" + string(selection_size[0]) + ", " + string(selection_size[1]) + "]\n"
+		str += text_get("painterinfoselectionangle") + ": " + string(selection_rot) + "°\n"
+	}
 	str += text_get("painterinfomousepos") + ": [" + string(mxsnap) + ", " + string(mysnap) + "]\n"
-	str += text_get("painterinfoselectionsize") + ": [" + string(selection_size[0])+ ", " + string(selection_size[1]) + "]\n"
 	var ww = string_width_font(str, font_label) + 16;
 	var hh = string_height_font(str, font_label) + 16;
 	

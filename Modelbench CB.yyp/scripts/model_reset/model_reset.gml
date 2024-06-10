@@ -28,6 +28,7 @@ function model_reset()
 	
 	player_skin = false
 	floor_box_uvs = false
+	model_color = c_white
 	root_scale = 1
 	
 	camera_reset()
