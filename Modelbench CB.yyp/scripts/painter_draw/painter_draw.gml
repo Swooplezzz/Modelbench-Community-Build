@@ -141,19 +141,9 @@ function painter_draw(xx, yy, inbounds)
 	}
 
 	//SELECTION DEBUG, ONLY IN DEV MODE.
-	if (dev_mode && debug_info && paint_tool_selected = e_paint.BOX_SELECT)
+	if (dev_mode && debug_info )
 	{
-		draw_box(scale_offset_x + selection_topleft[X] * zoom,scale_offset_y + selection_topleft[Y] * zoom,selection_size[X] * zoom,selection_size[Y] * zoom,true, c_white, 0.5);
-		draw_box(scale_offset_x + selection_topleft[X] * zoom,scale_offset_y + selection_topleft[Y] * zoom,selection_size[X] * zoom,selection_size[Y] * zoom,true, c_black, 0.5);
-		draw_box(scale_offset_x + selection_topleft[X] * zoom,scale_offset_y + selection_topleft[Y] * zoom,selection_size[X] * zoom,selection_size[Y] * zoom,true, c_red, 0.5);
 	
-		draw_box((selection_btmright[X] )* zoom+ scale_offset_x - 5, (selection_btmright[Y] )* zoom+ scale_offset_y - 5, 10, 10, false, c_white, .75)
-		draw_box((selection_btmright[X] )* zoom+ scale_offset_x - 5, (selection_btmright[Y] )* zoom+ scale_offset_y - 5, 10, 10, true, c_black, .75)
-		draw_box((selection_btmright[X] )* zoom+ scale_offset_x - 5, (selection_btmright[Y] )* zoom+ scale_offset_y - 5, 10, 10, true, c_red, .75)
-	
-		draw_box((selection_topleft[X] )* zoom+ scale_offset_x - 5, (selection_topleft[Y] )* zoom+ scale_offset_y - 5, 10, 10, false, c_white, .75)
-		draw_box((selection_topleft[X] )* zoom+ scale_offset_x - 5, (selection_topleft[Y] )* zoom+ scale_offset_y - 5, 10, 10, false, c_red, .75)
-		draw_box((selection_topleft[X] )* zoom+ scale_offset_x - 5, (selection_topleft[Y] )* zoom+ scale_offset_y - 5, 10, 10, true, c_black, .75)
 	}
 
 

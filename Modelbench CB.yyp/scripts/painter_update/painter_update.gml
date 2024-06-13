@@ -96,15 +96,20 @@ function painter_update(view, cam)
 
 	mouse_x_prev = window_mouse_get_x() - scale_offset_x
 	mouse_y_prev = window_mouse_get_y() - scale_offset_y
+	if (selection_moved && (paint_tool_selected != e_paint.TRANSFORM_SELECTION ))
+	{
+		var tl,bl,tr,br;
+		painter_update_selection_bounds();
+		selection_size = vec2(selection_btmright[0]-selection_topleft[0],selection_btmright[1]-selection_topleft[1]);
+		painter_update_transform_sprite()
+	}
 
 	if (selection_moved && paint_tool_selected != e_paint.TRANSFORM_SELECTION)
 	{
-		selection_btmright[X] = clamp(selection_btmright[X],0, paint_texture_width)
-		selection_btmright[Y]= clamp(selection_btmright[Y],0, paint_texture_height)
-		selection_topleft[X] = clamp(selection_topleft[X],0, paint_texture_width)
-		selection_topleft[Y]= clamp(selection_topleft[Y],0, paint_texture_height)
-		selection_size = vec2(selection_btmright[0]-selection_topleft[0],selection_btmright[1]-selection_topleft[1]);
+
 		selection_moved = false;
+		selection_rot = 0;
+		selection_pos = [selection_topleft[X] + selection_size[X]/2, selection_topleft[Y] + selection_size[Y]/2];
 	}
 
 	render_set_culling(true)

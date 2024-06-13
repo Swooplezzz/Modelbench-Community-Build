@@ -114,7 +114,11 @@ function view_update_surface(view, cam)
 							// Bend tool
 							if (tool_selected = e_tool.BEND && el_edit.element_type = TYPE_PART && el_edit.value[e_value.BEND])
 							{
-								origin3d = matrix_position(matrix_multiply(matrix_create(model_part_get_offset_pos(el_edit), vec3(0), vec3(1)), el_edit.matrix_parent))
+								var tempmat = matrix_multiply(el_edit.matrix_parent, matrix_create(vec3(0),vec3(0),vec3(root_scale)))
+	                            mat[MAT_X] = tempmat[MAT_X];
+	                            mat[MAT_Y] = tempmat[MAT_Y];
+	                            mat[MAT_Z] = tempmat[MAT_Z];
+								origin3d = matrix_position(matrix_multiply(matrix_create(model_part_get_offset_pos(el_edit), vec3(0), vec3(1)), tempmat))
 							}
 							else if (tool_selected = e_tool.PIVOT && el_edit.element_type = TYPE_SHAPE) // Pivot tool
 							{
@@ -134,6 +138,8 @@ function view_update_surface(view, cam)
 								else
 									mat = view_control_matrix
 								
+								
+
 								origin3d = matrix_position(mat)
 							}
 							else // Any other tool
@@ -146,7 +152,7 @@ function view_update_surface(view, cam)
 								matrix_remove_scale(mat)
 								origin3d = matrix_position(mat)
 							}
-							
+
 							origin2d = point3D_project(origin3d, view_proj_matrix, render_width, render_height)
 						}
 						else

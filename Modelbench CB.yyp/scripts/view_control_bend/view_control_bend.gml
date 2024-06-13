@@ -23,14 +23,15 @@ function view_control_bend(view)
 	#endregion
 	
 	#region Calculate point positions
-	
+	var tempMat = array_copy_1d(el_edit.matrix_parent);
+	tempMat = matrix_multiply(tempMat, matrix_create(vec3(0),vec3(0),vec3(root_scale)))
 	// Offset position
-	offset3d = matrix_position(matrix_multiply(matrix_create(model_part_get_offset_pos(el_edit), vec3(0), vec3(1)), el_edit.matrix_parent))
+	offset3d = matrix_position(matrix_multiply(matrix_create(model_part_get_offset_pos(el_edit), vec3(0), vec3(1)), tempMat))
 	offset2d = point3D_project(offset3d, view_proj_matrix, render_width, render_height)
 	offseterr = point3D_project_error
 	
 	// Unbent half
-	unbent3d = matrix_position(matrix_multiply(matrix_create(model_part_get_offset_pos(el_edit, el_edit.value[e_value.BEND_OFFSET] + -size), vec3(0), vec3(1)), el_edit.matrix_parent))
+	unbent3d = matrix_position(matrix_multiply(matrix_create(model_part_get_offset_pos(el_edit, el_edit.value[e_value.BEND_OFFSET] + -size), vec3(0), vec3(1)), tempMat))
 	unbent2d = point3D_project(unbent3d, view_proj_matrix, render_width, render_height)
 	unbenterr = point3D_project_error
 	
@@ -41,7 +42,7 @@ function view_control_bend(view)
 	
 	bendmatrix = matrix_multiply(bendmatrix, matrix_create(model_part_get_offset_pos(el_edit), angle, vec3(1)))
 	
-	bent3d = matrix_position(matrix_multiply(bendmatrix, el_edit.matrix_parent))
+	bent3d = matrix_position(matrix_multiply(bendmatrix, tempMat))
 	bent2d = point3D_project(bent3d, view_proj_matrix, render_width, render_height)
 	benterr = point3D_project_error
 	
@@ -63,7 +64,7 @@ function view_control_bend(view)
 	
 		bendmatrix = matrix_multiply(bendmatrix, matrix_create(model_part_get_offset_pos(el_edit), angle, vec3(1)))
 	
-		end3d = matrix_position(matrix_multiply(bendmatrix, el_edit.matrix_parent))
+		end3d = matrix_position(matrix_multiply(bendmatrix, tempMat))
 		end2d = point3D_project(end3d, view_proj_matrix, render_width, render_height)
 		enderr = point3D_project_error
 		

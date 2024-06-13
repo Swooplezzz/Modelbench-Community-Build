@@ -68,6 +68,10 @@ function view_control_bend_axis(view, control, vid, color, mat, len)
 		draw_set_color(color)
 	
 	var start3D, start2D, end3D, end2D, v, vdot;
+	var tempmat = matrix_multiply(mat, matrix_create(vec3(0),vec3(0),vec3(root_scale)))
+	mat[MAT_X] = tempmat[MAT_X];
+	mat[MAT_Y] = tempmat[MAT_Y];
+	mat[MAT_Z] = tempmat[MAT_Z];
 	v = point3D_sub(pos3D, cam_from)
 	vdot = vec3_dot(v, v)
 	

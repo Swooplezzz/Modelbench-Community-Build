@@ -14,6 +14,9 @@ function app_mouse_box(boxx, boxy, boxw, boxh)
 	if(argument_count > 5){
 	center = argument[5];
 	}
+	if(argument_count > 6){
+	draw_box(boxx,boxy,boxw,boxh,false);
+	}
 var mx, my;
 var rm = vec2_rotate([mouse_x,mouse_y], angle,center);
 mx = rm[X]

@@ -788,6 +788,7 @@
     {"name":"model_save_done","order":17,"path":"scripts/model_save_done/model_save_done.yy",},
     {"name":"model_save_shape","order":19,"path":"scripts/model_save_shape/model_save_shape.yy",},
     {"name":"eval","order":32,"path":"scripts/eval/eval.yy",},
+    {"name":"painter_update_selection_bounds","order":27,"path":"scripts/painter_update_selection_bounds/painter_update_selection_bounds.yy",},
     {"name":"model_save_colors","order":21,"path":"scripts/model_save_colors/model_save_colors.yy",},
     {"name":"action_painter_add_palette_color","order":4,"path":"scripts/action_painter_add_palette_color/action_painter_add_palette_color.yy",},
     {"name":"model_save_wind","order":23,"path":"scripts/model_save_wind/model_save_wind.yy",},
