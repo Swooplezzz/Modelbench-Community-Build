@@ -38,6 +38,9 @@ function model_load_model(map)
 	player_skin = value_get_real(map[?"player_skin"], false)
 	floor_box_uvs = value_get_real(map[?"floor_box_uvs"], false)
 	
+	// Model color
+	model_color = value_get_color(map[?"model_color"], c_white)
+	
 	// Scale (optional)
 	scale = value_get_point3D(map[?"scale"], vec3(1))
 	root_scale = max(scale[X], scale[Y], scale[Z])

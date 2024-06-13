@@ -10,6 +10,7 @@ function element_value_default(vid)
 		case e_value.SCA_Z: return 1
 		
 		// Color
+		case e_value.USE_MODEL_COLOR: return false
 		case e_value.INHERIT_COLOR: return true
 		case e_value.OPACITY: return 1
 		case e_value.BLEND_COLOR: return c_white

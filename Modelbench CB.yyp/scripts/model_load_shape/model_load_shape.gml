@@ -73,6 +73,7 @@ function model_load_shape(map)
 		locked = value_get_real(map[?"locked"], false)
 		
 		// Color (optional)
+		value[e_value.USE_MODEL_COLOR] = value_get_real(map[?"use_model_color"], false)
 		value[e_value.INHERIT_COLOR] = value_get_real(map[?"color_inherit"], true)
 		value[e_value.BLEND_COLOR] = value_get_color(map[?"color_blend"], c_white)
 		value[e_value.OPACITY] = value_get_real(map[?"color_alpha"], 1)

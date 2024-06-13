@@ -29,12 +29,17 @@ function tab_assets_model_properties()
 	tab_control_switch()
 	draw_switch("assetsplayerskin", dx, dy, player_skin, action_player_skin, "assetsplayerskinhelp")
 	tab_next()
-		
+	
 	tab_control_switch()
 	draw_switch("assetsflooruvs", dx, dy, floor_box_uvs, action_floor_box_uvs, "assetsflooruvshelp")
 	tab_next()
 	var snapval = (dragger_snap ? setting_snap_size_scale : snap_min);
 	
+	// Model color
+	tab_control_color()
+	draw_button_color("assetsmodelcolor", dx, dy, dw, model_color, c_white, false, action_model_color)
+	tab_next()
+		
 	tab_control_dragger()
 	draw_dragger("assetsmodelscale", dx, dy, dragger_width, root_scale, 0.01, snap_min, no_limit, 1, snapval, tab.model_properties.tbx_model_scale, action_model_scale)
 	tab_next()

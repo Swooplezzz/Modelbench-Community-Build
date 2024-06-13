@@ -256,7 +256,7 @@ function enums()
 		SCA_Z,
 		BEND_LOCK,
 		
-		//Painter
+		// Painter
 		PRIMARY_COLOR,
 		SECONDARY_COLOR,
 		BRUSH_ALPHA,
@@ -264,6 +264,7 @@ function enums()
 		
 		// Material
 		TEXTURE_OBJ,
+		USE_MODEL_COLOR,
 		INHERIT_COLOR,
 		BLEND_COLOR,
 		MIX_COLOR,

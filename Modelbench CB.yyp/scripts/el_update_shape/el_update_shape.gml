@@ -29,6 +29,7 @@ function el_update_shape()
 		texture_size = vec2_div(vec2(sprite_get_width(res.sprite)), res.scale)
 	
 	// Colors
+	use_model_color = value[e_value.USE_MODEL_COLOR]
 	color_inherit = value[e_value.INHERIT_COLOR]
 	color_blend = value[e_value.BLEND_COLOR]
 	color_alpha = value[e_value.OPACITY]
@@ -43,6 +44,8 @@ function el_update_shape()
 		color_brightness = clamp(color_brightness + other.color_brightness, 0, 1)
 		color_mix = color_add(color_mix, other.color_mix)
 		color_mix_percent = clamp(color_mix_percent + other.color_mix_percent, 0, 1)
+		
+		color_blend = use_model_color ? color_multiply(color_blend, app.model_color) : color_blend
 	}
 	
 	// Shape appearance

@@ -21,6 +21,8 @@ function model_save_start(fn)
 		json_save_var_bool("player_skin", true)
 	if (floor_box_uvs)
 		json_save_var_bool("floor_box_uvs", true)
+	if (model_color != c_white)
+		json_save_var_color("model_color", model_color)
 	
 	if (root_scale != 1)
 		json_save_var_point3D("scale", vec3(root_scale))

@@ -1,26 +1,18 @@
-/// app_mouse_box(x, y, width, height)
+/// app_mouse_box(x, y, width, height, [angle, center])
 /// @arg x
 /// @arg y
 /// @arg width
 /// @arg height
+/// @arg [angle
+/// @arg center]
 
-function app_mouse_box(boxx, boxy, boxw, boxh)
+function app_mouse_box(boxx, boxy, boxw, boxh, angle = 0, center = [0,0])
 {
-	var angle = 0;
-	var center = [0,0];
-	if(argument_count > 4){
-	angle = argument[4];
-	}
-	if(argument_count > 5){
-	center = argument[5];
-	}
-	if(argument_count > 6){
-	draw_box(boxx,boxy,boxw,boxh,false);
-	}
-var mx, my;
-var rm = vec2_rotate([mouse_x,mouse_y], angle,center);
-mx = rm[X]
-my = rm[Y]
+	var rm, mx, my;
+	rm = vec2_rotate([mouse_x, mouse_y], angle, center)
+	mx = rm[X]
+	my = rm[Y]
+	
 	if (sign(boxw) = 1 && sign(boxh) = 1)
 		return (mx >= boxx &&
 				my >= boxy &&
