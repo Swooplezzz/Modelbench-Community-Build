@@ -54,10 +54,11 @@ function painter_reset()
 		shader_set(shader_colormask)
 		alphafix
 		draw_sprite(tex_spr,0,0,0)
+		gpu_set_blendmode(bm_normal)
 		shader_reset();
 	}
 	surface_reset_target()
-
+	
 	color_spr = sprite_create_from_surface(color_surf,0,0,paint_texture_width, paint_texture_height, false,false, 0,0)
 	alpha_spr = sprite_create_from_surface(alpha_surf, 0,0,surface_get_width(alpha_surf), surface_get_height(alpha_surf), false, false, 0, 0)
 	selection_spr = sprite_create_from_surface(selection_surf, 0,0,surface_get_width(selection_surf), surface_get_height(selection_surf), false, false, 0, 0)

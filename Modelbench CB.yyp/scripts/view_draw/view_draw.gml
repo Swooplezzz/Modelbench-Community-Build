@@ -209,7 +209,7 @@ function view_draw(view)
 	toolbarx = boxx + 16
 	toolbary = boxy + captionh + 16
 	toolbarwid = 36
-	toolbarhei = 4 + (28 * 6) + (8) + 12 + 8
+	toolbarhei = 4 + (28 * 7) + (8) + 12 + 12
 	if(program_mode == e_mode.TEXTURING)
 		painter_toolbar_draw(toolbarx, toolbary, toolbarwid, toolbarhei)
 	

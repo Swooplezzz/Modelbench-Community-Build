@@ -59,6 +59,7 @@ function painter_update(view, cam)
 			// Erase tool
 			painter_tool_erase(mousexsnap, mouseysnap, prevmousexsnap, prevmouseysnap)
 		}
+		painter_tool_shape(mouse_button);
 		if (mouse_left_pressed || mouse_right_pressed)
 		{
 			// Fill tool
@@ -98,7 +99,8 @@ function painter_update(view, cam)
 	mouse_y_prev = window_mouse_get_y() - scale_offset_y
 	if (selection_moved && (paint_tool_selected != e_paint.TRANSFORM_SELECTION ))
 	{
-		var tl,bl,tr,br;
+
+		painter_history_set("transform", final_spr, selection_spr, transform_spr);
 		painter_update_selection_bounds();
 		selection_size = vec2(selection_btmright[0]-selection_topleft[0],selection_btmright[1]-selection_topleft[1]);
 		painter_update_transform_sprite()

@@ -84,9 +84,9 @@ function el_update_part()
 	else
 		bend_size = null
 		
-	if (value[e_value.BEND_SIZE_CUSTOM])
-		bend_detail = value[e_value.BEND_DETAIL]
-	else
+	// if (value[e_value.BEND_SIZE_CUSTOM])
+	// 	bend_detail = value[e_value.BEND_DETAIL]
+	//else
 		bend_detail = 1
 	
 	if (value[e_value.BEND])

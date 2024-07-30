@@ -75,8 +75,8 @@ function window_draw_startup()
 		draw_textfield("searchmodels", dx, dy, 256, 24, tbx_recent_search, action_recent_search, text_get("recentsearchcaption"), "none")
 		tab_next()
 	}
-	dx = recent_list_amount > 0 ? (window_width / 2) + (dw / 2) : centerx + (browsewidth + 24 + newmodelwidth)
-	
+	dx = recent_list_amount > 0 ? (window_width / 2) + (dw / 2) - 24 : centerx + (browsewidth + 24 + newmodelwidth)
+
 	// New model
 	draw_settings_button("startupnewmodeloptions", dx, dy, 24, 32, true)
 	dx -= newmodelwidth

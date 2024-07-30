@@ -17,7 +17,7 @@ function model_save_painter_palettes()
 	    {
 			json_save_array_value(json_string_encode(color_to_hex(palette.color_list[j])))
 		}
-		
+	
 		json_save_array_done()
 		json_save_object_done()
 	}

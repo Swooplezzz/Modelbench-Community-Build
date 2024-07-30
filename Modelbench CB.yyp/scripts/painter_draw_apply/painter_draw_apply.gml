@@ -5,6 +5,7 @@ function painter_draw_apply()
 	// Update the surfaces and sprites after draw.
 	if (mouse_left_released || mouse_right_released)
 	{
+
 		surface_set_target(alpha_surf)
 		{
 			draw_clear_alpha(c_black, 1)

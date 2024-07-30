@@ -11,6 +11,6 @@ function tab_color_palettes()
 	
 	if (draw_button_icon("importpalette", dx + 28 + icon_button_offset, dy, 24, 24, false, icons.ASSET_IMPORT, null, false, "painterimportpalette"))
 		action_painter_palette_import()
-	
+		
 	tab_next(true)
 }

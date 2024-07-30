@@ -48,6 +48,9 @@ function app_update_keyboard()
 		
 	    if (keybinds[e_keybind.ERASE].pressed)
 			paint_tool_selected = e_paint.ERASE
+			
+	    if (keybinds[e_keybind.SHAPE].pressed)
+			paint_tool_selected = e_paint.SHAPE
 		
 	    if (keybinds[e_keybind.PICK].pressed)
 			paint_tool_selected = e_paint.PICK

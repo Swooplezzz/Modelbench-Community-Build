@@ -8,9 +8,11 @@ function painter_cpy_pst()
 		if (clipboard_has_img())
 		{
 			clipboard_dump_image(app.model_folder + "\\clipboard.png");
+
+			
 			
 			var tempspr = sprite_add(app.model_folder + "\\clipboard.png", 1, false, false, 0, 0);
-
+			
 			var offset = vec2(mousexsnap, mouseysnap)
 			offset[X] = snap(offset[X],1);
 			offset[Y] = snap(offset[Y],1);

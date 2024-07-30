@@ -6,7 +6,36 @@ if(string_contains(mirrorAxis, "Z")){
 	value[e_value.OFFSET_X] = -value[e_value.OFFSET_X] - (element_type = TYPE_SHAPE ? value[e_value.WIDTH] : 0)
 	value[e_value.ROT_Z] = -value[e_value.ROT_Z]
 	value[e_value.ROT_Y] = -value[e_value.ROT_Y]
-				
+	
+	//if(string_contains(string_lower(name),"left")){
+	//name = string_replace(name, "left", "right");
+	//name = string_replace(name, "Left", "Right");
+	//name = string_replace(name, "LEFT", "RIGHT");
+	//}
+	//else if(string_contains(string_lower(name),"right")){
+	//name = string_replace(name, "right", "left");
+	//name = string_replace(name, "Right", "Left");
+	//name = string_replace(name, "RIGHT", "LEFT");
+	//}
+	//else if(string_contains(string_lower(name),".left")){
+	//name = string_replace(name, ".left", ".right");
+	//name = string_replace(name, ".Left", ".Right");
+	//name = string_replace(name, ".LEFT", ".RIGHT");
+	//}
+	//else if(string_contains(string_lower(name),".right")){
+	//name = string_replace(name, ".right", ".left");
+	//name = string_replace(name, ".Right", ".Left");
+	//name = string_replace(name, ".RIGHT", ".LEFT");
+	//}
+	//else if(string_contains(string_lower(name),".l")){
+	//name = string_replace(name, ".l", ".r");
+	//name = string_replace(name, ".L", ".R");
+	//}
+	//else if(string_contains(string_lower(name),".r")){
+	//name = string_replace(name, ".r", ".l");
+	//name = string_replace(name, ".R", ".L");
+	//}
+
 	if (element_type = TYPE_SHAPE)
 	{
 		if(string_contains(mirrorAxis, "Texture"))

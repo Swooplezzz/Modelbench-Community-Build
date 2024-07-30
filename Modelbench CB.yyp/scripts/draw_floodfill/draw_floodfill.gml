@@ -7,8 +7,7 @@
 /// @arg color
 /// @arg side
 /// @arg targetalpha
-
-function draw_floodfill(surf, alpha_surf, xx, yy, targ_color, color, side, targ_alpha)
+function fillthing(surf, alpha_surf, xx, yy, targ_color, color, side, targ_alpha)
 {
     var surf_width = surface_get_width(surf);
     var surf_height = surface_get_height(surf);
@@ -86,4 +85,87 @@ function draw_floodfill(surf, alpha_surf, xx, yy, targ_color, color, side, targ_
 		if(r != 1 && side != 1)
 			draw_floodfill_add(surf, alpha_surf, xx - 1, yy, targ_color, color, 4,targ_alpha);
 	}
+}
+function PointInsideBounds(xx,yy,targ_color,targ_alpha, color){
+	var surf_width = paint_texture_width;
+    var surf_height = paint_texture_height;
+	var offset = 4 * (xx + yy * surf_width);
+
+    var selection = buffer_peek(selection_buffer, offset + 3, buffer_u8);
+    if (!(xx >= 0 && yy >= 0 && xx < surf_width && yy < surf_height)) // Not inside ? Leave
+		return false;
+	if (selection = 255)
+		return false;
+			
+    var red = buffer_peek(fill_buffer, offset, buffer_u8);
+    var green = buffer_peek(fill_buffer, offset + 1, buffer_u8);
+    var blue = buffer_peek(fill_buffer, offset + 2, buffer_u8);
+    var alpha = buffer_peek(alpha_fill_buffer, offset + 2, buffer_u8);
+		
+	var cie_diffrence = color_cie76_diffrence(targ_color, make_color_rgb(red, green,blue));
+    var check_tolerance =  cie_diffrence <=  power(100 * paint_tolerance, 2)/100 && abs(targ_alpha - alpha)/255<=  paint_tolerance;
+
+    var col = make_colour_rgb(red, green, blue);
+
+    if (!check_tolerance || (col == color && alpha == 255))
+		return false;
+		
+	return true;
+}
+function scan(lx,rx,yy,s,targ_color,targ_alpha, color){
+	var span_added = false;
+	for(var i = lx; i <= rx; i++){
+	if(!PointInsideBounds(i,yy,targ_color,targ_alpha, color)){
+		span_added = false
+	}
+	else if(!span_added){
+	ds_stack_push(s, [i,yy]);	
+	}
+	}
+}
+function pixel_set(xx,yy, color){
+	var offset = 4 * (xx + yy * paint_texture_width);
+	buffer_poke(fill_buffer, offset, buffer_u8, color_get_red(color));
+    buffer_poke(fill_buffer, offset + 1, buffer_u8, color_get_green(color));
+    buffer_poke(fill_buffer, offset + 2, buffer_u8, color_get_blue(color));
+    buffer_poke(fill_buffer, offset + 3, buffer_u8, 255);
+	
+    buffer_poke(alpha_fill_buffer, offset, buffer_u8, 255);
+    buffer_poke(alpha_fill_buffer, offset + 1, buffer_u8, 255);
+    buffer_poke(alpha_fill_buffer, offset + 2, buffer_u8, 255);
+    buffer_poke(alpha_fill_buffer, offset + 3, buffer_u8, 255);
+}
+function draw_floodfill(surf, alpha_surf, xx, yy, targ_color, color, side, targ_alpha)
+{
+	if(!PointInsideBounds(xx,yy,targ_color,targ_alpha, color)) return;
+		
+	var s = ds_stack_create();
+	
+	ds_stack_push(s, [xx,yy]);
+	
+	while (!ds_stack_empty(s)){
+		var xxyy = ds_stack_pop(s)
+		var lx = xxyy[X];
+		var _x = xxyy[X];
+		var _y = xxyy[Y];
+	    while (PointInsideBounds(lx - 1, _y,targ_color,targ_alpha, color)){
+	        pixel_set(lx - 1, _y, color);
+	        lx = lx -1
+	    }
+		while (PointInsideBounds(_x, _y,targ_color,targ_alpha, color)){
+	        pixel_set(_x , _y, color);
+	        _x = _x + 1;
+	    }
+		scan(lx, _x - 1, _y + 1, s,targ_color,targ_alpha, color);
+		scan(lx, _x - 1, _y - 1, s,targ_color,targ_alpha, color);
+	}
+	
+	
+
+	//(surface_getpixel_ext(selection_surf,xx+.5,yy+.5) >> 24) & 255
+	
+
+
+
+		
 }

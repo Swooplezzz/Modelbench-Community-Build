@@ -20,7 +20,7 @@ function painter_toolbar_draw(barx, bary, barw, barh)
 	
 	if (dh > dw)
 		tip_force_right = true
-	
+
 	var busy, buttonsize;
 	busy = window_busy
 	buttonsize = 28 + 4
@@ -78,6 +78,17 @@ function painter_toolbar_draw(barx, bary, barw, barh)
 	tip_set_keybind(e_keybind.FILL)
 	if(draw_button_icon("toolfill", dx, dy, 28, 28, paint_tool_selected = e_paint.FILL, icons.FILL_TOOL, null, false, "toolsetpainterfill"))
 		paint_tool_selected = e_paint.FILL
+		
+	if (dw > dh)
+		dx += buttonsize
+	else
+		dy += buttonsize
+	
+	// Fill tool
+	tip_set_keybind(e_keybind.SHAPE)
+	if(draw_button_icon("toolshape", dx, dy, 28, 28, paint_tool_selected = e_paint.SHAPE, icons.SHAPES, null, false, "toolsetpaintershape"))
+		paint_tool_selected = e_paint.SHAPE
+		
 	
 	if (dw > dh)
 		dx += buttonsize

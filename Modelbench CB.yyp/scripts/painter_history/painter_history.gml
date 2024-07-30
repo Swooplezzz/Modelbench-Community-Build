@@ -58,10 +58,12 @@ function painter_history()
 			}
 
 			selection_topleft = painter_history[painter_history_pos].pos_tl;
-			selection_pos = painter_history[painter_history_pos].pos_tl;
+			selection_pos = painter_history[painter_history_pos].selection_pos;
 			selection_btmright = painter_history[painter_history_pos].pos_br;
 			selection_size = painter_history[painter_history_pos].sel_size;
+			sel_trn_spr = painter_history[painter_history_pos].seltrnsprite;
 			selection_active = painter_history[painter_history_pos].sel_active;
+			selection_rot = painter_history[painter_history_pos].selection_rot;
 			
 			if (!selection_active)
 			{
@@ -131,11 +133,12 @@ function painter_history()
 			}
 
 			selection_topleft = painter_history[painter_history_pos].pos_tl;
-			selection_pos = painter_history[painter_history_pos].pos_tl;
+			selection_pos = painter_history[painter_history_pos].selection_pos;
 			selection_btmright = painter_history[painter_history_pos].pos_br;
 			selection_size = painter_history[painter_history_pos].sel_size;
+			sel_trn_spr = painter_history[painter_history_pos].seltrnsprite;
 			selection_active = painter_history[painter_history_pos].sel_active;
-			
+			selection_rot = painter_history[painter_history_pos].selection_rot;
 			if (!selection_active)
 			{
 				surface_set_target(selection_surf)

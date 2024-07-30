@@ -14,7 +14,8 @@ function app_startup_painter()
 	filling = false
 	painter_update_spr = true
 	fill_arr = array_create(0);
-
+	painter_tool_current_shape = e_shape.BOX
+	painter_shape_tool_fill = 0
 	//Adjustments
 	
 	// HSV

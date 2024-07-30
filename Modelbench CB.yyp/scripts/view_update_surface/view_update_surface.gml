@@ -55,16 +55,16 @@ function view_update_surface(view, cam)
 						// Bend
 						if (tool_selected = e_tool.BEND && el_edit.element_type = TYPE_PART && el_edit.value[e_value.BEND])
 							view_control_bend(view)
-						
-						// Rotate
+												   
+						// Rotate				   
 						if (tool_selected = e_tool.ROTATE || tool_selected = e_tool.TRANSFORM)
 							view_control_rotate(view)
-						
-						// Scale
+												   
+						// Scale				   
 						if (tool_selected = e_tool.SCALE || tool_selected = e_tool.TRANSFORM)
 							view_control_scale(view)
-						
-						// Resize
+												   
+						// Resize				   
 						if (tool_selected = e_tool.RESIZE && el_edit.element_type = TYPE_SHAPE)
 							view_control_resize(view)
 						
@@ -78,12 +78,12 @@ function view_update_surface(view, cam)
 						if (tool_selected = e_tool.PIVOT && el_edit.element_type = TYPE_SHAPE)
 							view_control_pivot(view)
 							
-						if (keybind_free_move)
-							view_control_move_free(view)
-						if (keybind_free_rot)
-							view_control_rot_free(view)
-						if (keybind_free_sca)
-							view_control_scale_free(view)
+						if (keybind_free_move)								   
+							view_control_move_free(view)					   
+						if (keybind_free_rot)								   
+							view_control_rot_free(view)						   
+						if (keybind_free_sca)								   
+							view_control_scale_free(view)					   
 							
 							
 						var origin3d, origin2d;

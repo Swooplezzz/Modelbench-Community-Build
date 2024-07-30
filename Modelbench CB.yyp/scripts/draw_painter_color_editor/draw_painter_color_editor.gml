@@ -16,7 +16,7 @@ function draw_painter_color_editor(name, script, color)
 	bw = 192
 	bh = 192
 	
-	if (window_busy = "" && painter_editing_color)
+	if (window_busy = "" && painter_editing_color && !textbox_isediting)
 	{
 		add_recent_color(color)
 		painter_editing_color = false;

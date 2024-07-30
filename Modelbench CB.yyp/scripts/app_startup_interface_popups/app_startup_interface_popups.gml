@@ -25,4 +25,6 @@ function app_startup_interface_popups()
 		tbx_brightness = new_textbox_ndecimals()	
 		tbx_contrast = new_textbox_ndecimals()
 	}
+	
+
 }

@@ -79,6 +79,7 @@ function app_startup_keybinds()
 		FILL,
 		BOX_SELECT,
 		TRANSFORM_SELECTION,
+		SHAPE,
 		
 		BRUSH_WIDTH,
 		VIEW_PTR_GRID,
@@ -161,6 +162,7 @@ function app_startup_keybinds()
 	keybind_register("painterbrushwidth", e_keybind.BRUSH_WIDTH, keybind_new("F", false, false), false, true)
 	keybind_register("paintergrid", e_keybind.VIEW_PTR_GRID, keybind_new("G", false, false), false, true)
 	keybind_register("painterguides", e_keybind.VIEW_PTR_GUIDES, keybind_new("G", true, false), false, true)
+	keybind_register("paintershape", e_keybind.SHAPE, keybind_new("S", true, false), false, true)
 	
 	keybinds_update_match()
 }

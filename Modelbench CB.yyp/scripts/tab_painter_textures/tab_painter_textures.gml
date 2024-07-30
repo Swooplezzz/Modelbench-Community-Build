@@ -36,13 +36,18 @@ function tab_painter_textures()
 	
 	tab_control_button_label()
 	// Add texture
-	if (draw_button_label("assetsaddtexture", floor(dx + dw/2), dy, null, icons.PLUS, e_button.PRIMARY, null, e_anchor.CENTER))
+	if (draw_button_icon("assetsaddtexture", dx + 32, dy, 24, 24,false, icons.FOLDER_ADD, null, false, "assetsaddtexturetip"))
 	{
 		var fn = file_dialog_open_image();
 		
 		if (fn != "")
 			action_texture_add(fn)
 	}
-	
+		
+	if(program_mode = e_mode.TEXTURING)
+	if (draw_button_icon("assetscreatetexture", dx, dy, 24, 24, false, icons.PLUS, null, false, "assetscreatetexturetip"))
+	{
+		action_texture_create()
+	}
 	tab_next()
 }

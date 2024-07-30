@@ -14,11 +14,13 @@ function app_update_program_mode()
 		textures_list.update = true;
 		tex_preview.update = true
 		view_cam = view_cam_viewport
-					with (obj_model_element)
-			{
-				if (element_type = TYPE_SHAPE)
-					update_vbuffer = true
-			}
+		with (obj_model_element)
+		{
+			if (element_type = TYPE_SHAPE)
+				update_vbuffer = true
+		}
+	with (app)
+		el_update_part()
 		// Free render surfaces from preview mode
 		render_free()
 		painter_free()
@@ -38,6 +40,8 @@ function app_update_program_mode()
 				if (element_type = TYPE_SHAPE)
 					update_vbuffer = true
 			}
+		with (app)
+		el_update_part()
 		painter_free()
 	}
 		else if (program_mode = e_mode.TEXTURING)

@@ -6,7 +6,7 @@ function painter_tool_select(xx, yy)
 {
 	if (paint_tool_selected = e_paint.BOX_SELECT)
 	{
-		if (mouse_left_pressed)
+		if (mouse_left_pressed || mouse_right_pressed  && keyboard_check(vk_control)  && selection_active)
 		{
 			selection_pos = vec2(xx + 0.5, yy + 0.5)
 			selection_rot = 0;
@@ -30,7 +30,17 @@ function painter_tool_select(xx, yy)
 			selection_btmright[0] = clamp(selection_btmright[0], 0, paint_texture_width)
 			selection_btmright[1] = clamp(selection_btmright[1], 0, paint_texture_height)
 			selection_btmright_prev = vec2(selection_btmright[0], selection_btmright[1]);
-		
+			if(!keyboard_check(vk_control)){
+			surface_set_target(selection_surf)
+			{
+				draw_clear_alpha(c_black,0)
+				selection_topleft = vec2(0,0)
+				selection_btmright = vec2(0,0)
+				selection_active = false
+			}
+			
+			surface_reset_target()
+			}
 			if (!selection_active)
 			{
 				selection_topleft = vec2(selection_pos[0], selection_pos[1])	
@@ -39,20 +49,23 @@ function painter_tool_select(xx, yy)
 			}
 		}
 
-		if (mouse_right_pressed || (selection_active && !mouse_left && (selection_size[X] = 0 || selection_size[Y] = 0)))
+		if (mouse_right_pressed  && !keyboard_check(vk_control) || (selection_active && !mouse_left && (selection_size[X] = 0 || selection_size[Y] = 0)))
 		{
-			selection_rot = 0;
-			surface_set_target(selection_surf)
-			{
-				draw_clear_alpha(c_black,0)
-				selection_topleft = vec2(0,0)
-				selection_btmright = vec2(0,0)
-				selection_active = false
-			}
-			surface_reset_target()
+			    selection_rot = 0;
+			    surface_set_target(selection_surf)
+			    {
+			    	draw_clear_alpha(c_black,0)
+			    	selection_topleft = vec2(0,0)
+			    	selection_btmright = vec2(0,0)
+			    	selection_active = false
+			    }
+			    surface_reset_target()
+			    if(sprite_exists(selection_spr))
+			        sprite_delete(selection_spr)
+			    selection_spr = sprite_create_from_surface(selection_surf, 0,0, surface_get_width(selection_surf), surface_get_height(selection_surf), false, false, 0,0)
 		}
 
-		if (mouse_left)
+		if (mouse_left || mouse_right)
 		{
 		    if(xx + 1.5 > selection_topleft_prev[0] - 1)
 			    selection_btmright[0] = xx + 1.5
@@ -88,6 +101,7 @@ function painter_tool_select(xx, yy)
 
 			surface_set_target(selection_surf)
 			{
+				if(mouse_left){
 				if (!selection_active)
 				{
 				    draw_clear_alpha(c_black,1)
@@ -98,11 +112,18 @@ function painter_tool_select(xx, yy)
 
 				    selection_active = true
 				}
-
+				}
+				
 				draw_sprite_ext(selection_spr, 0, 0, 0, 1, 1, 0, c_black, 1)
+				if(mouse_left){
 				gpu_set_blendmode(bm_subtract)
 		        draw_rectangle_color(selection_pos[X], selection_pos[Y], xx + .5, yy + .5, c_white, c_white, c_white, c_white, false)
 		        gpu_set_blendmode(bm_normal)
+				} 
+				else if(mouse_right && selection_active){
+	            gpu_set_blendmode(bm_normal)
+		        draw_rectangle_color(selection_pos[X], selection_pos[Y], xx + .5, yy + .5, c_black, c_black, c_black, c_black, false)
+				}
 			}
 			surface_reset_target()
 		}

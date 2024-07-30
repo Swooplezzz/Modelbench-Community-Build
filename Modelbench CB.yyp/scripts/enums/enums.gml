@@ -744,6 +744,12 @@ function enums()
 	   PICK,
 	   FILL,
 	   BOX_SELECT,
-	   TRANSFORM_SELECTION
+	   TRANSFORM_SELECTION,
+	   SHAPE
+	}
+	enum e_shape{
+		CIRCLE,
+		BOX,
+		TRIANGLE
 	}
 }

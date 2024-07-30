@@ -48,6 +48,7 @@ function tab_assets_textures()
 		if (fn != "")
 			action_texture_add(fn)
 	}
+
 	
 	tab_next()
 }

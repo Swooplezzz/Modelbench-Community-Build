@@ -133,7 +133,7 @@ function painter_transform(xx, yy)
 	
 		
 	
-		render_surface[0] = surface_require(render_surface[0], render_width, render_height);
+		render_surface[0] = surface_require(render_surface[0], render_width+1024, render_height+1024);
 		surface_set_target(render_surface[0])
 		{
 			draw_clear_alpha(c_black, 0);
@@ -146,7 +146,7 @@ function painter_transform(xx, yy)
 		with(render_shader_obj)
 			shader_use()
 
-		shader_border_set(c_white, 1, render_width * zoom, render_height * zoom, 0, 1)
+		shader_border_set(c_white, 1, (render_width+1024) * zoom, (render_height+1024) * zoom, 0, 1)
 		draw_surface_ext(render_surface[0], scale_offset_x + (floor(-40) * zoom), scale_offset_y + (floor(-40) * zoom), zoom, zoom, 0, c_black, 1)
 		
 		with(render_shader_obj)
@@ -328,10 +328,10 @@ function painter_transform(xx, yy)
 
 	draw_box((selection_topleft[X]) * zoom + scale_offset_x - 5, (selection_topleft[Y]) * zoom + scale_offset_y - 5, 10, 10, false, c_white, .75)
 	draw_box((selection_topleft[X]) * zoom + scale_offset_x - 5, (selection_topleft[Y]) * zoom + scale_offset_y - 5, 10, 10, true, c_black, .75)
-	var px, py;
+//	var px, py;
 
-draw_circle((selection_topleft[X] + sprite_get_xoffset(sel_trn_spr))  * zoom + scale_offset_x, (selection_topleft[Y]+ sprite_get_yoffset(sel_trn_spr))* zoom + scale_offset_y, 10, false);
-draw_circle((selection_pos[X] + diffx /2)  * zoom + scale_offset_x, (selection_pos[Y] + diffy /2) * zoom + scale_offset_y, 10, false);
+//draw_circle((selection_topleft[X] + sprite_get_xoffset(sel_trn_spr))  * zoom + scale_offset_x, (selection_topleft[Y]+ sprite_get_yoffset(sel_trn_spr))* zoom + scale_offset_y, 10, false);
+//draw_circle((selection_pos[X] + diffx /2)  * zoom + scale_offset_x, (selection_pos[Y] + diffy /2) * zoom + scale_offset_y, 10, false);
 	}
 	surface_reset_target()
 	gpu_set_blendmode(bm_normal)

@@ -36,20 +36,24 @@ function view_toolbar_cam_nav_draw(barx, bary, barw, barh)
 		toolbar_cam_nav_alpha_goal = 1
 	
 	draw_set_alpha(toolbar_cam_nav_alpha_goal)
-	
+
+	render_set_culling(false)
 	// Background
 	//draw_box(dx, dy, dw, dh, false, c_level_middle, 1)
 	//draw_dropshadow(dx, dy, dw, dh, c_black, 1)
 	//draw_outline(dx, dy, dw, dh, 1, c_border, a_border) 
 
 	draw_image(spr_circle_84, 0,dx, dy, 1, 1, merge_color(c_level_top, c_black, .5), .5, 0);
-
+	gpu_set_tex_filter(true);
 
 	var _dx = sin(degtorad(-view_cam.angle_look_xy));
 	var _dy = -sin(degtorad(view_cam.angle_look_z));
 	var _dyc = cos(degtorad(-(view_cam.angle_look_z)));
 	var _dz = sin(degtorad(-(view_cam.angle_look_xy + 90)));
 	var _dzc = sin(degtorad(-(view_cam.angle_look_xy + 115)));
+	var _dzc9 = sin(degtorad(-(view_cam.angle_look_xy + 80)));
+	
+
 	
 	//Y
 	//draw_line_width_ext(dx + dw / 2, dy + dw / 2, dx + dw/2,dy + dw /2 - (((dw) - 6) * abs(_dyc))/2 + 10, c_axisgreen, 1)
@@ -59,11 +63,13 @@ function view_toolbar_cam_nav_draw(barx, bary, barw, barh)
 	if( _dy > 0){
 	draw_button_circle(setting_z_is_up ? "-Z" : "-Y", dx + dw / 2, dy + dw /2 + (((dw) - 12) * abs(_dyc))/2, 10, null, e_button.SECONDARY, cam_snap_view_y,  setting_z_is_up ? c_axisblue : c_axisgreen, e_anchor.LEFT, "N");
 	}
-
+	
 	draw_button_circle("-X",dx + dw / 2 + (((dw / 2) - 6)* -_dx), dy + dw / 2 + (((dw / 2) - 6) * -_dy * -_dz), 10, null, e_button.SECONDARY, cam_snap_view_x, c_axisred, e_anchor.LEFT, "N");
-	
+
 	draw_button_circle(setting_z_is_up ? "-Y" : "-Z",dx + dw / 2 + (((dw / 2) - 6) * -_dz), dy + dw / 2 + (((dw / 2) - 6) * -_dy * _dx), 10, null, e_button.SECONDARY, cam_snap_view_z, setting_z_is_up ? c_axisgreen : c_axisblue, e_anchor.LEFT, "N");
-	
+   	draw_set_color( setting_z_is_up ? c_axisblue : c_axisgreen)
+	draw_line_width(dx + dw / 2, dy + dw / 2, dx + dw/2,dy + dw /2 - (((dw) - 6) * abs(_dyc))/2 + 6,2)
+
 	if(_dy <= 0){
 	draw_button_circle(setting_z_is_up ? "Z" : "Y", dx + dw / 2, dy + dw /2 - (((dw) - 12) * abs(_dyc))/2, 10, null, e_button.PRIMARY, cam_snap_view_y,  setting_z_is_up ? c_axisblue : c_axisgreen, e_anchor.LEFT);
 
@@ -71,12 +77,31 @@ function view_toolbar_cam_nav_draw(barx, bary, barw, barh)
 	draw_button_circle(setting_z_is_up ? "-Z" : "-Y", dx + dw / 2, dy + dw /2 + (((dw) - 12) * abs(_dyc))/2, 10, null, e_button.SECONDARY, cam_snap_view_y,  setting_z_is_up ? c_axisblue : c_axisgreen, e_anchor.LEFT, "N");
 	}
 	
+	if(_dzc9 <= 0){
+	draw_set_color( setting_z_is_up ? c_axisgreen : c_axisblue)
+	draw_line_width(dx + dw / 2, dy + dw / 2,dx + dw / 2 + (((dw / 2) - 12) * _dz), dy + dw / 2 + (((dw / 2) - 12) * _dy * _dx),2)
+	
+	}
+	if(_dzc9 > 0){
+	draw_set_color(c_axisred)
+	draw_line_width(dx + dw / 2, dy + dw / 2,dx + dw / 2 + (((dw / 2) - 12)* _dx), dy + dw / 2 + (((dw / 2) - 12) * _dy * -_dz),2)
+	}
+
 	draw_button_circle(setting_z_is_up ? "Y" : "Z",dx + dw / 2 + (((dw / 2) - 6) * _dz), dy + dw / 2 + (((dw / 2) - 6) * _dy * _dx), 10, null, e_button.PRIMARY, cam_snap_view_z, setting_z_is_up ? c_axisgreen : c_axisblue, e_anchor.LEFT);
+	if(_dzc9 <= 0){
+    draw_set_color(c_axisred)
+	draw_line_width(dx + dw / 2, dy + dw / 2,dx + dw / 2 + (((dw / 2) - 12)* _dx), dy + dw / 2 + (((dw / 2) - 12) * _dy * -_dz),2)
+	}
+	if(_dzc9 > 0){
+		draw_set_color( setting_z_is_up ? c_axisgreen : c_axisblue)
+	draw_line_width(dx + dw / 2, dy + dw / 2,dx + dw / 2 + (((dw / 2) - 12) * _dz), dy + dw / 2 + (((dw / 2) - 12) * _dy * _dx),2)
+	}
 	draw_button_circle("X",dx + dw / 2 + (((dw / 2) - 6)* _dx), dy + dw / 2 + (((dw / 2) - 6) * _dy * -_dz), 10, null, e_button.PRIMARY, cam_snap_view_x, c_axisred, e_anchor.LEFT);
 
 	if(_dy > 0){
 	draw_button_circle(setting_z_is_up ? "Z" : "Y", dx + dw / 2, dy + dw /2 - (((dw) - 12) * abs(_dyc))/2, 10, null, e_button.PRIMARY, cam_snap_view_y,  setting_z_is_up ? c_axisblue : c_axisgreen, e_anchor.LEFT);
 	}
+
 	}
 	
 	if(_dzc > 0){
@@ -88,20 +113,35 @@ function view_toolbar_cam_nav_draw(barx, bary, barw, barh)
 	if(_dy > 0){
 	draw_button_circle(setting_z_is_up ? "-Z" : "-Y", dx + dw / 2, dy + dw /2 + (((dw) - 12) * abs(_dyc))/2, 10, null, e_button.SECONDARY, cam_snap_view_y,  setting_z_is_up ? c_axisblue : c_axisgreen, e_anchor.LEFT, "N");
 	}
-	
+	if(_dzc9 > 0){
+			draw_set_color(c_axisred)
+	draw_line_width(dx + dw / 2, dy + dw / 2,dx + dw / 2 + (((dw / 2) - 12)* _dx), dy + dw / 2 + (((dw / 2) - 12) * _dy * -_dz),2)
+}
 	draw_button_circle(setting_z_is_up ? "Y" : "Z",dx + dw / 2 + (((dw / 2) - 6) * _dz), dy + dw / 2 + (((dw / 2) - 6) * _dy * _dx), 10, null, e_button.PRIMARY, cam_snap_view_z, setting_z_is_up ? c_axisgreen : c_axisblue, e_anchor.LEFT);
-	
-
+		draw_set_color( setting_z_is_up ? c_axisblue : c_axisgreen)
+	draw_line_width(dx + dw / 2, dy + dw / 2, dx + dw/2,dy + dw /2 - (((dw) - 6) * abs(_dyc))/2 + 10,2)
+if(_dzc9 <= 0){
+			draw_set_color(c_axisred)
+	draw_line_width(dx + dw / 2, dy + dw / 2,dx + dw / 2 + (((dw / 2) - 12)* _dx), dy + dw / 2 + (((dw / 2) - 12) * _dy * -_dz),2)
+}
 	draw_button_circle(setting_z_is_up ? "-Y" : "-Z",dx + dw / 2 + (((dw / 2) - 6) * -_dz), dy + dw / 2 + (((dw / 2) - 6) * -_dy * _dx), 10, null, e_button.SECONDARY, cam_snap_view_z, setting_z_is_up ? c_axisgreen : c_axisblue, e_anchor.LEFT, "N");
-    if(_dy > 0){
+    	draw_set_color( setting_z_is_up ? c_axisgreen : c_axisblue)
+		
+	draw_line_width(dx + dw / 2, dy + dw / 2,dx + dw / 2 + (((dw / 2) - 12) * _dz), dy + dw / 2 + (((dw / 2) - 12) * _dy * _dx),2)
+
+	if(_dy > 0){
 	draw_button_circle(setting_z_is_up ? "Z" : "Y", dx + dw / 2, dy + dw /2 - (((dw) - 12) * abs(_dyc))/2, 10, null, e_button.PRIMARY, cam_snap_view_y,  setting_z_is_up ? c_axisblue : c_axisgreen, e_anchor.LEFT);
 	}
+
+
 	
 	draw_button_circle("-X",dx + dw / 2 + (((dw / 2) - 6)* -_dx), dy + dw / 2 + (((dw / 2) - 6) * -_dy * -_dz), 10, null, e_button.SECONDARY, cam_snap_view_x, c_axisred, e_anchor.LEFT, "N");
 	if(_dy <= 0){
 	draw_button_circle(setting_z_is_up ? "-Z" : "-Y", dx + dw / 2, dy + dw /2 + (((dw) - 12) * abs(_dyc))/2, 10, null, e_button.SECONDARY, cam_snap_view_y,  setting_z_is_up ? c_axisblue : c_axisgreen, e_anchor.LEFT, "N");
 	}
+
 	}
+	gpu_set_tex_filter(false);
 
 	//dy += 6
 	//dx += 6
@@ -124,6 +164,7 @@ function view_toolbar_cam_nav_draw(barx, bary, barw, barh)
 	
 	//tip_set_keybind(e_keybind.CAM_SNAP_VIEW_Z)
 	//draw_button_label("navsnapz", dx, dy, 28, null, e_button.LABEL,cam_snap_view_z, null, false, "tooltipsnapcamz")
+	render_set_culling(true)
 
 	draw_set_alpha(1)
 	tip_force_left = false

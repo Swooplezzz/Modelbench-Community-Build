@@ -324,6 +324,7 @@
 		"projtogglepres": "Prespective projection",
 		"projtoggleortho": "Orthographic projection",
 		"painterguides": "View brush guides",
+		"paintershape": "Draw shape",
 		"paintergrid": "View pixel grid"
 	},
 	"toolset/": {
@@ -357,7 +358,8 @@
 			"pick": "Color picker tool",
 			"fill": "Fill tool",
 			"boxselect": "Box select tool",
-			"transformselection": "Transform selection tool"
+			"transformselection": "Transform selection tool",
+			"shape": "Shape tool"
 		}
 	},
 	"tab/": {
@@ -484,6 +486,9 @@
 		"parentto": "Parent to %1",
 		"roottexture": "Root texture",
 		"addtexture": "Add texture",
+		"createtexture": "Create texture",
+		"addtexturetip": "Add texture",
+		"createtexturetip": "Create texture",
 		"texturesize": "%1x%2 pixels",
 		"texturescale": "Scale",
 		"defaulttexture": "default"
@@ -628,7 +633,17 @@
 	"toolproperties/": {
 		"opacity": "Opacity",
 		"tolerance": "Tolerance",
-		"width": "Line width"
+		"width": "Line width",
+                "shape": "Shape",
+                "shape/": {
+                     "circle": "Circle",
+					 "box":"Box",
+					 "triangle":"Triangle",
+				     "fillmode" : "Outline and fill",
+				     "fill" : "Fill",
+				     "nofill" : "Outline",
+				     "filloutline" : "Both"
+                 }
 	},
 	"preview/": {
 		"scenery": "Scenery",
@@ -736,7 +751,8 @@
 				"transformselection": "Transform selection tool",
 				"brushwidth": "Brush width",
 				"grid": "View grid",
-				"guides": "View brush guides"
+				"guides": "View brush guides",
+				"shape": "Shape tool"
 			},
 			"snap": "Toggle snapping",
 			"cam/": {

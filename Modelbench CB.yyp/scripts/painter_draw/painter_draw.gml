@@ -72,11 +72,12 @@ function painter_draw(xx, yy, inbounds)
 	//		shader_clear()
 	//	gpu_set_texrepeat(true)
 	//}
+
 	
 	if(inbounds)
 	{
 		//Draw Cursor
-		if (paint_tool_selected = e_paint.BRUSH || paint_tool_selected = e_paint.ERASE)
+		if (paint_tool_selected = e_paint.BRUSH && paint_width != 1 || paint_tool_selected = e_paint.ERASE)
 		{
 			draw_set_alpha(0.875)
 			draw_circle_color(((xx + 1) * zoom) + scale_offset_x, ((yy + 1) * zoom) + scale_offset_y, ((paint_width + 0.1) / 2 * zoom) + 1, c_white, c_white, true)
@@ -84,7 +85,7 @@ function painter_draw(xx, yy, inbounds)
 			draw_circle_color(((xx + 1) * zoom) + scale_offset_x, ((yy + 1) * zoom) + scale_offset_y, (paint_width + 0.1) / 2 * zoom, c_black, c_black, true)
 			draw_set_alpha(1)
 		}
-		else if (paint_tool_selected = e_paint.PICK || paint_tool_selected = e_paint.FILL)
+		else if (paint_tool_selected = e_paint.PICK ||paint_tool_selected = e_paint.BRUSH && paint_width = 1|| paint_tool_selected = e_paint.SHAPE || paint_tool_selected = e_paint.FILL)
 		{
 			draw_set_alpha(0.875)
 		    draw_box_hover((xx + .5) * zoom + scale_offset_x, (yy + .5)* zoom + scale_offset_y, zoom, zoom, 1, c_white);
@@ -131,6 +132,11 @@ function painter_draw(xx, yy, inbounds)
 				mouse_cursor = cr_none
 				draw_sprite_ext(spr_icons,icons.BOX_SELECT, window_mouse_get_x() - iconoffset[0], window_mouse_get_y() - iconoffset[1], 1, 1, 0, c_black, .75)
 				draw_sprite_ext(spr_icons,icons.BOX_SELECT, window_mouse_get_x() - iconoffset[0] - 1, window_mouse_get_y() - iconoffset[1] - 1, 1, 1, 0, c_white, .75)
+			break
+			case e_paint.SHAPE:
+				mouse_cursor = cr_none
+				draw_sprite_ext(spr_icons,icons.SHAPES, window_mouse_get_x() - iconoffset[0], window_mouse_get_y() - iconoffset[1], 1, 1, 0, c_black, .75)
+				draw_sprite_ext(spr_icons,icons.SHAPES, window_mouse_get_x() - iconoffset[0] - 1, window_mouse_get_y() - iconoffset[1] - 1, 1, 1, 0, c_white, .75)
 			break
 		}
 

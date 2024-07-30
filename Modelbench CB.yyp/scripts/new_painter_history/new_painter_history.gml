@@ -9,6 +9,7 @@ function new_painter_history(type)
 		sprite = null
 		trnsprite = null;
 		selsprite = null;
+		seltrnsprite = null;
 		pos_tl = vec2(0,0)
 		pos_br = vec2(0,0)
 		sel_size = vec2(0,0)

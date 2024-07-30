@@ -15,18 +15,18 @@ function cam_update_view_snap()
 			snap_triggered_z = false
 		
 		if (point3D_distance(target_Focus, focus) >= 0.05)
-			focus = point3D_lerp(focus, target_Focus,1 / max(1, 4 / delta));
+			focus = point3D_lerp(focus, target_Focus,1 / max(1, 3 / delta));
 					
 		if (abs(angle_xy != target_angle_xy) >= 0.05)
 		{	
-		    angle_xy = angle_xy + (target_angle_xy - angle_xy) / max(1, 4 / delta)
+		    angle_xy = angle_xy + (target_angle_xy - angle_xy) / max(1, 3 / delta)
 			angle_look_xy = angle_xy
 			angle_off_xy = 0
 		}
 	
 		if (abs(angle_z != target_angle_z) >= 0.05)
 		{
-			angle_z = angle_z + (target_angle_z - angle_z) / max(1, 4 / delta)
+			angle_z = angle_z + (target_angle_z - angle_z) / max(1, 3 / delta)
 			angle_look_z = -angle_z
 			angle_off_z = 0
 	    }

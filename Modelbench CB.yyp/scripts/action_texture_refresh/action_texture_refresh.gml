@@ -16,4 +16,9 @@ function action_texture_refresh()
 	if(program_mode = e_mode.TEXTURING ){
 		painter_reset()
 	}
+	with (obj_model_element)
+	{
+				if (element_type = TYPE_SHAPE)
+					update_vbuffer = true
+	}
 }
