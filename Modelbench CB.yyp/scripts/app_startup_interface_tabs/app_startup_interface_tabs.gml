@@ -299,7 +299,6 @@ function app_startup_interface_tabs()
 		
 		// Interface
 		interface = tab_add_category("interface", icons.BRUSH_SMALL, tab_settings_interface, false)
-		painter = tab_add_category("painter", icons.PENCIL, tab_settings_painter, false)
 	}
 	
 	colors = new_tab(setting_color_editor_location, false, null)

@@ -6,13 +6,14 @@ function view_update_surface(view, cam)
 {
 	render_start(view.surface, cam, content_width, content_height)
 	
-	if(program_mode != e_mode.TEXTURING){
-	render_high()
-	
-	view_shape_outline()
+	if (program_mode != e_mode.TEXTURING)
+	{
+		render_high()
+		view_shape_outline()
 	}
 	
-	if(el_edit != null){	
+	if (el_edit != null)
+	{	
 		// Update 2D position
 		el_edit.world_pos_2d = view_shape_project(el_edit.world_pos)
 		el_edit.world_pos_2d_error = (point3D_project_error || el_edit.world_pos_2d[X] < 0 || el_edit.world_pos_2d[Y] < 0 || el_edit.world_pos_2d[X] >= content_width || el_edit.world_pos_2d[Y] >= content_height)
@@ -21,8 +22,6 @@ function view_update_surface(view, cam)
 	// Controls
 	if (el_edit_amount > 0 && program_mode = e_mode.MODELING)
 	{
-							
-
 		// Selection
 		if (setting_overlays && setting_overlays_outlines)
 			view.surface_select = render_select(view.surface_select);
@@ -55,37 +54,34 @@ function view_update_surface(view, cam)
 						// Bend
 						if (tool_selected = e_tool.BEND && el_edit.element_type = TYPE_PART && el_edit.value[e_value.BEND])
 							view_control_bend(view)
-												   
-						// Rotate				   
+						
+						// Rotate
 						if (tool_selected = e_tool.ROTATE || tool_selected = e_tool.TRANSFORM)
 							view_control_rotate(view)
-												   
-						// Scale				   
+						
+						// Scale
 						if (tool_selected = e_tool.SCALE || tool_selected = e_tool.TRANSFORM)
 							view_control_scale(view)
-												   
-						// Resize				   
+						
+						// Resize
 						if (tool_selected = e_tool.RESIZE && el_edit.element_type = TYPE_SHAPE)
 							view_control_resize(view)
 						
 						// Position
 						if (tool_selected = e_tool.MOVE || tool_selected = e_tool.TRANSFORM)
 							view_control_move(view)
-							
-
 						
 						// Pivot
 						if (tool_selected = e_tool.PIVOT && el_edit.element_type = TYPE_SHAPE)
 							view_control_pivot(view)
-							
-						if (keybind_free_move)								   
-							view_control_move_free(view)					   
-						if (keybind_free_rot)								   
-							view_control_rot_free(view)						   
-						if (keybind_free_sca)								   
-							view_control_scale_free(view)					   
-							
-							
+						
+						if (keybind_free_move)
+							view_control_move_free(view)
+						if (keybind_free_rot)
+							view_control_rot_free(view)
+						if (keybind_free_sca)
+							view_control_scale_free(view)
+						
 						var origin3d, origin2d;
 						
 						// Parent position
@@ -194,7 +190,6 @@ function view_update_surface(view, cam)
 						
 						if (window_busy = "rendercontrol")
 						{
-							
 							// Value control tooltip
 							if (view_control_edit != null)
 							{

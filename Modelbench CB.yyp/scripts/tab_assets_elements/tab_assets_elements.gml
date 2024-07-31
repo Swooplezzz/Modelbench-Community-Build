@@ -41,13 +41,13 @@ function tab_assets_elements()
 	// Show search results
 	if (tab.elements.search_string != "")
 	{
-		for (var i = 0; i < ds_list_size(tab.elements.element_search_list); i++){
+		for (var i = 0; i < ds_list_size(tab.elements.element_search_list); i++)
 			draw_element_item(tab.elements.element_search_list[|i], dy, 0, true)
-		}
 	}
 	else // Draw hierarchy
 	{
-		for (var i = 0; i < ds_list_size(part_list); i++){
+		for (var i = 0; i < ds_list_size(part_list); i++)
+		{
 			draw_element_item(part_list[|i], dy, 0)
 			//var itemmaxw =(28 * indent_level) + 230
 			//tlmaxw = max(itemmaxw, tlmaxw)

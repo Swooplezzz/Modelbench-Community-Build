@@ -38,21 +38,19 @@ function painter_controls_draw(barx, bary, barw, barh)
 	draw_dropshadow(dx, dy, dw, dh, c_black, 1)
 	draw_outline(dx, dy, dw, dh, 1, c_border, a_border)
 	
-	dy += 4
 	dx += 4
-	tip_set_keybind(e_keybind.VIEW_PTR_GRID)
-	if(draw_button_icon("viewgrid", dx, dy, 28, 28, paint_view_grid = true, icons.ORTHOGRAPHIC, null, false, "tooltippaintergrid"))
+	dy += 4
+	tip_set_keybind(e_keybind.PAINTER_GRID)
+	if (draw_button_icon("viewgrid", dx, dy, 28, 28, paint_view_grid = true, icons.ORTHOGRAPHIC, null, false, "tooltippaintergrid"))
 		paint_view_grid = !paint_view_grid
-	
 
 	dx += buttonsize
 
-	tip_set_keybind(e_keybind.VIEW_PTR_GUIDES)
+	tip_set_keybind(e_keybind.PAINTER_GUIDES)
 	if(draw_button_icon("viewguides", dx, dy, 28, 28, paint_view_brush_guides = true, icons.CUSTOMIZATION, null, false, "tooltippainterguides"))
 	paint_view_brush_guides = !paint_view_brush_guides
 	
 	dx += buttonsize
-
 
 	draw_set_alpha(1)
 	

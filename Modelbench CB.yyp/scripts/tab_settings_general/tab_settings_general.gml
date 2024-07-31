@@ -56,7 +56,7 @@ function tab_settings_general()
 	tab_next()
 	
 	tab_control_meter()
-	draw_meter("settingsadjustfov", dx, dy, dw, setting_camera_fov, 48, 1, 179, 35, 1, tab.general.tbx_fov, action_setting_adjust_camera_fov)
+	draw_meter("settingsadjustfov", dx, dy, dw, setting_camera_fov, 48, 1, 170, 35, 1, tab.general.tbx_fov, action_setting_adjust_camera_fov)
 	tab_next()
 	
 }

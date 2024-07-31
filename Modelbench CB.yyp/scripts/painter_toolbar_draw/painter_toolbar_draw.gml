@@ -20,7 +20,7 @@ function painter_toolbar_draw(barx, bary, barw, barh)
 	
 	if (dh > dw)
 		tip_force_right = true
-
+	
 	var busy, buttonsize;
 	busy = window_busy
 	buttonsize = 28 + 4
@@ -56,7 +56,7 @@ function painter_toolbar_draw(barx, bary, barw, barh)
 	
 	// Erase tool
 	tip_set_keybind(e_keybind.ERASE)
-	if(draw_button_icon("tooleraser", dx, dy, 28, 28, paint_tool_selected = e_paint.ERASE, icons.ERASER, null, false, "toolsetpaintererase"))
+	if (draw_button_icon("tooleraser", dx, dy, 28, 28, paint_tool_selected = e_paint.ERASE, icons.ERASER, null, false, "toolsetpaintererase"))
 		paint_tool_selected = e_paint.ERASE
 	
 	if (dw > dh)
@@ -66,7 +66,7 @@ function painter_toolbar_draw(barx, bary, barw, barh)
 	
 	// Color picker tool
 	tip_set_keybind(e_keybind.PICK)
-	if(draw_button_icon("toolpicker", dx, dy, 28, 28, paint_tool_selected = e_paint.PICK, icons.PICKER, null, false, "toolsetpainterpick"))
+	if (draw_button_icon("toolpicker", dx, dy, 28, 28, paint_tool_selected = e_paint.PICK, icons.PICKER, null, false, "toolsetpainterpick"))
 		paint_tool_selected = e_paint.PICK
 			
 	if (dw > dh)
@@ -76,7 +76,7 @@ function painter_toolbar_draw(barx, bary, barw, barh)
 	
 	// Fill tool
 	tip_set_keybind(e_keybind.FILL)
-	if(draw_button_icon("toolfill", dx, dy, 28, 28, paint_tool_selected = e_paint.FILL, icons.FILL_TOOL, null, false, "toolsetpainterfill"))
+	if (draw_button_icon("toolfill", dx, dy, 28, 28, paint_tool_selected = e_paint.FILL, icons.FILL_TOOL, null, false, "toolsetpainterfill"))
 		paint_tool_selected = e_paint.FILL
 		
 	if (dw > dh)
@@ -84,11 +84,10 @@ function painter_toolbar_draw(barx, bary, barw, barh)
 	else
 		dy += buttonsize
 	
-	// Fill tool
+	// Shape tool
 	tip_set_keybind(e_keybind.SHAPE)
-	if(draw_button_icon("toolshape", dx, dy, 28, 28, paint_tool_selected = e_paint.SHAPE, icons.SHAPES, null, false, "toolsetpaintershape"))
+	if (draw_button_icon("toolshape", dx, dy, 28, 28, paint_tool_selected = e_paint.SHAPE, icons.SHAPES, null, false, "toolsetpaintershape"))
 		paint_tool_selected = e_paint.SHAPE
-		
 	
 	if (dw > dh)
 		dx += buttonsize
@@ -107,7 +106,7 @@ function painter_toolbar_draw(barx, bary, barw, barh)
 	
 	// Box select tool
 	tip_set_keybind(e_keybind.BOX_SELECT)
-	if(draw_button_icon("toolselect", dx, dy, 28, 28, paint_tool_selected = e_paint.BOX_SELECT, icons.BOX_SELECT, null, false, "toolsetpainterboxselect"))
+	if (draw_button_icon("toolselect", dx, dy, 28, 28, paint_tool_selected = e_paint.BOX_SELECT, icons.BOX_SELECT, null, false, "toolsetpainterboxselect"))
 		paint_tool_selected = e_paint.BOX_SELECT
 	
 	if (dw > dh)
@@ -117,7 +116,7 @@ function painter_toolbar_draw(barx, bary, barw, barh)
 	
 	// Select transform tool
 	tip_set_keybind(e_keybind.TRANSFORM_SELECTION)
-	if(draw_button_icon("tooltransform", dx, dy, 28, 28, paint_tool_selected = e_paint.TRANSFORM_SELECTION, icons.TRANSFORM, null, false, "toolsetpaintertransformselection"))
+	if (draw_button_icon("tooltransform", dx, dy, 28, 28, paint_tool_selected = e_paint.TRANSFORM_SELECTION, icons.TRANSFORM, null, false, "toolsetpaintertransformselection"))
 		paint_tool_selected = e_paint.TRANSFORM_SELECTION
 	
 	if (dw > dh)
@@ -127,4 +126,5 @@ function painter_toolbar_draw(barx, bary, barw, barh)
 	
 	draw_set_alpha(1)
 	tip_force_left = false
+	tip_force_right = false
 }

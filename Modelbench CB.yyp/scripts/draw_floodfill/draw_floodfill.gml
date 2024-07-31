@@ -7,6 +7,7 @@
 /// @arg color
 /// @arg side
 /// @arg targetalpha
+
 function fillthing(surf, alpha_surf, xx, yy, targ_color, color, side, targ_alpha)
 {
     var surf_width = surface_get_width(surf);
@@ -135,37 +136,37 @@ function pixel_set(xx,yy, color){
     buffer_poke(alpha_fill_buffer, offset + 2, buffer_u8, 255);
     buffer_poke(alpha_fill_buffer, offset + 3, buffer_u8, 255);
 }
+
 function draw_floodfill(surf, alpha_surf, xx, yy, targ_color, color, side, targ_alpha)
 {
-	if(!PointInsideBounds(xx,yy,targ_color,targ_alpha, color)) return;
+	if (!PointInsideBounds(xx,yy,targ_color,targ_alpha, color))
+		return;
 		
 	var s = ds_stack_create();
 	
 	ds_stack_push(s, [xx,yy]);
 	
-	while (!ds_stack_empty(s)){
+	while (!ds_stack_empty(s))
+	{
 		var xxyy = ds_stack_pop(s)
 		var lx = xxyy[X];
 		var _x = xxyy[X];
 		var _y = xxyy[Y];
-	    while (PointInsideBounds(lx - 1, _y,targ_color,targ_alpha, color)){
-	        pixel_set(lx - 1, _y, color);
-	        lx = lx -1
-	    }
-		while (PointInsideBounds(_x, _y,targ_color,targ_alpha, color)){
-	        pixel_set(_x , _y, color);
-	        _x = _x + 1;
-	    }
+		
+		while (PointInsideBounds(lx - 1, _y,targ_color,targ_alpha, color))
+		{
+		    pixel_set(lx - 1, _y, color);
+		    lx = lx -1
+		}
+		
+		while (PointInsideBounds(_x, _y,targ_color,targ_alpha, color))
+		{
+		    pixel_set(_x , _y, color);
+		    _x = _x + 1;
+		}
 		scan(lx, _x - 1, _y + 1, s,targ_color,targ_alpha, color);
 		scan(lx, _x - 1, _y - 1, s,targ_color,targ_alpha, color);
 	}
 	
-	
-
 	//(surface_getpixel_ext(selection_surf,xx+.5,yy+.5) >> 24) & 255
-	
-
-
-
-		
 }

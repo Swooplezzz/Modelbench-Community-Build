@@ -69,6 +69,21 @@ function tab_settings_controls()
 		draw_keybind(e_keybind.FREE_ROT, dx, dy)
 		draw_keybind(e_keybind.FREE_SCA, dx, dy)
 		draw_keybind(e_keybind.SNAP, dx, dy)
+		
+		dy += 8
+		draw_divide(dx, dy, dw)
+		dy += 8
+		
+		draw_keybind(e_keybind.BRUSH, dx, dy)
+		draw_keybind(e_keybind.ERASE, dx, dy)
+		draw_keybind(e_keybind.PICK, dx, dy)
+		draw_keybind(e_keybind.FILL, dx, dy)
+		draw_keybind(e_keybind.SHAPE, dx, dy)
+		draw_keybind(e_keybind.BOX_SELECT, dx, dy)
+		draw_keybind(e_keybind.TRANSFORM_SELECTION, dx, dy)
+		draw_keybind(e_keybind.BRUSH_WIDTH, dx, dy)
+		draw_keybind(e_keybind.PAINTER_GRID, dx, dy)
+		draw_keybind(e_keybind.PAINTER_GUIDES, dx, dy)
 		dy += 8
 		
 		tab_collapse_end(true)

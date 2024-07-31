@@ -1,5 +1,7 @@
-// Script assets have changed for v2.3.0 see
-// https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
-function action_painter_shape_fill(value){
-painter_shape_tool_fill = value
+/// action_painter_shape_fill(value)
+/// @arg value
+
+function action_painter_shape_fill(value)
+{
+	painter_shape_tool_fill = value
 }

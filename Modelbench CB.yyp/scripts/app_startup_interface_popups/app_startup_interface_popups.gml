@@ -10,8 +10,8 @@ function app_startup_interface_popups()
 	//popup_whatsnew = new_popup("whatsnew", popup_whatsnew_draw, 542, 512, false, true)
 	
 	// Painter
-	popup_huesat = new_popup("huesat", popup_hue_sat_draw, 300, 264, false, true)
-	popup_brightcontrast = new_popup("brightcontrast", popup_bright_contrast_draw, 300, 232, false, true)
+	popup_huesat = new_popup("huesat", popup_hue_sat_draw, 300, null, false, true)
+	popup_brightcontrast = new_popup("brightcontrast", popup_bright_contrast_draw, 300, null, false, true)
 	
 	with (popup_huesat)
 	{
@@ -20,11 +20,9 @@ function app_startup_interface_popups()
 		tbx_val = new_textbox_ndecimals()	
 	}
 	
-	with(popup_brightcontrast)
+	with (popup_brightcontrast)
 	{
 		tbx_brightness = new_textbox_ndecimals()	
 		tbx_contrast = new_textbox_ndecimals()
 	}
-	
-
 }

@@ -20,7 +20,7 @@ function popup_whatsnew_draw()
 	width = string_width_font(text, font_value)
 	textx = dx + dw/2 - width/2
 	
-	draw_label("What's new ?", dx + 24, dy + 42, fa_left, fa_middle, c_accent, a_accent, font_heading_huge);
+	draw_label("What's new ?", dx + 24, dy + 42, fa_left, fa_middle, c_accent, a_accent, font_heading_huge)
 	
 	dy += 128 + 48
 	dx = content_x + 64

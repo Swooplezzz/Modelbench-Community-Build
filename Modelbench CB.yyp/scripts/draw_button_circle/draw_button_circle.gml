@@ -176,11 +176,12 @@ function draw_button_circle()
 
 	if (mouseon && mouse_left_released)
 	{
-		if (script != null){
-			if(arg != null)
-			script_execute(script, arg)
+		if (script != null)
+		{
+			if (arg != null)
+				script_execute(script, arg)
 			else
-			script_execute(script)
+				script_execute(script)
 		}
 		return true
 	}
