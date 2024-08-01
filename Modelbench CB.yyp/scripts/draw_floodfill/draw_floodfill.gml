@@ -98,17 +98,17 @@ function PointInsideBounds(xx,yy,targ_color,targ_alpha, color){
 	if (selection = 255)
 		return false;
 			
-    var red = buffer_peek(fill_buffer, offset, buffer_u8);
-    var green = buffer_peek(fill_buffer, offset + 1, buffer_u8);
-    var blue = buffer_peek(fill_buffer, offset + 2, buffer_u8);
-    var alpha = buffer_peek(alpha_fill_buffer, offset + 2, buffer_u8);
-		
-	var cie_diffrence = color_cie76_diffrence(targ_color, make_color_rgb(red, green,blue));
-    var check_tolerance =  cie_diffrence <=  power(100 * paint_tolerance, 2)/100 && abs(targ_alpha - alpha)/255<=  paint_tolerance;
+    pixelfillred = buffer_peek(fill_buffer, offset, buffer_u8);
+    pixelfillgreen = buffer_peek(fill_buffer, offset + 1, buffer_u8);
+    pixelfillblue = buffer_peek(fill_buffer, offset + 2, buffer_u8);
+    pixelfillalpha = buffer_peek(alpha_fill_buffer, offset + 2, buffer_u8);
+	var col = make_colour_rgb(pixelfillred, pixelfillgreen, pixelfillblue);
+	var cie_diffrence = color_cie76_diffrence(targ_color, col);
+    var check_tolerance =  cie_diffrence <=  power(100 * paint_tolerance, 2)/100 && abs(targ_alpha - pixelfillalpha)/255<=  paint_tolerance;
 
-    var col = make_colour_rgb(red, green, blue);
 
-    if (!check_tolerance || (col == color && alpha == 255))
+
+    if (!check_tolerance || (col == color && pixelfillalpha == 255))
 		return false;
 		
 	return true;
@@ -126,15 +126,18 @@ function scan(lx,rx,yy,s,targ_color,targ_alpha, color){
 }
 function pixel_set(xx,yy, color){
 	var offset = 4 * (xx + yy * paint_texture_width);
-	buffer_poke(fill_buffer, offset, buffer_u8, color_get_red(color));
-    buffer_poke(fill_buffer, offset + 1, buffer_u8, color_get_green(color));
-    buffer_poke(fill_buffer, offset + 2, buffer_u8, color_get_blue(color));
+				
+
+	buffer_poke(fill_buffer, offset, buffer_u8, pixelfillred * (1-paint_opacity)+ color_get_red(color) * paint_opacity);
+    buffer_poke(fill_buffer, offset + 1, buffer_u8, pixelfillgreen * (1-paint_opacity) + color_get_green(color) * paint_opacity);
+    buffer_poke(fill_buffer, offset + 2, buffer_u8, pixelfillblue * (1-paint_opacity) + color_get_blue(color) * paint_opacity);
     buffer_poke(fill_buffer, offset + 3, buffer_u8, 255);
 	
-    buffer_poke(alpha_fill_buffer, offset, buffer_u8, 255);
-    buffer_poke(alpha_fill_buffer, offset + 1, buffer_u8, 255);
-    buffer_poke(alpha_fill_buffer, offset + 2, buffer_u8, 255);
-    buffer_poke(alpha_fill_buffer, offset + 3, buffer_u8, 255);
+	var alpha = clamp(pixelfillalpha + paint_opacity * 255, 0, 255);
+	buffer_poke(alpha_fill_buffer, offset, buffer_u8, alpha);
+    buffer_poke(alpha_fill_buffer, offset + 1, buffer_u8, alpha);
+    buffer_poke(alpha_fill_buffer, offset + 2, buffer_u8, alpha);
+    buffer_poke(alpha_fill_buffer, offset + 3, buffer_u8, alpha);
 }
 
 function draw_floodfill(surf, alpha_surf, xx, yy, targ_color, color, side, targ_alpha)

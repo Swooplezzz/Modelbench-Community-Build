@@ -77,8 +77,6 @@ function app_update_keyboard()
 		
 			if (keybinds[e_keybind.REDO].pressed)
 				action_toolbar_redo()
-		}
-		
 		if (keybinds[e_keybind.CAM_WALK].pressed)
 		{
 			window_focus = string(content_view)
@@ -87,6 +85,9 @@ function app_update_keyboard()
 			view_click_y = display_mouse_get_y()
 		}
 		
+		}
+		
+
 		if (program_mode = e_mode.MODELING)
 		{
 			if (keybinds[e_keybind.RENAME].pressed)
