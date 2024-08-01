@@ -77,13 +77,13 @@ function app_startup_keybinds()
 		ERASE,
 		PICK,
 		FILL,
+		SHAPE,
 		BOX_SELECT,
 		TRANSFORM_SELECTION,
-		SHAPE,
 		
 		BRUSH_WIDTH,
-		VIEW_PTR_GRID,
-		VIEW_PTR_GUIDES,
+		PAINTER_GRID,
+		PAINTER_GUIDES,
 		
 		COPY,
 		PASTE,
@@ -111,8 +111,8 @@ function app_startup_keybinds()
 	keybind_register("uveditor", e_keybind.UV_EDITOR, keybind_new("E", true))
 	
 	keybind_register("elmirror", e_keybind.ELEMENT_MIRROR, keybind_new("M", false, true), false, true)
-	keybind_register("elmirrorx", e_keybind.ELEMENT_MIRROR_X, keybind_new("K", true, false), false, true)
-	keybind_register("elmirrorz", e_keybind.ELEMENT_MIRROR_Z, keybind_new("M", true, false), false, true)
+	keybind_register("elmirrorx", e_keybind.ELEMENT_MIRROR_X, keybind_new("K", true), false, true)
+	keybind_register("elmirrorz", e_keybind.ELEMENT_MIRROR_Z, keybind_new("M", true), false, true)
 	
 	// Tools
 	keybind_register("toolselect", e_keybind.TOOL_SELECT, keybind_new("W"))
@@ -138,31 +138,31 @@ function app_startup_keybinds()
 	keybind_register("camslow", e_keybind.CAM_SLOW, keybind_new(null, false, true), true, false)
 	keybind_register("camviewelement", e_keybind.CAM_VIEW_ELEMENT, keybind_new("V"), false)
 	
-	keybind_register("toggleprojection", e_keybind.TOGGLE_PROJ, keybind_new("L", false, false), false, true)
+	keybind_register("toggleprojection", e_keybind.TOGGLE_PROJ, keybind_new("L"), false, true)
 	
-	keybind_register("camsnapviewx", e_keybind.CAM_SNAP_VIEW_X, keybind_new("I", false, false), false, true)
-	keybind_register("camsnapviewy", e_keybind.CAM_SNAP_VIEW_Y, keybind_new("O", false, false), false, true)
-	keybind_register("camsnapviewz", e_keybind.CAM_SNAP_VIEW_Z, keybind_new("P", false, false), false, true)
+	keybind_register("camsnapviewx", e_keybind.CAM_SNAP_VIEW_X, keybind_new("I"), false, true)
+	keybind_register("camsnapviewy", e_keybind.CAM_SNAP_VIEW_Y, keybind_new("O"), false, true)
+	keybind_register("camsnapviewz", e_keybind.CAM_SNAP_VIEW_Z, keybind_new("P"), false, true)
 	
-	keybind_register("freepos", e_keybind.FREE_POS, keybind_new("J", false, false), false, true)
-	keybind_register("freerot", e_keybind.FREE_ROT, keybind_new("K", false, false), false, true)
-	keybind_register("freesca", e_keybind.FREE_SCA, keybind_new("N", false, false), false, true)
+	keybind_register("freepos", e_keybind.FREE_POS, keybind_new("J"), false, true)
+	keybind_register("freerot", e_keybind.FREE_ROT, keybind_new("K"), false, true)
+	keybind_register("freesca", e_keybind.FREE_SCA, keybind_new("N"), false, true)
 	
-	keybind_register("copy", e_keybind.COPY, keybind_new("C", true, false), false, true)
-	keybind_register("paste", e_keybind.PASTE, keybind_new("V", true, false), false, true)
-	keybind_register("cut", e_keybind.CUT, keybind_new("X", true, false), false, true)
+	keybind_register("copy", e_keybind.COPY, keybind_new("C", true), false, true)
+	keybind_register("paste", e_keybind.PASTE, keybind_new("V", true), false, true)
+	keybind_register("cut", e_keybind.CUT, keybind_new("X", true), false, true)
 	
-	keybind_register("painterbrush", e_keybind.BRUSH, keybind_new("B", false, false), false, true)
-	keybind_register("paintererase", e_keybind.ERASE, keybind_new("E", false, false), false, true)
-	keybind_register("painterpick", e_keybind.PICK, keybind_new("R", false, false), false, true)
-	keybind_register("painterfill", e_keybind.FILL, keybind_new("F", true, false), false, true)
-	keybind_register("painterboxselect", e_keybind.BOX_SELECT, keybind_new("S", false, false), false, true)
-	keybind_register("paintertransformselection", e_keybind.TRANSFORM_SELECTION, keybind_new("T", false, false), false, true)
+	keybind_register("painterbrush", e_keybind.BRUSH, keybind_new("B"), false, true)
+	keybind_register("paintererase", e_keybind.ERASE, keybind_new("E"), false, true)
+	keybind_register("painterpick", e_keybind.PICK, keybind_new("R"), false, true)
+	keybind_register("painterfill", e_keybind.FILL, keybind_new("F", true), false, true)
+	keybind_register("paintershape", e_keybind.SHAPE, keybind_new("O"), false, true)
+	keybind_register("painterboxselect", e_keybind.BOX_SELECT, keybind_new("S"), false, true)
+	keybind_register("paintertransformselection", e_keybind.TRANSFORM_SELECTION, keybind_new("T"), false, true)
 	
-	keybind_register("painterbrushwidth", e_keybind.BRUSH_WIDTH, keybind_new("F", false, false), false, true)
-	keybind_register("paintergrid", e_keybind.VIEW_PTR_GRID, keybind_new("G", false, false), false, true)
-	keybind_register("painterguides", e_keybind.VIEW_PTR_GUIDES, keybind_new("G", true, false), false, true)
-	keybind_register("paintershape", e_keybind.SHAPE, keybind_new("S", true, false), false, true)
+	keybind_register("painterbrushwidth", e_keybind.BRUSH_WIDTH, keybind_new("F"), false, true)
+	keybind_register("paintergrid", e_keybind.PAINTER_GRID, keybind_new("G"), false, true)
+	keybind_register("painterguides", e_keybind.PAINTER_GUIDES, keybind_new("G", true), false, true)
 	
 	keybinds_update_match()
 }

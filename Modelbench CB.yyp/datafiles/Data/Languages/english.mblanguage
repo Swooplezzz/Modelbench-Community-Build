@@ -33,7 +33,7 @@
 			"hue": "Hue",
 			"sat": "Saturation",
 			"val": "Value",
-			"ok": "Ok"
+			"ok": "OK"
 		},
 		"info/": {
 			"mousepos": "Mouse",
@@ -487,8 +487,6 @@
 		"roottexture": "Root texture",
 		"addtexture": "Add texture",
 		"createtexture": "Create texture",
-		"addtexturetip": "Add texture",
-		"createtexturetip": "Create texture",
 		"texturesize": "%1x%2 pixels",
 		"texturescale": "Scale",
 		"defaulttexture": "default"
@@ -571,6 +569,7 @@
 			"inheritangleshelp": "Enables 'Inherit bend' for this part in Mine-imator.",
 			"offset": "Joint offset",
 			"endoffset": "Joint end",
+			"endoffsettip": "The point where the limb will start to bend when IK is enabled in Mine-imator.",
 			"customsize": "Custom bend size",
 			"customdetail": "Custom bend detail",
 			"customsizehelp": "Allows for a custom bend size. This part's bending will ignore program bend styles.",
@@ -634,16 +633,16 @@
 		"opacity": "Opacity",
 		"tolerance": "Tolerance",
 		"width": "Line width",
-                "shape": "Shape",
-                "shape/": {
-                     "circle": "Circle",
-					 "box":"Box",
-					 "triangle":"Triangle",
-				     "fillmode" : "Outline and fill",
-				     "fill" : "Fill",
-				     "nofill" : "Outline",
-				     "filloutline" : "Both"
-                 }
+		"shape": "Shape",
+		"shape/": {
+			"box": "Box",
+			"circle": "Circle",
+			"triangle": "Triangle",
+			"fillmode": "Draw/fill mode",
+			"nofill": "Outline",
+			"fill": "Fill",
+			"filloutline": "Both"
+		}
 	},
 	"preview/": {
 		"scenery": "Scenery",
@@ -713,8 +712,6 @@
 		"controlstools": "Tools",
 		"controlscamera": "Camera",
 		"adjustfov": "Camera FOV",
-		"painterkeybinds": "Keybinds",
-		"paintertools": "Tools",
 		"key/": {
 			"model/": {
 				"new": "New model",
@@ -750,8 +747,8 @@
 				"boxselect": "Box select tool",
 				"transformselection": "Transform selection tool",
 				"brushwidth": "Brush width",
-				"grid": "View grid",
-				"guides": "View brush guides",
+				"grid": "Toggle grid",
+				"guides": "Toggle brush guides",
 				"shape": "Shape tool"
 			},
 			"snap": "Toggle snapping",
@@ -765,14 +762,15 @@
 				"descend": "Descend",
 				"reset": "Reset",
 				"fast": "Faster",
+				"slow": "Slower",
 				"snapviewx": "Snap view X",
 				"snapviewy": "Snap view Y",
 				"snapviewz": "Snap view Z",
 				"snapview": "Snap to camera transform",
 				"setsnapview": "Save camera transform",
-				"viewelement": "View element",
-				"slow": "Slower"
+				"viewelement": "View element"
 			},
+			"toggleprojection": "Toggle projection mode",
 			"el/": {
 				"mirror/": {
 					"x": "Mirror X",
@@ -786,8 +784,7 @@
 				"sca": "Scale",
 				"rot": "Rotate",
 				"pos": "Grab"
-			},
-			"toggleprojection": "Toggle Projection Mode"
+			}
 		},
 		"theme": "Theme",
 		"theme/": {

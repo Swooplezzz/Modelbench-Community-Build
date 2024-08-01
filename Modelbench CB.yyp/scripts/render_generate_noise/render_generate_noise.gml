@@ -10,7 +10,6 @@ function render_generate_noise()
 	h = argument[1]
 	surf = null
 	
-	
 	if (argument_count > 2)
 		surf = argument[2]
 	

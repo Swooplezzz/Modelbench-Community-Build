@@ -41,37 +41,7 @@ function app_update_keyboard()
 			debug_info = (debug_info + 1) mod 3
 	}
 	
-	if (program_mode = e_mode.TEXTURING && window_state = "" && window_busy = "" && !textbox_isediting)
-	{
-		if (keybinds[e_keybind.BRUSH].pressed)
-			paint_tool_selected = e_paint.BRUSH
-		
-	    if (keybinds[e_keybind.ERASE].pressed)
-			paint_tool_selected = e_paint.ERASE
-			
-	    if (keybinds[e_keybind.SHAPE].pressed)
-			paint_tool_selected = e_paint.SHAPE
-		
-	    if (keybinds[e_keybind.PICK].pressed)
-			paint_tool_selected = e_paint.PICK
-		
-		if (keybinds[e_keybind.FILL].pressed)
-			paint_tool_selected = e_paint.FILL
-		
-		if (keybinds[e_keybind.BOX_SELECT].pressed)
-			paint_tool_selected = e_paint.BOX_SELECT
-
-		if (keybinds[e_keybind.TRANSFORM_SELECTION].pressed)
-			paint_tool_selected = e_paint.TRANSFORM_SELECTION
-		
-		if (keybinds[e_keybind.VIEW_PTR_GRID].pressed)
-			paint_view_grid = !paint_view_grid
-		
-		if (keybinds[e_keybind.VIEW_PTR_GUIDES].pressed)
-			paint_view_brush_guides = !paint_view_brush_guides
-	}
-	
-	if(window_state = "startup")
+	if (window_state = "startup")
 	{
 		if (keybinds[e_keybind.UNDO].pressed)
 			action_toolbar_undo()
@@ -80,9 +50,8 @@ function app_update_keyboard()
 			action_toolbar_redo()		
 	}
 
-	if (window_state = "" && window_busy = "" && !textbox_isediting && program_mode != e_mode.TEXTURING)
+	if (window_state = "" && window_busy = "" && !textbox_isediting)
 	{
-
 		if (keybinds[e_keybind.MODEL_NEW].pressed)
 			model_create()
 		
@@ -100,12 +69,15 @@ function app_update_keyboard()
 		
 		if (keybinds[e_keybind.MODEL_IMPORT].pressed)
 			action_model_import()
+			
+		if (program_mode != e_mode.TEXTURING)
+		{
+			if (keybinds[e_keybind.UNDO].pressed)
+				action_toolbar_undo()
 		
-		if (keybinds[e_keybind.UNDO].pressed)
-			action_toolbar_undo()
-		
-		if (keybinds[e_keybind.REDO].pressed)
-			action_toolbar_redo()
+			if (keybinds[e_keybind.REDO].pressed)
+				action_toolbar_redo()
+		}
 		
 		if (keybinds[e_keybind.CAM_WALK].pressed)
 		{
@@ -184,9 +156,37 @@ function app_update_keyboard()
 	
 			if (keybinds[e_keybind.CAM_SNAP_VIEW_Z].pressed)
 				cam_snap_view_z()
-			
 		}
+		
+		if (program_mode = e_mode.TEXTURING)
+		{
+			if (keybinds[e_keybind.BRUSH].pressed)
+				paint_tool_selected = e_paint.BRUSH
+		
+		    if (keybinds[e_keybind.ERASE].pressed)
+				paint_tool_selected = e_paint.ERASE
+		
+		    if (keybinds[e_keybind.PICK].pressed)
+				paint_tool_selected = e_paint.PICK
+		
+			if (keybinds[e_keybind.FILL].pressed)
+				paint_tool_selected = e_paint.FILL
+			
+		    if (keybinds[e_keybind.SHAPE].pressed)
+				paint_tool_selected = e_paint.SHAPE
+		
+			if (keybinds[e_keybind.BOX_SELECT].pressed)
+				paint_tool_selected = e_paint.BOX_SELECT
 
+			if (keybinds[e_keybind.TRANSFORM_SELECTION].pressed)
+				paint_tool_selected = e_paint.TRANSFORM_SELECTION
+		
+			if (keybinds[e_keybind.PAINTER_GRID].pressed)
+				paint_view_grid = !paint_view_grid
+		
+			if (keybinds[e_keybind.PAINTER_GUIDES].pressed)
+				paint_view_brush_guides = !paint_view_brush_guides
+		}
 	}
 	else if (textbox_isediting && keyboard_check_pressed(vk_tab) && textbox_lastfocus.next_tbx)
 		window_focus = string(textbox_lastfocus.next_tbx)

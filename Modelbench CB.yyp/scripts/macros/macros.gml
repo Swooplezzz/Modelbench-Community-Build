@@ -9,9 +9,9 @@ function macros()
 	
 	// Versions
 	#macro modelbench_version			"Community Build v1.1.0"
-	#macro modelbench_version_extra		"Alpha 5"
+	#macro modelbench_version_extra		"Alpha 6"
 	#macro modelbench_version_full		modelbench_version + ((modelbench_version_extra != "") ? " (" + modelbench_version_extra + ")" : "")
-	#macro modelbench_version_date		"2024.07.26"
+	#macro modelbench_version_date		"2024.07.30"
 	#macro gm_runtime					GM_runtime_version
 	
 	// File formats

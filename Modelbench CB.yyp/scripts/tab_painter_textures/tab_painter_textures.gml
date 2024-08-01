@@ -5,6 +5,7 @@ function tab_painter_textures()
 	// Preview selected texture
 	var itemhover = null;
 	dw = content_width - 24
+	
 	tab_control(ds_list_size(textures_list.item) * 32)
 	for (var i = 0; i < ds_list_size(textures_list.item); i++)
 	{
@@ -31,23 +32,23 @@ function tab_painter_textures()
 	textfield_group_add("paintertexsizey", paint_texture_height, 16, action_painter_size_height, Y, tab.textures.tbx_height)
 	
 	tab_control_textfield_group(false, false)
-	draw_textfield_group("paintertexsize", dx, dy, dw, 1, 1, 512, 1, false, false, 0, false);
-	tab_next();
+	draw_textfield_group("paintertexsize", dx, dy, dw, 1, 1, 512, 1, false, false, 0, false)
+	tab_next()
 	
-	tab_control_button_label()
 	// Add texture
-	if (draw_button_icon("assetsaddtexture", dx + 32, dy, 24, 24,false, icons.FOLDER_ADD, null, false, "assetsaddtexturetip"))
+	tab_control(24)
+	
+	if (program_mode = e_mode.TEXTURING)
+		if (draw_button_icon("assetscreatetexture", dx, dy, 24, 24, false, icons.PLUS, null, false, "assetscreatetexture"))
+			action_texture_create()
+	
+	if (draw_button_icon("assetsaddtexture", dx + 28, dy, 24, 24, false, icons.FOLDER_ADD, null, false, "assetsaddtexture"))
 	{
 		var fn = file_dialog_open_image();
 		
 		if (fn != "")
 			action_texture_add(fn)
 	}
-		
-	if(program_mode = e_mode.TEXTURING)
-	if (draw_button_icon("assetscreatetexture", dx, dy, 24, 24, false, icons.PLUS, null, false, "assetscreatetexturetip"))
-	{
-		action_texture_create()
-	}
+	
 	tab_next()
 }

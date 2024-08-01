@@ -739,15 +739,17 @@ function enums()
 	
 	enum e_paint
 	{
-	   BRUSH,
-	   ERASE,
-	   PICK,
-	   FILL,
-	   BOX_SELECT,
-	   TRANSFORM_SELECTION,
-	   SHAPE
+		BRUSH,
+		ERASE,
+		PICK,
+		FILL,
+		BOX_SELECT,
+		TRANSFORM_SELECTION,
+		SHAPE
 	}
-	enum e_shape{
+	
+	enum e_shape
+	{
 		CIRCLE,
 		BOX,
 		TRIANGLE
