@@ -343,10 +343,10 @@ matrix_set(matrix_world, new_mat);
 
 matrix_set(matrix_world, MAT_IDENTITY);
 
-draw_text_color(content_x, content_y + 200, string(selection_topleft),c_white,c_white,c_white,c_white,1);
-draw_text_color(content_x, content_y + 24 + 200, string(selection_btmright),c_white,c_white,c_white,c_white,1);
-draw_text_color(content_x, content_y + 48 + 200, string(selection_pos),c_white,c_white,c_white,c_white,1);
-draw_text_color(content_x, content_y + 72 + 200, string(selection_center),c_white,c_white,c_white,c_white,1);
+//draw_text_color(content_x, content_y + 200, string(selection_topleft),c_white,c_white,c_white,c_white,1);
+//draw_text_color(content_x, content_y + 24 + 200, string(selection_btmright),c_white,c_white,c_white,c_white,1);
+//draw_text_color(content_x, content_y + 48 + 200, string(selection_pos),c_white,c_white,c_white,c_white,1);
+//draw_text_color(content_x, content_y + 72 + 200, string(selection_center),c_white,c_white,c_white,c_white,1);
 
 		if((app_mouse_box((selection_topleft[X]) * zoom + scale_offset_x-40, (selection_topleft[Y]) * zoom + scale_offset_y - 40, sizex * zoom+80, 30,selection_rot,selection_center)) ||
 		(app_mouse_box((selection_topleft[X]) * zoom + scale_offset_x-40, (selection_btmright[Y]) * zoom + scale_offset_y + 10, sizex * zoom+80, 30,selection_rot,selection_center))|| 

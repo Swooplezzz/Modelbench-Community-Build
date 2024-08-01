@@ -15,10 +15,18 @@ for(var i = 0; i< paint_texture_width; i++){
 	}
     }
 }
+if(topleft[X] = 1000000)
+topleft[X] = 0
+if(topleft[Y] = 1000000)
+topleft[Y] = 0
+if(btmright[X] = -1000000)
+btmright[X] = -1
+if(btmright[Y] = -1000000)
+btmright[Y] = -1
 buffer_delete(selection_buffer);
 selection_topleft = topleft;
 btmright[X] += 1;
 btmright[Y] += 1;
 selection_btmright = btmright;
-
+draw_size = vec2(selection_topleft[0] - selection_btmright[0],selection_topleft[1] - selection_btmright[1]);
 }

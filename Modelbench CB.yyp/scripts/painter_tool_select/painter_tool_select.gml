@@ -67,11 +67,11 @@ function painter_tool_select(xx, yy)
 
 		if (mouse_left || mouse_right)
 		{
-		    if(xx + 1.5 > selection_topleft_prev[0] - 1)
-			    selection_btmright[0] = xx + 1.5
+		    if(xx + 0.5 > selection_topleft_prev[0])
+			    selection_btmright[0] = xx + 0.5
 
-		    if(yy + 1.5 > selection_topleft_prev[1] - 1)
-			    selection_btmright[1] = yy + 1.5
+		    if(yy + 0.5 > selection_topleft_prev[1])
+			    selection_btmright[1] = yy + 0.5
 	
 			if(selection_btmright[0] < selection_btmright_prev[0])
 			    selection_btmright[0] = selection_btmright_prev[0]
@@ -80,10 +80,10 @@ function painter_tool_select(xx, yy)
 			    selection_btmright[1] = selection_btmright_prev[1]
 		
 			if(xx + 0.5 < selection_topleft_prev[0])
-			    selection_topleft[0] = xx + 1.5
+			    selection_topleft[0] = xx + 0.5
 			
 			if(yy + 0.5 < selection_topleft_prev[1])
-			    selection_topleft[1] = yy + 1.5
+			    selection_topleft[1] = yy + 0.5
 	
 			if(selection_topleft[0] > selection_topleft_prev[0])
 			    selection_topleft[0] = selection_topleft_prev[0]
@@ -92,12 +92,8 @@ function painter_tool_select(xx, yy)
 			    selection_topleft[1] = selection_topleft_prev[1]
 		
 			selection_size = vec2(selection_btmright[0]-selection_topleft[0],selection_btmright[1]-selection_topleft[1]);
-	
-			draw_inbounds = 
-			(selection_pos[0] <= paint_texture_width && selection_pos[0] >= 0 && selection_pos[1] <= paint_texture_height && selection_pos[1] >= 0) ||
-			(xx + 1.5 <= paint_texture_width && xx + 1.5 >= 0 && yy + 1.5 <= paint_texture_height && yy + 1.5 >= 0) 
 		
-			draw_size = vec2(xx + 1.5-selection_pos[0],yy + 1.5-selection_pos[1]);
+			draw_size = vec2(selection_topleft[0] - selection_btmright[0],selection_topleft[1] - selection_btmright[1]);
 
 			surface_set_target(selection_surf)
 			{
@@ -117,12 +113,12 @@ function painter_tool_select(xx, yy)
 				draw_sprite_ext(selection_spr, 0, 0, 0, 1, 1, 0, c_black, 1)
 				if(mouse_left){
 				gpu_set_blendmode(bm_subtract)
-		        draw_rectangle_color(selection_pos[X], selection_pos[Y], xx + .5, yy + .5, c_white, c_white, c_white, c_white, false)
+		        draw_rectangle_color(selection_pos[X], selection_pos[Y], xx, yy, c_white, c_white, c_white, c_white, false)
 		        gpu_set_blendmode(bm_normal)
 				} 
 				else if(mouse_right && selection_active){
 	            gpu_set_blendmode(bm_normal)
-		        draw_rectangle_color(selection_pos[X], selection_pos[Y], xx + .5, yy + .5, c_black, c_black, c_black, c_black, false)
+		        draw_rectangle_color(selection_pos[X], selection_pos[Y], xx, yy, c_black, c_black, c_black, c_black, false)
 				}
 			}
 			surface_reset_target()
@@ -130,28 +126,30 @@ function painter_tool_select(xx, yy)
 
 		if (mouse_left_released || mouse_right_released)
 		{
-			if (mouse_left_released)
-			{
-				if (draw_inbounds && !(draw_size[0] = 0 || draw_size[1] = 0))
+			show_debug_message("bounds")
+				painter_update_selection_bounds();
+				
+				if (!(draw_size[0] = 0 || draw_size[1] = 0))
 				{
 				    if(selection_topleft[0] > selection_pos[0] )
 				        selection_topleft[0]  = selection_pos[0]	
 			
 				    if(selection_topleft[1] > selection_pos[1])
 				        selection_topleft[1]  = selection_pos[1]
-				}
-			    else
-			    {	
-					show_debug_message("Not drawing inbounds");
-			        selection_topleft = vec2(selection_topleft_prev[0], selection_topleft_prev[1])
-			        selection_btmright = vec2(selection_btmright_prev[0], selection_btmright_prev[1])
-			    }
-				
+									
 				selection_topleft[X] = clamp(selection_topleft[X],0, paint_texture_width)
 			    selection_topleft[Y]= clamp(selection_topleft[Y],0, paint_texture_height)
 				selection_btmright[0] = clamp(selection_btmright[0], 0, paint_texture_width)
 			    selection_btmright[1] = clamp(selection_btmright[1], 0, paint_texture_height)
-			}
+			
+				}
+			    else
+			    {	
+					show_debug_message("Not drawing inbounds");
+			        selection_topleft = vec2(0)
+			        selection_btmright = vec2(0)
+			    }
+	
 			
 			if(sprite_exists(selection_spr))
 			    sprite_delete(selection_spr)
