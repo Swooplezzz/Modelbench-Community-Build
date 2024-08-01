@@ -173,3 +173,40 @@ function draw_floodfill(surf, alpha_surf, xx, yy, targ_color, color, side, targ_
 	
 	//(surface_getpixel_ext(selection_surf,xx+.5,yy+.5) >> 24) & 255
 }
+function draw_floodfill_no_border(surf, alpha_surf, xx, yy, targ_color, color, side, targ_alpha)
+{
+	
+for(var i = 0; i< paint_texture_width; i++){
+	for(var j = 0; j< paint_texture_height; j++){
+	var offset = 4 * (i + j * paint_texture_width);
+
+
+	 
+	var selection = buffer_peek(selection_buffer, offset + 3, buffer_u8);
+	if (selection = 255)
+		continue
+	pixelfillred = buffer_peek(fill_buffer, offset, buffer_u8);
+    pixelfillgreen = buffer_peek(fill_buffer, offset + 1, buffer_u8);
+    pixelfillblue = buffer_peek(fill_buffer, offset + 2, buffer_u8);
+    pixelfillalpha = buffer_peek(alpha_fill_buffer, offset + 2, buffer_u8);	
+
+	var col = make_colour_rgb(pixelfillred, pixelfillgreen, pixelfillblue);
+	var cie_diffrence = color_cie76_diffrence(targ_color, col);
+    var check_tolerance =  cie_diffrence <=  power(100 * paint_tolerance, 2)/100 && abs(targ_alpha - pixelfillalpha)/255<=  paint_tolerance;
+
+    if (!check_tolerance || (col == color && pixelfillalpha == 255))
+		continue
+
+	buffer_poke(fill_buffer, offset, buffer_u8, pixelfillred * (1-paint_opacity)+ color_get_red(color) * paint_opacity);
+    buffer_poke(fill_buffer, offset + 1, buffer_u8, pixelfillgreen * (1-paint_opacity) + color_get_green(color) * paint_opacity);
+    buffer_poke(fill_buffer, offset + 2, buffer_u8, pixelfillblue * (1-paint_opacity) + color_get_blue(color) * paint_opacity);
+    buffer_poke(fill_buffer, offset + 3, buffer_u8, 255);
+	
+	var alpha = clamp(pixelfillalpha + paint_opacity * 255, 0, 255);
+	buffer_poke(alpha_fill_buffer, offset, buffer_u8, alpha);
+    buffer_poke(alpha_fill_buffer, offset + 1, buffer_u8, alpha);
+    buffer_poke(alpha_fill_buffer, offset + 2, buffer_u8, alpha);
+    buffer_poke(alpha_fill_buffer, offset + 3, buffer_u8, alpha);
+    }
+}
+}

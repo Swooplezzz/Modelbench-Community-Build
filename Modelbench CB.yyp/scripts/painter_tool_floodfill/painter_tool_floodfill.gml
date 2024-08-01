@@ -18,8 +18,11 @@ function painter_tool_floodfill(xx, yy, mousebutton)
 		buffer_get_surface(fill_buffer, color_surf, 0);
 		buffer_get_surface(selection_buffer, selection_surf, 0);
 		buffer_get_surface(alpha_fill_buffer, alpha_surf, 0);
+		if(app_check_shift(false))
 		draw_floodfill(color_surf, alpha_surf, xx + .5, yy + .5,surface_getpixel(color_surf, xx +1, yy +1), color, 0, color_get_red(surface_getpixel(alpha_surf, xx +1, yy +1)))
-		
+		else
+		draw_floodfill_no_border(color_surf, alpha_surf, xx + .5, yy + .5,surface_getpixel(color_surf, xx +1, yy +1), color, 0, color_get_red(surface_getpixel(alpha_surf, xx +1, yy +1)))
+
 		floodfill_frame_count = 0;
 		filling = true;
 		
