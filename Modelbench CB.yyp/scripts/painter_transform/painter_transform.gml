@@ -106,7 +106,7 @@ function painter_transform(xx, yy)
 	if (!selection_moved)
 	{
 		painter_clear_selection()
-		//painter_create_final_spr();
+		painter_create_final_spr();
 		
 		selection_moved = true;
 		painter_history_set("transform", final_spr, selection_spr, transform_spr)
@@ -125,8 +125,40 @@ function painter_transform(xx, yy)
 			
 			window_busy = ""
 		}
+		if(adjusting_hue){
+			render_shader_obj = shader_map[?shader_huesat]
+
+	        shader_set(shader_huesat)
+	        render_set_uniform("u_Position", hue)
+	        render_set_uniform("u_Position_s", sat/100)
+	        render_set_uniform("u_Position_l", val/100)
+	        render_set_uniform("u_colmask", 0.0)
+	        texture_set_stage(render_shader_obj.sampler_map[?"u_clipsampler"], surface_get_texture(selection_surf))
+            
+	        alphafix
+	        draw_surface_ext(transform_surf, scale_offset_x, scale_offset_y, zoom, zoom, 0, c_white, 1)
+	        gpu_set_blendmode(bm_normal);
+	        shader_reset();	
+		}
+		else if(adjusting_brightness_contrast){
+	        render_shader_obj = shader_map[?shader_contrast_brightness]
+	         
+            shader_set(shader_contrast_brightness)
+            render_set_uniform("uBrightness", painter_adjust_brightness/100)
+            render_set_uniform("uContrast", painter_adjust_contrast/100)
+            render_set_uniform("u_colmask", 0.0)
+	         with(render_shader_obj)
+            texture_set_stage(sampler_map[?"u_clipsampler"], surface_get_texture(selection_surf))
+            
+            alphafix
+	         
+	        draw_surface_ext(transform_surf, scale_offset_x, scale_offset_y, zoom, zoom, 0, c_white, 1)
+            gpu_set_blendmode(bm_normal);
+            shader_reset();
+		}
+		else{
 		draw_surface_ext(transform_surf, scale_offset_x, scale_offset_y, zoom, zoom, 0, c_white, 1)
-		
+		}
 		render_surface[0] = surface_require(render_surface[0], render_width + 1024, render_height + 1024);
 		surface_set_target(render_surface[0])
 		{

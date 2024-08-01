@@ -45,7 +45,7 @@ function painter_draw(xx, yy, inbounds)
 		draw_painter_selection_outline(c_accent, 1, paint_texture_width * zoom, paint_texture_height * zoom, 0.35, false);
 	}
 
-	if (paint_tool_selected = e_paint.TRANSFORM_SELECTION && !adjusting_hue)
+	if (paint_tool_selected = e_paint.TRANSFORM_SELECTION && !adjusting_hue && !adjusting_brightness_contrast)
 		painter_transform(xx, yy)
 
 	//if (adjusting_hue)

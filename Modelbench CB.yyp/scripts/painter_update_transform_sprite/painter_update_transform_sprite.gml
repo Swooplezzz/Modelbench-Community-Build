@@ -2,6 +2,7 @@
 
 function painter_update_transform_sprite()
 {
+	show_debug_message("updated")
 	if (selection_size[X] > 0 && selection_size[Y] > 0)
 	{
 	    surface_set_target(transform_surf)

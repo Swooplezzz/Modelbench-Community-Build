@@ -10,7 +10,7 @@ function painter_adjust_brightness_contrast()
     render_set_uniform("u_colmask", 0.0)
 	with(render_shader_obj)
     texture_set_stage(sampler_map[?"u_clipsampler"], surface_get_texture(other.selection_surf))
-    
+
     alphafix
 	
     draw_sprite_ext(final_spr, 0, scale_offset_x, scale_offset_y, zoom, zoom,0, c_white, 1)

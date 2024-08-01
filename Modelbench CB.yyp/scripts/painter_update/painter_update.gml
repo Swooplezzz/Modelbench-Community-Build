@@ -112,22 +112,23 @@ function painter_update(view, cam)
 				draw_image(spr_uv_editor_pattern, 0, boxx + (i * 192), boxy + (j * 192), 1, 1, c_text_main, .05)
 		clip_end()
 	#endregion
-
+    if (selection_moved && (paint_tool_selected != e_paint.TRANSFORM_SELECTION ||  (adjusting_brightness_contrast || adjusting_hue)))
+		painter_update_spr = true
+	
 	painter_done(content_mouseon)
 	painter_draw(mousexsnap, mouseysnap, content_mouseon)
 
 	mouse_x_prev = window_mouse_get_x() - scale_offset_x
 	mouse_y_prev = window_mouse_get_y() - scale_offset_y
 	
-	if (selection_moved && (paint_tool_selected != e_paint.TRANSFORM_SELECTION))
+	if (selection_moved && (paint_tool_selected != e_paint.TRANSFORM_SELECTION ||  (adjusting_brightness_contrast || adjusting_hue)))
 	{
 		painter_history_set("transform", final_spr, selection_spr, transform_spr)
 		painter_update_selection_bounds()
 		selection_size = vec2(selection_btmright[0] - selection_topleft[0], selection_btmright[1] - selection_topleft[1])
 		painter_update_transform_sprite()
 	}
-
-	if (selection_moved && paint_tool_selected != e_paint.TRANSFORM_SELECTION)
+    if (selection_moved && (paint_tool_selected != e_paint.TRANSFORM_SELECTION ||  (adjusting_brightness_contrast || adjusting_hue)))
 	{
 
 		selection_moved = false

@@ -35,4 +35,5 @@ function painter_erase_apply()
 		draw_clear_alpha(c_black, 0)
 	}
 	surface_reset_target();
+	painter_update_spr = true;
 }

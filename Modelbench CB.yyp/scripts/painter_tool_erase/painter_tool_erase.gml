@@ -32,6 +32,7 @@ function painter_tool_erase(xx, yy, prevx, prevy)
 			
 			painter_erase_apply();
 		}
+		
 	}
 	surface_reset_target();
 }
