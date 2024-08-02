@@ -27,7 +27,7 @@ function model_load_painter_palettes(map)
 			var paletteobj = new_obj(obj_palette);
 			paletteobj.name = value_get_string(palettemap[?"name"], "")
 			
-			var colorlist = palettemap[?"colorlist"];
+			var colorlist = palettemap[?"colors"];
 			paletteobj.color_list = value_get_array(colorlist)
 			for (var c = 0; c < array_length(paletteobj.color_list); c++)
 			{

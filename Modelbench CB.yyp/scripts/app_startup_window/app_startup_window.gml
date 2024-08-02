@@ -13,6 +13,7 @@ function app_startup_window()
 	log("Windows startup")
 	
 	http_toast_news = null
+	http_lospec_json = null
 	
 	window_width = 1
 	window_height = 1

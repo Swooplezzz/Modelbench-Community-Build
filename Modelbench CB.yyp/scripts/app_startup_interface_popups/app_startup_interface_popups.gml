@@ -12,6 +12,7 @@ function app_startup_interface_popups()
 	// Painter
 	popup_huesat = new_popup("huesat", popup_hue_sat_draw, 300, null, false, true)
 	popup_brightcontrast = new_popup("brightcontrast", popup_bright_contrast_draw, 300, null, false, true)
+	popup_lospec = new_popup("lospec", popup_lospec_draw, 300, null, false, true)
 	
 	with (popup_huesat)
 	{
@@ -24,5 +25,9 @@ function app_startup_interface_popups()
 	{
 		tbx_brightness = new_textbox_ndecimals()	
 		tbx_contrast = new_textbox_ndecimals()
+	}
+	with (popup_lospec)
+	{
+		tbx_name = new_textbox(true,0,"")	
 	}
 }
