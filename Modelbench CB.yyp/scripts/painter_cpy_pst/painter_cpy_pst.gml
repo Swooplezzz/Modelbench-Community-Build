@@ -101,7 +101,7 @@ function painter_cpy_pst()
 			selection_moved = true
 			paint_tool_selected = e_paint.TRANSFORM_SELECTION
 			sprite_delete(tempspr)
-			painter_history_set("transform", final_spr, selection_spr, transform_spr)
+			painter_history_set("transform", final_spr, selection_spr, transform_spr , sel_trn_spr)
 
 			#region dumped code
 			// surface_set_target(color_surf){

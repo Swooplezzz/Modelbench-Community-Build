@@ -47,6 +47,7 @@ function model_load_part(map, root)
 		
 		// Render depth
 		value[e_value.DEPTH] = value_get_real(map[?"depth"], 0)
+		value[e_value.SHOW_BACKFACES] = value_get_real(map[?"backfaces"], 0)
 		part_update_depth()
 		
 		// Color (optional)

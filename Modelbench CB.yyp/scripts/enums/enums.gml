@@ -324,6 +324,7 @@ function enums()
 		DEPTH,
 		IK_TARGET,
 		IK_ANGLE_TARGET,
+		SHOW_BACKFACES,
 		
 		// Non-editable
 		BEND,

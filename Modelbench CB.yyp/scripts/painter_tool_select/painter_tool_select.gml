@@ -166,7 +166,7 @@ function painter_tool_select(xx, yy)
 	
 			selection_size = vec2(selection_btmright[0]-selection_topleft[0],selection_btmright[1]-selection_topleft[1]);
 	
-			painter_history_set("selection", final_spr, selection_spr, transform_spr);
+			painter_history_set("selection", final_spr, selection_spr, transform_spr , sel_trn_spr);
 		}
 	}
 
@@ -213,6 +213,6 @@ function painter_tool_select(xx, yy)
 		}
 		surface_reset_target()
 	
-		painter_history_set("selection", final_spr, selection_spr, transform_spr);
+		painter_history_set("selection", final_spr, selection_spr, transform_spr , sel_trn_spr);
 	}
 }

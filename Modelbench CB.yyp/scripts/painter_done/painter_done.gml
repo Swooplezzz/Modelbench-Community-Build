@@ -57,8 +57,8 @@ function painter_done(inbounds)
 	
 	if (mouse_left_released || mouse_right_released)
 		if (paint_tool_selected = e_paint.BRUSH || paint_tool_selected = e_paint.ERASE || paint_tool_selected = e_paint.SHAPE)
-			painter_history_set("painting", final_spr, selection_spr, transform_spr)
+			painter_history_set("painting", final_spr, selection_spr, transform_spr , sel_trn_spr)
 	
 	if (keybinds[e_keybind.ELEMENT_DELETE].pressed && selection_active)
-		painter_history_set("painting", final_spr, selection_spr, transform_spr)
+		painter_history_set("painting", final_spr, selection_spr, transform_spr , sel_trn_spr)
 }

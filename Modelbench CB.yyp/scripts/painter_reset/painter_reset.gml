@@ -67,7 +67,7 @@ function painter_reset()
 	
 	targetzoom = 12
 	
-	painter_history_set("painting", tex_spr, selection_spr, transform_spr)
+	painter_history_set("painting", tex_spr, selection_spr, transform_spr , sel_trn_spr)
 	
 	zoom = targetzoom
 	scale_offset_x= window_get_width() / 2 - (paint_texture_width*zoom /2 )

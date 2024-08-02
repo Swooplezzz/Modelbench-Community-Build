@@ -10,9 +10,10 @@ var offsety = sprite_get_yoffset(transform_spr);
 sprite_set_offset(transform_spr, 0, 0)
 
 if(paint_tool_selected = e_paint.TRANSFORM_SELECTION)
-painter_history_set("transform", final_spr, selection_spr, transform_spr)
+painter_history_set("transform", final_spr, selection_spr, transform_spr , sel_trn_spr)
 else
-painter_history_set("painting", final_spr, selection_spr, transform_spr)
+painter_history_set("painting", final_spr, selection_spr, transform_spr , sel_trn_spr)
+
 	surface_set_target(color_surf)
 	{
 		alphafix

@@ -126,11 +126,7 @@ function painter_history()
 			
 			transform_spr = sprite_duplicate(painter_history[painter_history_pos].trnsprite)
 			
-			if (painter_history[painter_history_pos].val = "transform")
-			{
-				paint_tool_selected = e_paint.TRANSFORM_SELECTION
-				selection_moved = true;
-			}
+	
 
 			selection_topleft = painter_history[painter_history_pos].pos_tl;
 			selection_pos = painter_history[painter_history_pos].selection_pos;
@@ -139,6 +135,14 @@ function painter_history()
 			sel_trn_spr = painter_history[painter_history_pos].seltrnsprite;
 			selection_active = painter_history[painter_history_pos].sel_active;
 			selection_rot = painter_history[painter_history_pos].selection_rot;
+			if (painter_history[painter_history_pos].val = "transform")
+			{
+				paint_tool_selected = e_paint.TRANSFORM_SELECTION
+				selection_moved = true;
+			}
+			else{
+			painter_get_sel_trn_spr()	
+			}
 			if (!selection_active)
 			{
 				surface_set_target(selection_surf)

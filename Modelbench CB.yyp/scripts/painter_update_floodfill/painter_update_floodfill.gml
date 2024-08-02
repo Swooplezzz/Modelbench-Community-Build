@@ -38,6 +38,6 @@ function painter_update_floodfill()
 		alpha_spr = sprite_create_from_surface(alpha_surf, 0,0,surface_get_width(alpha_surf), surface_get_height(alpha_surf), false, false, 0, 0)
 		
 		painter_create_final_spr()
-		painter_history_set("painting", final_spr, selection_spr, transform_spr)
+		painter_history_set("painting", final_spr, selection_spr, transform_spr , sel_trn_spr)
 	}
 }

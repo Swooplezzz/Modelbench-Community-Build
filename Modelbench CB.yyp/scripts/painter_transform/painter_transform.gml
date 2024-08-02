@@ -109,7 +109,7 @@ function painter_transform(xx, yy)
 		painter_create_final_spr();
 		
 		selection_moved = true;
-		painter_history_set("transform", final_spr, selection_spr, transform_spr)
+		painter_history_set("transform", final_spr, selection_spr, transform_spr , sel_trn_spr)
 	}
 	
 	var selection_center = vec2(scale_offset_x + (selection_pos[X]) * zoom, scale_offset_y + (selection_pos[Y]) * zoom)
@@ -120,8 +120,8 @@ function painter_transform(xx, yy)
 			if (sprite_exists(selection_spr))
 				sprite_delete(selection_spr)
 			selection_spr = sprite_create_from_surface(selection_surf, 0, 0, surface_get_width(selection_surf), surface_get_height(selection_surf), false, false, 0, 0)
-			
-			painter_history_set("transform", final_spr, selection_spr, transform_spr);
+
+			painter_history_set("transform", final_spr, selection_spr, transform_spr , sel_trn_spr);
 			
 			window_busy = ""
 		}

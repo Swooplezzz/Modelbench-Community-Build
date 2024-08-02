@@ -46,6 +46,7 @@ function model_save_part()
 	
 	if (value[e_value.DEPTH] != 0)
 		json_save_var("depth", value[e_value.DEPTH])
+	json_save_var("backfaces", value[e_value.SHOW_BACKFACES])
 	
 	model_save_texture()
 	

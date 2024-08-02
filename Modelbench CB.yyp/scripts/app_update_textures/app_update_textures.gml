@@ -14,7 +14,7 @@ function app_update_textures()
 		{
 			with (obj_texture)
 				tex_refresh(id)
-			
+			painter_reset()
 			textures_list.update = true
 			tex_preview.update = true
 			

@@ -622,6 +622,7 @@
 		"windmaximumz": "Maximum Z",
 		"windmaximum": "Maximum",
 		"depth": "Render depth",
+		"showbackfaces": "Show backfaces",
 		"openpositiontab": "Open position tab",
 		"openpositiontabhelp": "Automatically opens this part's position tab in Mine-imator."
 	},

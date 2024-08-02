@@ -7,6 +7,7 @@ attribute vec4 in_Colour;                    // (r,g,b,a)
 attribute vec2 in_TextureCoord;              // (u,v)
 
 varying vec2 vTexCoord;
+varying vec4 vColor;
 
 void main()
 {
@@ -14,4 +15,5 @@ void main()
     gl_Position = gm_Matrices[MATRIX_WORLD_VIEW_PROJECTION] * object_space_pos;
 
     vTexCoord = in_TextureCoord;
+    vColor = in_Colour;
 }
