@@ -28,9 +28,17 @@ function el_update_part()
 	if (object_index != app)
 	{
 		if (value[e_value.TEXTURE_OBJ] = null)
+		{
 			res = parent.res
+			texture_scroll_speed = parent.texture_scroll_speed
+			texture_scroll_direction = parent.texture_scroll_direction
+		}
 		else
+		{
 			res = value[e_value.TEXTURE_OBJ]
+			texture_scroll_speed = value[e_value.TEXTURE_SCROLL_SPEED]
+			texture_scroll_direction = value[e_value.TEXTURE_SCROLL_DIRECTION]
+		}
 	}
 	
 	// Colors

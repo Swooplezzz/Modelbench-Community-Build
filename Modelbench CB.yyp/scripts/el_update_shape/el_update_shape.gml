@@ -19,9 +19,17 @@ function el_update_shape()
 	
 	// Texture
 	if (value[e_value.TEXTURE_OBJ] = null)
+	{
 		res = parent.res
+		texture_scroll_speed = other.texture_scroll_speed
+		texture_scroll_direction = other.texture_scroll_direction
+	}
 	else
+	{
 		res = value[e_value.TEXTURE_OBJ]
+		texture_scroll_speed = value[e_value.TEXTURE_SCROLL_SPEED]
+		texture_scroll_direction = value[e_value.TEXTURE_SCROLL_DIRECTION]
+	}
 	
 	if (res = null)
 		texture_size = vec2(sprite_get_width(spr_empty))

@@ -6,7 +6,7 @@ function popup_about_draw()
 	draw_box(dx, dy, dw, 144, false, c_overlay, a_overlay)
 	
 	// Close
-	if (draw_button_icon("aboutclose", dx + dw - 12 - 28, dy + 8, 28, 28, false, icons.CLOSE, null, false))
+	if (draw_button_icon("aboutclose", dx + dw - 12 - 26, dy + 10, 28, 28, false, icons.CLOSE, null, false))
 		popup_close()
 	
 	// Logo
@@ -24,12 +24,12 @@ function popup_about_draw()
 	textx += string_width_font(text_get("aboutversion", modelbench_version_full), font_value)
 	
 	draw_label(text_get("aboutreleasedate", modelbench_version_date), textx, dy + 114, fa_left, fa_bottom, c_text_secondary, a_text_secondary, font_value)
-	draw_label(text_get("aboutforversion", "Mine-imator 2.0.2+"), content_x + dw/2, dy + 114 + 19, fa_middle, fa_bottom, c_text_secondary, a_text_secondary, font_value)
+	draw_label(text_get("aboutforversion", "Mine-imator 2.0.2 Community Build 1.0.0+"), content_x + dw/2, dy + 114 + 19, fa_middle, fa_bottom, c_text_secondary, a_text_secondary, font_value)
 	
 	dy += 128 + 48
 	dx = content_x + 64
 	
-	// Development
+	// Mod development
 	dy += 12
 	draw_label(text_get("aboutmoddevelopment"), dx, dy, fa_left, fa_bottom, c_text_tertiary, a_text_tertiary, font_subheading)
 	dy += 26
@@ -37,9 +37,9 @@ function popup_about_draw()
 	dy += 19
 	draw_label("mbanders", dx, dy, fa_left, fa_bottom, c_text_secondary, a_text_secondary, font_label)
 	
-	
+	// Created by
 	dy += 34
-	draw_label(text_get("aboutdevelopment"), dx, dy, fa_left, fa_bottom, c_text_tertiary, a_text_tertiary, font_subheading)
+	draw_label(text_get("aboutmodelbenchcreator"), dx, dy, fa_left, fa_bottom, c_text_tertiary, a_text_tertiary, font_subheading)
 	dy += 26
 	draw_label("Nimi", dx, dy, fa_left, fa_bottom, c_text_secondary, a_text_secondary, font_label)
 	
@@ -60,7 +60,7 @@ function popup_about_draw()
 	dy += 26
 	
 	var btlist = [
-		"03Aaron",
+		"03Aaron_",
 		"AhmedAAK",
 		"Alpha Toostrr",
 		"AnimaCryses",
@@ -69,13 +69,13 @@ function popup_about_draw()
 		"Binky214",
 		"BNMBrandonMI",
 		"Cade [CaZaKoJa]",
-		"Charlojane1",
+		"CharloJane",
 		"Chrisation",
 		"DarthLilo",
 		"Elkav",
 		"ExoticBuilder",
 		"FrostyIzHere",
-		"IamPahealCringe",
+		"Hexical Brine",
 		"JacksieBoi",
 		"Jnick",
 		"Jossamations",

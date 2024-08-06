@@ -26,7 +26,7 @@ function action_group_reset()
 		case e_context_group.MATERIAL: vid = e_value.TEXTURE_OBJ; size = 7; break;
 		case e_context_group.APPEARANCE: vid = e_value.INFLATE; size = 9; break;
 		case e_context_group.WIND: vid = e_value.WIND_AXIS;  size = 5; break;
-		case e_context_group.MINEIMATOR: vid = e_value.OPEN_POSITION_TAB; size = 2; break;
+		case e_context_group.MINEIMATOR: vid = e_value.OPEN_POSITION_TAB; size = 3; break;
 	}
 	
 	el_value_set_start(action_group_reset, false)

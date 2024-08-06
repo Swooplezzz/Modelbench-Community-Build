@@ -61,20 +61,20 @@ function model_load_shape(map)
 		{
 			// Inherit
 			texture_name = ""
-			texture_size = other.texture_size
+			
+			texture_size = parent.texture_size
 			value[e_value.TEXTURE_OBJ] = null
-			res = other.res
+			res = parent.res
 		}
+			
+		value[e_value.TEXTURE_SCROLL_SPEED] = value_get_real(map[?"texture_scroll_speed"], 0)
+		value[e_value.TEXTURE_SCROLL_DIRECTION] = value_get_real(map[?"texture_scroll_direction"], 0)
 		
 		// Visibility
 		hidden = !value_get_real(map[?"visible"], true)
 		
 		// Locked
 		locked = value_get_real(map[?"locked"], false)
-		
-		// Texture scroll
-		value[e_value.TEXTURE_SCROLL_SPEED] = value_get_real(map[?"texture_scroll_speed"], 0)
-		value[e_value.TEXTURE_SCROLL_DIRECTION] = value_get_real(map[?"texture_scroll_direction"], 0)
 		
 		// Color (optional)
 		value[e_value.USE_MODEL_COLOR] = value_get_real(map[?"use_model_color"], false)

@@ -10,12 +10,6 @@ function render_world_part()
 	
 	render_set_culling(!value[e_value.SHOW_BACKFACES])
 	
-	render_set_uniform_vec2("uTextureOffset",
-							(current_step / 60) * value[e_value.TEXTURE_SCROLL_SPEED] * sin(degtorad(value[e_value.TEXTURE_SCROLL_DIRECTION])),
-							(current_step / 60) * value[e_value.TEXTURE_SCROLL_SPEED] * cos(degtorad(value[e_value.TEXTURE_SCROLL_DIRECTION])))
-	
-	show_debug_message((current_step / 60) * value[e_value.TEXTURE_SCROLL_SPEED] * sin(degtorad(value[e_value.TEXTURE_SCROLL_DIRECTION])))
-	
 	for (var s = 0; s < ds_list_size(shape_list); s++)
 	{
 		var shape = shape_list[|s];
@@ -111,6 +105,11 @@ function render_world_part()
 				highlight_prev = highlight
 			}
 			
+			render_set_uniform_vec2("uTextureOffset",
+									(current_step / 60) * texture_scroll_speed * sin(degtorad(texture_scroll_direction)),
+									(current_step / 60) * texture_scroll_speed * cos(degtorad(texture_scroll_direction)))
+			show_debug_message((current_step / 60) * texture_scroll_speed * sin(degtorad(texture_scroll_direction)))
+	
 			if ((render_mode = e_render_mode.CLICK) && app.setting_hide_shapes)
 				render_set_uniform_color("uShape", id.parent, 1)
 			else

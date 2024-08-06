@@ -819,11 +819,11 @@
 		"releasedate": ", released %1",
 		"forversion": "For %1",
 		"credits": "CREDITS",
-		"development": "MODELBENCH CREATOR",
 		"moddevelopment": "MOD DEVELOPMENT",
+		"modelbenchcreator": "MODELBENCH CREATOR",
 		"uibranding": "UI & BRANDING",
-		"specialthanks": "SPECIAL THANKS",
-		"betatesting": "BETA TESTING"
+		"betatesting": "BETA TESTING",
+		"specialthanks": "SPECIAL THANKS"
 	},
 	"shortcut/": {
 		"select": "Select",

@@ -76,7 +76,7 @@ function action_group_copy()
 		
 		case e_context_group.MINEIMATOR:
 		{
-			context_group_copy_list[|group] = array(el_edit.value[e_value.OPEN_POSITION_TAB], el_edit.value[e_value.DEPTH])
+			context_group_copy_list[|group] = array(el_edit.value[e_value.OPEN_POSITION_TAB], el_edit.value[e_value.SHOW_BACKFACES], el_edit.value[e_value.DEPTH])
 			return;
 		}
 	}

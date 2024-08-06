@@ -34,10 +34,14 @@ function model_load_part(map, root)
 		{
 			// Inherit
 			texture_name = ""
+			
 			texture_size = other.texture_size
 			res = other.res
 			value[e_value.TEXTURE_OBJ] = null
 		}
+			
+		texture_scroll_speed = value_get_real(map[?"texture_scroll_speed"], 0)
+		texture_scroll_direction = value_get_real(map[?"texture_scroll_direction"], 0)
 		
 		// Visibility
 		hidden = !value_get_real(map[?"visible"], true)

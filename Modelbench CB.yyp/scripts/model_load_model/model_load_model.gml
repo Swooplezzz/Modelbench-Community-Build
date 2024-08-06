@@ -27,6 +27,11 @@ function model_load_model(map)
 		res.scale = value_get_real(map[?"texture_scale"], 1)
 	}
 	
+	// Default texture scroll
+	texture_scroll_speed = 0
+	texture_scroll_direction = 0
+	
+	// Color
 	color_inherit = false
 	color_blend = c_white
 	color_alpha = 1
@@ -58,6 +63,4 @@ function model_load_model(map)
 		if (part > 0)
 			ds_list_add(part_list, part)
 	}
-	
-
 }
