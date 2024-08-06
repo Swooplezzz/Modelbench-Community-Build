@@ -16,7 +16,8 @@ function element_event_create()
 	parent = null
 	parent_is_selected = false
 	parent_hover = false
-	
+	texture_scroll_speed = 0
+	texture_scroll_direction = 0
 	selected = false
 	color = make_color_hsv(random(255), 255, 255)
 	res = null

@@ -30,8 +30,10 @@ function el_update_part()
 		if (value[e_value.TEXTURE_OBJ] = null)
 		{
 			res = parent.res
+			if(parent != app){
 			texture_scroll_speed = parent.texture_scroll_speed
 			texture_scroll_direction = parent.texture_scroll_direction
+			}
 		}
 		else
 		{

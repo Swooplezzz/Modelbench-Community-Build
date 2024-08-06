@@ -22,6 +22,7 @@ uniform float uWindEnable;
 uniform float uWindTerrain;
 uniform float uWindSpeed;
 uniform float uWindStrength;
+uniform vec2 uTextureOffset;
 
 vec3 getWind()
 {
@@ -39,7 +40,7 @@ void main()
 	vNormal = in_Normal;
 	vDepth = (gm_Matrices[MATRIX_WORLD_VIEW] * vec4(in_Position + off, 1.0)).z;
 	vColor = in_Colour * uBlendColor;
-	vTexCoord = in_TextureCoord;
+	vTexCoord = in_TextureCoord +uTextureOffset;
 	
 	gl_Position = gm_Matrices[MATRIX_WORLD_VIEW_PROJECTION] * vec4(in_Position + off, 1.0);
 }
