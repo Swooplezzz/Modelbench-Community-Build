@@ -256,12 +256,6 @@ function enums()
 		SCA_Z,
 		BEND_LOCK,
 		
-		// Painter
-		PRIMARY_COLOR,
-		SECONDARY_COLOR,
-		BRUSH_ALPHA,
-		BRUSH_WIDTH,
-		
 		// Material
 		TEXTURE_OBJ,
 		USE_MODEL_COLOR,
@@ -322,9 +316,9 @@ function enums()
 		// Mine-imator
 		OPEN_POSITION_TAB,
 		DEPTH,
+		SHOW_BACKFACES,
 		IK_TARGET,
 		IK_ANGLE_TARGET,
-		SHOW_BACKFACES,
 		
 		// Non-editable
 		BEND,

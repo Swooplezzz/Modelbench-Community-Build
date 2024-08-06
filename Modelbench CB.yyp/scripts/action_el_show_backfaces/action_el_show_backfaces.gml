@@ -1,6 +1,5 @@
-/// action_el_show_backfaces(val)
+/// action_el_show_backfaces(value)
 /// @arg value
-/// @arg add
 
 function action_el_show_backfaces(val)
 {
@@ -33,7 +32,7 @@ function action_el_show_backfaces(val)
 	else
 	{
 		var hobj = history_save_var_start(action_el_show_backfaces, true);
-		show_debug_message(val)
+		
 		with (obj_model_element)
 			if (element_type = TYPE_PART && selected)
 				action_el_show_backfaces_tree(id, val, hobj)

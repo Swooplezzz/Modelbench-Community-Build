@@ -8,6 +8,8 @@ function render_world_part()
 	
 	var rendermatrix;
 	
+	render_set_culling(!value[e_value.SHOW_BACKFACES])
+	
 	for (var s = 0; s < ds_list_size(shape_list); s++)
 	{
 		var shape = shape_list[|s];

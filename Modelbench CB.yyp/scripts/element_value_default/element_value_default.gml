@@ -17,7 +17,7 @@ function element_value_default(vid)
 		case e_value.MIX_COLOR: return c_black
 		
 		// Bend
-		case e_value.BEND_OFFSET: return 0
+		case e_value.BEND_OFFSET:
 		case e_value.BEND_AXIS_X:
 		case e_value.BEND_AXIS_Y:
 		case e_value.BEND_AXIS_Z: return 0
@@ -48,8 +48,8 @@ function element_value_default(vid)
 		case e_value.WIND_AXIS: return e_vertex_wave.NONE
 		
 		// Misc
-		case e_value.TEXTURE_OBJ: return null
-		case e_value.IK_TARGET: return null
+		case e_value.TEXTURE_OBJ:
+		case e_value.IK_TARGET:
 		case e_value.IK_ANGLE_TARGET: return null
 	}
 	

@@ -7,8 +7,7 @@ function model_save_part()
 	if (ds_map_exists(save_name_count_map, purename) || purename = "")
 	{
 		var count, savename, purename;
-
-
+		
 		count = save_name_count_map[?purename]
 		savename = ""
 		
@@ -46,7 +45,9 @@ function model_save_part()
 	
 	if (value[e_value.DEPTH] != 0)
 		json_save_var("depth", value[e_value.DEPTH])
-	json_save_var("backfaces", value[e_value.SHOW_BACKFACES])
+	
+	if (value[e_value.SHOW_BACKFACES])
+		json_save_var("backfaces", value[e_value.SHOW_BACKFACES])
 	
 	model_save_texture()
 	
