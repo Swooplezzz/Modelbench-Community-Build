@@ -67,11 +67,11 @@ function painter_tool_select(xx, yy)
 
 		if (mouse_left || mouse_right)
 		{
-		    if(xx + 0.5 > selection_topleft_prev[0])
-			    selection_btmright[0] = xx + 0.5
+		    if(xx + 1.5 > selection_topleft_prev[0])
+			    selection_btmright[0] = xx + 1.5
 
-		    if(yy + 0.5 > selection_topleft_prev[1])
-			    selection_btmright[1] = yy + 0.5
+		    if(yy + 1.5 > selection_topleft_prev[1])
+			    selection_btmright[1] = yy + 1.5
 	
 			if(selection_btmright[0] < selection_btmright_prev[0])
 			    selection_btmright[0] = selection_btmright_prev[0]
@@ -79,10 +79,10 @@ function painter_tool_select(xx, yy)
 			if(selection_btmright[1] < selection_btmright_prev[1])
 			    selection_btmright[1] = selection_btmright_prev[1]
 		
-			if(xx + 0.5 < selection_topleft_prev[0])
+			if(xx + 0.5 <= selection_topleft_prev[0])
 			    selection_topleft[0] = xx + 0.5
 			
-			if(yy + 0.5 < selection_topleft_prev[1])
+			if(yy + 0.5 <= selection_topleft_prev[1])
 			    selection_topleft[1] = yy + 0.5
 	
 			if(selection_topleft[0] > selection_topleft_prev[0])
@@ -111,14 +111,27 @@ function painter_tool_select(xx, yy)
 				}
 				
 				draw_sprite_ext(selection_spr, 0, 0, 0, 1, 1, 0, c_black, 1)
+				var addx, addy, subx, suby;
+				addx = 0;
+				addy = 0;
+				subx = 1;
+				suby = 1;
+				if(xx + 1 >= selection_pos[X]){
+				  addx = 1
+				  subx = 0
+				}
+				if(yy + 1 >= selection_pos[Y]){
+				  addy = 1
+				  suby = 0
+				}
 				if(mouse_left){
 				gpu_set_blendmode(bm_subtract)
-		        draw_rectangle_color(selection_pos[X], selection_pos[Y], xx, yy, c_white, c_white, c_white, c_white, false)
+		        draw_rectangle_color(selection_pos[X] + subx, selection_pos[Y] + suby, xx+ addx, yy+ addy, c_white, c_white, c_white, c_white, false)
 		        gpu_set_blendmode(bm_normal)
 				} 
 				else if(mouse_right && selection_active){
 	            gpu_set_blendmode(bm_normal)
-		        draw_rectangle_color(selection_pos[X], selection_pos[Y], xx, yy, c_black, c_black, c_black, c_black, false)
+		        draw_rectangle_color(selection_pos[X] + subx, selection_pos[Y] + suby, xx + addx, yy+ addy, c_black, c_black, c_black, c_black, false)
 				}
 			}
 			surface_reset_target()
