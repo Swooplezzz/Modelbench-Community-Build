@@ -50,6 +50,10 @@ function model_load_part(map, root)
 		value[e_value.SHOW_BACKFACES] = value_get_real(map[?"backfaces"], 0)
 		part_update_depth()
 		
+		// Texture scroll
+		value[e_value.TEXTURE_SCROLL_SPEED] = value_get_real(map[?"texture_scroll_speed"], 0)
+		value[e_value.TEXTURE_SCROLL_DIRECTION] = value_get_real(map[?"texture_scroll_direction"], 0)
+		
 		// Color (optional)
 		value[e_value.INHERIT_COLOR] = value_get_real(map[?"color_inherit"], true)
 		value[e_value.BLEND_COLOR] = value_get_color(map[?"color_blend"], c_white)

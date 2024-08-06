@@ -5,7 +5,7 @@
 		"locale": "en-US",
 		"translator": "Nimi, Swooplezz",
 		"forversion": "1.1.0 CB",
-		"lastchange": "2023.06.10"
+		"lastchange": "2023.08.06"
 	},
 	"startup/": {
 		"version": "v %1",
@@ -585,11 +585,11 @@
 				"lower": "Lower"
 			}
 		},
-		"texture": "Texture",
-		"iktarget": "IK target",
-		"ikangle": "Angle target",
-		"inherittexture": "Inherit texture",
 		"nopart": "None",
+		"texture": "Texture",
+		"inherittexture": "Inherit texture",
+		"texturescrollspeed": "Scroll speed",
+		"texturescrolldirection": "Scroll direction",
 		"usemodelcolor": "Use model color",
 		"inheritcolor": "Inherit parent color",
 		"inheritcolorhelp": "Inherit color options including opacity and emissive.",
@@ -624,7 +624,9 @@
 		"depth": "Render depth",
 		"showbackfaces": "Show backfaces",
 		"openpositiontab": "Open position tab",
-		"openpositiontabhelp": "Automatically opens this part's position tab in Mine-imator."
+		"openpositiontabhelp": "Automatically opens this part's position tab in Mine-imator.",
+		"iktarget": "IK target",
+		"ikangle": "Angle target"
 	},
 	"coloreditor/": {
 		"primarycolor": "Primary color",

@@ -9,6 +9,12 @@ function model_save_shape()
 	
 	model_save_texture()
 	
+	if (value[e_value.TEXTURE_SCROLL_SPEED] != 0)
+		json_save_var("texture_scroll_speed", value[e_value.TEXTURE_SCROLL_SPEED])
+	
+	if (value[e_value.TEXTURE_SCROLL_DIRECTION] != 0)
+		json_save_var("texture_scroll_direction", value[e_value.TEXTURE_SCROLL_DIRECTION])
+	
 	model_save_colors()
 	
 	json_save_var_point3D("from", point3D(value[e_value.FROM_X], value[e_value.FROM_Y], value[e_value.FROM_Z]))

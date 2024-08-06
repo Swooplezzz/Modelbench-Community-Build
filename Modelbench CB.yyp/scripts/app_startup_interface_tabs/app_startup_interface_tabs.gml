@@ -188,6 +188,9 @@ function app_startup_interface_tabs()
 		material = tab_add_category("material", [icons.SPHERE_MATERIAL_SMALL, icons.SPHERE_MATERIAL_SMALL__DARK], tab_element_editor_material, false)
 		with (material)
 		{
+			tbx_texture_scroll_speed = new_textbox_decimals()
+			tbx_texture_scroll_direction = new_textbox_ndecimals()
+			tbx_texture_scroll_direction.suffix = "°"
 			tbx_mix_amount = new_textbox_integer()
 			tbx_mix_amount.suffix = "%"
 			tbx_opacity = new_textbox_integer()
