@@ -8,6 +8,9 @@ attribute vec2 in_TextureCoord;
 attribute vec4 in_Wave;
 attribute vec3 in_Tangent;
 
+// Texture
+uniform vec2 uTextureOffset;
+
 uniform float uNear;
 uniform float uFar;
 
@@ -32,7 +35,7 @@ vec3 getWind()
 
 void main()
 {
-	vTexCoord = in_TextureCoord;
+	vTexCoord = in_TextureCoord + uTextureOffset;
 	
 	gl_Position = gm_Matrices[MATRIX_WORLD_VIEW_PROJECTION] * vec4(in_Position + getWind(), 1.0);
 	vDepth = (gl_Position.z - uNear) / (uFar - uNear);

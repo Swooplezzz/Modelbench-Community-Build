@@ -2,7 +2,7 @@
 /// @arg shapesurf
 /// @arg normalsurf
 
-function shader_shape_outline_set(shapesurf, normalssurf, depthsurf)
+function shader_shape_outline_set(shapesurf, normalssurf) //, depthsurf
 {
 	texture_set_stage(sampler_map[?"uShapeBuffer"], surface_get_texture(shapesurf))
 	texture_set_stage(sampler_map[?"uNormalBuffer"], surface_get_texture(normalssurf))

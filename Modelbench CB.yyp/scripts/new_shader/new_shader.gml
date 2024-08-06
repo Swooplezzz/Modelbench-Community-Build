@@ -13,9 +13,9 @@ function new_shader(argument0)
 		sampler_map = ds_map_create()
 		
 		// Set common uniforms
-		
 		new_shader_sampler("uTexture")
 		new_shader_uniform("uTexScale")
+		new_shader_uniform("uTextureOffset")
 		new_shader_uniform("uBlendColor")
 		
 		// Wind

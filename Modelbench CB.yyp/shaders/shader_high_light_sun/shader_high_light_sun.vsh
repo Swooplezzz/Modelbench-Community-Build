@@ -20,6 +20,9 @@ varying vec2 vTexCoord;
 varying vec4 vScreenCoord;
 varying float vBrightness;
 
+// Texture
+uniform vec2 uTextureOffset;
+
 // Wind
 uniform float uTime;
 uniform float uWindEnable;
@@ -41,7 +44,7 @@ void main()
 	vec3 off = getWind();
 	vPosition = (gm_Matrices[MATRIX_WORLD] * vec4(in_Position + off, 1.0)).xyz;
 	vNormal = (gm_Matrices[MATRIX_WORLD] * vec4(in_Normal, 0.0)).xyz;
-	vTexCoord = in_TextureCoord;
+	vTexCoord = in_TextureCoord + uTextureOffset;
 	vScreenCoord = uLightMatrix * vec4(vPosition, 1.0);
 	
 	// Single normal for ground

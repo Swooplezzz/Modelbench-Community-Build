@@ -22,6 +22,9 @@ function shader_use()
 	if (!is_undefined(uniform_map[?"uCameraPosition"]) && uniform_map[?"uCameraPosition"] > -1)
 		render_set_uniform_vec3("uCameraPosition", cam_from[X], cam_from[Y], cam_from[Z])
 	
+	if (!is_undefined(uniform_map[?"uTextureOffset"]) && uniform_map[?"uTextureOffset"] > -1)
+		render_set_uniform_vec2("uTextureOffset", 0, 0)
+	
 	// Init script
 	if (script > -1)
 		script_execute(script)

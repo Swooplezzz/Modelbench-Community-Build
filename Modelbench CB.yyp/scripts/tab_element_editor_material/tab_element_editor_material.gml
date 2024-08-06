@@ -27,7 +27,7 @@ function tab_element_editor_material()
 	if (setting_feature_set = e_features.MIMODEL)
 	{
 		// Texture scrolling
-		/*
+		
 		if (el_edit.value[e_value.TEXTURE_OBJ] != null)
 		{
 			// Speed
@@ -40,7 +40,7 @@ function tab_element_editor_material()
 			draw_dragger("elementeditortexturescrolldirection", dx, dy, dragger_width, el_edit.value[e_value.TEXTURE_SCROLL_DIRECTION], 0.1, -no_limit, no_limit, 0, 1, element_editor.material.tbx_texture_scroll_direction, action_el_texture_scroll_direction)
 			tab_next()
 		}
-		*/
+		
 		
 		if (el_edit.element_type = TYPE_SHAPE)
 		{

@@ -10,6 +10,9 @@ attribute vec3 in_Tangent;
 
 varying vec2 vTexCoord;
 
+// Texture
+uniform vec2 uTextureOffset;
+
 // Wind
 uniform float uTime;
 uniform float uWindEnable;
@@ -28,6 +31,6 @@ vec3 getWind()
 
 void main()
 {
-	vTexCoord = in_TextureCoord;
+	vTexCoord = in_TextureCoord + uTextureOffset;
 	gl_Position = gm_Matrices[MATRIX_WORLD_VIEW_PROJECTION] * vec4(in_Position + getWind(), 1.0);
 }

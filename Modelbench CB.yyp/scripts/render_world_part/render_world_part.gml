@@ -10,6 +10,12 @@ function render_world_part()
 	
 	render_set_culling(!value[e_value.SHOW_BACKFACES])
 	
+	render_set_uniform_vec2("uTextureOffset",
+							(current_step / 60) * value[e_value.TEXTURE_SCROLL_SPEED] * sin(degtorad(value[e_value.TEXTURE_SCROLL_DIRECTION])),
+							(current_step / 60) * value[e_value.TEXTURE_SCROLL_SPEED] * cos(degtorad(value[e_value.TEXTURE_SCROLL_DIRECTION])))
+	
+	show_debug_message((current_step / 60) * value[e_value.TEXTURE_SCROLL_SPEED] * sin(degtorad(value[e_value.TEXTURE_SCROLL_DIRECTION])))
+	
 	for (var s = 0; s < ds_list_size(shape_list); s++)
 	{
 		var shape = shape_list[|s];
