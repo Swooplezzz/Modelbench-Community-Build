@@ -49,63 +49,98 @@ function popup_about_draw()
 	dy += 26
 	draw_label("Voxy", dx, dy, fa_left, fa_bottom, c_text_secondary, a_text_secondary, font_label)
 	
-		dx += 130 + 24
+	dx += 130 + 24
 	dy = content_y + 176
-	dy += 12
+	//dx -= 130 + 24
+	//dy += 34
 	
 	// Beta testing
-
+	dy += 12
 	draw_label(text_get("aboutbetatesting"), dx, dy, fa_left, fa_bottom, c_text_tertiary, a_text_tertiary, font_subheading)
 	dy += 26
-	draw_label("SoundsDotZip", dx, dy, fa_left, fa_bottom, c_text_secondary, a_text_secondary, font_label)
 	
-	dy += 19
+	var btlist = [
+		"03Aaron",
+		"AhmedAAK",
+		"Alpha Toostrr",
+		"AnimaCryses",
+		"beenabun",
+		"BeinBian",
+		"Binky214",
+		"BNMBrandonMI",
+		"Cade [CaZaKoJa]",
+		"Charlojane1",
+		"Chrisation",
+		"DarthLilo",
+		"Elkav",
+		"ExoticBuilder",
+		"FrostyIzHere",
+		"IamPahealCringe",
+		"JacksieBoi",
+		"Jnick",
+		"Jossamations",
+		"KaylaGT3R",
+		"KJMineImator",
+		"Mello",
+		"myradoesstuff",
+		"Nugcon",
+		"Rollo",
+		"ScarletCassette",
+		"SoundsDotZip",
+		"StarWeevil",
+		"Supah.exe",
+		"TahoeBeatz",
+		"Thaliaphobia",
+		"TME",
+		"__Mine__"
+	]
 	
-	draw_label("Jossamations", dx, dy, fa_left, fa_bottom, c_text_secondary, a_text_secondary, font_label)
-	dy += 19
-	draw_label("BNMBrandonMI", dx, dy, fa_left, fa_bottom, c_text_secondary, a_text_secondary, font_label)
-	dy += 19
-	draw_label("TME", dx, dy, fa_left, fa_bottom, c_text_secondary, a_text_secondary, font_label)
-	dy += 19
-	draw_label("03Aaron", dx, dy, fa_left, fa_bottom, c_text_secondary, a_text_secondary, font_label)
-	dy += 19
-	draw_label("Chrisation", dx, dy, fa_left, fa_bottom, c_text_secondary, a_text_secondary, font_label)
-	dy += 19
-	draw_label("AlphaToostrr", dx, dy, fa_left, fa_bottom, c_text_secondary, a_text_secondary, font_label)
-	dy += 19
-	draw_label("Jnick", dx, dy, fa_left, fa_bottom, c_text_secondary, a_text_secondary, font_label)
-	dy += 19
-	draw_label("AnimaCryses", dx, dy, fa_left, fa_bottom, c_text_secondary, a_text_secondary, font_label)
-		dy += 19
-	draw_label("DarthLilo", dx, dy, fa_left, fa_bottom, c_text_secondary, a_text_secondary, font_label)
-		dy += 19
-	draw_label("ExoticBuilder", dx, dy, fa_left, fa_bottom, c_text_secondary, a_text_secondary, font_label)
-	// Special thanks
-		dy += 19
+	for (var i = 0; i < array_length(btlist); i++)
+	{
+		draw_label(btlist[i], dx, dy, fa_left, fa_bottom, c_text_secondary, a_text_secondary, font_label)
+		
+		if (i % 3 = 2)
+		{
+			dx -= (130 + 24) * 2
+			dy += 19
+		}
+		else
+			dx += 130 + 24
+	}
 	
-	draw_label("JacksieBoi", dx, dy, fa_left, fa_bottom, c_text_secondary, a_text_secondary, font_label)
-		dy += 19
+	//dx += 130 + 24
+	//dy = content_y + 176
 	
-	draw_label("_Mine_", dx, dy, fa_left, fa_bottom, c_text_secondary, a_text_secondary, font_label)
-		dy = content_y + 176
+	// Beta testing
 	dy += 12
-	dx += 130 + 24
-	
-
 	draw_label(text_get("aboutspecialthanks"), dx, dy, fa_left, fa_bottom, c_text_tertiary, a_text_tertiary, font_subheading)
 	dy += 26
-	draw_button_text("David", dx, dy, open_url, "https://www.stuffbydavid.com", "https://www.stuffbydavid.com", font_label)
-	dy += 19
-	for (var i = 0; i < ds_list_size(special_thanks_list); i++)
+	
+	var stlist = [
+		"9redwoods",
+		"AnxiousCynic",
+		"David",
+		"Hozq",
+		"KeepOnChucking",
+		"Marvin",
+		"Nimi",
+		"SKIBBZ",
+		"UpgradedMoon",
+		"Vash"
+	]
+	
+	for (var i = 0; i < array_length(stlist); i++)
 	{
-		draw_label(special_thanks_list[|i], dx, dy, fa_left, fa_bottom, c_text_secondary, a_text_secondary, font_label)
-		dy += 19
+		draw_label(stlist[i], dx, dy, fa_left, fa_bottom, c_text_secondary, a_text_secondary, font_label)
 		
-		// Next row
-		if (i = 10)
+		if (i % 3 = 2)
 		{
-			dx += 130 + 24
-			dy = content_y + 176 + 38
+			dx -= (130 + 24) * 2
+			dy += 19
 		}
+		else
+			dx += 130 + 24
 	}
+	
+	dy += (12 + 32)
 }
