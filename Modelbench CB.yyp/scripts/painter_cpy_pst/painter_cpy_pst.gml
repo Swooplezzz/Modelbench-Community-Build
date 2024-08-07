@@ -120,7 +120,7 @@ function painter_cpy_pst()
 			// alphafix
 			// draw_sprite_ext(tempspr, 0,0,0,1,1,0, c_white, 1)
 			// shader_reset()
-			//   gpu_set_colorwriteenable(true, true, true, true);
+			//	gpu_set_colorwriteenable(true, true, true, true);
 
 			// gpu_set_blendmode(bm_normal);
 			// }
@@ -148,7 +148,7 @@ function painter_cpy_pst()
 		clipboard_load_image(app.model_folder + "\\clipboard.png")
 		
 		painter_clear_selection()
-	    painter_create_final_spr()
+		painter_create_final_spr()
 		surface_set_target(selection_surf)
 		{
 			draw_clear_alpha(c_black, 0)
@@ -161,7 +161,7 @@ function painter_cpy_pst()
 	if (keybinds[e_keybind.ELEMENT_DELETE].pressed && selection_active)
 	{
 		painter_clear_selection()
-	    painter_create_final_spr()
+		painter_create_final_spr()
 		surface_set_target(selection_surf)
 		{
 			draw_clear_alpha(c_black, 0)

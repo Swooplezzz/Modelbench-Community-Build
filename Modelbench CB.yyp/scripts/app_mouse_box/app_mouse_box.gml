@@ -28,7 +28,7 @@ function app_mouse_box(boxx, boxy, boxw, boxh, angle = 0, center = [0,0])
 				my <= boxy &&
 				mx < boxx + boxw &&
 				my > boxy + boxh && window_busy = "" && popup_ani_type = "")
-    else
+	else
 		return (mx <= boxx &&
 				my <= boxy &&
 				mx > boxx + boxw &&

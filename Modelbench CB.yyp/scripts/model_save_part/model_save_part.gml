@@ -78,9 +78,9 @@ function model_save_part()
 		json_save_var("show_position", true)
 		
 	//if (value[e_value.IK_TARGET] != null)
-	//    json_save_var("ik_target", save_id_get(value[e_value.IK_TARGET]))
+	//	json_save_var("ik_target", save_id_get(value[e_value.IK_TARGET]))
 	//if (value[e_value.IK_ANGLE_TARGET] != null)
-	//    json_save_var("ik_angle_target", save_id_get(value[e_value.IK_ANGLE_TARGET]))
+	//	json_save_var("ik_angle_target", save_id_get(value[e_value.IK_ANGLE_TARGET]))
 	if (locked)
 		json_save_var_bool("locked", true)
 	

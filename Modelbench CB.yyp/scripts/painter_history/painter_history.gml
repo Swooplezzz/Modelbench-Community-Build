@@ -45,7 +45,7 @@ function painter_history()
 			selection_spr = sprite_duplicate(painter_history[painter_history_pos].selsprite)
 			surface_set_target(selection_surf)
 			{
-		        draw_sprite(selection_spr,0,0,0)
+				draw_sprite(selection_spr,0,0,0)
 			}
 			surface_reset_target()
 			
@@ -72,8 +72,8 @@ function painter_history()
 					draw_clear_alpha(c_black,0)
 					selection_topleft = vec2(0,0)
 					selection_btmright = vec2(0,0)
-			    }
-			    surface_reset_target()	
+				}
+				surface_reset_target()	
 			}
 		}
 	}
@@ -120,14 +120,12 @@ function painter_history()
 			selection_spr = sprite_duplicate(painter_history[painter_history_pos].selsprite)
 			surface_set_target(selection_surf)
 			{
-		        draw_sprite(selection_spr,0,0,0)
+				draw_sprite(selection_spr,0,0,0)
 			}
 			surface_reset_target()
 			
 			transform_spr = sprite_duplicate(painter_history[painter_history_pos].trnsprite)
 			
-	
-
 			selection_topleft = painter_history[painter_history_pos].pos_tl;
 			selection_pos = painter_history[painter_history_pos].selection_pos;
 			selection_btmright = painter_history[painter_history_pos].pos_br;
@@ -150,8 +148,8 @@ function painter_history()
 					draw_clear_alpha(c_black,0)
 					selection_topleft = vec2(0,0)
 					selection_btmright = vec2(0,0)
-			    }
-			    surface_reset_target()	
+				}
+				surface_reset_target()	
 			}
 		}
 	}

@@ -8,7 +8,7 @@ function app_update_program_mode()
 		tab_show(assets)
 		tab_show(element_editor)
 		tab_close(preview)
-        tab_close(colors)
+		tab_close(colors)
 		tab_close(toolproperties)
 		app_update_el_edit_tabs()
 		textures_list.update = true

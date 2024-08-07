@@ -1,150 +1,149 @@
-//el_mirror()
+/// el_mirror(mirroraxis)
+/// @arg mirroraxis
 
-function el_mirror(mirrorAxis){
-if(string_contains(mirrorAxis, "Z")){
-	value[e_value.POS_X] = -value[e_value.POS_X]
-	value[e_value.OFFSET_X] = -value[e_value.OFFSET_X] - (element_type = TYPE_SHAPE ? value[e_value.WIDTH] : 0)
-	value[e_value.ROT_Z] = -value[e_value.ROT_Z]
-	value[e_value.ROT_Y] = -value[e_value.ROT_Y]
-	
-	//if(string_contains(string_lower(name),"left")){
-	//name = string_replace(name, "left", "right");
-	//name = string_replace(name, "Left", "Right");
-	//name = string_replace(name, "LEFT", "RIGHT");
-	//}
-	//else if(string_contains(string_lower(name),"right")){
-	//name = string_replace(name, "right", "left");
-	//name = string_replace(name, "Right", "Left");
-	//name = string_replace(name, "RIGHT", "LEFT");
-	//}
-	//else if(string_contains(string_lower(name),".left")){
-	//name = string_replace(name, ".left", ".right");
-	//name = string_replace(name, ".Left", ".Right");
-	//name = string_replace(name, ".LEFT", ".RIGHT");
-	//}
-	//else if(string_contains(string_lower(name),".right")){
-	//name = string_replace(name, ".right", ".left");
-	//name = string_replace(name, ".Right", ".Left");
-	//name = string_replace(name, ".RIGHT", ".LEFT");
-	//}
-	//else if(string_contains(string_lower(name),".l")){
-	//name = string_replace(name, ".l", ".r");
-	//name = string_replace(name, ".L", ".R");
-	//}
-	//else if(string_contains(string_lower(name),".r")){
-	//name = string_replace(name, ".r", ".l");
-	//name = string_replace(name, ".R", ".L");
-	//}
-
-	if (element_type = TYPE_SHAPE)
+function el_mirror(mirrorAxis)
+{
+	if (string_contains(mirrorAxis, "Z"))
 	{
-		if(string_contains(mirrorAxis, "Texture"))
-		value[e_value.TEX_MIRROR] = !value[e_value.TEX_MIRROR]
-	}
-	
-	if(element_type = TYPE_PART){
-		value[e_value.BEND_INVERT_Z] = !value[e_value.BEND_INVERT_Z]
-		value[e_value.BEND_INVERT_Y] = !value[e_value.BEND_INVERT_Y]
+		value[e_value.POS_X] = -value[e_value.POS_X]
+		value[e_value.OFFSET_X] = -value[e_value.OFFSET_X] - (element_type = TYPE_SHAPE ? value[e_value.WIDTH] : 0)
+		value[e_value.ROT_Z] = -value[e_value.ROT_Z]
+		value[e_value.ROT_Y] = -value[e_value.ROT_Y]
 		
-		switch (value[e_value.BEND_PART])
-		{
-			case e_part.RIGHT: value[e_value.BEND_PART] = e_part.LEFT; value[e_value.BEND_OFFSET] = -value[e_value.BEND_OFFSET] break;
-			
-			case e_part.LEFT: value[e_value.BEND_PART] = e_part.RIGHT; value[e_value.BEND_OFFSET] = -value[e_value.BEND_OFFSET] break;
-		}
+		//if(string_contains(string_lower(name),"left")){
+		//name = string_replace(name, "left", "right");
+		//name = string_replace(name, "Left", "Right");
+		//name = string_replace(name, "LEFT", "RIGHT");
+		//}
+		//else if(string_contains(string_lower(name),"right")){
+		//name = string_replace(name, "right", "left");
+		//name = string_replace(name, "Right", "Left");
+		//name = string_replace(name, "RIGHT", "LEFT");
+		//}
+		//else if(string_contains(string_lower(name),".left")){
+		//name = string_replace(name, ".left", ".right");
+		//name = string_replace(name, ".Left", ".Right");
+		//name = string_replace(name, ".LEFT", ".RIGHT");
+		//}
+		//else if(string_contains(string_lower(name),".right")){
+		//name = string_replace(name, ".right", ".left");
+		//name = string_replace(name, ".Right", ".Left");
+		//name = string_replace(name, ".RIGHT", ".LEFT");
+		//}
+		//else if(string_contains(string_lower(name),".l")){
+		//name = string_replace(name, ".l", ".r");
+		//name = string_replace(name, ".L", ".R");
+		//}
+		//else if(string_contains(string_lower(name),".r")){
+		//name = string_replace(name, ".r", ".l");
+		//name = string_replace(name, ".R", ".L");
+		//}
 		
-				if (shape_list != null && ds_list_size(shape_list) > 0)
+		if (element_type = TYPE_SHAPE)
 		{
-			for (var i = 0; i < ds_list_size(shape_list); i++)
-			{
-				with (shape_list[|i])
-					el_mirror(mirrorAxis)
-			}
-		}
-	
-		if (part_list != null && ds_list_size(part_list) > 0)
-		{
-			for (var i = 0; i < ds_list_size(part_list); i++)
-			{
-				with (part_list[|i])
-					el_mirror(mirrorAxis)
-			}
-		}
-	}
-}
-if(string_contains(mirrorAxis, "X")){
-	//if (element_type = TYPE_SHAPE)
-	//{
-	//	if(string_contains(mirrorAxis, "Texture"))
-	//	value[e_value.TEX_MIRROR] = !value[e_value.TEX_MIRROR]
-	//}
-	var l = value[e_value.LENGTH]
-	if (type = "block"){
-		
-		if(value[e_value.LENGTH] == 0){
 			if(string_contains(mirrorAxis, "Texture"))
-			value[e_value.INVERT] = !value[e_value.INVERT] 
-		}
-		else{
-				if(string_contains(mirrorAxis, "Texture"))
-		value[e_value.TEX_MIRROR_X] = !value[e_value.TEX_MIRROR_X]
+			value[e_value.TEX_MIRROR] = !value[e_value.TEX_MIRROR]
 		}
 		
-	}
-		if (type = "plane"){
-	if(value[e_value.EXTRUDE] == true){
-		l = 1
-	}
-	else{
-		l = 0
-	}
-		}
-		
-	value[e_value.POS_Y] = -value[e_value.POS_Y]
-
-	value[e_value.OFFSET_Y] = -value[e_value.OFFSET_Y] - (element_type = TYPE_SHAPE ? l: 0)
-	
-	value[e_value.ROT_X] = -value[e_value.ROT_X]
-	value[e_value.ROT_Z] = -value[e_value.ROT_Z]
-	
-	var HF = value[e_value.HIDE_FRONT]
-	var HB = value[e_value.HIDE_BACK]
-	
-	value[e_value.HIDE_BACK] = HF
-
-	value[e_value.HIDE_FRONT] = HB
-	
-			
-	if(element_type = TYPE_PART){
-		value[e_value.BEND_INVERT_X] = !value[e_value.BEND_INVERT_X]
-		value[e_value.BEND_INVERT_Z] = !value[e_value.BEND_INVERT_Z]
-		
-		switch (value[e_value.BEND_PART])
+		if (element_type = TYPE_PART)
 		{
-			case e_part.FRONT: value[e_value.BEND_PART] = e_part.BACK; value[e_value.BEND_OFFSET] = -value[e_value.BEND_OFFSET] break;
+			value[e_value.BEND_INVERT_Z] = !value[e_value.BEND_INVERT_Z]
+			value[e_value.BEND_INVERT_Y] = !value[e_value.BEND_INVERT_Y]
 			
-			case e_part.BACK: value[e_value.BEND_PART] = e_part.FRONT; value[e_value.BEND_OFFSET] = -value[e_value.BEND_OFFSET] break;			
-		}
-		
-				if (shape_list != null && ds_list_size(shape_list) > 0)
-		{
-			for (var i = 0; i < ds_list_size(shape_list); i++)
+			switch (value[e_value.BEND_PART])
 			{
-				with (shape_list[|i])
-					el_mirror(mirrorAxis)
+				case e_part.RIGHT: value[e_value.BEND_PART] = e_part.LEFT; value[e_value.BEND_OFFSET] = -value[e_value.BEND_OFFSET] break;
+				case e_part.LEFT: value[e_value.BEND_PART] = e_part.RIGHT; value[e_value.BEND_OFFSET] = -value[e_value.BEND_OFFSET] break;
 			}
-		}
-	
-		if (part_list != null && ds_list_size(part_list) > 0)
-		{
-			for (var i = 0; i < ds_list_size(part_list); i++)
+			
+			if (shape_list != null && ds_list_size(shape_list) > 0)
 			{
-				with (part_list[|i])
-					el_mirror(mirrorAxis)
+				for (var i = 0; i < ds_list_size(shape_list); i++)
+				{
+					with (shape_list[|i])
+						el_mirror(mirrorAxis)
+				}
+			}
+			
+			if (part_list != null && ds_list_size(part_list) > 0)
+			{
+				for (var i = 0; i < ds_list_size(part_list); i++)
+				{
+					with (part_list[|i])
+						el_mirror(mirrorAxis)
+				}
 			}
 		}
 	}
-}
 	
-    update_vbuffer = true
+	if (string_contains(mirrorAxis, "X"))
+	{
+		//if (element_type = TYPE_SHAPE)
+		//{
+		//	if(string_contains(mirrorAxis, "Texture"))
+		//	value[e_value.TEX_MIRROR] = !value[e_value.TEX_MIRROR]
+		//}
+		var l = value[e_value.LENGTH]
+		if (type = "block")
+		{
+			if (value[e_value.LENGTH] == 0)
+			{
+				if (string_contains(mirrorAxis, "Texture"))
+					value[e_value.INVERT] = !value[e_value.INVERT] 
+			}
+			else
+			{
+				if (string_contains(mirrorAxis, "Texture"))
+					value[e_value.TEX_MIRROR_X] = !value[e_value.TEX_MIRROR_X]
+			}
+		}
+		if (type = "plane")
+			l = value[e_value.EXTRUDE] ? 1 : 0
+		
+		value[e_value.POS_Y] = -value[e_value.POS_Y]
+		
+		value[e_value.OFFSET_Y] = -value[e_value.OFFSET_Y] - (element_type = TYPE_SHAPE ? l: 0)
+		
+		value[e_value.ROT_X] = -value[e_value.ROT_X]
+		value[e_value.ROT_Z] = -value[e_value.ROT_Z]
+		
+		var HF = value[e_value.HIDE_FRONT]
+		var HB = value[e_value.HIDE_BACK]
+		
+		value[e_value.HIDE_BACK] = HF
+		
+		value[e_value.HIDE_FRONT] = HB
+		
+		if (element_type = TYPE_PART)
+		{
+			value[e_value.BEND_INVERT_X] = !value[e_value.BEND_INVERT_X]
+			value[e_value.BEND_INVERT_Z] = !value[e_value.BEND_INVERT_Z]
+			
+			switch (value[e_value.BEND_PART])
+			{
+				case e_part.FRONT: value[e_value.BEND_PART] = e_part.BACK; value[e_value.BEND_OFFSET] = -value[e_value.BEND_OFFSET] break;
+				case e_part.BACK: value[e_value.BEND_PART] = e_part.FRONT; value[e_value.BEND_OFFSET] = -value[e_value.BEND_OFFSET] break;			
+			}
+			
+			if (shape_list != null && ds_list_size(shape_list) > 0)
+			{
+				for (var i = 0; i < ds_list_size(shape_list); i++)
+				{
+					with (shape_list[|i])
+						el_mirror(mirrorAxis)
+				}
+			}
+			
+			if (part_list != null && ds_list_size(part_list) > 0)
+			{
+				for (var i = 0; i < ds_list_size(part_list); i++)
+				{
+					with (part_list[|i])
+						el_mirror(mirrorAxis)
+				}
+			}
+		}
+	}
+	
+	update_vbuffer = true
 }

@@ -11,7 +11,7 @@ function render_startup()
 	
 	
 	globalvar render_proj_mode;
-    render_proj_mode = 0;
+	render_proj_mode = 0;
 	log("Render init")
 	
 	gpu_set_blendenable(true)

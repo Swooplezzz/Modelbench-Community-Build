@@ -111,9 +111,9 @@ function view_update_surface(view, cam)
 							if (tool_selected = e_tool.BEND && el_edit.element_type = TYPE_PART && el_edit.value[e_value.BEND])
 							{
 								var tempmat = matrix_multiply(el_edit.matrix_parent, matrix_create(vec3(0),vec3(0),vec3(root_scale)))
-	                            mat[MAT_X] = tempmat[MAT_X];
-	                            mat[MAT_Y] = tempmat[MAT_Y];
-	                            mat[MAT_Z] = tempmat[MAT_Z];
+								mat[MAT_X] = tempmat[MAT_X];
+								mat[MAT_Y] = tempmat[MAT_Y];
+								mat[MAT_Z] = tempmat[MAT_Z];
 								origin3d = matrix_position(matrix_multiply(matrix_create(model_part_get_offset_pos(el_edit), vec3(0), vec3(1)), tempmat))
 							}
 							else if (tool_selected = e_tool.PIVOT && el_edit.element_type = TYPE_SHAPE) // Pivot tool

@@ -9,13 +9,13 @@ function action_group_reset()
 	{
 		case e_context_group.POSITION: vid = e_value.POS_X; size = 3; break;
 		case e_context_group.PIVOT_OFFSET: vid = e_value.OFFSET_X; size = 3; 
-	    el_value_set_start(action_group_reset, false)
+		el_value_set_start(action_group_reset, false)
 	
-	    for (var i = 0; i < size; i++)
+		for (var i = 0; i < size; i++)
 
 		action_el_offset_center(i)
 
-	    el_value_set_done()
+		el_value_set_done()
 		exit;
 		
 		break;

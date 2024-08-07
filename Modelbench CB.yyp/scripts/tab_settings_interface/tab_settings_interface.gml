@@ -96,7 +96,7 @@ function tab_settings_interface()
 	draw_switch("settingscompactelements", dx, dy, setting_compact_elements, action_setting_compact_elements)
 	tab_next() 
 	
-    tab_control_switch()
+	tab_control_switch()
 	draw_switch("settingsshownamewarnings", dx, dy, setting_show_name_warnings, action_setting_show_name_warnings, "settingsshownamewarningshelp")
 	tab_next()
 }

@@ -164,16 +164,16 @@ function app_update_keyboard()
 			if (keybinds[e_keybind.BRUSH].pressed)
 				paint_tool_selected = e_paint.BRUSH
 		
-		    if (keybinds[e_keybind.ERASE].pressed)
+			if (keybinds[e_keybind.ERASE].pressed)
 				paint_tool_selected = e_paint.ERASE
 		
-		    if (keybinds[e_keybind.PICK].pressed)
+			if (keybinds[e_keybind.PICK].pressed)
 				paint_tool_selected = e_paint.PICK
 		
 			if (keybinds[e_keybind.FILL].pressed)
 				paint_tool_selected = e_paint.FILL
 			
-		    if (keybinds[e_keybind.SHAPE].pressed)
+			if (keybinds[e_keybind.SHAPE].pressed)
 				paint_tool_selected = e_paint.SHAPE
 		
 			if (keybinds[e_keybind.BOX_SELECT].pressed)

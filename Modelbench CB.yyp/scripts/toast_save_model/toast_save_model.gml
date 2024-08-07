@@ -18,7 +18,7 @@ function toast_save_model()
 	errors = (model_name = "") + warning_empty_part_names + warning_same_part_names
 	time += errors
 	
-    if (warning_empty_part_names)
+	if (warning_empty_part_names)
 	{
 		errors--
 		errorstr += "• " + text_get("snackbarwarningemptypartname") + (errors > 0 ? "\n" : "")

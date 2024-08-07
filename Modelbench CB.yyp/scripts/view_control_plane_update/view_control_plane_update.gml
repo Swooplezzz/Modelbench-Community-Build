@@ -16,7 +16,7 @@ function view_control_plane_update()
 	rayeye = vec4(rayeye[X]  , rayeye[Y] , -1, 0)
 		log(string(rayeye), "pepe")
 	raywor = point4D_mul_matrix(rayeye, matrix_inverse(view_matrix));
-	view_control_ray_dir = vec3_normalize(vec3(raywor[X]   , raywor[Y] , raywor[Z]))
+	view_control_ray_dir = vec3_normalize(vec3(raywor[X], raywor[Y], raywor[Z]))
 	
 	// Update mouse
 	view_control_plane_mouse[X] += mouse_dx * dragger_multiplier

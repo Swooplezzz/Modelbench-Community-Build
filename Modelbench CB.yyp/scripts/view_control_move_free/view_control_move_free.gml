@@ -5,15 +5,13 @@ function view_control_move_free(view)
 {
 	var mat, len;
 	
-	
-	
 	len = point3D_distance(cam_from, el_edit.world_pos) * view_3d_control_size * view_control_ratio
 	
 	var axis = 0
 	var start = vec3(0, 0, 0)
 	with (el_edit)
 	{
-	if (element_type = TYPE_PART)
+		if (element_type = TYPE_PART)
 			mat = array_copy_1d(matrix_edit)
 		else
 			mat = array_copy_1d(matrix_parent)
@@ -22,14 +20,12 @@ function view_control_move_free(view)
 	}
 	
 	var axisvec, center3D, start3D, end3D, center2D, start2D, end2D;
-	
 	var lenstart = (tool_selected = e_tool.TRANSFORM ? len - len/8 : 0)
-
-
-		
+	
 	view_control_plane_update()
 	
-	if(keyboard_check(ord("X")) || keyboard_check(ord("Y")) || keyboard_check(ord("Z"))){
+	if(keyboard_check(ord("X")) || keyboard_check(ord("Y")) || keyboard_check(ord("Z")))
+	{
 		if(keyboard_check(ord("X"))){
 			view_control_edit = e_value.POS_X
 			el_value_set_start(action_el_pos_xyz, true)
@@ -60,36 +56,34 @@ function view_control_move_free(view)
 			axis = Z
 			keybind_move_axis = "Z"
 		}
-			axisvec = vec3(axis = X, axis = Y, axis = Z)
+		
+		axisvec = vec3(axis = X, axis = Y, axis = Z)
 
-	center3D = point3D_mul_matrix(vec3(0), mat)
-	start3D = point3D_mul_matrix(start, mat)
-	end3D = point3D_mul_matrix(vec3_mul(axisvec, len), mat)
+		center3D = point3D_mul_matrix(vec3(0), mat)
+		start3D = point3D_mul_matrix(start, mat)
+		end3D = point3D_mul_matrix(vec3_mul(axisvec, len), mat)
 	
-		// Convert to screen
-	center2D = view_shape_project(center3D)
-	if (point3D_project_error)
-		return 0
+			// Convert to screen
+		center2D = view_shape_project(center3D)
+		if (point3D_project_error)
+			return 0
 	
-	start2D = view_shape_project(start3D)
-	if (point3D_project_error)
-		return 0
+		start2D = view_shape_project(start3D)
+		if (point3D_project_error)
+			return 0
 	
-	end2D = view_shape_project(end3D)
-	if (point3D_project_error)
-		return 0
+		end2D = view_shape_project(end3D)
+		if (point3D_project_error)
+			return 0
 	
-			view_control_edit_view = view
-			view_control_value = point3D(el_edit.value[e_value.POS_X], el_edit.value[e_value.POS_Y], el_edit.value[e_value.POS_Z])
-			view_control_vec = point2D_sub(end2D, center2D)
-			view_control_move_distance = 0
+		view_control_edit_view = view
+		view_control_value = point3D(el_edit.value[e_value.POS_X], el_edit.value[e_value.POS_Y], el_edit.value[e_value.POS_Z])
+		view_control_vec = point2D_sub(end2D, center2D)
+		view_control_move_distance = 0
 	}
-
 	
-	if(keybind_free_move && keybind_move_axis = ""){
-
-			
-
+	if(keybind_free_move && keybind_move_axis = "")
+	{
 		if (!mouse_still)
 		{
 			var move, pos, snapval;
@@ -137,7 +131,7 @@ function view_control_move_free(view)
 			keybind_free_move = false
 		}
 		
-	    if (mouse_right)
+		if (mouse_right)
 		{
 			window_busy = ""
 			view_control_edit = null
@@ -150,12 +144,13 @@ function view_control_move_free(view)
 			el_value_set_done()
 		}
 	}
-	else if(keybind_free_move && keybind_move_axis != ""){
+	else if(keybind_free_move && keybind_move_axis != "")
+	{
 		// Move
 		var veclen = vec2_length(view_control_vec);
 		if (veclen > 0 && !mouse_still)
 		{
-	var vecmouse, vecdot, move, snapval, newval;
+			var vecmouse, vecdot, move, snapval, newval;
 			move = vec3(0)
 			axis_edit = view_control_edit - e_control.POS_X
 			
@@ -192,27 +187,26 @@ function view_control_move_free(view)
 			el_value_set(e_value.POS_Z, newval[Z], true)
 			el_value_set_done()
 		}
-		}
-		if (mouse_left)
-		{
-			window_busy = ""
-			view_control_edit = null
-			view_control_value = 0
-			keybind_free_move = false
+	}
+	if (mouse_left)
+	{
+		window_busy = ""
+		view_control_edit = null
+		view_control_value = 0
+		keybind_free_move = false
 			
-		}
+	}
 		
-	    if (mouse_right)
-		{
-			window_busy = ""
-			view_control_edit = null
-			view_control_value = 0
-			keybind_free_move = false
-			el_value_set_start(action_el_pos_xyz, true)
-			el_value_set(e_value.POS_X, keybind_free_pos_origin[X], false)
-			el_value_set(e_value.POS_Y, keybind_free_pos_origin[Y], false)
-			el_value_set(e_value.POS_Z, keybind_free_pos_origin[Z], false)
-			el_value_set_done()
-		}
-
+	if (mouse_right)
+	{
+		window_busy = ""
+		view_control_edit = null
+		view_control_value = 0
+		keybind_free_move = false
+		el_value_set_start(action_el_pos_xyz, true)
+		el_value_set(e_value.POS_X, keybind_free_pos_origin[X], false)
+		el_value_set(e_value.POS_Y, keybind_free_pos_origin[Y], false)
+		el_value_set(e_value.POS_Z, keybind_free_pos_origin[Z], false)
+		el_value_set_done()
+	}
 }

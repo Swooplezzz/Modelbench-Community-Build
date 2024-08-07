@@ -12,11 +12,11 @@ function shortcut_draw(shortcut)
 	draw_set_font(font_label)
 
 	//var width = dx
-    //if (shortcut[0] != null)
+	//if (shortcut[0] != null)
 	//{
 	//var keyboardarray = string_split(text_control_name(shortcut[0]), " + ");
 	
-	//    for (var i = 0; i < array_length(keyboardarray); i++)
+	//	for (var i = 0; i < array_length(keyboardarray); i++)
 	//	{
 	//		var str = string_replace(keyboardarray[i], "+ ", "");
 	//		var stringsize = string_width(str);

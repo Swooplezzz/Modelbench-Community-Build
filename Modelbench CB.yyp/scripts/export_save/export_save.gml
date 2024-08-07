@@ -64,24 +64,24 @@ function export_save()
 					
 					duplicate = false
 					
-				    for (var j = 0; j < ds_list_size(shape_unique_uv_list); j++)
-				    {
-				        uv = shape_unique_uv_list[|j]
+					for (var j = 0; j < ds_list_size(shape_unique_uv_list); j++)
+					{
+						uv = shape_unique_uv_list[|j]
 						
-				        if (array_equals(uv, shape_export_uv_list[|v]))
-				        {
-				            duplicate = true
-				            break
-				        }
-				    }
+						if (array_equals(uv, shape_export_uv_list[|v]))
+						{
+							duplicate = true
+							break
+						}
+					}
 					
-				    if (!duplicate)
-				    {
-				        ds_list_add(shape_unique_uv_list, shape_export_uv_list[|v])
+					if (!duplicate)
+					{
+						ds_list_add(shape_unique_uv_list, shape_export_uv_list[|v])
 						
 						uv = shape_export_uv_list[|v]
 						shape_uv_string += "vt " + string_format(uv[X], 1, 6) + " " + string_format(uv[Y], 1, 6) + "\n"
-				    }
+					}
 					
 					vertex[Y] = ds_list_size(app.export_uv_list) + j + 1
 					
@@ -93,21 +93,21 @@ function export_save()
 					{
 						duplicate = false
 						
-					    for (var j = 0; j < ds_list_size(shape_unique_normal_list); j++)
-					    {
-					        normal = shape_unique_normal_list[|j]
+						for (var j = 0; j < ds_list_size(shape_unique_normal_list); j++)
+						{
+							normal = shape_unique_normal_list[|j]
 							
-					        if (array_equals(normal, shape_export_normal_list[|v]))
-					        {
-					            duplicate = true
-					            break
-					        }
-					    }
+							if (array_equals(normal, shape_export_normal_list[|v]))
+							{
+								duplicate = true
+								break
+							}
+						}
 						
-					    if (!duplicate)
-					    {
-					        ds_list_add(shape_unique_normal_list, shape_export_normal_list[|v])
-					    }
+						if (!duplicate)
+						{
+							ds_list_add(shape_unique_normal_list, shape_export_normal_list[|v])
+						}
 						
 						vertex[Z] = ds_list_size(app.export_normal_list) + j + 1
 					}

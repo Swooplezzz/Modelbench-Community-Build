@@ -63,8 +63,8 @@ function recent_add()
 	surface_free(surf)
 	
 	action_preview_scenery(dps)
-    setting_preview_light_rotation = dplrot;
-    setting_preview_light_range = dplrange;
+	setting_preview_light_rotation = dplrot;
+	setting_preview_light_range = dplrange;
 #endregion
 
 	// Model not added, create new object

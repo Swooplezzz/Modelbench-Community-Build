@@ -8,7 +8,7 @@ function view_control_scale_free(view)
 			var len, mat;
 	// Arrow length
 	len = point3D_distance(cam_from, el_edit.world_pos) * view_3d_control_size * view_control_ratio * (tool_selected != e_tool.TRANSFORM ? .6 : 0.4)
-    
+	
 	length = len
 	// Create matrix
 	with (el_edit)
@@ -26,7 +26,8 @@ function view_control_scale_free(view)
 	if (view_control_matrix != null && view_control_edit != null)
 		mat = view_control_matrix
 		
-	if(keyboard_check(ord("X")) || keyboard_check(ord("Y")) || keyboard_check(ord("Z"))){
+	if(keyboard_check(ord("X")) || keyboard_check(ord("Y")) || keyboard_check(ord("Z")))
+	{
 		if(keyboard_check(ord("X"))){
 			view_control_edit = e_control.SCA_X
 			view_control_value = el_edit.value[e_value.SCA_X]
@@ -48,7 +49,7 @@ function view_control_scale_free(view)
 			el_value_set_done()
 		}
 		if(keyboard_check(setting_z_is_up = true ? ord("Z") : ord("Y"))){
-		    view_control_edit = e_control.SCA_Z
+			view_control_edit = e_control.SCA_Z
 			view_control_value = el_edit.value[e_value.SCA_Z]
 			axis = Z
 			keybind_sca_axis = "Z"
@@ -59,37 +60,36 @@ function view_control_scale_free(view)
 		}
 		axisvec = vec3(axis = X, axis = Y, axis = Z)
 		if (view_control_length != null)
-		   length = view_control_length
+			length = view_control_length
 
-	start3D = point3D_mul_matrix(vec3(0), mat)
-	end3D = point3D_mul_matrix(vec3_mul(axisvec, length), mat)
+		start3D = point3D_mul_matrix(vec3(0), mat)
+		end3D = point3D_mul_matrix(vec3_mul(axisvec, length), mat)
 
-	// Convert to screen
-	start2D = view_shape_project(start3D)
-	if (point3D_project_error)
-		return 0
+		// Convert to screen
+		start2D = view_shape_project(start3D)
+		if (point3D_project_error)
+			return 0
 
-	end2D = view_shape_project(end3D)
-	if (point3D_project_error)
-		return 0
+		end2D = view_shape_project(end3D)
+		if (point3D_project_error)
+			return 0
 		
-			view_control_edit_view = view
-			view_control_vec = point2D_sub(end2D, start2D)
-			view_control_matrix = mat
-			view_control_length = length
-			view_control_move_distance = 0
-
+		view_control_edit_view = view
+		view_control_vec = point2D_sub(end2D, start2D)
+		view_control_matrix = mat
+		view_control_length = length
+		view_control_move_distance = 0
 	}
-
-		var coord;
+	
+	var coord;
 	if (window_busy = "rendercontrol")
 	{
 		start3D = point3D_mul_matrix(vec3(0), mat)
 
-	// Convert to screen
-	start2D = view_shape_project(start3D)
+		// Convert to screen
+		start2D = view_shape_project(start3D)
 		coord = view_control_scale_coords
-     view_control_scale_amount = (point_distance((mouse_wrap_x * content_width) + mouse_x -content_x, (mouse_wrap_y * content_height) + mouse_y -content_y, start2D[X] , start2D[Y] ) / point_distance(mouse_origin_x  -content_x, mouse_origin_y  -content_y, start2D[X] , start2D[Y]))
+		view_control_scale_amount = (point_distance((mouse_wrap_x * content_width) + mouse_x -content_x, (mouse_wrap_y * content_height) + mouse_y -content_y, start2D[X] , start2D[Y] ) / point_distance(mouse_origin_x  -content_x, mouse_origin_y  -content_y, start2D[X] , start2D[Y]))
 	}
 			
 	if(keybind_free_sca && keybind_sca_axis = ""){
@@ -131,7 +131,7 @@ function view_control_scale_free(view)
 			keybind_free_sca = false
 		}
 		
-	    if (mouse_right)
+		if (mouse_right)
 		{
 			window_busy = ""
 			view_control_edit = null
@@ -145,8 +145,9 @@ function view_control_scale_free(view)
 			el_value_set_done()
 		}
 	}
-	else if(keybind_free_sca && keybind_sca_axis != ""){
-			mouse_cursor = cr_handpoint
+	else if(keybind_free_sca && keybind_sca_axis != "")
+	{
+		mouse_cursor = cr_handpoint
 		
 		// Move
 		var veclen = vec2_length(view_control_vec)
@@ -188,7 +189,7 @@ function view_control_scale_free(view)
 			keybind_free_sca = false
 		}
 		
-	    if (mouse_right)
+		if (mouse_right)
 		{
 			window_busy = ""
 			view_control_edit = null
@@ -202,6 +203,4 @@ function view_control_scale_free(view)
 			el_value_set_done()
 		}
 	}
-
 }
-

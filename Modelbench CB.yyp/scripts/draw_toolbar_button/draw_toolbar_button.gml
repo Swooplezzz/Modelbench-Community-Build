@@ -25,10 +25,10 @@ function draw_toolbar_button(name, xx, yy, buttonvalue, value, script)
 	
 	if (mouseon)
 	{
-	    if (mouse_left || mouse_left_released)
-	        pressed = true
+		if (mouse_left || mouse_left_released)
+			pressed = true
 		
-	    mouse_cursor = cr_handpoint
+		mouse_cursor = cr_handpoint
 	}
 	
 	var ani, color, alpha;

@@ -108,9 +108,9 @@ function enums()
 	
 	enum e_settings
 	{
-		FORMAT_ALPHA_2 = 0,
-		FORMAT_101	   = 1,
-		FORMAT_111	   = 2
+		FORMAT_ALPHA_2	= 0,
+		FORMAT_101		= 1,
+		FORMAT_111		= 2
 	}
 	
 	// Toasts
@@ -220,7 +220,7 @@ function enums()
 		BEND_Y,
 		BEND_Z,
 		BEND_OFFSET,
-	    BEND_END_OFFSET,
+		BEND_END_OFFSET,
 		BEND_SIZE,
 		
 		RESIZE_XP,
@@ -723,7 +723,7 @@ function enums()
 		WORLD_SMALL,
 		YOUTUBE,
 		ZOOM,
-	    ORTHOGRAPHIC,
+		ORTHOGRAPHIC,
 		PRESPECTIVE,
 		MIRROR_HORIZONTAL,
 		MIRROR_VERTICAL,

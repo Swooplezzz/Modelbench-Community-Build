@@ -51,6 +51,6 @@ function action_texture_replace()
 	}
 
 	if(program_mode = e_mode.TEXTURING ){
-		    painter_reset()
+			painter_reset()
 	}
 }

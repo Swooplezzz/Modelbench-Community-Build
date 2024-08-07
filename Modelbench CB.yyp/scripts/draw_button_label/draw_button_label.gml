@@ -43,7 +43,7 @@ function draw_button_label()
 	if (argument_count > 8)
 		disabled = argument[8]
 		
-    if (argument_count > 9)
+	if (argument_count > 9)
 		tip = argument[9]
 	
 

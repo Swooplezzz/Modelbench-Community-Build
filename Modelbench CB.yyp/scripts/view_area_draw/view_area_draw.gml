@@ -161,7 +161,7 @@ function view_area_draw()
 	
 	// Add shortcut
 	if (resizemouseon || window_busy = "uveditorresize"){
-	    ds_list_clear(shortcut_bar_list)
+		ds_list_clear(shortcut_bar_list)
 		shortcut_bar_state = "uveditorresize"
 	}
 }

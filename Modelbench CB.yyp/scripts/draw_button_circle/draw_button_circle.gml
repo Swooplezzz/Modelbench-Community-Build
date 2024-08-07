@@ -50,7 +50,7 @@ function draw_button_circle()
 	if (argument_count > 9)
 		arg = argument[9]
 		
-    if (argument_count > 10)
+	if (argument_count > 10)
 		disabled = argument[10]
 		
 	 if (argument_count > 11)

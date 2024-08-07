@@ -24,11 +24,11 @@ function painter_draw(xx, yy, inbounds)
 	texscale = 1
 	
 	if (adjusting_hue)
-        painter_adjust_huesat()
+		painter_adjust_huesat()
 	else if (adjusting_brightness_contrast)
-		  painter_adjust_brightness_contrast()
-    else
-         draw_sprite_ext(final_spr, 0, scale_offset_x, scale_offset_y, zoom, zoom, 0, c_white, 1)
+		painter_adjust_brightness_contrast()
+	else
+		draw_sprite_ext(final_spr, 0, scale_offset_x, scale_offset_y, zoom, zoom, 0, c_white, 1)
 
 	draw_surface_ext(draw_surf, scale_offset_x, scale_offset_y, zoom, zoom, 0, c_white, paint_opacity)
 	draw_surface_ext(selection_surf, scale_offset_x, scale_offset_y, zoom, zoom, 0, c_white, 0.25)
@@ -99,9 +99,9 @@ function painter_draw(xx, yy, inbounds)
 		paint_tool_selected = e_paint.BOX_SELECT)
 		{
 			draw_set_alpha(0.875)
-		    draw_box_hover((xx + .5) * zoom + scale_offset_x, (yy + .5) * zoom + scale_offset_y, zoom, zoom, 1, c_white)
-		    draw_box_hover((xx + .5) * zoom + scale_offset_x, (yy + .5) * zoom + scale_offset_y, zoom, zoom, 1, c_black)
-		    draw_set_alpha(1)
+			draw_box_hover((xx + .5) * zoom + scale_offset_x, (yy + .5) * zoom + scale_offset_y, zoom, zoom, 1, c_white)
+			draw_box_hover((xx + .5) * zoom + scale_offset_x, (yy + .5) * zoom + scale_offset_y, zoom, zoom, 1, c_black)
+			draw_set_alpha(1)
 		}
 	}
 
@@ -203,8 +203,8 @@ function painter_draw(xx, yy, inbounds)
 	{
 		draw_line_ext((xx + .5) * zoom + scale_offset_x, boxy, (xx + .5) * zoom + scale_offset_x, boxy + boxh, merge_color(c_black, c_accent_pressed, 0.75), .5)
 		draw_line_ext((xx + 1.5) * zoom + scale_offset_x, boxy, (xx + 1.5) * zoom + scale_offset_x, boxy + boxh, merge_color(c_black, c_accent_pressed, 0.75), .5)
-	    draw_line_ext(boxx, (yy + .5) * zoom + scale_offset_y, boxx + boxw, (yy + .5) * zoom + scale_offset_y, merge_color(c_black, c_accent_pressed, 0.75), .5)
-	    draw_line_ext(boxx, (yy + 1.5) * zoom + scale_offset_y, boxx + boxw, (yy + 1.5) * zoom + scale_offset_y, merge_color(c_black, c_accent_pressed, 0.75), .5)
+		draw_line_ext(boxx, (yy + .5) * zoom + scale_offset_y, boxx + boxw, (yy + .5) * zoom + scale_offset_y, merge_color(c_black, c_accent_pressed, 0.75), .5)
+		draw_line_ext(boxx, (yy + 1.5) * zoom + scale_offset_y, boxx + boxw, (yy + 1.5) * zoom + scale_offset_y, merge_color(c_black, c_accent_pressed, 0.75), .5)
 	}
 	
 	draw_label("[ 0, 0 ]", texx - 8, texy - 8, fa_right, fa_bottom, c_text_main, 0.5, font_label)

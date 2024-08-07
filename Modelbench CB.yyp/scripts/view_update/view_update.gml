@@ -5,11 +5,11 @@
 function view_update(view, cam)
 { 
 	if (keybinds[e_keybind.FREE_POS].pressed && el_edit != null && window_focus = string(view) && program_mode = e_mode.MODELING)
-		         action_el_start_free_move(view)
+				 action_el_start_free_move(view)
 	if (keybinds[e_keybind.FREE_ROT].pressed && el_edit != null && window_focus = string(view) && program_mode = e_mode.MODELING)
-		         action_el_start_free_rotation(view)
+				 action_el_start_free_rotation(view)
 	if (keybinds[e_keybind.FREE_SCA].pressed && el_edit != null && window_focus = string(view) && program_mode = e_mode.MODELING)
-		         action_el_start_free_scale(view)
+				 action_el_start_free_scale(view)
 
 
 	view_update_surface(view, cam)
@@ -106,13 +106,14 @@ function view_update(view, cam)
 	
 	if (window_focus = string(view))
 	{
-    if (keybinds[e_keybind.ELEMENT_MIRROR].pressed  && program_mode = e_mode.MODELING){
-		context_menu_area(content_x, content_y, content_width, content_height, "contextmenuviewportmirrorelement", view_cam, e_context_type.NONE, null, null)
-	    }
+		if (keybinds[e_keybind.ELEMENT_MIRROR].pressed  && program_mode = e_mode.MODELING)
+		{
+			context_menu_area(content_x, content_y, content_width, content_height, "contextmenuviewportmirrorelement", view_cam, e_context_type.NONE, null, null)
+		}
 
-	if (keybinds[e_keybind.ELEMENT_ADD].pressed  && program_mode = e_mode.MODELING){
-		context_menu_area(content_x, content_y, content_width, content_height, "contextmenuviewportaddelement", view_cam, e_context_type.NONE, null, null)
-	    }		 
+		if (keybinds[e_keybind.ELEMENT_ADD].pressed  && program_mode = e_mode.MODELING){
+			context_menu_area(content_x, content_y, content_width, content_height, "contextmenuviewportaddelement", view_cam, e_context_type.NONE, null, null)
+		}		 
 		// Right-click or move camera
 		if (window_busy = "viewrightclick")
 		{
@@ -209,35 +210,26 @@ function view_update(view, cam)
 			}
 		}
 	}
-    if (window_focus = string(view))
-	{
-
+	//if (window_focus = string(view))
+	//{
 	// Surface
 	//if (keybinds[e_keybind.CAM_SNAP_VIEW].pressed)
 	//	camera_snap_view()
-		
 	//if (keybinds[e_keybind.CAM_SET_SNAP_VIEW].pressed)
 	//	camera_set_snap_view()
-		
-	}
-
-
-	
-
+	//}
 	
 	if(window_busy = "viewrotatecamera" || window_busy = "viewmovecamera" || window_busy = "viewmovecameratoggle"){
-		if(view_cam.snapped_x || view_cam.snapped_y || view_cam.snapped_z){
-		render_proj_mode = 0
-		view_cam.x_snap_positive = false;		
-		view_cam.y_snap_positive = false;
-		view_cam.z_snap_positive = false;
-		view_cam.snapped_x = false;		
-		view_cam.snapped_y = false;
-		view_cam.snapped_z = false;
-		
-
+		if(view_cam.snapped_x || view_cam.snapped_y || view_cam.snapped_z)
+		{
+			render_proj_mode = 0
+			view_cam.x_snap_positive = false;		
+			view_cam.y_snap_positive = false;
+			view_cam.z_snap_positive = false;
+			view_cam.snapped_x = false;		
+			view_cam.snapped_y = false;
+			view_cam.snapped_z = false;
 		}
-				view_cam.done_snapping = true;
-
+		view_cam.done_snapping = true;
 	}
 }

@@ -16,7 +16,7 @@ function action_el_start_free_move(view)
 
 	view_control_value = point3D(el_edit.value[e_value.POS_X], el_edit.value[e_value.POS_Y], el_edit.value[e_value.POS_Z])
 
-    keybind_free_move = true
+	keybind_free_move = true
 			
 	keybind_free_pos_origin = point3D(el_edit.value[e_value.POS_X], el_edit.value[e_value.POS_Y], el_edit.value[e_value.POS_Z])
 	keybind_move_axis = ""

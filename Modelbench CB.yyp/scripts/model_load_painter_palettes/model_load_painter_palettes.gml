@@ -10,7 +10,7 @@ function model_load_painter_palettes(map)
 	
 	if (!ds_map_valid(map))
 		return 0
-	show_debug_message("loading palettes")
+	//show_debug_message("loading palettes")
 
 	if (ds_map_exists(map, "palettes"))
 		var palettes = map[?"palettes"];
@@ -19,7 +19,7 @@ function model_load_painter_palettes(map)
 	
 	for (var i = 0; i < ds_list_size(palettes); i++)
 	{
-		show_debug_message("Object palette")
+		//show_debug_message("Object palette")
 		var palettemap = palettes[|i];
 		
 		if (ds_map_valid(palettemap))

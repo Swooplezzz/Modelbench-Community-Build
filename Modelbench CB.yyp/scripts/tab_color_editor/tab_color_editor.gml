@@ -5,7 +5,7 @@ function tab_color_editor()
 	// Mix color
 	draw_painter_color_editor("paintercoloreditor", action_color_set, (painter_main_color ? paint_secondary_color : paint_primary_color))
 
-    var stack = (content_width > 230 + 176)
+	var stack = (content_width > 230 + 176)
 	if (!stack)
 		dx = content_x + 12 + content_width /2 - 230/2;
 	else

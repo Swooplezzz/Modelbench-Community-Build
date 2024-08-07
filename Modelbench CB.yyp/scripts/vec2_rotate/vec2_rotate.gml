@@ -17,10 +17,10 @@ function vec2_rotate(vector, angle, center)
 
 	var translated_x = vector[X] - dx;
 	var translated_y = vector[Y] - dy;
-    
+	
 	var result_x = translated_x * cs - translated_y * sn;
 	var result_y = translated_x * sn + translated_y * cs;
-    
+	
 	result_x += dx;
 	result_y += dy;
 

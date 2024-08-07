@@ -263,15 +263,15 @@ function draw_recent()
 			
 				// Load model
 				if (mouseon)
-			    {
+				{
 					mouse_cursor = cr_handpoint
 				
 					if (mouse_left_released)
-				    {
+					{
 						model_load(item.filename)
 						//return 0 causes textures to not load for some reason
-				    }
-			    }
+					}
+				}
 			}
 			
 			cardx += 240 + 16

@@ -282,7 +282,7 @@ function list_init(name)
 								
 				list_item_last.disabled = (el_edit = null)
 				
-			    list_item_add(text_get("contextmenumirrormodel"), null, "", null, icons.MIRROR_HORIZONTAL, icons.CHEVRON_RIGHT_TINY, null, !setting_show_uv_editor)
+				list_item_add(text_get("contextmenumirrormodel"), null, "", null, icons.MIRROR_HORIZONTAL, icons.CHEVRON_RIGHT_TINY, null, !setting_show_uv_editor)
 				list_item_last.context_menu_name = "contextmenuviewportmirrorelement"
 			}
 			
@@ -437,7 +437,7 @@ function list_init(name)
 			list_item_add(text_get("toolbarviewuveditor"), !setting_show_uv_editor, text_control_name(keybinds[e_keybind.UV_EDITOR].keybind), null, icons.TEXTURE, null, action_toolbar_show_uv_editor, true)
 			list_item_last.toggled = setting_show_uv_editor
 			
-		    list_item_add(text_get("toolbarviewhome"), null, "", null, icons.HOME, null, action_setting_home_screen, true)
+			list_item_add(text_get("toolbarviewhome"), null, "", null, icons.HOME, null, action_setting_home_screen, true)
 			break
 		}
 		

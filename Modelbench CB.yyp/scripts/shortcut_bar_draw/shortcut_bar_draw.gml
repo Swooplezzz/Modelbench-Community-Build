@@ -12,7 +12,7 @@ function shortcut_bar_draw()
 	
 	shortcut_bar_lines = 1	
 	dx = content_x + 12
-    dw = content_width
+	dw = content_width
 	dh = 28
 	dy = content_y
 	

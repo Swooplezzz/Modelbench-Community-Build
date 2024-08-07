@@ -50,7 +50,7 @@ function context_menu_area()
 		if (argument_count > 5)
 		{
 			context_menu_value = argument[5]
-			show_debug_message(context_menu_value);
+			//show_debug_message(context_menu_value);
 			context_menu_value_type = argument[6]
 			
 			context_menu_value_script = argument[7]

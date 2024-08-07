@@ -108,7 +108,6 @@ function render_world_part()
 			render_set_uniform_vec2("uTextureOffset",
 									(current_step / 60) * texture_scroll_speed * sin(degtorad(texture_scroll_direction)),
 									(current_step / 60) * texture_scroll_speed * cos(degtorad(texture_scroll_direction)))
-			show_debug_message((current_step / 60) * texture_scroll_speed * sin(degtorad(texture_scroll_direction)))
 	
 			if ((render_mode = e_render_mode.CLICK) && app.setting_hide_shapes)
 				render_set_uniform_color("uShape", id.parent, 1)

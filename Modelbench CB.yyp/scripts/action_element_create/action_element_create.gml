@@ -61,10 +61,10 @@ function action_element_create(argument0)
 				with (obj_model_element)
 					if (element_type = e_element.PART && string_get_name(name) = text_get("assetsnewpart"))
 						namecount++
-			    
+				
 				if(setting_show_name_warnings)
 				el.name = text_get("assetsnewpart") + (namecount > 0 ? " (" + string(namecount + 1) + ")" : "")
-			    else
+				else
 				el.name = text_get("assetsnewpart")
 			
 				with (hobj)

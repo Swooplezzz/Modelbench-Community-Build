@@ -56,7 +56,7 @@ function app_startup_window()
 	keybind_free_rot_origin = point3D(0,0,0)
 	keybind_free_scale_origin = point3D(0,0,0)
 	
-    scale_start_mouse_x = 0
+	scale_start_mouse_x = 0
 	scale_start_mouse_y = 0
 	
 	dragger_drag_value = 0

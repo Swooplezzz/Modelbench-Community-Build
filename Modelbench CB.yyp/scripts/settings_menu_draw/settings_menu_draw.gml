@@ -142,8 +142,8 @@ function menu_settings_draw()
 				window_focus = ""
 				context_menu_close()
 				//if(program_mode = e_mode.TEXTURING){
-			    //  add_recent_color( colorpicker.color);
-	            //}
+				//  add_recent_color( colorpicker.color);
+				//}
 			}
 		}
 		else

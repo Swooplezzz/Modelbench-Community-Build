@@ -4,9 +4,9 @@ function palette_load()
 {
 	var fn
 	if(argument_count > 0)
-	    fn = argument[0]
+		fn = argument[0]
 	else
-	    fn = file_dialog_open_palette();
+		fn = file_dialog_open_palette();
 	if (!file_exists_lib(fn))
 		return 0
 	
@@ -25,5 +25,5 @@ function palette_load()
 	{
 		paletteobj.color_list[c] = hex_to_color(paletteobj.color_list[c])
 	}
-    ds_list_add(palette_list, paletteobj)
+	ds_list_add(palette_list, paletteobj)
 }

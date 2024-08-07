@@ -253,7 +253,7 @@ function draw_element_item()
 		if (element.name = "")
 			labelalpha = a_text_tertiary
 			
-	    if ((element.name_duplicate || element.name_empty)  && setting_show_name_warnings)
+		if ((element.name_duplicate || element.name_empty)  && setting_show_name_warnings)
 		{
 			labelcolor = c_error
 			labelalpha = 1

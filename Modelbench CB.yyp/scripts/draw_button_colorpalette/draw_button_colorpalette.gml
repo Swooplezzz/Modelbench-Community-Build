@@ -36,7 +36,7 @@ function draw_button_colorpalette(name, xx, yy, value, script, script2, script3,
 	col = merge_color(c_border, c_text_tertiary, microani_arr[e_microani.HOVER])
 	col = merge_color(col, c_accent, microani_arr[e_microani.ACTIVE])
 	alpha = lerp(a_border, a_text_tertiary, microani_arr[e_microani.HOVER])
-    alpha = lerp(alpha, a_accent, microani_arr[e_microani.ACTIVE])
+	alpha = lerp(alpha, a_accent, microani_arr[e_microani.ACTIVE])
 	draw_outline(xx, yy, w, h, 1, col, alpha, true)
 	
 	// Color

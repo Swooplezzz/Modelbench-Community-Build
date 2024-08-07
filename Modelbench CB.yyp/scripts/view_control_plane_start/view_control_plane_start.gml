@@ -15,8 +15,8 @@ function view_control_plane_start(pos, normal)
 	var px, py, rayclip, rayeye, raywor;
 	
 	// Get -1 -> 1 XY mouse coordinates in viewport
-	px = -(((mouse_x - content_x + view_control_plane_offset[X]) / content_width) * 2 - 1)  / (render_proj_mode = 1 ? (view_cam.zoom *0.0005): 1)
-	py = (((mouse_y - content_y + view_control_plane_offset[Y]) / content_height) * 2 - 1)   / (render_proj_mode = 1 ? (view_cam.zoom * 0.0005) : 1)
+	px = -(((mouse_x - content_x + view_control_plane_offset[X]) / content_width) * 2 - 1) / (render_proj_mode = 1 ? (view_cam.zoom *0.0005): 1)
+	py = (((mouse_y - content_y + view_control_plane_offset[Y]) / content_height) * 2 - 1) / (render_proj_mode = 1 ? (view_cam.zoom * 0.0005) : 1)
 	
 	rayclip = vec4(px, py, -1, 1)
 	rayeye = point4D_mul_matrix(rayclip, matrix_inverse(proj_matrix));

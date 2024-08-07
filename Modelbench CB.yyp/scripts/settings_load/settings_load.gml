@@ -83,7 +83,7 @@ function settings_load()
 		
 		setting_z_is_up = value_get_real(interfacemap[?"z_is_up"], setting_z_is_up)
 		setting_shared_texture_uvs = value_get_real(interfacemap[?"shared_texture_uvs"], setting_shared_texture_uvs)
-		        
+				
 		setting_compact_panels = value_get_real(interfacemap[?"setting_compact_panels"], setting_compact_panels)
 		setting_compact_elements = value_get_real(interfacemap[?"setting_compact_elements"], setting_compact_elements)
 		

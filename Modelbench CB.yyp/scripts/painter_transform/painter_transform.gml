@@ -35,12 +35,12 @@ function painter_transform(xx, yy)
 	sprite_set_offset(sel_trn_spr, sprite_get_width(sel_trn_spr) / 2, sprite_get_height(sel_trn_spr) / 2)
 	//var center2 = vec2_rotate([diffxt/2,diffyt/2], selection_rot, selection_pos)
 	
-    // Update the transformation on the sprite
+	// Update the transformation on the sprite
 	surface_set_target(transform_surf)
 	{
 		draw_clear_alpha(c_black, 0)
 		alphafix
-	    gpu_set_colorwriteenable(false, false, false, true)
+		gpu_set_colorwriteenable(false, false, false, true)
 		draw_sprite_ext(transform_spr, 0, selection_pos[X] + diffx / 2 - modsizex, selection_pos[Y] + diffy / 2 - modsizey, scalex, scaley, selection_rot, c_white, 1)
 		gpu_set_colorwriteenable(true, true, true, false)
 		draw_sprite_ext(transform_spr, 0, selection_pos[X] + diffx / 2 - modsizex, selection_pos[Y] + diffy / 2 - modsizey, scalex, scaley, selection_rot, c_white, 1)
@@ -128,33 +128,34 @@ function painter_transform(xx, yy)
 		if(adjusting_hue){
 			render_shader_obj = shader_map[?shader_huesat]
 
-	        shader_set(shader_huesat)
-	        render_set_uniform("u_Position", hue)
-	        render_set_uniform("u_Position_s", sat/100)
-	        render_set_uniform("u_Position_l", val/100)
-	        render_set_uniform("u_colmask", 0.0)
-	        texture_set_stage(render_shader_obj.sampler_map[?"u_clipsampler"], surface_get_texture(selection_surf))
-            
-	        alphafix
-	        draw_surface_ext(transform_surf, scale_offset_x, scale_offset_y, zoom, zoom, 0, c_white, 1)
-	        gpu_set_blendmode(bm_normal);
-	        shader_reset();	
+			shader_set(shader_huesat)
+			render_set_uniform("u_Position", hue)
+			render_set_uniform("u_Position_s", sat/100)
+			render_set_uniform("u_Position_l", val/100)
+			render_set_uniform("u_colmask", 0.0)
+			texture_set_stage(render_shader_obj.sampler_map[?"u_clipsampler"], surface_get_texture(selection_surf))
+			
+			alphafix
+			draw_surface_ext(transform_surf, scale_offset_x, scale_offset_y, zoom, zoom, 0, c_white, 1)
+			gpu_set_blendmode(bm_normal);
+			shader_reset();	
 		}
-		else if(adjusting_brightness_contrast){
-	        render_shader_obj = shader_map[?shader_contrast_brightness]
-	         
-            shader_set(shader_contrast_brightness)
-            render_set_uniform("uBrightness", painter_adjust_brightness/100)
-            render_set_uniform("uContrast", painter_adjust_contrast/100)
-            render_set_uniform("u_colmask", 0.0)
-	         with(render_shader_obj)
-            texture_set_stage(sampler_map[?"u_clipsampler"], surface_get_texture(selection_surf))
-            
-            alphafix
-	         
-	        draw_surface_ext(transform_surf, scale_offset_x, scale_offset_y, zoom, zoom, 0, c_white, 1)
-            gpu_set_blendmode(bm_normal);
-            shader_reset();
+		else if (adjusting_brightness_contrast)
+		{
+			render_shader_obj = shader_map[?shader_contrast_brightness]
+			 
+			shader_set(shader_contrast_brightness)
+			render_set_uniform("uBrightness", painter_adjust_brightness/100)
+			render_set_uniform("uContrast", painter_adjust_contrast/100)
+			render_set_uniform("u_colmask", 0.0)
+			with(render_shader_obj)
+				texture_set_stage(sampler_map[?"u_clipsampler"], surface_get_texture(selection_surf))
+			
+			alphafix
+			 
+			draw_surface_ext(transform_surf, scale_offset_x, scale_offset_y, zoom, zoom, 0, c_white, 1)
+			gpu_set_blendmode(bm_normal);
+			shader_reset();
 		}
 		else{
 		draw_surface_ext(transform_surf, scale_offset_x, scale_offset_y, zoom, zoom, 0, c_white, 1)
@@ -181,7 +182,7 @@ function painter_transform(xx, yy)
 		gpu_set_texrepeat(true)
 		
 		// ROTATION
-	    surface_set_target(render_surface[0])
+		surface_set_target(render_surface[0])
 		{
 			alphafix
 			draw_clear_alpha(c_black, 0)
@@ -201,7 +202,7 @@ function painter_transform(xx, yy)
 			
 			if (window_busy = "painter_rotate")
 			{
-	            var dosnap = keyboard_check(vk_control)
+				var dosnap = keyboard_check(vk_control)
 				ang = point_direction(mouse_x , mouse_y , selection_center[X], selection_center[Y])
 				prevang = point_direction(mouse_previous_x , mouse_previous_y , selection_center[X], selection_center[Y])
 				painter_transform_rot += ang - prevang;

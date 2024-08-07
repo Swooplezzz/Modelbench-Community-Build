@@ -19,7 +19,7 @@ function cam_update_view_snap()
 					
 		if (abs(angle_xy != target_angle_xy) >= 0.05)
 		{	
-		    angle_xy = angle_xy + (target_angle_xy - angle_xy) / max(1, 3 / delta)
+			angle_xy = angle_xy + (target_angle_xy - angle_xy) / max(1, 3 / delta)
 			angle_look_xy = angle_xy
 			angle_off_xy = 0
 		}
@@ -29,7 +29,7 @@ function cam_update_view_snap()
 			angle_z = angle_z + (target_angle_z - angle_z) / max(1, 3 / delta)
 			angle_look_z = -angle_z
 			angle_off_z = 0
-	    }
+		}
 	
 		camera_set_from()
 

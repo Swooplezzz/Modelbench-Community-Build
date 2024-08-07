@@ -23,12 +23,12 @@ function render_set_projection(from, to, up, fov, aspect, znear, zfar)
 		else if (render_width == recent_thumbnail_width && render_height == recent_thumbnail_height)
 		{
 			mP = matrix_build_projection_ortho(recent_thumbnail_width * .0115 * abs((( model_get_max_y() + model_get_min_y() ) / 2) - model_get_min_y()), -recent_thumbnail_height * .0115 * abs((( model_get_max_y() + model_get_min_y() ) / 2) - model_get_min_y()), znear, zfar);
-			show_debug_message("Rendering Recent")
+			//show_debug_message("Rendering Recent")
 		}
-	    else
+		else
 		{
 			mP = matrix_build_projection_ortho(render_width * (view_cam.zoom * 0.0005), -render_height * (view_cam.zoom*0.0005) , znear, zfar);
-	    }
+		}
 	}
 	
 	camera_set_view_mat(cam_render, mV)

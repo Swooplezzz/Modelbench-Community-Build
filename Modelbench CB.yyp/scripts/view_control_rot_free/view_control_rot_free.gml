@@ -18,7 +18,7 @@ function view_control_rot_free(view)
 		matrix_remove_scale(zrot)
 	}
 	
-    var axis = 0
+	var axis = 0
 	var start = vec3(0, 0, 0)
 	
 	xrot = matrix_multiply(matrix_build(0, 0, 0, 0, -90, el_edit.value[e_value.ROT_Z], 1, 1, 1), zrot)
@@ -38,7 +38,7 @@ function view_control_rot_free(view)
 	var lenstart = (tool_selected = e_tool.TRANSFORM ? len - len/8 : 0)
 
 	
-    var pos3D = point3D(0, 0, 0)
+	var pos3D = point3D(0, 0, 0)
 	var pos2D = 0
 	var mat
 		
@@ -128,14 +128,14 @@ function view_control_rot_free(view)
 			var rot = to_euler(el_edit.quat_rot);
 	//show_debug_message(el_edit.quat_rot);
 
-		    el_value_set_start(action_el_rot_xyz, true)
+			el_value_set_start(action_el_rot_xyz, true)
 			el_value_set(e_value.ROT_X, rot[X], false)
 			el_value_set(e_value.ROT_Y, rot[Y], false)
 			el_value_set(e_value.ROT_Z, rot[Z], false)
 			el_value_set_done()
 		}
 		
-	    if (mouse_left)
+		if (mouse_left)
 		{
 			window_busy = ""
 			view_control_edit = null
@@ -143,7 +143,7 @@ function view_control_rot_free(view)
 			keybind_free_rot = false
 		}
 		
-	    if (mouse_right)
+		if (mouse_right)
 		{
 			window_busy = ""
 			view_control_edit = null
@@ -190,7 +190,7 @@ function view_control_rot_free(view)
 			el_value_set_done()
 		}
 		
-	    if (mouse_left)
+		if (mouse_left)
 		{
 			window_busy = ""
 			view_control_edit = null
@@ -198,7 +198,7 @@ function view_control_rot_free(view)
 			keybind_free_rot = false
 		}
 		
-	    if (mouse_right)
+		if (mouse_right)
 		{
 			window_busy = ""
 			view_control_edit = null

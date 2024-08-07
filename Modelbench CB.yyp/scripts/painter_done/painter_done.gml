@@ -25,7 +25,7 @@ function painter_done(inbounds)
 	{
 		draw_clear(c_black)
 
-	    draw_sprite(alpha_spr, 0, 0, 0)
+		draw_sprite(alpha_spr, 0, 0, 0)
 		if ((selection_moved && paint_tool_selected != e_paint.TRANSFORM_SELECTION)|| selection_moved && (adjusting_brightness_contrast || adjusting_hue))
 		{
 			alphafix

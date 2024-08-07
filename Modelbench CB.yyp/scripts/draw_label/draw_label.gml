@@ -34,36 +34,36 @@ function draw_label()
 	
 	if (argument_count > 3)
 	{
-	    halign = argument[3]
-	    valign = argument[4]
-	    draw_set_halign(halign)
-	    draw_set_valign(valign)
+		halign = argument[3]
+		valign = argument[4]
+		draw_set_halign(halign)
+		draw_set_valign(valign)
 	}
 	
 	if (argument_count > 5)
 	{
-	    color = argument[5]
-	    alpha = argument[6]
-	    if (color != null)
+		color = argument[5]
+		alpha = argument[6]
+		if (color != null)
 		{
-	        oldcolor = draw_get_color()
+			oldcolor = draw_get_color()
 			
 			if (color != oldcolor)
 				draw_set_color(color)
-	    }
-	    if (alpha < 1)
+		}
+		if (alpha < 1)
 		{
-	        oldalpha = draw_get_alpha()
+			oldalpha = draw_get_alpha()
 			
 			if (alpha != oldalpha)
 				draw_set_alpha(oldalpha * alpha)
-	    }
+		}
 	}
 	
 	if (argument_count > 7)
 	{
-	    font = argument[7]
-	    draw_set_font(font)
+		font = argument[7]
+		draw_set_font(font)
 		
 		strwid = string_width(str)
 		strhei = string_height(str)
@@ -93,8 +93,8 @@ function draw_label()
 	
 	if (argument_count > 8)
 	{
-	    seperation = argument[8]
-	    width = argument[9]
+		seperation = argument[8]
+		width = argument[9]
 	}
 	
 	if (argument_count > 3)
@@ -116,13 +116,13 @@ function draw_label()
 	
 	if (argument_count > 3)
 	{
-	    draw_set_halign(fa_left)
-	    draw_set_valign(fa_top)
+		draw_set_halign(fa_left)
+		draw_set_valign(fa_top)
 	}
 	
 	if (argument_count > 5)
 	{
-	    if (color != null)
+		if (color != null)
 			if (color != oldcolor)
 				draw_set_color(oldcolor)
 		

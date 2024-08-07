@@ -21,7 +21,7 @@ function render_world_start()
 	cam_up[Y] = cy * xx - cx * yy * zz
 	cam_up[Z] = cx * (xx * xx + yy * yy)
 	
-    cam_fov = target_camera_fov
+	cam_fov = target_camera_fov
 	cam_near = 1
 	if (argument_count > 0)
 		cam_far = argument[0]
