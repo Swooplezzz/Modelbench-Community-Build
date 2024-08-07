@@ -318,7 +318,7 @@ function app_startup_interface_tabs()
 		
 		// Color palettes
 		color_palettes = tab_add_category("colorpalettes", icons.PALETTE, tab_color_palettes, true)
-		with(color_palettes)
+		with (color_palettes)
 		{
 			tbx_name = new_textbox(true, 0, "")
 			name_edit_element = null

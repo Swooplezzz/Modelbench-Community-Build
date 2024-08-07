@@ -4,7 +4,7 @@ function action_painter_palette_add()
 {
 	var struct =
 	{
-		name: "New Palette",
+		name: text_get("painternewpalette"),
 		color_list: array_create(0)
 	}
 

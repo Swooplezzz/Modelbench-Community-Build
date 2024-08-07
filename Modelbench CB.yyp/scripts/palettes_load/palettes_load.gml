@@ -1,3 +1,5 @@
+/// palettes_load()
+
 function palettes_load()
 {
 	if (!file_exists_lib(palette_file))
@@ -13,12 +15,11 @@ function palettes_load()
 
 	ds_list_clear(palette_list)
 	
-	var palettelist = palettesmap[?"list"];
-
+	var palettes = palettesmap[?"list"];
 	
-	for (var i = 0; i < ds_list_size(palettelist); i++)
+	for (var i = 0; i < ds_list_size(palettes); i++)
 	{
-		var palettemap = palettelist[|i];
+		var palettemap = palettes[|i];
 		
 		if (ds_map_valid(palettemap))
 		{

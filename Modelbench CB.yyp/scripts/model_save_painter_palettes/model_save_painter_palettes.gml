@@ -2,7 +2,10 @@
 
 function model_save_painter_palettes()
 {
-	json_save_array_start("palettelist")
+	if (ds_list_size(palette_list) = 0)
+		return 0
+	
+	json_save_array_start("palettes")
 	
 	for (var i = 0; i < ds_list_size(palette_list); i++)
 	{
