@@ -1,14 +1,13 @@
 # Modelbench Community Build
 
 <p align="center">
-  <img src="https://i.imgur.com/qSs6x0n.png" width=800/>
+  <img src="https://i.imgur.com/q80NPdj.png" width=800/>
   <br/>
-  <br/>
-  <img src="https://i.imgur.com/0osEmHQ.png" width=800/>
 </p>
 
-Modelbench C-B 
+Modelbench Community Build
 
-Modelbench By Nimi.
+Download: https://communitybuild.netlify.app/
 
 Created in GameMaker Studio 2.
+Modelbench by Nimi.
