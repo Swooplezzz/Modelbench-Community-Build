@@ -45,6 +45,7 @@ function painter_history()
 			selection_spr = sprite_duplicate(painter_history[painter_history_pos].selsprite)
 			surface_set_target(selection_surf)
 			{
+				draw_clear_alpha(c_black,0)
 				draw_sprite(selection_spr,0,0,0)
 			}
 			surface_reset_target()
@@ -120,6 +121,7 @@ function painter_history()
 			selection_spr = sprite_duplicate(painter_history[painter_history_pos].selsprite)
 			surface_set_target(selection_surf)
 			{
+				draw_clear_alpha(c_black,0)
 				draw_sprite(selection_spr,0,0,0)
 			}
 			surface_reset_target()

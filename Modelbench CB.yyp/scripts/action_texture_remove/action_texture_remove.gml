@@ -36,12 +36,8 @@ function action_texture_remove()
 	
 	el_update_part()
 	textures_list.update = true
-	
-	if (program_mode = e_mode.TEXTURING && res_edit = list_item_value)
-	{
-		res_edit = app.res
-		painter_reset()
-	}
-	else
-		res_edit = null
+	res_edit = app.res
+	painter_reset()
+	if(program_mode != e_mode.TEXTURING)
+	res_edit = null
 }

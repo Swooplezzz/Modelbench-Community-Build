@@ -56,6 +56,10 @@ function app_update_program_mode()
 		textures_list.update = true
 		tex_preview.update = true
 		view_cam = view_cam_viewport
+		if(res_edit = null){
+		res_edit = app.res
+		painter_reset()
+		}
 		
 		// Free render surfaces from preview mode
 		render_free()

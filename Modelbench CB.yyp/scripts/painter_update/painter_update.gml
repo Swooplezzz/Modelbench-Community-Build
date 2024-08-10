@@ -123,7 +123,7 @@ function painter_update(view, cam)
 	
 	if (selection_moved && (paint_tool_selected != e_paint.TRANSFORM_SELECTION ||  (adjusting_brightness_contrast || adjusting_hue)))
 	{
-		painter_history_set("transform", final_spr, selection_spr, transform_spr , sel_trn_spr)
+
 		painter_update_selection_bounds()
 		selection_size = vec2(selection_btmright[0] - selection_topleft[0], selection_btmright[1] - selection_topleft[1])
 		painter_update_transform_sprite()

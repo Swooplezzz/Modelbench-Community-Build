@@ -23,8 +23,12 @@ function action_texture_select()
 		}
 		var painting = (res_edit != list_item_script_value);
 		res_edit = (res_edit = list_item_script_value && program_mode != e_mode.TEXTURING? null : list_item_script_value)
+		
+		if(res_edit != null)
+		painter_reset()	
+		
 		if(program_mode = e_mode.TEXTURING && painting){
-			painter_reset()
+
 			textures_list.update = true
 		}
 	}
