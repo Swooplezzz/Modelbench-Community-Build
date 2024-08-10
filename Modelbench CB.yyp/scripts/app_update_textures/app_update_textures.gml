@@ -14,7 +14,11 @@ function app_update_textures()
 		{
 			with (obj_texture)
 				tex_refresh(id)
+				
+			if(window_state != "startup")
+			with(app)
 			painter_reset()
+			
 			textures_list.update = true
 			tex_preview.update = true
 			
